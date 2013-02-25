@@ -106,4 +106,29 @@ class SiteController extends Controller
 		Yii::app()->user->logout();
 		$this->redirect(Yii::app()->homeUrl);
 	}
+        
+        public function actionInvoiceView()
+{
+        $model=new ourinvoices;
+
+        // uncomment the following code to enable ajax-based validation
+        /*
+        if(isset($_POST['ajax']) && $_POST['ajax']==='ourinvoices-invoiceView-form')
+        {
+            echo CActiveForm::validate($model);
+            Yii::app()->end();
+        }
+        */
+
+        if(isset($_POST['ourinvoices']))
+        {
+            $model->attributes=$_POST['ourinvoices'];
+            if($model->validate())
+            {
+                // form inputs are valid, do something here
+                return;
+            }
+        }
+        $this->render('invoiceView',array('model'=>$model));
+    }
 }
