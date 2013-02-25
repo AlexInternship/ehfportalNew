@@ -109,7 +109,10 @@ class SiteController extends Controller
         
         public function actionInvoiceView()
 {
-        $model=new ourinvoices;
+        
+        $ourInvoices=new ourinvoices;
+        $ourInvoicelines=new ourInvoicelines;
+
 
         // uncomment the following code to enable ajax-based validation
         /*
@@ -120,15 +123,23 @@ class SiteController extends Controller
         }
         */
 
-        if(isset($_POST['ourinvoices']))
+        if(isset($_POST['ourInvoices'],$_POST['ourInvoicelines'] ))
         {
-            $model->attributes=$_POST['ourinvoices'];
-            if($model->validate())
+            $ourInvoices->attributes=$_POST['ourinvoices'];
+            $ourInvoicelines->attributes=$_POST['ourInvoicelines'];
+            
+              $valid=$ourInvoices->validate();
+              $valid=$ourInvoicelines->validate() && $valid;
+ 
+            
+            if($valid)
             {
-                // form inputs are valid, do something here
-                return;
+                // use false parameter to disable validation
+                $ourInvoices->save(false);
+                $ourInvoicelines->save(false);
+                // ...redirect to another page
             }
         }
-        $this->render('invoiceView',array('model'=>$model));
+        $this->render('invoiceView',array('ourInvoices'=>$ourInvoices,'ourInvoicelines'=>$ourInvoicelines ));
     }
 }
