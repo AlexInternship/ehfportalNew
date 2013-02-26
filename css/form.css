@@ -65,6 +65,15 @@ div.form .row
 	margin: 5px 0;
 }
 
+div.form .box
+
+{
+width:165px;
+padding:5px;
+border:10px #039;
+margin:20px;
+}
+
 div.form .hint
 {
 	margin: 0;
