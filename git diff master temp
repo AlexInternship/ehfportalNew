@@ -1,0 +1,34 @@
+* [33me758067 ([1;36mHEAD[m[33m, [1;32mtemp[m[33m)[m Committed via NewBeans
+* [33mf0bf885[m Committed via NewBeans
+* [33m3247163[m Committed via NewBeans
+* [33m255f85a ([1;31morigin/master[m[33m, [1;31morigin/HEAD[m[33m)[m asset crap
+*   [33m4f9cd39[m Merge branch 'master' of https://github.com/AlexInternship/ehfportalNew
+[32m|[m[33m\[m  
+* [33m|[m [33m21ba43a[m assets crap
+* [33m|[m [33mdab1430[m sitecontroller altered
+[33m|[m [33m|[m * [33m39e1be9 ([1;32mmaster[m[33m)[m Tilføjet partnersView / form
+[33m|[m [33m|[m[33m/[m  
+[33m|[m * [33m5a892bd[m assets stuff
+[33m|[m[33m/[m  
+* [33m6e1a83c[m new view
+*   [33mf0d9829[m Merge branch 'master' of https://github.com/AlexInternship/ehfportalNew
+[35m|[m[36m\[m  
+[35m|[m * [33mbc7e84f[m burn it
+[35m|[m * [33m8d2f833[m haunted assets
+* [36m|[m [33mba40b32[m 	modified:   assets/9e9ba1d2/rating/jquery.rating.css 	modified:   assets/9e9ba1d2/treeview/jquery.treeview.css
+* [36m|[m [33mf761f99[m change in sitecontroller, and addet view in site
+[36m|[m[36m/[m  
+* [33m6f9dd8e[m assets
+* [33m3494ea1[m added view
+* [33m12e5541[m assets be gone
+* [33m9d389cb[m freaking assets maaaan
+* [33m71aeafb[m added assets
+* [33m8c9e3db[m added models
+* [33m733de03[m assets
+* [33m403067f[m added assets
+* [33m28a0732[m more extensions
+* [33m727798b[m added extensions physically and in config
+* [33m13aac89[m added extensions physically and in config
+* [33me49f243[m more yii
+* [33mfe69c6b[m added core yii functionality
+* [33mb996692[m changed homepage to log
