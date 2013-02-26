@@ -109,7 +109,6 @@ class SiteController extends Controller
         
         public function actionInvoiceView()
 {
-        
         $ourInvoices=new ourinvoices;
         $ourInvoicelines=new ourInvoicelines;
 
@@ -140,31 +139,59 @@ class SiteController extends Controller
                 // ...redirect to another page
             }
         }
-        $this->render('invoiceView',array('ourInvoices'=>$ourInvoices,'ourInvoicelines'=>$ourInvoicelines ));
+        $this->render('invoiceView',array('ourinvoices'=>$ourInvoices,'ourinvoicelines'=>$ourInvoicelines ));
     }
     
     public function actionOurinvoicesView()
-{
-    $model=new ourinvoices;
-
-    // uncomment the following code to enable ajax-based validation
-    /*
-    if(isset($_POST['ajax']) && $_POST['ajax']==='ourinvoices-ourinvoicesView-form')
     {
-        echo CActiveForm::validate($model);
-        Yii::app()->end();
-    }
-    */
+        $ourInvoices=new ourinvoices;
+        $ourInvoicelines=new ourInvoicelines;
 
-    if(isset($_POST['ourinvoices']))
-    {
-        $model->attributes=$_POST['ourinvoices'];
-        if($model->validate())
+
+        // uncomment the following code to enable ajax-based validation
+        /*
+        if(isset($_POST['ajax']) && $_POST['ajax']==='ourinvoices-invoiceView-form')
         {
-            // form inputs are valid, do something here
-            return;
+            echo CActiveForm::validate($model);
+            Yii::app()->end();
         }
+        */
+
+        if(isset($_POST['ourInvoices'],$_POST['ourInvoicelines'] ))
+        {
+            $ourInvoices->attributes=$_POST['ourinvoices'];
+            $ourInvoicelines->attributes=$_POST['ourInvoicelines'];
+            
+              $valid=$ourInvoices->validate();
+              $valid=$ourInvoicelines->validate() && $valid;
+ 
+            
+            if($valid)
+            {
+                return;
+                // use false parameter to disable validation
+                //$ourInvoices->save(false);
+                //$ourInvoicelines->save(false);
+                // ...redirect to another page
+            }
+        }
+        $this->render('ourinvoicesView',array('ourinvoices'=>$ourInvoices,'ourInvoicelines'=>$ourInvoicelines ));
     }
-    $this->render('ourinvoicesView',array('model'=>$model));
-}
+    
+     public function actionBoosterView()
+    {
+         $model=new ourinvoices;
+
+         
+          if(isset($_POST['ourinvoices']))
+        {
+            $model->attributes=$_POST['ourinvoices'];
+            if($model->validate())
+            {
+                // form inputs are valid, do something here
+                return;
+            }
+        }
+        $this->render('boosterView',array('model'=>$model));
+    }
 }
