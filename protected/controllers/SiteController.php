@@ -142,4 +142,29 @@ class SiteController extends Controller
         }
         $this->render('invoiceView',array('ourInvoices'=>$ourInvoices,'ourInvoicelines'=>$ourInvoicelines ));
     }
+    
+    public function actionOurinvoicesView()
+{
+    $model=new ourinvoices;
+
+    // uncomment the following code to enable ajax-based validation
+    /*
+    if(isset($_POST['ajax']) && $_POST['ajax']==='ourinvoices-ourinvoicesView-form')
+    {
+        echo CActiveForm::validate($model);
+        Yii::app()->end();
+    }
+    */
+
+    if(isset($_POST['ourinvoices']))
+    {
+        $model->attributes=$_POST['ourinvoices'];
+        if($model->validate())
+        {
+            // form inputs are valid, do something here
+            return;
+        }
+    }
+    $this->render('ourinvoicesView',array('model'=>$model));
+}
 }
