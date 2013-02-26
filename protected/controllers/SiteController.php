@@ -146,7 +146,8 @@ class SiteController extends Controller
     {
         $ourInvoices=new ourinvoices;
         $ourInvoicelines=new ourInvoicelines;
-
+        $partners=new partners;
+        $adress=new address;
 
         // uncomment the following code to enable ajax-based validation
         /*
@@ -157,14 +158,17 @@ class SiteController extends Controller
         }
         */
 
-        if(isset($_POST['ourInvoices'],$_POST['ourInvoicelines'] ))
+        if(isset($_POST['ourInvoices'],$_POST['ourInvoicelines'],$_POST['partners'],$_POST['address'] ))
         {
             $ourInvoices->attributes=$_POST['ourinvoices'];
             $ourInvoicelines->attributes=$_POST['ourInvoicelines'];
-            
-              $valid=$ourInvoices->validate();
-              $valid=$ourInvoicelines->validate() && $valid;
- 
+            $partners->attributes=$_POST['partners'];
+            $address->attributes=$_POST['address'];
+      
+            $valid=$ourInvoices->validate();
+            $valid=$ourInvoicelines->validate() && $valid;
+            $valid=$partners->validate() && $valid;
+            $valid=$address->validate() && $valid;
             
             if($valid)
             {
@@ -175,52 +179,57 @@ class SiteController extends Controller
                 // ...redirect to another page
             }
         }
-        $this->render('ourinvoicesView',array('ourinvoices'=>$ourInvoices,'ourInvoicelines'=>$ourInvoicelines ));
+        $this->render('ourinvoicesView',array('ourinvoices'=>$ourInvoices,'ourInvoicelines'=>$ourInvoicelines,'partners'=>$partners,'address'=>$address ));
     }
     
-     public function actionBoosterView()
+    public function actionPartnersView()
     {
-         $model=new ourinvoices;
+        $model=new partners;
 
-         
-          if(isset($_POST['ourinvoices']))
+        // uncomment the following code to enable ajax-based validation
+        /*
+        if(isset($_POST['ajax']) && $_POST['ajax']==='partners-partnersView-form')
         {
-            $model->attributes=$_POST['ourinvoices'];
+            echo CActiveForm::validate($model);
+            Yii::app()->end();
+        }
+        */
+
+        if(isset($_POST['partners']))
+        {
+            $model->attributes=$_POST['partners'];
             if($model->validate())
             {
                 // form inputs are valid, do something here
                 return;
             }
         }
-        $this->render('boosterView',array('model'=>$model));
+        $this->render('partnersView',array('model'=>$model));
+    }
     
-    $this->render('ourinvoicesView',array('model'=>$model));
-}
-
-public function actionPartnersView()
+    
+public function actionAddressView()
 {
-    $model=new partners;
+    $model=new address;
 
     // uncomment the following code to enable ajax-based validation
     /*
-    if(isset($_POST['ajax']) && $_POST['ajax']==='partners-partnersView-form')
+    if(isset($_POST['ajax']) && $_POST['ajax']==='address-addressView-form')
     {
         echo CActiveForm::validate($model);
         Yii::app()->end();
     }
     */
 
-    if(isset($_POST['partners']))
+    if(isset($_POST['address']))
     {
-        $model->attributes=$_POST['partners'];
+        $model->attributes=$_POST['address'];
         if($model->validate())
         {
             // form inputs are valid, do something here
             return;
         }
     }
-    $this->render('partnersView',array('model'=>$model));
+    $this->render('addressView',array('model'=>$model));
 }
-
-
 }
