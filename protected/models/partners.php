@@ -84,7 +84,7 @@ class partners extends CActiveRecord
 		return array(
 			array('partnerno, validcvr, scanmail, info_to_purchaser, mailcomment', 'required'),
 		 	array('partnerno,retailer_id', 'numerical', 'integerOnly'=>true),
-                        array('partnerno', 'lenght',  'min' => 4, 'max'=>20, 
+                        array('partnerno', 'length',  'min' => 4, 'max'=>20, 
                         'tooShort'=>Yii::t("translation", "{attribute} is too short."),
                         'tooLong'=>Yii::t("translation", "{attribute} is too long.")),
 			array('type, identificationtype, version', 'length', 'max'=>10),
