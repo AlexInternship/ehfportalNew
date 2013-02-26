@@ -193,5 +193,34 @@ class SiteController extends Controller
             }
         }
         $this->render('boosterView',array('model'=>$model));
+    
+    $this->render('ourinvoicesView',array('model'=>$model));
+}
+
+public function actionPartnersView()
+{
+    $model=new partners;
+
+    // uncomment the following code to enable ajax-based validation
+    /*
+    if(isset($_POST['ajax']) && $_POST['ajax']==='partners-partnersView-form')
+    {
+        echo CActiveForm::validate($model);
+        Yii::app()->end();
     }
+    */
+
+    if(isset($_POST['partners']))
+    {
+        $model->attributes=$_POST['partners'];
+        if($model->validate())
+        {
+            // form inputs are valid, do something here
+            return;
+        }
+    }
+    $this->render('partnersView',array('model'=>$model));
+}
+
+
 }
