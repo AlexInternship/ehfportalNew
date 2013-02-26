@@ -193,7 +193,7 @@ class SiteController extends Controller
             }
         }
         $this->render('boosterView',array('model'=>$model));
-    }
+    
     $this->render('ourinvoicesView',array('model'=>$model));
 }
 
