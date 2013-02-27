@@ -7,7 +7,8 @@
  */
 class UserIdentity extends CUserIdentity
 {
-	/**
+
+   	/**
 	 * Authenticates a user.
 	 * The example implementation makes sure if the username and password
 	 * are both 'demo'.
@@ -17,17 +18,26 @@ class UserIdentity extends CUserIdentity
 	 */
 	public function authenticate()
 	{
-		$users=array(
-			// username => password
-			'demo'=>'demo',
-			'admin'=>'admin',
-		);
-		if(!isset($users[$this->username]))
-			$this->errorCode=self::ERROR_USERNAME_INVALID;
-		elseif($users[$this->username]!==$this->password)
-			$this->errorCode=self::ERROR_PASSWORD_INVALID;
-		else
-			$this->errorCode=self::ERROR_NONE;
-		return !$this->errorCode;
+
+        $dataProvider = new CActiveDataProvider('Users', array(
+         //   'criteria' => $criteria,
+        ));
+        
+       $names = array();
+       
+       foreach($dataProvider->getData() as $record) {
+            $names[$record->username] =$record->password ;
+        }
+           
+        if (!array_key_exists($this->username, $names))
+            $this->errorCode=self::ERROR_USERNAME_INVALID;
+       
+        elseif(array_key_exists($this->username, $names)&&                        
+                        ($names[$this->username] == md5($this->password)) 
+                        )
+                            $this->errorCode = self::ERROR_NONE;
+	else
+            $this->errorCode=self::ERROR_PASSWORD_INVALID;
+        return !$this->errorCode;
 	}
 }
