@@ -10,7 +10,7 @@
 	'id'=>'partners-partnersView-form',
         /*'focus'=>array($model,'partnerno'),*/
         'enableClientValidation'=>true,
-	'enableAjaxValidation'=>true,
+	'enableAjaxValidation'=>false,
 )); ?>
 
 	<p class="note">Fields with <span class="required">*</span> are required.</p>
@@ -19,22 +19,22 @@
 
 	<div class="row">
 		<?php echo $form->labelEx($model,'partnerno', array('class'=>'test')); ?>
-		<?php echo $form->textField($model,'partnerno', array('value'=>'Partner nummer', 'onFocus'=>'this.value=""')); ?>
+		<?php echo $form->textField($model,'partnerno', array('value'=>'Partner nummer', 'onFocus'=>'if(this.value=="Partner nummer"){this.value=""}')); ?>
 		<?php echo $form->error($model,'partnerno'); ?>
 	</div>
 
 	<div class="row">
 		<?php echo $form->labelEx($model,'validcvr', array('class'=>'test')); ?>
-		<?php echo $form->textField($model,'validcvr', array('value'=>'validcvr', 'onFocus'=>'this.value=""')); ?>
+		<?php echo $form->textField($model,'validcvr', array('value'=>'validcvr', 'onFocus'=>'if(this.value=="validcvr"){this.value=""}')); ?>
 		<?php echo $form->error($model,'validcvr'); ?>
 	</div>
 
 	<div class="row">
 		<?php echo $form->labelEx($model,'scanmail', array('class'=>'test')); ?>
-		<?php echo $form->textField($model,'scanmail'); ?>
+		<?php echo $form->textField($model,'scanmail', array('value'=>'scanmail', 'onFocus'=>'if(this.value=="scanmail"){this.value=""}')); ?>
 		<?php echo $form->error($model,'scanmail'); ?>
 	</div>
-
+       
 	<div class="row">
 		<?php echo $form->labelEx($model,'info_to_purchaser', array('class'=>'test')); ?>
 		<?php echo $form->textField($model,'info_to_purchaser'); ?>
@@ -293,7 +293,7 @@
                             ),
                         ));
                 ?>
-		<?php /*echo $form->textField($model,'createddate');*/ ?>
+		<?php echo $form->textField($model,'createddate'); ?>
 		<?php echo $form->error($model,'createddate'); ?>
 	</div>
 

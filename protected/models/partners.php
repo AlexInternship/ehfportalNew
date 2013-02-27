@@ -245,4 +245,22 @@ class partners extends CActiveRecord
 			'criteria'=>$criteria,
 		));
 	}
+        
+        function email(){
+            
+             $validator = new CEmailvalidator();
+             if(TRUE){
+                 
+                 
+                 
+              return true;     
+             }
+             else{
+                 
+                 return false;
+             }
+            
+            
+        }
+        
 }
