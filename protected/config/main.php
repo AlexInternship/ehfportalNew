@@ -43,12 +43,24 @@ return array(
                 'fancybox' => array(
                     'class' => 'ext.fancybox.EFancyBox'
                 ),
+            
+                'mailer' => array(
+                    'class' => 'ext.swiftMailer.SwiftMailer',
+                    // For SMTP
+                    'mailer' => 'smtp',
+                    'host'=>'localhost',
+                    'From'=>'admin@localhost',
+                    'username'=>'username',
+                    'password'=>'password',
+                    // For sendmail:
+                    'mailer'=>'sendmail',
+                ),
 
-                'mail' => array(
+                'yiiMail' => array(
                    'class' => 'ext.yii-mail.YiiMail',
                     'transportType'=>'smtp',
                     'transportOptions'=>array(
-                      'host'=>'smtp.mail.yahoo.com',
+                      'host'=>'smtp.gmail.com',
                       'username'=>'nama_email',//contohna nama_email@yahoo.co.id
                       'password'=>'xxxx',
                       'port'=>'465',

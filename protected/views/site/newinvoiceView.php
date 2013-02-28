@@ -51,6 +51,9 @@
 
 <div class="row buttons">
 <?php echo CHtml::submitButton($users->isNewRecord ? 'Create' : 'Save'); ?>
+    
+<div class="row buttons">
+<?php echo CHtml::submitButton($this->sendMail()); ?>    
 </div>
 
 

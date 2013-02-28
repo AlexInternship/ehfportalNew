@@ -258,4 +258,11 @@ class SiteController extends Controller
             $string .= $characters[mt_rand(0, (strlen($characters) - 1))];  
         return $string;
     }
+    
+    public function sendMail() {
+        Yii::app()->mailer->AddAddress('jkristensen@gmail.com');
+        Yii::app()->mailer->Subject = "your account has been created";
+        Yii::app()->mailer->MsgHTML("<a href='http://site.com'>link to user</a>");
+        Yii::app()->mailer->Send();
+    }
 }
