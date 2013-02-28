@@ -43,6 +43,22 @@ return array(
                 'fancybox' => array(
                     'class' => 'ext.fancybox.EFancyBox'
                 ),
+
+                'mail' => array(
+                   'class' => 'ext.yii-mail.YiiMail',
+                    'transportType'=>'smtp',
+                    'transportOptions'=>array(
+                      'host'=>'smtp.mail.yahoo.com',
+                      'username'=>'nama_email',//contohna nama_email@yahoo.co.id
+                      'password'=>'xxxx',
+                      'port'=>'465',
+                      'encryption'=>'ssl',
+                     ),
+                   'viewPath' => 'application.views.mail',
+                   'logging' => true,
+                   'dryRun' => false
+                    ),
+            
 		'user'=>array(
 			// enable cookie-based authentication
 			'allowAutoLogin'=>true,

@@ -20,12 +20,12 @@
  * @property string $partnerno
  * @property string $eanno
  */
-class address extends CActiveRecord
+class Address extends CActiveRecord
 {
 	/**
 	 * Returns the static model of the specified AR class.
 	 * @param string $className active record class name.
-	 * @return address the static model class
+	 * @return Address the static model class
 	 */
 	public static function model($className=__CLASS__)
 	{
@@ -49,9 +49,16 @@ class address extends CActiveRecord
 		// will receive user inputs.
 		return array(
 			array('partner_id', 'numerical', 'integerOnly'=>true),
+                        array('cvr', 'length',  'min' => 9, 'max'=>9, 
+                        'tooShort'=>Yii::t("translation", "{attribute} is too short."),
+                        'tooLong'=>Yii::t("translation", "{attribute} is too long.")),
+                        array('cvr', 'unique','message'=>'cvr already exists!'),            
+                       	array('zip', 'numerical', 'integerOnly'=>true),
+                        array('zip', 'length',  'min' => 4, 'max'=>4, 
+                        'tooShort'=>Yii::t("translation", "{attribute} is too short."),
+                        'tooLong'=>Yii::t("translation", "{attribute} is too long.")),
 			array('type', 'length', 'max'=>8),
 			array('address1, address2, address3, city, partnerno', 'length', 'max'=>255),
-			array('zip', 'numerical', 'integerOnly'=>true, 'min'=>4, 'max'=>4,'tooSmall'=>'zip must be 4 numbers', 'tooBig'=>'zip must be 4 numbers'),
 			array('countrycode', 'length', 'max'=>3),
 			array('cvr', 'length', 'max'=>64),
 			array('phone, fax', 'length', 'max'=>30),

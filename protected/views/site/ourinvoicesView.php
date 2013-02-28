@@ -1,6 +1,6 @@
 <?php
 /* @var $this ourinvoicesController */
-/* @var $ourinvoices ourinvoices */
+/* @var $Ourinvoices ourinvoices */
 /* @var $form CActiveForm */
 ?>
 

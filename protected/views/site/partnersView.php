@@ -1,6 +1,6 @@
 <?php
 /* @var $this partnersController */
-/* @var $model partners */
+/* @var $model Partners */
 /* @var $form CActiveForm */
 ?>
 

@@ -18,12 +18,12 @@
  * @property string $warningdate
  * @property string $deleteddate
  */
-class ourinvoices extends CActiveRecord
+class Ourinvoices extends CActiveRecord
 {
 	/**
 	 * Returns the static model of the specified AR class.
 	 * @param string $className active record class name.
-	 * @return ourinvoices the static model class
+	 * @return Ourinvoices the static model class
 	 */
 	public static function model($className=__CLASS__)
 	{

@@ -12,12 +12,12 @@
  * @property string $vatyn
  * @property string $reminder
  */
-class ourinvoicelines extends CActiveRecord
+class Ourinvoicelines extends CActiveRecord
 {
 	/**
 	 * Returns the static model of the specified AR class.
 	 * @param string $className active record class name.
-	 * @return ourinvoicelines the static model class
+	 * @return Ourinvoicelines the static model class
 	 */
 	public static function model($className=__CLASS__)
 	{

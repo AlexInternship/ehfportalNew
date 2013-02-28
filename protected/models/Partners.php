@@ -54,12 +54,12 @@
  * @property string $site
  * @property string $product
  */
-class partners extends CActiveRecord
+class Partners extends CActiveRecord
 {
 	/**
 	 * Returns the static model of the specified AR class.
 	 * @param string $className active record class name.
-	 * @return partners the static model class
+	 * @return Partners the static model class
 	 */
 	public static function model($className=__CLASS__)
 	{

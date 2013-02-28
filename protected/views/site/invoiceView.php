@@ -1,7 +1,7 @@
 <?php
 /* @var $this siteController */
-/* @var $ourinvoices ourinvoices */
-/* @var $ourinvoicelines ourinvoicelines */
+/* @var $Ourinvoices ourinvoices */
+/* @var $Ourinvoicelines ourinvoicelines */
 /* @var $form CActiveForm */
 ?>
 

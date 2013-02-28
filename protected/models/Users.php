@@ -48,6 +48,7 @@ class Users extends CActiveRecord
 			array('username', 'length', 'max'=>255),
 			array('password', 'length', 'max'=>40),
 			array('firstname, lastname, email', 'length', 'max'=>128),
+                        array('email', 'email','message'=>"The email isn't correct"), 
 			array('phone', 'length', 'max'=>16),
 			array('type', 'length', 'max'=>11),
 			array('language', 'length', 'max'=>2),

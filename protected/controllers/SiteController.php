@@ -109,8 +109,8 @@ class SiteController extends Controller
         
         public function actionInvoiceView()
 {
-        $ourInvoices=new ourinvoices;
-        $ourInvoicelines=new ourInvoicelines;
+        $ourInvoices=new Ourinvoices;
+        $ourInvoicelines=new Ourinvoicelines;
 
 
         // uncomment the following code to enable ajax-based validation
@@ -144,19 +144,10 @@ class SiteController extends Controller
     
     public function actionOurinvoicesView()
     {
-        $ourInvoices=new ourinvoices;
-        $ourInvoicelines=new ourInvoicelines;
-        $partners=new partners;
-        $adress=new address;
-
-        // uncomment the following code to enable ajax-based validation
-        /*
-        if(isset($_POST['ajax']) && $_POST['ajax']==='ourinvoices-invoiceView-form')
-        {
-            echo CActiveForm::validate($model);
-            Yii::app()->end();
-        }
-        */
+        $ourInvoices=new Ourinvoices;
+        $ourInvoicelines=new Ourinvoicelines;
+        $partners=new Partners;
+        $adress=new Address;
 
         if(isset($_POST['ourInvoices'],$_POST['ourInvoicelines'],$_POST['partners'],$_POST['address'] ))
         {
@@ -184,7 +175,7 @@ class SiteController extends Controller
     
     public function actionPartnersView()
     {
-        $model=new partners;
+        $model=new Partners;
 
         // uncomment the following code to enable ajax-based validation
         /*
@@ -208,28 +199,63 @@ class SiteController extends Controller
     }
     
     
-public function actionAddressView()
-{
-    $model=new address;
-
-    // uncomment the following code to enable ajax-based validation
-    /*
-    if(isset($_POST['ajax']) && $_POST['ajax']==='address-addressView-form')
+    public function actionAddressView()
     {
-        echo CActiveForm::validate($model);
-        Yii::app()->end();
-    }
-    */
+        $model=new Address;
 
-    if(isset($_POST['address']))
-    {
-        $model->attributes=$_POST['address'];
-        if($model->validate())
+        // uncomment the following code to enable ajax-based validation
+        /*
+        if(isset($_POST['ajax']) && $_POST['ajax']==='address-addressView-form')
         {
-            // form inputs are valid, do something here
-            return;
+            echo CActiveForm::validate($model);
+            Yii::app()->end();
         }
+        */
+
+        if(isset($_POST['address']))
+        {
+            $model->attributes=$_POST['address'];
+            if($model->validate())
+            {
+                // form inputs are valid, do something here
+                return;
+            }
+        }
+        $this->render('addressView',array('model'=>$model));
     }
-    $this->render('addressView',array('model'=>$model));
-}
+    
+    public function actionNewinvoiceView()
+    {
+        $user=new Users;
+        $address=new Address;
+
+        if(isset($_POST['users'],$_POST['ourInvoicelines']))
+        {
+            $user->attributes=$_POST['users'];
+            $address->attributes=$_POST['address'];
+
+             $valid=$user->validate();
+             $valid=$address->validate() && $valid;
+
+            if($valid)
+            {
+                // form inputs are valid, do something here
+                return;
+            }
+        }
+        $this->render('newinvoiceView',array('users'=>$user,'address'=>$address));
+    }
+    
+    /**
+     *  returns a random string to be used for passwords and usernames
+     */
+    
+    public static function randomString() {
+        $size = 6;
+        $string = '';
+        $characters = '0123456789abcdefghijklmnopqrstuvwxyz';
+        for ($i = 0; $i < $size; $i++)
+            $string .= $characters[mt_rand(0, (strlen($characters) - 1))];  
+        return $string;
+    }
 }

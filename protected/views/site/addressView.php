@@ -1,6 +1,6 @@
 <?php
 /* @var $this addressController */
-/* @var $model address */
+/* @var $model Address */
 /* @var $form CActiveForm */
 ?>
 
