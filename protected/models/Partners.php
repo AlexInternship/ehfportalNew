@@ -89,6 +89,7 @@ class Partners extends CActiveRecord
                         'tooLong'=>Yii::t("translation", "{attribute} is too long.")),
 			array('type, identificationtype, version', 'length', 'max'=>10),
 			array('name, email, internalpartnerno, docdestination', 'length', 'max'=>255),
+                        array('email','email'),
 			array('girotype', 'length', 'max'=>2),
 			array('giro, girocreditor', 'length', 'max'=>26),
 			array('bank, bankbranch, regno, account', 'length', 'max'=>128),
@@ -246,21 +247,10 @@ class Partners extends CActiveRecord
 		));
 	}
         
-        function email(){
-            
-             $validator = new CEmailvalidator();
-             if(TRUE){
-                 
-                 
-                 
-              return true;     
-             }
-             else{
-                 
-                 return false;
-             }
-            
-            
-        }
+      function autocompleteInfo(){
+          
+          
+          return Array('heeee', 'meeeee','test');
+      }
         
 }
