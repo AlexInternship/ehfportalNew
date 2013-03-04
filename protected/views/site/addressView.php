@@ -8,7 +8,7 @@
 
 <?php $form=$this->beginWidget('CActiveForm', array(
 	'id'=>'address-addressView-form',
-	'enableAjaxValidation'=>true,
+	'enableAjaxValidation'=>false,
         'enableClientValidation'=>true
 )); ?>
 
@@ -17,25 +17,25 @@
 	<?php echo $form->errorSummary($model); ?>
 
 	<div class="row">
-		<?php echo $form->labelEx($model,'address1'); ?>
+		<?php echo $form->labelEx($model,'address1',array('class'=>'test')); ?>
 		<?php echo $form->textField($model,'address1'); ?>
 		<?php echo $form->error($model,'address1'); ?>
 	</div>
 
 	<div class="row">
-		<?php echo $form->labelEx($model,'city'); ?>
+		<?php echo $form->labelEx($model,'city',array('class'=>'test')); ?>
 		<?php echo $form->textField($model,'city'); ?>
 		<?php echo $form->error($model,'city'); ?>
 	</div>
 
 	<div class="row">
-		<?php echo $form->labelEx($model,'zip'); ?>
+		<?php echo $form->labelEx($model,'zip',array('class'=>'test')); ?>
 		<?php echo $form->textField($model,'zip'); ?>
 		<?php echo $form->error($model,'zip'); ?>
 	</div>
 
         <div class="row">
-		<?php echo $form->labelEx($model,'cvr'); ?>
+		<?php echo $form->labelEx($model,'cvr',array('class'=>'test')); ?>
 		<?php echo $form->textField($model,'cvr'); ?>
 		<?php echo $form->error($model,'cvr'); ?>
 	</div>

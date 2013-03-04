@@ -242,13 +242,13 @@ class SiteController extends Controller {
         $model = new Ourinvoicelines;
 
         // uncomment the following code to enable ajax-based validation
-        /*
+        
           if(isset($_POST['ajax']) && $_POST['ajax']==='ourinvoicelines-NewOurinvoicelinesView-form')
           {
           echo CActiveForm::validate($model);
           Yii::app()->end();
           }
-         */
+         
 
         if (isset($_POST['Ourinvoicelines'])) {
             $model->attributes = $_POST['Ourinvoicelines'];
@@ -268,5 +268,27 @@ class SiteController extends Controller {
          $this->renderPartial('newinvoiceView', array('users' => $user, 'address' => $address));
          $this->renderPartial('NewOurinvoicelinesView', array('model' => $NewOurinvoicelinesView));
     } 
-
+    
+    public function actionCreate(){
+        $address = new Address;
+        $retailers = new retailers;
+        if(isset($_post['Address'], $_POST['retailers'])){
+         $address->address1 = $_POST['Address'];    
+         $address->address2 = $_POST['Address'];
+         $address->address3 = $_POST['Address'];
+         $address->city = $_POST['Address'];
+         $address->cvr = $_POST['Address'];
+         
+         $retailers->name = $_POST['retailers'];
+         $retailers->comments = $_POST['retailers'];
+         
+         $address->save(false);
+         $retailers->save(false);
+                  
+         $this->render('create',array(
+             'Address'=>$address,
+             'retailers'=>$retailers,
+         ));
+        }
+    }
 }

@@ -10,6 +10,7 @@
 <?php $form=$this->beginWidget('CActiveForm', array(
 	'id'=>'ourinvoices-invoiceView-form',
 	'enableAjaxValidation'=>false,
+        'enableClientValidation'=>true,
 )); ?>
 
 	<p class="note">Fields with <span class="required">*</span> are required.</p>
