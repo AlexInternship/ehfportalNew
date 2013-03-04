@@ -53,9 +53,10 @@
 <?php echo CHtml::submitButton($users->isNewRecord ? 'Create' : 'Save'); ?>
     
 <div class="row buttons">
-<?php echo CHtml::submitButton($this->sendMail()); ?>    
+    <?php  /*echo CHtml::submitButton($this->sendMail(), array('style','width:100px;')); */?> 
+    <?php /*echo CHtml::Button('Hello!', array('submit' => $this->sendMail() ));*/ ?>
 </div>
-
+            
 
 <?php $this->endWidget(); ?>
 

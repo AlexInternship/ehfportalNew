@@ -32,6 +32,7 @@
 				array('label'=>'Home', 'url'=>array('/site/boosterView')),
 				array('label'=>'new Invoices', 'url'=>array('/site/newinvoiceView')),
 				array('label'=>'Validation Test', 'url'=>array('partnersView')),
+                                array('label'=>'Jes new Ourinvoicelines', 'url'=>array('/site/NewOurinvoicesLines')),
                                 array('label'=>'Adresse', 'url'=>array('addressView')),
 				array('label'=>'Login', 'url'=>array('/site/login'), 'visible'=>Yii::app()->user->isGuest),
 				array('label'=>'Logout ('.Yii::app()->user->name.')', 'url'=>array('/site/logout'), 'visible'=>!Yii::app()->user->isGuest)
@@ -48,11 +49,7 @@
 
 	<div class="clear"></div>
 
-	<div id="footer">
-		Copyright &copy; <?php echo date('Y'); ?> by My Company.<br/>
-		All Rights Reserved.<br/>
-		<?php echo Yii::powered(); ?>
-	</div><!-- footer -->
+	
 
 </div><!-- page -->
 
