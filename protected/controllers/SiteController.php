@@ -216,7 +216,7 @@ class SiteController extends Controller {
                 $users->save(false);
                 $address->save(false);
 
-                $this->redirect('index.php');
+                $this->redirect('index');
                 return;
             }
         }
@@ -328,6 +328,25 @@ class SiteController extends Controller {
         }
         $this->render('NewOurinvoicelinesView', array('model' => $model));
     }
-
+public function accessRules()
+	{
+		return array(
+			array('allow',  // allow all users to perform 'index' and 'view' actions
+				'actions'=>array('create','index','view','newinvoiceView'),
+				'users'=>array('*'),
+			),
+			array('allow', // allow authenticated user to perform 'create' and 'update' actions
+				'actions'=>array('update'),
+				'users'=>array('@'),
+			),
+			array('allow', // allow admin user to perform 'admin' and 'delete' actions
+				'actions'=>array('admin','delete'),
+				'users'=>array('admin'),
+			),
+			array('deny',  // deny all users
+				'users'=>array('*'),
+			),
+		);
+	}
 }
 

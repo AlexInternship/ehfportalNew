@@ -1,7 +1,7 @@
 <?php
 /* @var $this SiteController */
 /* @var $users Users */
-/* @var $address Address */
+/* @var $Address Address */
 /* @var $form CActiveForm */
 ?>
 
@@ -19,38 +19,38 @@
 	<?php echo $form->errorSummary(array($Users, $Address)); ?>
         
         <div class="row">
-		<?php echo $form->labelEx($Address,'zip', array('class'=>'test')); ?>
-		<?php echo $form->textField($Address,'zip', array('value'=>'zip', 'onFocus'=>'if(this.value=="cvr"){this.value=""}')); ?>
-		<?php echo $form->error($Address,'zip'); ?>
+		<?php echo $form->labelEx($Address,'cvr', array('class'=>'test')); ?>
+		<?php echo $form->textField($Address,'cvr'); ?>
+		<?php echo $form->error($Address,'cvr'); ?>
 	</div>
-        <?php /*
+        
         <div class="row">
-		<?php echo $form->labelEx($address,'address1', array('class'=>'test')); ?>
-		<?php echo $form->textField($address,'address1', array('value'=>'address', 'onFocus'=>'if(this.value=="address"){this.value=""}')); ?>
-		<?php echo $form->error($address,'address1'); ?>
+		<?php echo $form->labelEx($Address,'address1', array('class'=>'test')); ?>
+		<?php echo $form->textField($Address,'address1'); ?>
+		<?php echo $form->error($Address,'address1'); ?>
 	</div>
         
         	<div class="row">
-		<?php echo $form->labelEx($address,'city', array('class'=>'test')); ?>
-		<?php echo $form->textField($address,'city', array('value'=>'city', 'onFocus'=>'if(this.value=="city"){this.value=""}')); ?>
-		<?php echo $form->error($address,'city'); ?>
+		<?php echo $form->labelEx($Address,'city', array('class'=>'test')); ?>
+		<?php echo $form->textField($Address,'city'); ?>
+		<?php echo $form->error($Address,'city'); ?>
 	</div>
 
 	<div class="row">
-		<?php echo $form->labelEx($address,'zip', array('class'=>'test')); ?>
-		<?php echo $form->textField($address,'zip', array('value'=>'zip', 'onFocus'=>'if(this.value=="zip"){this.value=""}')); ?>
-		<?php echo $form->error($address,'zip'); ?>
+		<?php echo $form->labelEx($Address,'zip', array('class'=>'test')); ?>
+		<?php echo $form->textField($Address,'zip'); ?>
+		<?php echo $form->error($Address,'zip'); ?>
 	</div>
         
         	<div class="row">
-		<?php echo $form->labelEx($users,'email', array('class'=>'test')); ?>
-		<?php echo $form->textField($users,'email', array('value'=>'email', 'onFocus'=>'if(this.value=="email"){this.value=""}')); ?>
-		<?php echo $form->error($users,'email'); ?>
+		<?php echo $form->labelEx($Users,'email', array('class'=>'test')); ?>
+		<?php echo $form->textField($Users,'email'); ?>
+		<?php echo $form->error($Users,'email'); ?>
 	</div>
- */ ?>
+ 
 
 <div class="row buttons">
-<?php echo CHtml::submitButton($users->isNewRecord ? 'Create' : 'Save'); ?>
+<?php echo CHtml::submitButton($Address->isNewRecord ? 'Create' : 'Save'); ?>
     
 <div class="row buttons">
     <?php  /*echo CHtml::submitButton($this->sendMail(), array('style','width:100px;')); */?> 
