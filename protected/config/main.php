@@ -48,10 +48,12 @@ return array(
                     'class' => 'ext.swiftMailer.SwiftMailer',
                     // For SMTP
                     'mailer' => 'smtp',
-                    'host'=>'localhost',
+                    'host'=>'smtp.gmail.com',
                     'From'=>'admin@localhost',
-                    'username'=>'username',
-                    'password'=>'password',
+                    'username'=>'childofstars@gmail.com',
+                    'password'=>'kode1269',
+                     'port'=>'465',
+
                     // For sendmail:
                     'mailer'=>'sendmail',
                 ),

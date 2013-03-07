@@ -47,32 +47,6 @@ class SiteController extends Controller
 	}
 
 	/**
-	 * Displays the contact page
-	 */
-	public function actionContact()
-	{
-		$model=new ContactForm;
-		if(isset($_POST['ContactForm']))
-		{
-			$model->attributes=$_POST['ContactForm'];
-			if($model->validate())
-			{
-				$name='=?UTF-8?B?'.base64_encode($model->name).'?=';
-				$subject='=?UTF-8?B?'.base64_encode($model->subject).'?=';
-				$headers="From: $name <{$model->email}>\r\n".
-					"Reply-To: {$model->email}\r\n".
-					"MIME-Version: 1.0\r\n".
-					"Content-type: text/plain; charset=UTF-8";
-
-				mail(Yii::app()->params['adminEmail'],$subject,$model->body,$headers);
-				Yii::app()->user->setFlash('contact','Thank you for contacting us. We will respond to you as soon as possible.');
-				$this->refresh();
-			}
-		}
-		$this->render('contact',array('model'=>$model));
-	}
-
-	/**
 	 * Displays the login page
 	 */
 	public function actionLogin()
@@ -226,6 +200,9 @@ class SiteController extends Controller
     
     public function actionNewinvoiceView()
     {
+        sendMail();echo 'hej';die;
+        
+        
         $user=new Users;
         $address=new Address;
 
@@ -237,6 +214,7 @@ class SiteController extends Controller
              $valid=$user->validate();
              $valid=$address->validate() && $valid;
 
+             
             if($valid)
             {
                 // form inputs are valid, do something here
@@ -245,6 +223,38 @@ class SiteController extends Controller
         }
         $this->render('newinvoiceView',array('users'=>$user,'address'=>$address));
     }
+    
+    public function actionContact()
+	{
+		$model=new ContactForm;
+		if(isset($_POST['ContactForm']))
+		{
+			$model->attributes=$_POST['ContactForm'];
+			if($model->validate())
+			{
+				//use 'contact' view from views/mail
+				$mail = new YiiMailer('contact', array('message' => $model->body, 'name' => $model->name, 'description' => 'Contact form'));
+				//render HTML mail, layout is set from config file or with $mail->setLayout('layoutName')
+				$mail->render();
+				//set properties as usually with PHPMailer
+				$mail->From = $model->email;
+				$mail->FromName = $model->name;
+				$mail->Subject = $model->subject;
+				$mail->AddAddress(Yii::app()->params['adminEmail']);
+				//send
+				if ($mail->Send()) {
+					$mail->ClearAddresses();
+					Yii::app()->user->setFlash('contact','Thank you for contacting us. We will respond to you as soon as possible.');
+				} else {
+					Yii::app()->user->setFlash('error','Error while sending email: '.$mail->ErrorInfo);
+				}
+				
+				$this->refresh();
+			}
+		}
+		$this->render('contact',array('model'=>$model));
+	}
+
     
     /**
      *  returns a random string to be used for passwords and usernames
@@ -260,9 +270,43 @@ class SiteController extends Controller
     }
     
     public function sendMail() {
-        Yii::app()->mailer->AddAddress('jkristensen@gmail.com');
+      /*  Yii::app()->mailer->AddAddress('jkristensen@gmail.com');
         Yii::app()->mailer->Subject = "your account has been created";
         Yii::app()->mailer->MsgHTML("<a href='http://site.com'>link to user</a>");
         Yii::app()->mailer->Send();
+       * 
+       */
+        $model=new ContactForm;
+
+        if($model->validate())
+        {
+            //use 'contact' view from views/mail
+            $mail = new YiiMailer();
+            $mail->From ='childofstars@gmail.com';
+            $mail->
+            
+            $mail = new YiiMailer('contact', array('message' => 'this is not a ', 'name' => 'hamtaro', 'description' => 'registration'));
+            //render HTML mail, layout is set from config file or with $mail->setLayout('layoutName')
+            $mail->render();
+            //set properties as usually with PHPMailer
+            $mail->From = 'childofstars@gmail.com';
+            $mail->FromName = 'Alex';
+            $mail->Subject = 'hello';
+            $mail->AddAddress(Yii::app()->params['childofstars@gmail.com']);
+            //send
+            $mail->Send();
+            /*
+            if ($mail->Send()) {
+                    $mail->ClearAddresses();
+                    Yii::app()->user->setFlash('contact','Thank you for contacting us. We will respond to you as soon as possible.');
+            } else {
+                    Yii::app()->user->setFlash('error','Error while sending email: '.$mail->ErrorInfo);
+            }
+
+        $this->refresh();
+             * 
+             */
+
+        }
     }
 }
