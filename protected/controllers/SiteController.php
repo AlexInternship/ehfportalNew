@@ -204,23 +204,24 @@ class SiteController extends Controller {
     public function actionnewinvoiceView() {
         $users = new Users();
         $address = new Address();
+        $ourinvoices = New Ourinvoices();
 
-        if (isset($_POST['Users'], $_POST['Address'])) {
+        if (isset($_POST['Users'], $_POST['Address'], $_POST['Ourinvoices'])) {
             $users->attributes = $_POST['Users'];
             $address->attributes = $_POST['Address'];
-
+            $ourinvoices->attributes = $_POST['Ourinvoices'];
             $valid = $users->validate();
             $valid = $address->validate() && $valid;
-
+            $valid = $ourinvoices->validate() && $valid;
             if ($valid) {
                 $users->save(false);
                 $address->save(false);
-
+                $ourinvoices->save(false);
                 $this->redirect('index');
                 return;
             }
         }
-        $this->render('newinvoiceView', array('Users' => $users, 'Address' => $address));
+        $this->render('newinvoiceView', array('Users' => $users, 'Address' => $address, 'Ourinvoices'=>$ourinvoices));
     }
 
     protected function performAjaxValidation($model) {
