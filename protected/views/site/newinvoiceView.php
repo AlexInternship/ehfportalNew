@@ -16,7 +16,7 @@
 
 	<p class="note">Fields with <span class="required">*</span> are required.</p>
 
-	<?php echo $form->errorSummary($users); ?>
+	<?php echo $form->errorSummary($users, $address); ?>
         
         <div class="row">
 		<?php echo $form->labelEx($address,'cvr', array('class'=>'test')); ?>
@@ -53,9 +53,10 @@
 <?php echo CHtml::submitButton($users->isNewRecord ? 'Create' : 'Save'); ?>
     
 <div class="row buttons">
-<?php echo CHtml::submitButton($this->sendMail()); ?>    
+    <?php  /*echo CHtml::submitButton($this->sendMail(), array('style','width:100px;')); */?> 
+    <?php /*echo CHtml::Button('Hello!', array('submit' => $this->sendMail() ));*/ ?>
 </div>
-
+            
 
 <?php $this->endWidget(); ?>
 
