@@ -303,9 +303,9 @@ class SiteController extends Controller {
         $user = new Users;
         $address = new Address;
         
-        if (isset($_POST['users'], $_POST['ourInvoicelines'])) {
-            $user->attributes = $_POST['users'];
-            $address->attributes = $_POST['address'];
+        if (isset($_POST['Users'], $_POST['Address'])) {
+            $user->attributes = $_POST['Users'];
+            $address->attributes = $_POST['Address'];
 
             $valid = $user->validate();
             $valid = $address->validate() && $valid;
@@ -321,7 +321,7 @@ class SiteController extends Controller {
                 return;
             }
         }
-        $this->render('newinvoiceView', array('users' => $user, 'address' => $address));
+        $this->render('newinvoiceView', array('Users' => $user, 'Address' => $address));
     }
 <<<<<<< HEAD
     
