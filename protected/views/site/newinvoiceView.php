@@ -16,7 +16,7 @@
 
 	<p class="note">Fields with <span class="required">*</span> are required.</p>
 
-	<?php echo $form->errorSummary($users); ?>
+	<?php echo $form->errorSummary($users, $address); ?>
         
         <div class="row">
 		<?php echo $form->labelEx($address,'cvr', array('class'=>'test')); ?>
