@@ -8,7 +8,7 @@
 <div class="form">
 
 <?php $form=$this->beginWidget('CActiveForm', array(
-	'id'=>'partners-partnersView-form',
+	'id'=>'Users-form',
         /*'focus'=>array($users,'partnerno'),*/
         'enableClientValidation'=>true,
 	'enableAjaxValidation'=>false,
@@ -16,14 +16,14 @@
 
 	<p class="note">Fields with <span class="required">*</span> are required.</p>
 
-	<?php echo $form->errorSummary($users, $address); ?>
+	<?php echo $form->errorSummary(array($Users, $Address)); ?>
         
         <div class="row">
-		<?php echo $form->labelEx($address,'cvr', array('class'=>'test')); ?>
-		<?php echo $form->textField($address,'cvr', array('value'=>'cvr', 'onFocus'=>'if(this.value=="cvr"){this.value=""}')); ?>
-		<?php echo $form->error($address,'cvr'); ?>
+		<?php echo $form->labelEx($Address,'zip', array('class'=>'test')); ?>
+		<?php echo $form->textField($Address,'zip', array('value'=>'zip', 'onFocus'=>'if(this.value=="cvr"){this.value=""}')); ?>
+		<?php echo $form->error($Address,'zip'); ?>
 	</div>
-        
+        <?php /*
         <div class="row">
 		<?php echo $form->labelEx($address,'address1', array('class'=>'test')); ?>
 		<?php echo $form->textField($address,'address1', array('value'=>'address', 'onFocus'=>'if(this.value=="address"){this.value=""}')); ?>
@@ -47,7 +47,7 @@
 		<?php echo $form->textField($users,'email', array('value'=>'email', 'onFocus'=>'if(this.value=="email"){this.value=""}')); ?>
 		<?php echo $form->error($users,'email'); ?>
 	</div>
-
+ */ ?>
 
 <div class="row buttons">
 <?php echo CHtml::submitButton($users->isNewRecord ? 'Create' : 'Save'); ?>

@@ -35,15 +35,15 @@ return array(
 
 	// application components
 	'components'=>array(
-		'bootstrap' => array(
+		/*'bootstrap' => array(
 	    'class' => 'ext.bootstrap.components.Bootstrap',
 	    'responsiveCss' => true,
-		),
+		),*/
             
                 'fancybox' => array(
                     'class' => 'ext.fancybox.EFancyBox'
                 ),
-            
+            /*
                 'mailer' => array(
                     'class' => 'ext.swiftMailer.SwiftMailer',
                     // For SMTP
@@ -71,7 +71,7 @@ return array(
                    'viewPath' => 'application.views.mail',
                    'logging' => true,
                    'dryRun' => false
-                    ),
+                    ),*/
             
 		'user'=>array(
 			// enable cookie-based authentication
