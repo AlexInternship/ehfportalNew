@@ -28,9 +28,9 @@
             <?php $form->error($model, 'pris')?> 
         </div>
         <div class="row">
-            <?php $form->labelEx($model, 'konterting')?>
-            <?php $form->textField($model, 'konterting')?>
-            <?php $form->error($model, 'konterting')?> 
+            <?php $form->labelEx($model, 'kontering')?>
+            <?php $form->textField($model, 'kontering')?>
+            <?php $form->error($model, 'kontering')?> 
         </div>
         <div class="row">
             <?php $form->labelEx($model, 'dimaccount')?>
