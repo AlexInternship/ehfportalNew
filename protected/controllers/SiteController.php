@@ -180,28 +180,6 @@ class SiteController extends Controller {
         }
         $this->render('partnersView', array('model' => $model));
     }
-
-    public function actionAddressView() {
-        $model = new Address;
-
-        // uncomment the following code to enable ajax-based validation
-        /*
-          if(isset($_POST['ajax']) && $_POST['ajax']==='address-addressView-form')
-          {
-          echo CActiveForm::validate($model);
-          Yii::app()->end();
-          }
-         */
-
-        if (isset($_POST['address'])) {
-            $model->attributes = $_POST['address'];
-            if ($model->validate()) {
-                // form inputs are valid, do something here
-                return;
-            }
-        }
-        $this->render('addressView', array('model' => $model));
-    }
     
     public function actionAddressView() {
         $model = new Address;
@@ -228,10 +206,9 @@ class SiteController extends Controller {
     
     public function actionAxForm()
     {
-        $model = new Axform();
-
-       if (isset($_POST['address'])) {
-            $model->attributes = $_POST['address'];
+        $model = new AxFormModel();       
+       if (isset($_POST['AxFormModel'])) {
+            $model->attributes = $_POST['AxFormModel'];
             if ($model->validate()) {
                 // form inputs are valid, do something here
                 return;
