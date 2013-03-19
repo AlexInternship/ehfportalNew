@@ -10,7 +10,7 @@
 
 	<p class="note">Fields with <span class="required">*</span> are required.</p>
 
-	<?php echo $form->errorSummary($model); ?>
+	<?php echo $form->errorSummary($model); /*asdasd*/?>
 
         <div class="row">
             <?php $form->labelEx($model, 'momsfri')?>

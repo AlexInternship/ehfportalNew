@@ -206,7 +206,8 @@ class SiteController extends Controller {
     
     public function actionAxForm()
     {
-        $model = new AxFormModel();       
+        //asdasd
+       $model = new AxFormModel();       
        if (isset($_POST['AxFormModel'])) {
             $model->attributes = $_POST['AxFormModel'];
             if ($model->validate()) {
