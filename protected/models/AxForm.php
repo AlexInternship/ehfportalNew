@@ -120,7 +120,7 @@ class Axform extends CFormModel{
     public function rules(){
         
         return array(
-            array('momsfri, antal, pris', 'required'),
+            array('momsfri, antal, pris,kontering,dimaccount', 'required'),
             );
     }
     public function attributeLabels()
