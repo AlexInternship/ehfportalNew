@@ -52,7 +52,7 @@ return array(
                     'From'=>'admin@localhost',
                     'username'=>'childofstars@gmail.com',
                     'password'=>'kode1269',
-                     'port'=>'465',
+                    'port'=>'465',
 
                     // For sendmail:
                     'mailer'=>'sendmail',
