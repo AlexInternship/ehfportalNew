@@ -1,10 +1,8 @@
 <?php
 
-<<<<<<< HEAD
- class SiteController extends Controller {
-=======
+
+
 class SiteController extends Controller {
->>>>>>> 612bfbac666d3595c5ca2dc51c79fb842cd39cca
 
     /**
      * Declares class-based actions.
@@ -204,7 +202,7 @@ class SiteController extends Controller {
         }
         $this->render('addressView', array('model' => $model));
     }
-<<<<<<< HEAD
+
     
     public function actionNewinvoiceView()
     {
@@ -220,8 +218,7 @@ class SiteController extends Controller {
         if (isset($_POST['users'], $_POST['ourInvoicelines'])) {
             $user->attributes = $_POST['users'];
             $address->attributes = $_POST['address'];
-=======
->>>>>>> 612bfbac666d3595c5ca2dc51c79fb842cd39cca
+
 
     public function actionnewinvoiceView() {
         $users = new Users();
@@ -240,14 +237,14 @@ class SiteController extends Controller {
             $ourinvoices->attributes = $_POST['Ourinvoices'];
             $valid = $users->validate();
             $valid = $address->validate() && $valid;
-<<<<<<< HEAD
+
 
              
             if($valid)
             {
             if ($valid) {
                 // form inputs are valid, do something here
-=======
+
             /*$valid = $address_1->validate() && $valid;
             $valid = $address_2->validate() && $valid;
             $valid = $address_3->validate() && $valid;*/
@@ -260,13 +257,12 @@ class SiteController extends Controller {
                 $address_3->save(false);
                 $ourinvoices->save(false);*/
                 $this->redirect('index');
->>>>>>> 612bfbac666d3595c5ca2dc51c79fb842cd39cca
                 return;
             }
             }
             $this->render('newinvoiceView', array('users' => $user, 'address' => $address));
         }
-<<<<<<< HEAD
+
     
     }
     
@@ -302,7 +298,7 @@ class SiteController extends Controller {
 	}
 
     
-=======
+
         $this->render('newinvoiceView', array('Users' => $users, 'Address' => $address, 'Ourinvoices'=>$ourinvoices));
     }
 
@@ -340,7 +336,6 @@ class SiteController extends Controller {
         }
         $this->render('contact', array('model' => $model));
     }
->>>>>>> 612bfbac666d3595c5ca2dc51c79fb842cd39cca
 
     /**
      *  returns a random string to be used for passwords and usernames
@@ -391,10 +386,9 @@ class SiteController extends Controller {
              */
         }
     }
-<<<<<<< HEAD
+
 }
-=======
->>>>>>> 612bfbac666d3595c5ca2dc51c79fb842cd39cca
+
 
     public function actionNewOurinvoicelinesView() {
         $model = new Ourinvoicelines;
@@ -451,7 +445,3 @@ class SiteController extends Controller {
 		);
 	}
 }
-<<<<<<< HEAD
-=======
-
->>>>>>> 612bfbac666d3595c5ca2dc51c79fb842cd39cca
