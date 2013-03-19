@@ -202,30 +202,47 @@ class SiteController extends Controller {
         }
         $this->render('addressView', array('model' => $model));
     }
+    
+    public function actionAddressView() {
+        $model = new Address;
+
+        // uncomment the following code to enable ajax-based validation
+        /*
+          if(isset($_POST['ajax']) && $_POST['ajax']==='address-addressView-form')
+          {
+          echo CActiveForm::validate($model);
+          Yii::app()->end();
+          }
+         */
+
+        if (isset($_POST['address'])) {
+            $model->attributes = $_POST['address'];
+            if ($model->validate()) {
+                // form inputs are valid, do something here
+                return;
+            }
+        }
+        $this->render('addressView', array('model' => $model));
+    }
 
     
-    public function actionNewinvoiceView()
+    public function actionAxForm()
     {
-        sendMail();echo 'hej';die;
-        
-        
-        $user=new Users;
-        $address=new Address;
+        $model = new Axform();
 
-       $user = new Users;
-        $address = new Address;
-        
-        if (isset($_POST['users'], $_POST['ourInvoicelines'])) {
-            $user->attributes = $_POST['users'];
-            $address->attributes = $_POST['address'];
+       if (isset($_POST['address'])) {
+            $model->attributes = $_POST['address'];
+            if ($model->validate()) {
+                // form inputs are valid, do something here
+                return;
+            }
+        }
+        $this->render('axForm', array('model' => $model));
+    }
 
-
+/*
     public function actionnewinvoiceView() {
-        $users = new Users();
-        $address = new Address();
-        /*$address_1 = new Address();
-        $address_2 = new Address();
-        $address_3 = new Address();*/
+
         $ourinvoices = New Ourinvoices();
 
         if (isset($_POST['Users'], $_POST['Address'], $_POST['Ourinvoices'])) {
@@ -233,7 +250,7 @@ class SiteController extends Controller {
             $address->attributes = $_POST['Address'];
             /*$address_1->attributes = $_POST['Address'][1];
             $address_2->attributes = $_POST['Address'][2];
-            $address_3->attributes = $_POST['Address'][3];*/
+            $address_3->attributes = $_POST['Address'][3];
             $ourinvoices->attributes = $_POST['Ourinvoices'];
             $valid = $users->validate();
             $valid = $address->validate() && $valid;
@@ -247,7 +264,7 @@ class SiteController extends Controller {
 
             /*$valid = $address_1->validate() && $valid;
             $valid = $address_2->validate() && $valid;
-            $valid = $address_3->validate() && $valid;*/
+            $valid = $address_3->validate() && $valid;
             $valid = $ourinvoices->validate() && $valid;
             if ($valid) {
                 $users->save(false);
@@ -255,7 +272,7 @@ class SiteController extends Controller {
              /*   $address_1->save(false);
                 $address_2->save(false);
                 $address_3->save(false);
-                $ourinvoices->save(false);*/
+                $ourinvoices->save(false);
                 $this->redirect('index');
                 return;
             }
@@ -265,6 +282,7 @@ class SiteController extends Controller {
 
     
     }
+    
     
     public function actionContact()
 	{
@@ -336,112 +354,12 @@ class SiteController extends Controller {
         }
         $this->render('contact', array('model' => $model));
     }
+ * 
+ */
 
     /**
      *  returns a random string to be used for passwords and usernames
      */
-    public static function randomString() {
-        $size = 6;
-        $string = '';
-        $characters = '0123456789abcdefghijklmnopqrstuvwxyz';
-        for ($i = 0; $i < $size; $i++)
-            $string .= $characters[mt_rand(0, (strlen($characters) - 1))];
-        return $string;
-    }
-
-    public function sendMail() {
-        /*  Yii::app()->mailer->AddAddress('jkristensen@gmail.com');
-          Yii::app()->mailer->Subject = "your account has been created";
-          Yii::app()->mailer->MsgHTML("<a href='http://site.com'>link to user</a>");
-          Yii::app()->mailer->Send();
-         * 
-         */
-        $model = new ContactForm;
-
-        if ($model->validate()) {
-            //use 'contact' view from views/mail
-            $mail = new YiiMailer();
-            $mail->From = 'childofstars@gmail.com';
-            $mail->
-                    $mail = new YiiMailer('contact', array('message' => 'this is not a ', 'name' => 'hamtaro', 'description' => 'registration'));
-            //render HTML mail, layout is set from config file or with $mail->setLayout('layoutName')
-            $mail->render();
-            //set properties as usually with PHPMailer
-            $mail->From = 'childofstars@gmail.com';
-            $mail->FromName = 'Alex';
-            $mail->Subject = 'hello';
-            $mail->AddAddress(Yii::app()->params['childofstars@gmail.com']);
-            //send
-            $mail->Send();
-            /*
-              if ($mail->Send()) {
-              $mail->ClearAddresses();
-              Yii::app()->user->setFlash('contact','Thank you for contacting us. We will respond to you as soon as possible.');
-              } else {
-              Yii::app()->user->setFlash('error','Error while sending email: '.$mail->ErrorInfo);
-              }
-
-              $this->refresh();
-             * 
-             */
-        }
-    }
-
+   
 }
 
-
-    public function actionNewOurinvoicelinesView() {
-        $model = new Ourinvoicelines;
-
-        // uncomment the following code to enable ajax-based validation
-
-        if (isset($_POST['ajax']) && $_POST['ajax'] === 'ourinvoicelines-NewOurinvoicelinesView-form') {
-            echo CActiveForm::validate($model);
-            Yii::app()->end();
-        }
-
-
-        if (isset($_POST['Ourinvoicelines'])) {
-            $model->attributes = $_POST['Ourinvoicelines'];
-            if ($model->validate()) {
-                // form inputs are valid, do something here
-                return;
-            }
-        }
-        $this->render('NewOurinvoicelinesView', array('model' => $model));
-    }
-    
-    public function actionsmallformView(){
-        $users = new Users();
-         if (isset($_POST['Users'])) {
-            $users->attributes = $_POST['Users'];
-            $valid = $users->validate();
-            if ($valid) {
-                $users->save(false);
-                return;
-                }
-            }
-            $this->render('smallformView', array('Users' => $users));
-    }
-    
-    public function accessRules()
-	{
-		return array(
-			array('allow',  // allow all users to perform 'index' and 'view' actions
-				'actions'=>array('create','index','view','newinvoiceView','smallformView'),
-				'users'=>array('*'),
-			),
-			array('allow', // allow authenticated user to perform 'create' and 'update' actions
-				'actions'=>array('update'),
-				'users'=>array('@'),
-			),
-			array('allow', // allow admin user to perform 'admin' and 'delete' actions
-				'actions'=>array('admin','delete'),
-				'users'=>array('admin'),
-			),
-			array('deny',  // deny all users
-				'users'=>array('*'),
-			),
-		);
-	}
-}
