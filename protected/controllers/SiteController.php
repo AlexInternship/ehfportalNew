@@ -211,9 +211,11 @@ class SiteController extends Controller {
        
        print_r($model); die;
        if (isset($_POST['Axform'])) {
+            
             $model->attributes = $_POST['Axform'];
             if ($model->validate()) {
                 // form inputs are valid, do something here
+                print_r($_POST['Axform']); die;
                 return;
             }
         }
