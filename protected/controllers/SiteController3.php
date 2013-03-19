@@ -85,9 +85,8 @@ class SiteController extends Controller
 {
         $ourInvoices=new Ourinvoices;
         $ourInvoicelines=new Ourinvoicelines;
-=======
-class SiteController extends Controller {
->>>>>>> 33fd4151d530c714244a775a76241df6e2cb3ae4
+
+   class SiteController extends Controller {
 
     /**
      * Declares class-based actions.
