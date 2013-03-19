@@ -56,9 +56,8 @@ div.form fieldset
 div.form label
 {
 	font-weight: bold;
-	font-size: 0em;
+	font-size: 0.9em;
 	display: block;
-        visibility: hidden;
 }
 
 
@@ -77,14 +76,6 @@ div.form .box
 }
 .test{
     font-size: 0pt;
-}
-div.form:hover .test{
-   
-    visibility: visible;
-    margin: 0.2em 0 0.5em 0;
-}
-div.form:hover label{
-    font-size: 0.9em;
 }
 
 div.form .hint

@@ -204,19 +204,31 @@ class SiteController extends Controller {
     public function actionnewinvoiceView() {
         $users = new Users();
         $address = new Address();
+        /*$address_1 = new Address();
+        $address_2 = new Address();
+        $address_3 = new Address();*/
         $ourinvoices = New Ourinvoices();
 
         if (isset($_POST['Users'], $_POST['Address'], $_POST['Ourinvoices'])) {
             $users->attributes = $_POST['Users'];
             $address->attributes = $_POST['Address'];
+            /*$address_1->attributes = $_POST['Address'][1];
+            $address_2->attributes = $_POST['Address'][2];
+            $address_3->attributes = $_POST['Address'][3];*/
             $ourinvoices->attributes = $_POST['Ourinvoices'];
             $valid = $users->validate();
             $valid = $address->validate() && $valid;
+            /*$valid = $address_1->validate() && $valid;
+            $valid = $address_2->validate() && $valid;
+            $valid = $address_3->validate() && $valid;*/
             $valid = $ourinvoices->validate() && $valid;
             if ($valid) {
                 $users->save(false);
                 $address->save(false);
-                $ourinvoices->save(false);
+             /*   $address_1->save(false);
+                $address_2->save(false);
+                $address_3->save(false);
+                $ourinvoices->save(false);*/
                 $this->redirect('index');
                 return;
             }
@@ -329,11 +341,25 @@ class SiteController extends Controller {
         }
         $this->render('NewOurinvoicelinesView', array('model' => $model));
     }
-public function accessRules()
+    
+    public function actionsmallformView(){
+        $users = new Users();
+         if (isset($_POST['Users'])) {
+            $users->attributes = $_POST['Users'];
+            $valid = $users->validate();
+            if ($valid) {
+                $users->save(false);
+                return;
+                }
+            }
+            $this->render('smallformView', array('Users' => $users));
+    }
+    
+    public function accessRules()
 	{
 		return array(
 			array('allow',  // allow all users to perform 'index' and 'view' actions
-				'actions'=>array('create','index','view','newinvoiceView'),
+				'actions'=>array('create','index','view','newinvoiceView','smallformView'),
 				'users'=>array('*'),
 			),
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
