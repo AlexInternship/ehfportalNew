@@ -1,94 +1,6 @@
 <?php
 
-<<<<<<< HEAD
-class SiteController extends Controller
-{
-	/**
-	 * Declares class-based actions.
-	 */
-	public function actions()
-	{
-		return array(
-			// captcha action renders the CAPTCHA image displayed on the contact page
-			'captcha'=>array(
-				'class'=>'CCaptchaAction',
-				'backColor'=>0xFFFFFF,
-			),
-			// page action renders "static" pages stored under 'protected/views/site/pages'
-			// They can be accessed via: index.php?r=site/page&view=FileName
-			'page'=>array(
-				'class'=>'CViewAction',
-			),
-		);
-	}
-
-	/**
-	 * This is the default 'index' action that is invoked
-	 * when an action is not explicitly requested by users.
-	 */
-	public function actionIndex()
-	{
-		// renders the view file 'protected/views/site/index.php'
-		// using the default layout 'protected/views/layouts/main.php'
-		$this->render('index');
-	}
-
-	/**
-	 * This is the action to handle external exceptions.
-	 */
-	public function actionError()
-	{
-		if($error=Yii::app()->errorHandler->error)
-		{
-			if(Yii::app()->request->isAjaxRequest)
-				echo $error['message'];
-			else
-				$this->render('error', $error);
-		}
-	}
-
-	/**
-	 * Displays the login page
-	 */
-	public function actionLogin()
-	{
-		$model=new LoginForm;
-
-		// if it is ajax validation request
-		if(isset($_POST['ajax']) && $_POST['ajax']==='login-form')
-		{
-			echo CActiveForm::validate($model);
-			Yii::app()->end();
-		}
-
-		// collect user input data
-		if(isset($_POST['LoginForm']))
-		{
-			$model->attributes=$_POST['LoginForm'];
-			// validate user input and redirect to the previous page if valid
-			if($model->validate() && $model->login())
-				$this->redirect(Yii::app()->user->returnUrl);
-		}
-		// display the login form
-		$this->render('login',array('model'=>$model));
-	}
-
-	/**
-	 * Logs out the current user and redirect to homepage.
-	 */
-	public function actionLogout()
-	{
-		Yii::app()->user->logout();
-		$this->redirect(Yii::app()->homeUrl);
-	}
-        
-        public function actionInvoiceView()
-{
-        $ourInvoices=new Ourinvoices;
-        $ourInvoicelines=new Ourinvoicelines;
-=======
-class SiteController extends Controller {
->>>>>>> 33fd4151d530c714244a775a76241df6e2cb3ae4
+ class SiteController extends Controller {
 
     /**
      * Declares class-based actions.
@@ -287,7 +199,6 @@ class SiteController extends Controller {
         }
         $this->render('addressView', array('model' => $model));
     }
-<<<<<<< HEAD
     
     public function actionNewinvoiceView()
     {
@@ -296,11 +207,8 @@ class SiteController extends Controller {
         
         $user=new Users;
         $address=new Address;
-=======
->>>>>>> 33fd4151d530c714244a775a76241df6e2cb3ae4
 
-    public function actionNewinvoiceView() {
-        $user = new Users;
+       $user = new Users;
         $address = new Address;
         
         if (isset($_POST['users'], $_POST['ourInvoicelines'])) {
@@ -310,20 +218,18 @@ class SiteController extends Controller {
             $valid = $user->validate();
             $valid = $address->validate() && $valid;
 
-<<<<<<< HEAD
              
             if($valid)
             {
-=======
             if ($valid) {
->>>>>>> 33fd4151d530c714244a775a76241df6e2cb3ae4
                 // form inputs are valid, do something here
                 return;
             }
+            }
+            $this->render('newinvoiceView', array('users' => $user, 'address' => $address));
         }
-        $this->render('newinvoiceView', array('users' => $user, 'address' => $address));
+    
     }
-<<<<<<< HEAD
     
     public function actionContact()
 	{
@@ -357,9 +263,7 @@ class SiteController extends Controller {
 	}
 
     
-=======
 
->>>>>>> 33fd4151d530c714244a775a76241df6e2cb3ae4
     /**
      *  returns a random string to be used for passwords and usernames
      */
@@ -412,9 +316,7 @@ class SiteController extends Controller {
 
         }
     }
-<<<<<<< HEAD
 }
-=======
 
     public function actionNewOurinvoicelinesView() {
         $model = new Ourinvoicelines;
@@ -470,4 +372,3 @@ class SiteController extends Controller {
         }
     }
 }
->>>>>>> 33fd4151d530c714244a775a76241df6e2cb3ae4
