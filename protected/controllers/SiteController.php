@@ -208,10 +208,9 @@ class SiteController extends Controller {
     {
         //
        $model = new Axform(); 
-       
-       print_r($model); die;
-       if (isset($_POST['Axform'])) {
-            $model->attributes = $_POST['Axform'];
+ 
+       if (isset($_POST['AxForm'])) {
+            $model->attributes = $_POST['AxForm'];
             if ($model->validate()) {
                 // form inputs are valid, do something here
                 return;
@@ -306,7 +305,7 @@ class SiteController extends Controller {
             Yii::app()->end();
         }
     }
-
+*/
     public function actionContact() {
         $model = new ContactForm;
         if (isset($_POST['ContactForm'])) {
@@ -334,8 +333,7 @@ class SiteController extends Controller {
         }
         $this->render('contact', array('model' => $model));
     }
- * 
- */
+ 
 
     /**
      *  returns a random string to be used for passwords and usernames
