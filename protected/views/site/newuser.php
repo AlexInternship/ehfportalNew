@@ -63,15 +63,12 @@
             <?php echo $form->labelEx($model, 'By')?>
             <?php echo $form->textField($model, 'city')?>
             <?php echo $form->error($model, 'city')?>   
-                 
-                 
-                 
-             </div>
-             
-        <div>
-        	<div class="row buttons">
+         </div>
+     </div>
+       	<div class="row buttons" style="width:800px; float:left; margin-bottom: 10px;">
 		<?php echo CHtml::submitButton('Submit', array('class'=>'fancybutton')); ?>
 	</div>
+            
 
 <?php $this->endWidget(); ?>
 
