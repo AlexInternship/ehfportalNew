@@ -9,7 +9,6 @@ div.form select
 {
 	margin:0;
 }
-
 div.form fieldset
 {
         border: 1px solid #ccc;
@@ -17,7 +16,6 @@ div.form fieldset
 	margin: 0 0 10px 0;
         -moz-border-radius:7px;
 }
-
 div.form label
 {
 	font-weight: bold;
@@ -48,7 +46,13 @@ border-width: 1px;
 #mainmenu {
 background: greenyellow;
 border-top: 1px solid #0C3;
-border-bottom: 1px solid #0C3;
+}
+#mainmenu ul li a:hover, #mainmenu ul li.active a {
+color: rgb(9, 180, 9);
+background-color: rgb(255, 255, 255);
+text-decoration: none;
+border-top-left-radius: 3px;
+border-top-right-radius: 3px;
 }
 #header {
 margin: 0;
