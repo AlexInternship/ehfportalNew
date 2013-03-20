@@ -232,7 +232,7 @@ class SiteController extends Controller {
             if ($model->validate()) {
                 $userArray = $_POST['Users'];
                 $password = RandomPassword::generatePassword();
-                //CallDB::newUser($userArray, $password);
+                CallDB::newUser($userArray, $password);
                 SendMail::sendNewUserMail($userArray['email'] ,$userArray['username'], $password);
                 return;
             }

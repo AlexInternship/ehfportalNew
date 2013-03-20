@@ -32,8 +32,7 @@
            $newUser->phone = $array['phone'];
            $newUser->language = 'NO';
            $newUser->type = 'user';
-           $newUser->partner_id = '9999'; //needs to be generated 
-           $newUser->user_id = '9988'; //needs to be generated 
+         //  $newUser->partner_id = '9999'; //needs to be generated 
      
            $newUser->save();
          }
