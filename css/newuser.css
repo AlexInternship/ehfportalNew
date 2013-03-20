@@ -39,3 +39,7 @@ div.form .box
     border:10px #039;
     margin:20px;
 }
+div.form div.error input {
+    background: #f66a6a;
+    border-color: #910000;       
+}
