@@ -83,3 +83,13 @@ border-top: none;
     font-size: 0.9em;
     display: block;
 }
+.formbox{
+    float:left;
+}
+.formsplitter{
+    float: left;
+    height: 190px;
+    margin:20px;
+    border-left: 1px solid #888;
+    
+}

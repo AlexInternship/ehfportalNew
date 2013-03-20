@@ -9,12 +9,17 @@ class User extends CFormModel {
     public $phone;
     public $email;
     public $language;
+    public $address1;
+    public $address2;
+    public $address3;
+    public $zip;
+    public $city;
 
 
 public function rules(){
         
         return array(
-                        array('username', 'length', 'max'=>255),
+                        array('username, address1, address2, address3', 'length', 'max'=>255),
 			array('password', 'length', 'max'=>40),
 			array('firstname, lastname, email', 'length', 'max'=>128),
                         array('email', 'email','message'=>"The email isn't correct"), 

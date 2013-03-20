@@ -225,12 +225,12 @@ class SiteController extends Controller {
      public function actionNewUser()
     {
         //
-       $model = new Users(); 
+       $model = new User(); 
         
-       if (isset($_POST['Users'])) {
-            $model->attributes = $_POST['Users'];
+       if (isset($_POST['User'])) {
+            $model->attributes = $_POST['User'];
             if ($model->validate()) {
-                $userArray = $_POST['Users'];
+                $userArray = $_POST['User'];
                 $password = RandomPassword::generatePassword();
                 CallDB::newUser($userArray, $password);
                 SendMail::sendNewUserMail($userArray['email'] ,$userArray['username'], $password);
