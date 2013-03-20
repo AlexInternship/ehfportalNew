@@ -49,6 +49,9 @@ margin-bottom: 5px;
 background: white;
 border: 1px solid rgb(77, 131, 162);
  border-top-right-radius: 35px;
+ -moz-box-shadow: 0px 0px 8px #888;
+    -webkit-box-shadow: 0px 0px 15px #888;
+    box-shadow: 0px 0px 15px #888;
 }
 #mainmenu {
 background: #0064CD;
