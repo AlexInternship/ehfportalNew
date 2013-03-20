@@ -44,20 +44,20 @@ border-radius: 3px;
 border-width: 1px;      
 }
 #mainmenu {
-background: greenyellow;
-border-top: 1px solid #0C3;
+background: #000090;
+border-top: 1px solid #03C;
 }
 #mainmenu ul li a:hover, #mainmenu ul li.active a {
-color: rgb(9, 180, 9);
+color: rgb(9, 9, 180);
 background-color: rgb(255, 255, 255);
 text-decoration: none;
 border-top-left-radius: 3px;
 border-top-right-radius: 3px;
-}
+} 
 #header {
 margin: 0;
 padding: 0;
-border-top: 3px solid rgb(155,240,2);
+border-top: 3px solid rgb(119, 116, 201);
 }
 .fancybutton{
     -webkit-box-align: center;
@@ -67,9 +67,15 @@ border-top: 3px solid rgb(155,240,2);
     border-radius: 3px;
     margin: 5px;
     padding: 10px;
-    background: #7be000;
+    background: #0055cc;
     color: #FFF;
     font-weight: bolder;
     font-size: 0.9em;
     display: block;
+}
+#page {
+margin-top: 5px;
+margin-bottom: 5px;
+background: white;
+border: 1px solid rgb(77, 131, 162);
 }
