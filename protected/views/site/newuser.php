@@ -1,3 +1,8 @@
+<?php $cs=Yii::app()->clientScript; ?>
+
+<?php $cs->registerCSSFile('/css/newuser.css'); ?>
+
+
 <div class="form">
 
 <?php $form=$this->beginWidget('CActiveForm', array(

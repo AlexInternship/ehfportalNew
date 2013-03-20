@@ -2,7 +2,7 @@ root {
     display: block;  
     
 }
-
+body{background: black;}
 div.form input,
 div.form textarea,
 div.form select
