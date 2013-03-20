@@ -2,7 +2,7 @@ root {
     display: block;  
     
 }
-body{background: black;}
+
 div.form input,
 div.form textarea,
 div.form select
@@ -40,6 +40,32 @@ div.form .box
     margin:20px;
 }
 div.form div.error input {
-    background: #f66a6a;
-    border-color: #910000;       
+   background: rgb(255,180,180);
+border-color: #f66a6a;
+border-radius: 3px;
+border-width: 1px;      
+}
+#mainmenu {
+background: greenyellow;
+border-top: 1px solid #0C3;
+border-bottom: 1px solid #0C3;
+}
+#header {
+margin: 0;
+padding: 0;
+border-top: 3px solid rgb(155,240,2);
+}
+.fancybutton{
+    -webkit-box-align: center;
+    text-align: center;
+    cursor: default;
+    border: 1px outset buttonface;
+    border-radius: 3px;
+    margin: 5px;
+    padding: 10px;
+    background: #7be000;
+    color: #FFF;
+    font-weight: bolder;
+    font-size: 0.9em;
+    display: block;
 }

@@ -1,6 +1,6 @@
 <?php $cs=Yii::app()->clientScript; ?>
 
-<?php $cs->registerCSSFile('/css/newuser.css'); ?>
+<?php $cs->registerCSSFile('/ehfportalnew/css/newuser.css'); ?>
 
 
 <div class="form">
@@ -44,7 +44,7 @@
         </div>
 
         	<div class="row buttons">
-		<?php echo CHtml::submitButton('Submit'); ?>
+		<?php echo CHtml::submitButton('Submit', array('class'=>'fancybutton')); ?>
 	</div>
 
 <?php $this->endWidget(); ?>
