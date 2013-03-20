@@ -38,7 +38,7 @@
             <?php echo $form->error($model, 'dimaccount')?> 
         </div>
         	<div class="row buttons">
-		<?php echo CHtml::submitButton('Submit'); ?>
+		<?php echo CHtml::submitButton('Submit', array('class'=>'fancybutton')); ?>
 	</div>
 
 <?php $this->endWidget(); ?>

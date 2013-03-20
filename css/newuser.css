@@ -9,6 +9,15 @@ div.form select
 {
 	margin:0;
 }
+div.form input:focus{
+    border: 1px solid #ccc; 
+}
+div.success input:focus{
+    border: 1px solid #ccc; 
+}
+div.success textarea:focus{
+    border: 1px solid #ccc; 
+}
 div.form fieldset
 {
         border: 1px solid #ccc;
@@ -38,41 +47,40 @@ div.form .box
     margin:20px;
 }
 div.form div.error input {
-   background: rgb(255,180,180);
-border-color: #f66a6a;
-border-radius: 3px;
-border-width: 1px;      
+    background: rgb(255,180,180);
+    border-color: #f66a6a;
+    border-radius: 3px;
+    border-width: 1px;      
 }
 #page {
-margin-top: 0px;
-margin-bottom: 5px;
-background: white;
-border: 1px solid rgb(77, 131, 162);
- border-top-right-radius: 35px;
- -moz-box-shadow: 0px 0px 8px #888;
+    margin-top: 0px;
+    margin-bottom: 5px;
+    background: white;
+    border: 1px solid rgb(77, 131, 162);
+    border-top-right-radius: 35px;
+    -moz-box-shadow: 0px 0px 8px #888;
     -webkit-box-shadow: 0px 0px 15px #888;
     box-shadow: 0px 0px 15px #888;
 }
 #mainmenu {
-background: #0064CD;
-border-top: 1px solid #03C;
+    background: #0064CD;
+    border-top: 1px solid #03C;
 }
 #mainmenu ul li a:hover, #mainmenu ul li.active a {
-color: rgb(9, 9, 180);
-background-color: rgb(255, 255, 255);
-text-decoration: none;
-border-top-left-radius: 3px;
-border-top-right-radius: 3px;
+    color: rgb(9, 9, 180);
+    background-color: rgb(255, 255, 255);
+    text-decoration: none;
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
 } 
 #header {
-margin: 0;
-padding: 0;
-border-top: none;
+    margin: 0;
+    padding: 0;
+    border-top: none;
 }
 .fancybutton{
     -webkit-box-align: center;
     text-align: center;
-    cursor: default;
     border: 1px outset buttonface;
     border-radius: 3px;
     margin: 5px;
@@ -83,6 +91,9 @@ border-top: none;
     font-size: 0.9em;
     display: block;
 }
+.fancybutton:hover{
+    background: #002252;
+}
 .formbox{
     float:left;
 }
@@ -90,6 +101,5 @@ border-top: none;
     float: left;
     height: 190px;
     margin:20px;
-    border-left: 1px solid #888;
-    
+    border-left: 1px solid #888;    
 }
