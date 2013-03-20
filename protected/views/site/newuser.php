@@ -17,12 +17,7 @@
             <?php echo $form->textField($model, 'username')?>
             <?php echo $form->error($model, 'username')?> 
         </div>
-        <div class="row">
-            <?php echo $form->labelEx($model, 'password')?>
-            <?php echo $form->passwordField($model, 'password')?>
-            <?php echo $form->error($model, 'password')?> 
-        </div>
-        <div class="row">
+         <div class="row">
             <?php echo $form->labelEx($model, 'firstname')?>
             <?php echo $form->textField($model, 'firstname')?>
             <?php echo $form->error($model, 'firstname')?> 
@@ -42,11 +37,7 @@
             <?php echo $form->textField($model, 'email')?>
             <?php echo $form->error($model, 'email')?> 
         </div>
-         <div class="row">
-            <?php echo $form->labelEx($model, 'language')?>
-            <?php echo $form->textField($model, 'language')?>
-            <?php echo $form->error($model, 'language')?> 
-        </div>
+
         	<div class="row buttons">
 		<?php echo CHtml::submitButton('Submit'); ?>
 	</div>

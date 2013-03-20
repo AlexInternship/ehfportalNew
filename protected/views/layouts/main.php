@@ -29,6 +29,7 @@
 	<div id="mainmenu">
 		<?php $this->widget('zii.widgets.CMenu',array(
 			'items'=>array(
+                          	array('label'=>'newUser', 'url'=>array('/site/newuser')),
                             	array('label'=>'axForm', 'url'=>array('/site/axForm')),
 				array('label'=>'Booster View', 'url'=>array('/site/boosterView')),
 				array('label'=>'new Invoices', 'url'=>array('/site/newinvoiceView')),
