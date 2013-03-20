@@ -1,7 +1,7 @@
     <?php
 
 class RandomPassword {
-    public static function randomPassword() {
+    public static function generatePassword() {
         $size = 8;
         $string = '';
         $characters = '0123456789abcdefghijklmnopqrstuvwxyz';
