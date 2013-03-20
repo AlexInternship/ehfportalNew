@@ -23,7 +23,7 @@
           }
           
           public static function newUser($array, $password) {
-           $newUser = new Users();
+           $newUser = new User();
            $newUser->username = $array['username'];
            $newUser->password = md5($password);
            $newUser->email = $array['email'];
@@ -36,6 +36,7 @@
      
            $newUser->save();
          }
+         
          
          public static function newAdress($array, $partnerID) {
              $newAdress = new Address();
