@@ -36,6 +36,18 @@
      
            $newUser->save();
          }
+         
+         public static function newAdress($array, $partnerID) {
+             $newAdress = new Address();
+             $newAdress->address1 = $array['adress'];
+             // ekstra adresser hvor?
+             // id?
+             $newAdress->zip = $array['zip'];
+             $newAdress->city = $array['city'];
+             $newAdress->partner_id = $partnerID;
+         }
+         
+         
              
  }
 ?>
