@@ -43,8 +43,15 @@ border-color: #f66a6a;
 border-radius: 3px;
 border-width: 1px;      
 }
+#page {
+margin-top: 0px;
+margin-bottom: 5px;
+background: white;
+border: 1px solid rgb(77, 131, 162);
+ border-top-right-radius: 35px;
+}
 #mainmenu {
-background: #000090;
+background: #0064CD;
 border-top: 1px solid #03C;
 }
 #mainmenu ul li a:hover, #mainmenu ul li.active a {
@@ -57,7 +64,7 @@ border-top-right-radius: 3px;
 #header {
 margin: 0;
 padding: 0;
-border-top: 3px solid rgb(119, 116, 201);
+border-top: none;
 }
 .fancybutton{
     -webkit-box-align: center;
@@ -72,10 +79,4 @@ border-top: 3px solid rgb(119, 116, 201);
     font-weight: bolder;
     font-size: 0.9em;
     display: block;
-}
-#page {
-margin-top: 5px;
-margin-bottom: 5px;
-background: white;
-border: 1px solid rgb(77, 131, 162);
 }
