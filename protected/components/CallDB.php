@@ -46,6 +46,7 @@
              $newAdress->zip = $array['zip'];
              $newAdress->city = $array['city'];
              $newAdress->partner_id = $partnerID;
+             $newAdress->save();
          }
          
          public static function newPartner($array, $type, $password) {
@@ -60,6 +61,7 @@
              $newPartner->validcvr=$array['validcvr'];
              $newPartner->errormail=$array['email'];
              $newPartner->password = md5($password);
+             $newPartner->save();
          }
          
            public static function getPartnerId($name) {
