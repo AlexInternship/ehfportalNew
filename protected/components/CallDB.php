@@ -62,6 +62,15 @@
              $newPartner->password = md5($password);
          }
          
+           public static function getPartnerId($email) {
+          $criteria=new CDbCriteria;
+          $criteria->select='partner_id';  // only select the 'title' column
+          $criteria->condition='email=:email';
+          $criteria->params=array(':email'=>$email);
+          return Partner::find($criteria); 
+
+          }
+         
          
              
  }

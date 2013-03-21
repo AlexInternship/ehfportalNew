@@ -226,14 +226,23 @@ class SiteController extends Controller {
     {
         //
        $model = new User(); 
-       $partner = new Partner(); 
-       if (isset($_POST['User'], $_POST['Partner'])) {
+       $partner1 = new Partner();
+       $partner2 = new Partner(); 
+
+       if (isset($_POST['User'], $_POST['Partner1'], $_POST['Partner2'])) {
             $model->attributes = $_POST['User'];
-            $partner->attributes = $_POST['Partner'];
-            if ($model->validate() && $partner->validate()) {
+            $partner1->attributes = $_POST['Partner1'];
+            $partner2->attributes = $_POST['Partner2'];
+
+            if ($model->validate() && $partner1->validate()&& $partner2->validate()) {
                 $userArray = $_POST['User'];
+                $partner1Array = $_POST['Partner1'];
+                $partner2Array = $_POST['Partner2'];
                 $password = RandomPassword::generatePassword();
-                CallDB::newUser($userArray, $password);
+                CallDB::newPartner($partner1Array, 'vendor', $password);
+                CallDB::newPartner($partner2Array, 'private', '');
+                $partnerId = CallDB::getPartnerId($partner1Array['email']);
+                CallDB::newUser($userArray, $password, $partnerId);
                 SendMail::sendNewUserMail($userArray['email'] ,$userArray['username'], $password);
                 return;
             }
