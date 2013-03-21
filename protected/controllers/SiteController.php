@@ -228,23 +228,30 @@ class SiteController extends Controller {
        $model = new User(); 
        $partner1 = new Partner();
        $partner2 = new Partner(); 
+       $address1 = new Address(); 
+       $address2 = new Address(); 
 
-       if (isset($_POST['User'], $_POST['Partner1'], $_POST['Partner2'])) {
+
+       if (isset($_POST['User'], $_POST['Partner1'], $_POST['Partner2'], $_POST['Address1'], $_POST['Address2'])) {
             $model->attributes = $_POST['User'];
             $partner1->attributes = $_POST['Partner1'];
             $partner2->attributes = $_POST['Partner2'];
+            $address1->attributes = $_POST['Address1'];
+            $address2->attributes = $_POST['Address2'];
 
-            if ($model->validate() && $partner1->validate()&& $partner2->validate()) {
+            if ($model->validate() && $partner1->validate()&& $partner2->validate()&& $address1->validate()&& $address2->validate()) {
                 $userArray = $_POST['User'];
                 $partner1Array = $_POST['Partner1'];
                 $partner2Array = $_POST['Partner2'];
+                $address1Array = $_POST['Address1'];
+                $address2Array = $_POST['Address2'];
                 $password = RandomPassword::generatePassword();
                 CallDB::newPartner($partner1Array, 'vendor', $password);
                 CallDB::newPartner($partner2Array, 'private', '');
                 $partnerId1 = CallDB::getPartnerId($partner1Array['name']);
                 $partnerId2 = CallDB::getPartnerId($partner2Array['name']);
-                CallDb::newAdress($userArray, $partnerId1);
-                CallDb::newAdress($userArray, $partnerId2);
+                CallDb::newAdress($address1Array, $partnerId1);
+                CallDb::newAdress($address2Array, $partnerId2);
                 CallDB::newUser($userArray, $password, $partnerId1);
                 SendMail::sendNewUserMail($userArray['email'] ,$userArray['username'], $password);
                 return;
