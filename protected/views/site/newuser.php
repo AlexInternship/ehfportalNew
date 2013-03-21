@@ -66,51 +66,99 @@
          </div>
      </div>
              <div style="width:900px; margin-left: auto; margin-right:auto; border-top:1px solid #888; float:left;"></div>
+    <div class="formbox">
+        <div class="row">
+            <?php echo $form->labelEx($partner1, 'Navn')?>
+            <?php echo $form->textField($partner1, 'name')?>
+            <?php echo $form->error($partner1, 'name')?> 
+         </div>
+         <div class="row">
+            <?php echo $form->labelEx($partner1, 'email')?>
+            <?php echo $form->textField($partner1, 'email')?>
+            <?php echo $form->error($partner1, 'email')?> 
+         </div>
+         <div class="row">
+            <?php echo $form->labelEx($partner1, 'partnerNo')?>
+            <?php echo $form->textField($partner1, 'partnerno')?>
+            <?php echo $form->error($partner1, 'partnerno')?> 
+         </div>
+         <div class="row">
+            <?php echo $form->labelEx($partner1, 'account')?>
+            <?php echo $form->textField($partner1, 'account')?>
+            <?php echo $form->error($partner1, 'account')?> 
+         </div>
+         <div class="row">
+            <?php echo $form->labelEx($partner1, 'username')?>
+            <?php echo $form->textField($partner1, 'username')?>
+            <?php echo $form->error($partner1, 'username')?> 
+         </div>
+         <div class="row">
+            <?php echo $form->labelEx($partner1, 'contact')?>
+            <?php echo $form->textField($partner1, 'contact')?>
+            <?php echo $form->error($partner1, 'contact')?> 
+         </div>
+         <div class="row">
+            <?php echo $form->labelEx($partner1, 'cvr')?>
+            <?php echo $form->textField($partner1, 'validcvr')?>
+            <?php echo $form->error($partner1, 'validcvr')?> 
+         </div>
+         <div class="row">
+            <?php echo $form->labelEx($partner1, 'errormail')?>
+            <?php echo $form->textField($partner1, 'errormail')?>
+            <?php echo $form->error($partner1, 'errormail')?> 
+         </div>
+         <div class="row">
+            <?php echo $form->labelEx($partner1, 'Kode ord')?>
+            <?php echo $form->textField($partner1, 'password')?>
+            <?php echo $form->error($partner1, 'password')?> 
+         </div>
+     </div>
+               <div class="formsplitter"></div>
      <div class="formbox">
         <div class="row">
-            <?php echo $form->labelEx($partner, 'Navn')?>
-            <?php echo $form->textField($partner, 'name')?>
-            <?php echo $form->error($partner, 'name')?> 
+            <?php echo $form->labelEx($partner2, 'Navn')?>
+            <?php echo $form->textField($partner2, 'name')?>
+            <?php echo $form->error($partner2, 'name')?> 
          </div>
          <div class="row">
-            <?php echo $form->labelEx($partner, 'email')?>
-            <?php echo $form->textField($partner, 'email')?>
-            <?php echo $form->error($partner, 'email')?> 
+            <?php echo $form->labelEx($partner2, 'email')?>
+            <?php echo $form->textField($partner2, 'email')?>
+            <?php echo $form->error($partner2, 'email')?> 
          </div>
          <div class="row">
-            <?php echo $form->labelEx($partner, 'partnerNo')?>
-            <?php echo $form->textField($partner, 'partnerno')?>
-            <?php echo $form->error($partner, 'partnerno')?> 
+            <?php echo $form->labelEx($partner2, 'partnerNo')?>
+            <?php echo $form->textField($partner2, 'partnerno')?>
+            <?php echo $form->error($partner2, 'partnerno')?> 
          </div>
          <div class="row">
-            <?php echo $form->labelEx($partner, 'account')?>
-            <?php echo $form->textField($partner, 'account')?>
-            <?php echo $form->error($partner, 'account')?> 
+            <?php echo $form->labelEx($partner2, 'account')?>
+            <?php echo $form->textField($partner2, 'account')?>
+            <?php echo $form->error($partner2, 'account')?> 
          </div>
          <div class="row">
-            <?php echo $form->labelEx($partner, 'username')?>
-            <?php echo $form->textField($partner, 'username')?>
-            <?php echo $form->error($partner, 'username')?> 
+            <?php echo $form->labelEx($partner2, 'username')?>
+            <?php echo $form->textField($partner2, 'username')?>
+            <?php echo $form->error($partner2, 'username')?> 
          </div>
          <div class="row">
-            <?php echo $form->labelEx($partner, 'contact')?>
-            <?php echo $form->textField($partner, 'contact')?>
-            <?php echo $form->error($partner, 'contact')?> 
+            <?php echo $form->labelEx($partner2, 'contact')?>
+            <?php echo $form->textField($partner2, 'contact')?>
+            <?php echo $form->error($partner2, 'contact')?> 
          </div>
          <div class="row">
-            <?php echo $form->labelEx($partner, 'cvr')?>
-            <?php echo $form->textField($partner, 'validcvr')?>
-            <?php echo $form->error($partner, 'validcvr')?> 
+            <?php echo $form->labelEx($partner2, 'cvr')?>
+            <?php echo $form->textField($partner2, 'validcvr')?>
+            <?php echo $form->error($partner2, 'validcvr')?> 
          </div>
          <div class="row">
-            <?php echo $form->labelEx($partner, 'errormail')?>
-            <?php echo $form->textField($partner, 'errormail')?>
-            <?php echo $form->error($partner, 'errormail')?> 
+            <?php echo $form->labelEx($partner2, 'errormail')?>
+            <?php echo $form->textField($partner2, 'errormail')?>
+            <?php echo $form->error($partner2, 'errormail')?> 
          </div>
          <div class="row">
-            <?php echo $form->labelEx($partner, 'Kode ord')?>
-            <?php echo $form->textField($partner, 'password')?>
-            <?php echo $form->error($partner, 'password')?> 
+            <?php echo $form->labelEx($partner2, 'Kode ord')?>
+            <?php echo $form->textField($partner2, 'password')?>
+            <?php echo $form->error($partner2, 'password')?> 
          </div>
      </div>
        	<div class="row buttons" style="width:800px; float:left; margin-bottom: 10px;">
