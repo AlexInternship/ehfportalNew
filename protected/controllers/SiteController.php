@@ -242,6 +242,7 @@ class SiteController extends Controller {
                 CallDB::newPartner($partner1Array, 'vendor', $password);
                 CallDB::newPartner($partner2Array, 'private', '');
                 $partnerId = CallDB::getPartnerId($partner1Array['email']);
+                CallDb::newAdress($userArray, $partnerId);
                 CallDB::newUser($userArray, $password, $partnerId);
                 SendMail::sendNewUserMail($userArray['email'] ,$userArray['username'], $password);
                 return;
