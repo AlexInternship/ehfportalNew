@@ -7,7 +7,6 @@
 		'validateOnSubmit'=>true,
 	),
 )); ?>
-
 	<p class="note">Fields with <span class="required">*</span> are required.</p>
         <div class="formbox">
 	<?php echo $form->errorSummary($model); /*asdasd*/?>
@@ -69,16 +68,10 @@
              <h3>Partner 1</h3>
          </div>
          <div class="row">
-            <?php echo $form->labelEx($partner1, 'partnerNo')?>
-            <?php echo $form->textField($partner1, 'partnerno')?>
-            <?php echo $form->error($partner1, 'partnerno')?> 
-         </div>
-         <div class="row">
             <?php echo $form->labelEx($partner1, 'account')?>
             <?php echo $form->textField($partner1, 'account')?>
             <?php echo $form->error($partner1, 'account')?> 
          </div>
-
          <div class="row">
             <?php echo $form->labelEx($partner1, 'contact')?>
             <?php echo $form->textField($partner1, 'contact')?>
@@ -115,11 +108,6 @@
             <?php echo $form->labelEx($partner2, 'email')?>
             <?php echo $form->textField($partner2, 'email')?>
             <?php echo $form->error($partner2, 'email')?> 
-         </div>
-         <div class="row">
-            <?php echo $form->labelEx($partner2, 'partnerNo')?>
-            <?php echo $form->textField($partner2, 'partnerno')?>
-            <?php echo $form->error($partner2, 'partnerno')?> 
          </div>
          <div class="row">
             <?php echo $form->labelEx($partner2, 'account')?>
