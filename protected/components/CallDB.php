@@ -5,7 +5,6 @@
            $invoice = new serializedocuments();
            $invoice->document=$serialized;
            $invoice->type='invoice';
-           $invoice->serializedocument_id =12;
            $invoice->id = 55;
            $invoice->version = 3.0;
            $invoice->outbox = 'no';
@@ -22,8 +21,9 @@
 
           }
           
-          public static function newUser($array, $password) {
+          public static function newUser($array, $password, $partnerId) {
            $newUser = new User();
+           $newUser->partnerID = $partnerId; 
            $newUser->username = $array['username'];
            $newUser->password = md5($password);
            $newUser->email = $array['email'];
@@ -46,6 +46,20 @@
              $newAdress->zip = $array['zip'];
              $newAdress->city = $array['city'];
              $newAdress->partner_id = $partnerID;
+         }
+         
+         public static function newPartner($array, $type, $password) {
+             // partner id, type, name, email(må godt være null), partnerNo(måske), account, username, contact, cvr, error mail, password
+             $newPartner = new Partner();
+             $newPartner->type = $type;
+             $newPartner->name=$array['name'];
+             $newPartner->name=$array['email'];
+             $newPartner->account=$array['account'];
+             $newPartner->username=$array['username'];
+             $newPartner->contact=$array['contact'];
+             $newPartner->validcvr=$array['validcvr'];
+             $newPartner->errormail=$array['email'];
+             $newPartner->password = md5($password);
          }
          
          
