@@ -231,9 +231,11 @@ class SiteController extends Controller {
        $address1 = new Address(); 
        $address2 = new Address(); 
 
-       if (isset($_POST['Partner1'])) {
-       //if (isset($_POST['User'], $_POST['Partner1'], $_POST['Partner2'], $_POST['Address1'], $_POST['Address2'])) {
-            echo 'så langt'; die;
+
+
+       /*if (isset($_POST['User'], $_POST['Partner1'], $_POST['Partner2'], $_POST['Address1'], $_POST['Address2'])) {*/
+           if(!empty($_POST)) {
+               var_dump($_POST);
             $model->attributes = $_POST['User'];
             $partner1->attributes = $_POST['Partner1'];
             $partner2->attributes = $_POST['Partner2'];
@@ -246,9 +248,7 @@ class SiteController extends Controller {
             $valid=$partner2->validate() && $valid;
             $valid=$model->validate() && $valid;
             
-            echo $valid; die;
             if ($valid) {
-                echo 'så langt så godt'; die;
                 $userArray = $_POST['User'];
                 $partner1Array = $_POST['Partner1'];
                 $partner2Array = $_POST['Partner2'];
