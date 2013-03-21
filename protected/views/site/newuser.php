@@ -36,10 +36,8 @@
             <?php echo $form->labelEx($model, 'email')?>
             <?php echo $form->textField($model, 'email')?>
             <?php echo $form->error($model, 'email')?> 
-        </div></div>
-             <div class="formsplitter"></div>
-             <div class="formbox">
-               <div class="row">
+        </div>  
+        <div class="row">
             <?php echo $form->labelEx($model, 'Adresse')?>
             <?php echo $form->textField($model, 'address1')?>
             <?php echo $form->error($model, 'address1')?> 
@@ -65,20 +63,10 @@
             <?php echo $form->error($model, 'city')?>   
          </div>
      </div>
-             <div style="width:900px; margin-left: auto; margin-right:auto; border-top:1px solid #888; float:left;"></div>
+   <div class="formsplitter"></div>           
     <div class="formbox">
          <div class="row">
              <h3>Partner 1</h3>
-         </div>
-        <div class="row">
-            <?php echo $form->labelEx($partner1, 'Navn')?>
-            <?php echo $form->textField($partner1, 'name')?>
-            <?php echo $form->error($partner1, 'name')?> 
-         </div>
-         <div class="row">
-            <?php echo $form->labelEx($partner1, 'email')?>
-            <?php echo $form->textField($partner1, 'email')?>
-            <?php echo $form->error($partner1, 'email')?> 
          </div>
          <div class="row">
             <?php echo $form->labelEx($partner1, 'partnerNo')?>
@@ -90,11 +78,7 @@
             <?php echo $form->textField($partner1, 'account')?>
             <?php echo $form->error($partner1, 'account')?> 
          </div>
-         <div class="row">
-            <?php echo $form->labelEx($partner1, 'username')?>
-            <?php echo $form->textField($partner1, 'username')?>
-            <?php echo $form->error($partner1, 'username')?> 
-         </div>
+
          <div class="row">
             <?php echo $form->labelEx($partner1, 'contact')?>
             <?php echo $form->textField($partner1, 'contact')?>
