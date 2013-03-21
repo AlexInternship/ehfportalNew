@@ -241,9 +241,11 @@ class SiteController extends Controller {
                 $password = RandomPassword::generatePassword();
                 CallDB::newPartner($partner1Array, 'vendor', $password);
                 CallDB::newPartner($partner2Array, 'private', '');
-                $partnerId = CallDB::getPartnerId($partner1Array['email']);
-                CallDb::newAdress($userArray, $partnerId);
-                CallDB::newUser($userArray, $password, $partnerId);
+                $partnerId1 = CallDB::getPartnerId($partner1Array['name']);
+                $partnerId2 = CallDB::getPartnerId($partner2Array['name']);
+                CallDb::newAdress($userArray, $partnerId1);
+                CallDb::newAdress($userArray, $partnerId2);
+                CallDB::newUser($userArray, $password, $partnerId1);
                 SendMail::sendNewUserMail($userArray['email'] ,$userArray['username'], $password);
                 return;
             }
