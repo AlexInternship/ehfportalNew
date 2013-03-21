@@ -31,7 +31,6 @@ class Address extends CFormModel
         public $phone;
         public $contrycode;
         public $cvr;
-        public $phone;
         public $fax;
         public $deleteddate;
         public $partnerno;
@@ -44,7 +43,6 @@ class Address extends CFormModel
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('partner_id', 'numerical', 'integerOnly'=>true),
                         array('cvr', 'length',  'min' => 9, 'max'=>9, 
                         'tooShort'=>Yii::t("translation", "{attribute} is too short."),
                         'tooLong'=>Yii::t("translation", "{attribute} is too long.")),

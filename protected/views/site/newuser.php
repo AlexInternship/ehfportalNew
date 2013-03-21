@@ -80,9 +80,9 @@
          <div class="row">
              <h3>Partner 2</h3>
          </div>
-   <!--
+   
         <div class="row">
-           <?php /* <?php echo $form->labelEx($partner2, 'Firma navn')?>
+         <?php echo $form->labelEx($partner2, 'Firma navn')?>
             <?php echo $form->textField($partner2, 'name')?>
             <?php echo $form->error($partner2, 'name')?> 
          </div>
@@ -126,8 +126,8 @@
             <?php echo $form->textField($address2, 'city')?>
             <?php echo $form->error($address2, 'city')?>   
          </div>
-     </div> ?>
-   -->
+     </div> 
+   
        	<div class="row buttons" style="width:800px; float:left; margin-bottom: 10px;">
 		<?php echo CHtml::submitButton('Submit', array('class'=>'fancybutton')); ?>
 	</div>
