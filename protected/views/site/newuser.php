@@ -11,6 +11,9 @@
         <div class="formbox">
 	<?php echo $form->errorSummary($model);?>
 
+         <div class="row">
+             <h3>User / Partner 1</h3>
+         </div>
         <div class="row">
             <?php echo $form->labelEx($model, 'username')?>
             <?php echo $form->textField($model, 'username')?>
@@ -61,31 +64,10 @@
             <?php echo $form->textField($model, 'city')?>
             <?php echo $form->error($model, 'city')?>   
          </div>
-     </div>
-   <div class="formsplitter"></div>           
-    <div class="formbox">
-         <div class="row">
-             <h3>Partner 1</h3>
-         </div>
-         <div class="row">
-            <?php echo $form->labelEx($partner1, 'account')?>
-            <?php echo $form->textField($partner1, 'account')?>
-            <?php echo $form->error($partner1, 'account')?> 
-         </div>
-         <div class="row">
-            <?php echo $form->labelEx($partner1, 'contact')?>
-            <?php echo $form->textField($partner1, 'contact')?>
-            <?php echo $form->error($partner1, 'contact')?> 
-         </div>
          <div class="row">
             <?php echo $form->labelEx($partner1, 'cvr')?>
             <?php echo $form->textField($partner1, 'validcvr')?>
             <?php echo $form->error($partner1, 'validcvr')?> 
-         </div>
-         <div class="row">
-            <?php echo $form->labelEx($partner1, 'Kodeord')?>
-            <?php echo $form->textField($partner1, 'password')?>
-            <?php echo $form->error($partner1, 'password')?> 
          </div>
      </div>
                <div class="formsplitter"></div>
