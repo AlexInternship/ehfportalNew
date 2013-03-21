@@ -238,8 +238,14 @@ class SiteController extends Controller {
             $partner2->attributes = $_POST['Partner2'];
             $address1->attributes = $_POST['Address1'];
             $address2->attributes = $_POST['Address2'];
-
-            if ($model->validate() && $partner1->validate()&& $partner2->validate()&& $address1->validate()&& $address2->validate()) {
+            
+            $valid=$address1->validate();
+            $valid=$address2->validate() && $valid;
+            $valid=$partner1->vaidate() && $valid;
+            $valid=$partner2->vaidate() && $valid;
+            $valid=$model->validate() && $valid;
+            
+            if ($valid) {
                 $userArray = $_POST['User'];
                 $partner1Array = $_POST['Partner1'];
                 $partner2Array = $_POST['Partner2'];
