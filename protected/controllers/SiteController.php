@@ -242,8 +242,8 @@ class SiteController extends Controller {
             echo 'så langt'; die;
             $valid=$address1->validate();
             $valid=$address2->validate() && $valid;
-            $valid=$partner1->vaidate() && $valid;
-            $valid=$partner2->vaidate() && $valid;
+            $valid=$partner1->validate() && $valid;
+            $valid=$partner2->validate() && $valid;
             $valid=$model->validate() && $valid;
             
             echo $valid; die;

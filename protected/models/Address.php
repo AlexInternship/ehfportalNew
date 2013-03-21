@@ -53,7 +53,7 @@ class Address extends CFormModel
                         'tooLong'=>Yii::t("translation", "{attribute} is too long.")),
 			array('type', 'length', 'max'=>8),
 			array('address1, address2, address3, city, partnerno', 'length', 'max'=>255),
-			array('countrycode', 'length', 'max'=>3),
+			//array('countrycode', 'length', 'max'=>3),
 			array('cvr', 'length', 'max'=>64),
 			array('phone, fax', 'length', 'max'=>30),
 			array('eanno', 'length', 'max'=>15),

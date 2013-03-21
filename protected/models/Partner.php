@@ -53,8 +53,8 @@ class Partner extends CFormModel{
 	{
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
-		return array(
-			array('partnerno, validcvr, scanmail, info_to_purchaser, mailcomment', 'required'),
+		return array( /*array('partnerno, validcvr, scanmail, info_to_purchaser, mailcomment', 'required'),*/
+			array('name', 'required'),
 		 	array('partnerno,retailer_id', 'numerical', 'integerOnly'=>true),
                         array('partnerno', 'length',  'min' => 4, 'max'=>4, 
                         'tooShort'=>Yii::t("translation", "{attribute} is too short."),
@@ -68,11 +68,11 @@ class Partner extends CFormModel{
 			array('creation, fsc, recorderformat', 'length', 'max'=>9),
 			array('doctype', 'length', 'max'=>7),
 			array('expectinvoice, news, priceraise2008', 'length', 'max'=>3),
-			array('username, oexusername, cpr, ediprice', 'length', 'max'=>16),
+			array('username, oexusername, ediprice', 'length', 'max'=>16),
 			array('contact, errormail, scanmail', 'length', 'max'=>100),
 			array('password', 'length', 'max'=>40),
-			array('bic, iban', 'length', 'max'=>64),
-			array('paymenttype, priceraise, product', 'length', 'max'=>4),
+			array('bic, iban', 'length', 'max'=>64), /*priceraise, cpr, cpr, priceraise2008, ediprice,*/ 
+			array('paymenttype, product', 'length', 'max'=>4),
 			array('recinvoiceformat', 'length', 'max'=>12),
 			array('edimapfunction', 'length', 'max'=>50),
 			array('danfoss_ext, danfoss_deb', 'length', 'max'=>20),
@@ -80,7 +80,7 @@ class Partner extends CFormModel{
 			array('createddate, deleteddate, cvr_sent, cvr_ok', 'safe'),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
-			array('partner_id, type, name, email, createddate, deleteddate, partnerno, internalpartnerno, girotype, giro, bank, bankbranch, regno, account, creation, girocreditor, doctype, docdestination, expectinvoice, username, oexusername, fsc, contact, validcvr, errormail, scanmail, password, bic, iban, paymenttype, cvr_sent, cvr_ok, info_to_purchaser, retailer_id, mailcomment, identificationtype, recorderformat, recinvoiceformat, news, edimapfunction, version, priceraise, cpr, priceraise2008, ediprice, danfoss_ext, danfoss_deb, site, product', 'safe', 'on'=>'search'),
+			array('partner_id, type, name, email, createddate, deleteddate, partnerno, internalpartnerno, girotype, giro, bank, bankbranch, regno, account, creation, girocreditor, doctype, docdestination, expectinvoice, username, oexusername, fsc, contact, validcvr, errormail, scanmail, password, bic, iban, paymenttype, cvr_sent, cvr_ok, info_to_purchaser, retailer_id, mailcomment, identificationtype, recorderformat, recinvoiceformat, news, edimapfunction, version,danfoss_ext, danfoss_deb, site, product', 'safe', 'on'=>'search'),
 		);
 	}
 

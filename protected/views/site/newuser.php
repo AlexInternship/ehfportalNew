@@ -9,7 +9,7 @@
 )); ?>
 	<p class="note">Fields with <span class="required">*</span> are required.</p>
         <div class="formbox">
-	<?php echo $form->errorSummary($model);?>
+	<?php echo $form->errorSummary(array($model, $address1, $address2,$partner1,$partner2));?>
 
          <div class="row">
              <h3>User / Partner 1</h3>
@@ -90,11 +90,6 @@
             <?php echo $form->labelEx($partner2, 'email')?>
             <?php echo $form->textField($partner2, 'email')?>
             <?php echo $form->error($partner2, 'email')?> 
-         </div>
-         <div class="row">
-            <?php echo $form->labelEx($partner2, 'contact')?>
-            <?php echo $form->textField($partner2, 'contact')?>
-            <?php echo $form->error($partner2, 'contact')?> 
          </div>
          <div class="row">
             <?php echo $form->labelEx($partner2, 'cvr')?>
