@@ -31,5 +31,26 @@ public function rules(){
 			array('username, password, firstname, lastname, phone, email, language', 'safe', 'on'=>'search'),
 		);
         }
+        
+        
+        public function search(){
+                $criteria=new CDbCriteria;
+
+		$criteria->compare('user_id',$this->user_id);
+		$criteria->compare('partner_id',$this->partner_id);
+		$criteria->compare('username',$this->username,true);
+		$criteria->compare('password',$this->password,true);
+		$criteria->compare('firstname',$this->firstname,true);
+		$criteria->compare('lastname',$this->lastname,true);
+		$criteria->compare('phone',$this->phone,true);
+		$criteria->compare('email',$this->email,true);
+		$criteria->compare('type',$this->type,true);
+		$criteria->compare('deleteddate',$this->deleteddate,true);
+		$criteria->compare('language',$this->language,true);
+
+		return new CActiveDataProvider($this, array(
+			'criteria'=>$criteria,
+		));
+        }
 }
 ?>

@@ -249,7 +249,6 @@ class SiteController extends Controller {
         }
         $this->render('newuser', array('model' => $model, 'partner1' => $partner1, 'partner2' => $partner2));
     }
-
 /*
     public function actionnewinvoiceView() {
 
@@ -369,6 +368,4 @@ class SiteController extends Controller {
     /**
      *  returns a random string to be used for passwords and usernames
      */
-   
-}
-
+    }
