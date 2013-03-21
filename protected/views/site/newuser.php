@@ -67,6 +67,9 @@
      </div>
              <div style="width:900px; margin-left: auto; margin-right:auto; border-top:1px solid #888; float:left;"></div>
     <div class="formbox">
+         <div class="row">
+             <h3>Partner 1</h3>
+         </div>
         <div class="row">
             <?php echo $form->labelEx($partner1, 'Navn')?>
             <?php echo $form->textField($partner1, 'name')?>
@@ -115,6 +118,10 @@
      </div>
                <div class="formsplitter"></div>
      <div class="formbox">
+         <div class="row">
+             <h3>Partner 2</h3>
+         </div>
+             
         <div class="row">
             <?php echo $form->labelEx($partner2, 'Navn')?>
             <?php echo $form->textField($partner2, 'name')?>
