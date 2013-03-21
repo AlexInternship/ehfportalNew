@@ -73,11 +73,6 @@
             <?php echo $form->error($partner, 'name')?> 
          </div>
          <div class="row">
-            <?php echo $form->labelEx($partner, 'type')?>
-            <?php echo $form->textField($partner, 'type')?>
-            <?php echo $form->error($partner, 'type')?> 
-         </div>
-         <div class="row">
             <?php echo $form->labelEx($partner, 'email')?>
             <?php echo $form->textField($partner, 'email')?>
             <?php echo $form->error($partner, 'email')?> 

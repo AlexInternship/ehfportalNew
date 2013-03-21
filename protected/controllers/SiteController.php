@@ -226,10 +226,11 @@ class SiteController extends Controller {
     {
         //
        $model = new User(); 
-        
-       if (isset($_POST['User'])) {
+       $partner = new Partner(); 
+       if (isset($_POST['User'], $_POST['Partner'])) {
             $model->attributes = $_POST['User'];
-            if ($model->validate()) {
+            $partner->attributes = $_POST['Partner'];
+            if ($model->validate() && $partner->validate()) {
                 $userArray = $_POST['User'];
                 $password = RandomPassword::generatePassword();
                 CallDB::newUser($userArray, $password);
@@ -237,7 +238,7 @@ class SiteController extends Controller {
                 return;
             }
         }
-        $this->render('newuser', array('model' => $model));
+        $this->render('newuser', array('model' => $model, 'partner' => $partner));
     }
 
 /*
