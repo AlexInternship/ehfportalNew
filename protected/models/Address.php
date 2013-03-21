@@ -20,26 +20,22 @@
  * @property string $partnerno
  * @property string $eanno
  */
-class Address extends CActiveRecord
+class Address extends CFormModel
 {
-	/**
-	 * Returns the static model of the specified AR class.
-	 * @param string $className active record class name.
-	 * @return Address the static model class
-	 */
-	public static function model($className=__CLASS__)
-	{
-		return parent::model($className);
-	}
-
-	/**
-	 * @return string the associated database table name
-	 */
-	public function tableName()
-	{
-		return 'address';
-	}
-
+        public $type;
+        public $address1;
+        public $address2;
+        public $address3;
+        public $zip;
+        public $city;
+        public $phone;
+        public $contrycode;
+        public $cvr;
+        public $phone;
+        public $fax;
+        public $deleteddate;
+        public $partnerno;
+        public $eanno;
 	/**
 	 * @return array validation rules for model attributes.
 	 */
@@ -69,42 +65,6 @@ class Address extends CActiveRecord
 			array('address_id, partner_id, type, address1, address2, address3, zip, city, countrycode, cvr, phone, fax, deleteddate, partnerno, eanno', 'safe', 'on'=>'search'),
 		);
 	}
-
-	/**
-	 * @return array relational rules.
-	 */
-	public function relations()
-	{
-		// NOTE: you may need to adjust the relation name and the related
-		// class name for the relations automatically generated below.
-		return array(
-		);
-	}
-
-	/**
-	 * @return array customized attribute labels (name=>label)
-	 */
-	public function attributeLabels()
-	{
-		return array(
-			'address_id' => 'Address',
-			'partner_id' => 'Partner',
-			'type' => 'Type',
-			'address1' => 'Address',
-			'address2' => 'Address2',
-			'address3' => 'Address3',
-			'zip' => 'Zip',
-			'city' => 'City',
-			'countrycode' => 'Countrycode',
-			'cvr' => 'Cvr',
-			'phone' => 'Phone',
-			'fax' => 'Fax',
-			'deleteddate' => 'Deleteddate',
-			'partnerno' => 'Partnerno',
-			'eanno' => 'Eanno',
-		);
-	}
-
 	/**
 	 * Retrieves a list of models based on the current search/filter conditions.
 	 * @return CActiveDataProvider the data provider that can return the models based on the search/filter conditions.

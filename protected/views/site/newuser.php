@@ -30,9 +30,9 @@
             <?php echo $form->error($model, 'lastname')?> 
         </div>
         <div class="row">
-            <?php echo $form->labelEx($model, 'phone')?>
-            <?php echo $form->textField($model, 'phone')?>
-            <?php echo $form->error($model, 'phone')?> 
+            <?php echo $form->labelEx($address1, 'phone')?>
+            <?php echo $form->textField($address1, 'phone')?>
+            <?php echo $form->error($address1, 'phone')?> 
         </div>
          <div class="row">
             <?php echo $form->labelEx($model, 'email')?>
@@ -40,34 +40,39 @@
             <?php echo $form->error($model, 'email')?> 
         </div>  
         <div class="row">
-            <?php echo $form->labelEx($model, 'Adresse')?>
-            <?php echo $form->textField($model, 'address1')?>
-            <?php echo $form->error($model, 'address1')?> 
+            <?php echo $form->labelEx($address1, 'Adresse')?>
+            <?php echo $form->textField($address1, 'address1')?>
+            <?php echo $form->error($address1, 'address1')?> 
         </div>
          <div class="row">
-            <?php echo $form->labelEx($model, 'Adresse')?>
-            <?php echo $form->textField($model, 'address2')?>
-            <?php echo $form->error($model, 'address2')?>  
+            <?php echo $form->labelEx($address1, 'Adresse')?>
+            <?php echo $form->textField($address1, 'address2')?>
+            <?php echo $form->error($address1, 'address2')?>  
         </div>
         <div class="row">
-             <?php echo $form->labelEx($model, 'Adresse')?>
-            <?php echo $form->textField($model, 'address3')?>
-            <?php echo $form->error($model, 'address3')?>
+             <?php echo $form->labelEx($address1, 'Adresse')?>
+            <?php echo $form->textField($address1, 'address3')?>
+            <?php echo $form->error($address1, 'address3')?>
         </div>
         <div class="row">
-            <?php echo $form->labelEx($model, 'Post nummer')?>
-            <?php echo $form->textField($model, 'zip')?>
-            <?php echo $form->error($model, 'zip')?> 
+            <?php echo $form->labelEx($address1, 'Post nummer')?>
+            <?php echo $form->textField($address1, 'zip')?>
+            <?php echo $form->error($address1, 'zip')?> 
         </div>
          <div class="row">
-            <?php echo $form->labelEx($model, 'By')?>
-            <?php echo $form->textField($model, 'city')?>
-            <?php echo $form->error($model, 'city')?>   
+            <?php echo $form->labelEx($address1, 'By')?>
+            <?php echo $form->textField($address1, 'city')?>
+            <?php echo $form->error($address1, 'city')?>   
          </div>
          <div class="row">
             <?php echo $form->labelEx($partner1, 'cvr')?>
             <?php echo $form->textField($partner1, 'validcvr')?>
             <?php echo $form->error($partner1, 'validcvr')?> 
+         </div>
+            <div class="row">
+            <?php echo $form->labelEx($partner1, 'Firma navn')?>
+            <?php echo $form->textField($partner1, 'name')?>
+            <?php echo $form->error($partner1, 'name')?> 
          </div>
      </div>
                <div class="formsplitter"></div>
@@ -77,7 +82,7 @@
          </div>
    
         <div class="row">
-            <?php echo $form->labelEx($partner2, 'Navn')?>
+            <?php echo $form->labelEx($partner2, 'Firma navn')?>
             <?php echo $form->textField($partner2, 'name')?>
             <?php echo $form->error($partner2, 'name')?> 
          </div>
@@ -95,6 +100,31 @@
             <?php echo $form->labelEx($partner2, 'cvr')?>
             <?php echo $form->textField($partner2, 'validcvr')?>
             <?php echo $form->error($partner2, 'validcvr')?> 
+         </div>
+         <div class="row">
+            <?php echo $form->labelEx($address2, 'Adresse')?>
+            <?php echo $form->textField($address2, 'address1')?>
+            <?php echo $form->error($address2, 'address1')?> 
+        </div>
+         <div class="row">
+            <?php echo $form->labelEx($address2, 'Adresse')?>
+            <?php echo $form->textField($address2, 'address2')?>
+            <?php echo $form->error($address2, 'address2')?>  
+        </div>
+        <div class="row">
+             <?php echo $form->labelEx($address2, 'Adresse')?>
+            <?php echo $form->textField($address2, 'address3')?>
+            <?php echo $form->error($address2, 'address3')?>
+        </div>
+        <div class="row">
+            <?php echo $form->labelEx($address2, 'Post nummer')?>
+            <?php echo $form->textField($address2, 'zip')?>
+            <?php echo $form->error($address2, 'zip')?> 
+        </div>
+         <div class="row">
+            <?php echo $form->labelEx($address2, 'By')?>
+            <?php echo $form->textField($address2, 'city')?>
+            <?php echo $form->error($address2, 'city')?>   
          </div>
      </div>
        	<div class="row buttons" style="width:800px; float:left; margin-bottom: 10px;">
