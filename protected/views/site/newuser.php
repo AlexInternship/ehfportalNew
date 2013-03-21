@@ -9,7 +9,7 @@
 )); ?>
 	<p class="note">Fields with <span class="required">*</span> are required.</p>
         <div class="formbox">
-	<?php echo $form->errorSummary($model); /*asdasd*/?>
+	<?php echo $form->errorSummary($model);?>
 
         <div class="row">
             <?php echo $form->labelEx($model, 'username')?>
@@ -83,12 +83,7 @@
             <?php echo $form->error($partner1, 'validcvr')?> 
          </div>
          <div class="row">
-            <?php echo $form->labelEx($partner1, 'errormail')?>
-            <?php echo $form->textField($partner1, 'errormail')?>
-            <?php echo $form->error($partner1, 'errormail')?> 
-         </div>
-         <div class="row">
-            <?php echo $form->labelEx($partner1, 'Kode ord')?>
+            <?php echo $form->labelEx($partner1, 'Kodeord')?>
             <?php echo $form->textField($partner1, 'password')?>
             <?php echo $form->error($partner1, 'password')?> 
          </div>
@@ -98,7 +93,7 @@
          <div class="row">
              <h3>Partner 2</h3>
          </div>
-             
+   
         <div class="row">
             <?php echo $form->labelEx($partner2, 'Navn')?>
             <?php echo $form->textField($partner2, 'name')?>
@@ -110,16 +105,6 @@
             <?php echo $form->error($partner2, 'email')?> 
          </div>
          <div class="row">
-            <?php echo $form->labelEx($partner2, 'account')?>
-            <?php echo $form->textField($partner2, 'account')?>
-            <?php echo $form->error($partner2, 'account')?> 
-         </div>
-         <div class="row">
-            <?php echo $form->labelEx($partner2, 'username')?>
-            <?php echo $form->textField($partner2, 'username')?>
-            <?php echo $form->error($partner2, 'username')?> 
-         </div>
-         <div class="row">
             <?php echo $form->labelEx($partner2, 'contact')?>
             <?php echo $form->textField($partner2, 'contact')?>
             <?php echo $form->error($partner2, 'contact')?> 
@@ -128,16 +113,6 @@
             <?php echo $form->labelEx($partner2, 'cvr')?>
             <?php echo $form->textField($partner2, 'validcvr')?>
             <?php echo $form->error($partner2, 'validcvr')?> 
-         </div>
-         <div class="row">
-            <?php echo $form->labelEx($partner2, 'errormail')?>
-            <?php echo $form->textField($partner2, 'errormail')?>
-            <?php echo $form->error($partner2, 'errormail')?> 
-         </div>
-         <div class="row">
-            <?php echo $form->labelEx($partner2, 'Kode ord')?>
-            <?php echo $form->textField($partner2, 'password')?>
-            <?php echo $form->error($partner2, 'password')?> 
          </div>
      </div>
        	<div class="row buttons" style="width:800px; float:left; margin-bottom: 10px;">
