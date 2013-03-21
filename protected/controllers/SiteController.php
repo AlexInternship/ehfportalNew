@@ -247,7 +247,7 @@ class SiteController extends Controller {
                 return;
             }
         }
-        $this->render('newuser', array('model' => $model, 'partner' => $partner));
+        $this->render('newuser', array('model' => $model, 'partner1' => $partner1, 'partner2' => $partner2));
     }
 
 /*
