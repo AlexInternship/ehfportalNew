@@ -2,7 +2,7 @@
 
  class CallDB {
      public static function addInvoice($serialized) {
-           $invoice = new serializedocuments();
+           $invoice = new SerializeDocument();
            $invoice->document=$serialized;
            $invoice->type='invoice';
            $invoice->id = 55;
@@ -11,6 +11,27 @@
            $invoice->save();
 
          }
+         
+      public static function deserialize($id) {
+          
+          $item = Yii::app()->db->createCommand()
+            ->select('document')
+            ->from(' serializedocuments')
+            ->where('serializedocument_id=:id', array(':id'=>$id))
+            ->queryRow();
+          
+          return $item;
+         /* 
+          $criteria=new CDbCriteria;
+          $criteria->select='document';  // only select the 'title' column
+          $criteria->condition='serializedocument_id=:serializedocument_id';
+          $criteria->params=array(':serializedocument_id'=>$id);
+          $item = SerializeDocument::find($criteria); 
+          $deitem =deserialize($item);
+          return $deitem;
+          * 
+          */
+      }   
          
       public static function returnInvoice($id) {
           $criteria=new CDbCriteria;
@@ -65,15 +86,15 @@
          }
          
            public static function getPartnerId($name) {
-          $criteria=new CDbCriteria;
-          $criteria->select='partner_id';  // only select the 'title' column
-          $criteria->condition='name=:name';
-          $criteria->params=array(':name'=>$name);
-          return Partner::find($criteria); 
+          $partnerId = Yii::app()->db->createCommand()
+            ->select('partner_id')
+            ->from(' serializedocuments')
+            ->where('name=:name', array(':name'=>$name))
+            ->queryRow();
+          
+          return $partnerId; 
 
           }
-         
-         
              
  }
 ?>
