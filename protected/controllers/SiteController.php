@@ -225,9 +225,6 @@ class SiteController extends Controller {
      public function actionNewUser()
     {
          
-       $item = CallDB::deserialize(1); 
-       print_r($item);
-       die;  
         //
        $model = new User(); 
        $partner1 = new Partner();

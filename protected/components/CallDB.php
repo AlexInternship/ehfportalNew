@@ -85,16 +85,16 @@
              $newPartner->save();
          }
          
-           public static function getPartnerId($name) {
-          $partnerId = Yii::app()->db->createCommand()
-            ->select('partner_id')
-            ->from(' serializedocuments')
-            ->where('name=:name', array(':name'=>$name))
-            ->queryRow();
-          
-          return $partnerId; 
+        public static function getPartnerId($name) {
 
-          }
+            $partnerId = Yii::app()->db->createCommand()
+              ->select('partner_id')
+              ->from('partners')
+              ->where('name=:name', array(':name'=>$name))
+              ->queryRow();
+
+            return $partnerId['partner_id']; 
+       }
              
  }
 ?>
