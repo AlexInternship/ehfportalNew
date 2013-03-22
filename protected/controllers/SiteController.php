@@ -235,11 +235,9 @@ class SiteController extends Controller {
 
        /*if (isset($_POST['User'], $_POST['Partner1'], $_POST['Partner2'], $_POST['Address1'], $_POST['Address2'])) {*/
            if(!empty($_POST)) {
-<<<<<<< HEAD
+
                var_dump($_POST);die;
-=======
-               var_dump($_POST);
->>>>>>> 9ee8ac79d685c84c5ae24bd37a60f646370c5754
+
             $model->attributes = $_POST['User'];
             $partner1->attributes = $_POST['Partner1'];
             $partner2->attributes = $_POST['Partner2'];
