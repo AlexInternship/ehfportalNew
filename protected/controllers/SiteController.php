@@ -231,8 +231,6 @@ class SiteController extends Controller {
        $address1 = new Address(); 
        $address2 = new Address(); 
 
-
-
        /*if (isset($_POST['User'], $_POST['Partner1'], $_POST['Partner2'], $_POST['Address1'], $_POST['Address2'])) {*/
            if(!empty($_POST)) {
 
