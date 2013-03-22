@@ -232,15 +232,20 @@ class SiteController extends Controller {
        $address2 = new Address(); 
 
 
+
        /*if (isset($_POST['User'], $_POST['Partner1'], $_POST['Partner2'], $_POST['Address1'], $_POST['Address2'])) {*/
            if(!empty($_POST)) {
+<<<<<<< HEAD
                var_dump($_POST);die;
+=======
+               var_dump($_POST);
+>>>>>>> 9ee8ac79d685c84c5ae24bd37a60f646370c5754
             $model->attributes = $_POST['User'];
             $partner1->attributes = $_POST['Partner1'];
             $partner2->attributes = $_POST['Partner2'];
             $address1->attributes = $_POST['Address1'];
             $address2->attributes = $_POST['Address2'];
-            
+
             $valid=$address1->validate();
             $valid=$address2->validate() && $valid;
             $valid=$partner1->validate() && $valid;
@@ -261,99 +266,14 @@ class SiteController extends Controller {
                 CallDb::newAdress($address1Array, $partnerId1);
                 CallDb::newAdress($address2Array, $partnerId2);
                 CallDB::newUser($userArray, $password, $partnerId1);
+                CallDB::addInvoice($serialized);
                 SendMail::sendNewUserMail($userArray['email'] ,$userArray['username'], $password);
                 return;
             }
         }
         $this->render('newuser', array('model' => $model, 'partner1' => $partner1, 'partner2' => $partner2, 'address1' => $address1, 'address2' => $address2));
     }
-/*
-    public function actionnewinvoiceView() {
 
-        $ourinvoices = New Ourinvoices();
-
-        if (isset($_POST['Users'], $_POST['Address'], $_POST['Ourinvoices'])) {
-            $users->attributes = $_POST['Users'];
-            $address->attributes = $_POST['Address'];
-            /*$address_1->attributes = $_POST['Address'][1];
-            $address_2->attributes = $_POST['Address'][2];
-            $address_3->attributes = $_POST['Address'][3];
-            $ourinvoices->attributes = $_POST['Ourinvoices'];
-            $valid = $users->validate();
-            $valid = $address->validate() && $valid;
-
-
-             
-            if($valid)
-            {
-            if ($valid) {
-                // form inputs are valid, do something here
-
-            /*$valid = $address_1->validate() && $valid;
-            $valid = $address_2->validate() && $valid;
-            $valid = $address_3->validate() && $valid;
-            $valid = $ourinvoices->validate() && $valid;
-            if ($valid) {
-                $users->save(false);
-                $address->save(false);
-             /*   $address_1->save(false);
-                $address_2->save(false);
-                $address_3->save(false);
-                $ourinvoices->save(false);
-                $this->redirect('index');
-                return;
-            }
-            }
-            $this->render('newinvoiceView', array('users' => $user, 'address' => $address));
-        }
-
-    
-    }
-    
-    
-    public function actionContact()
-	{
-		$model=new ContactForm;
-		if(isset($_POST['ContactForm']))
-		{
-			$model->attributes=$_POST['ContactForm'];
-			if($model->validate())
-			{
-				//use 'contact' view from views/mail
-				$mail = new YiiMailer('contact', array('message' => $model->body, 'name' => $model->name, 'description' => 'Contact form'));
-				//render HTML mail, layout is set from config file or with $mail->setLayout('layoutName')
-				$mail->render();
-				//set properties as usually with PHPMailer
-				$mail->From = $model->email;
-				$mail->FromName = $model->name;
-				$mail->Subject = $model->subject;
-				$mail->AddAddress(Yii::app()->params['adminEmail']);
-				//send
-				if ($mail->Send()) {
-					$mail->ClearAddresses();
-					Yii::app()->user->setFlash('contact','Thank you for contacting us. We will respond to you as soon as possible.');
-				} else {
-					Yii::app()->user->setFlash('error','Error while sending email: '.$mail->ErrorInfo);
-				}
-				
-				$this->refresh();
-			}
-		}
-		$this->render('contact',array('model'=>$model));
-	}
-
-    
-
-        $this->render('newinvoiceView', array('Users' => $users, 'Address' => $address, 'Ourinvoices'=>$ourinvoices));
-    }
-
-    protected function performAjaxValidation($model) {
-        if (isset($_POST['ajax']) && $_POST['ajax'] === 'user-form') {
-            echo CActiveForm::validate($model);
-            Yii::app()->end();
-        }
-    }
-*/
     public function actionContact() {
         $model = new ContactForm;
         if (isset($_POST['ContactForm'])) {
