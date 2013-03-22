@@ -1,6 +1,6 @@
 <?php
 
-class User extends CFormModel {
+class User extends CActiveRecord {
 
     public $username;
     public $password;
