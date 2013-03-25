@@ -103,4 +103,57 @@ array(4) {
  * ["yt2"]=> string(6) "Submit" }
  * 
  */
+/*
+ * array(5) { 
+ * ["Users"]=> array(4) { 
+ * ["username"]=> string(7) "qweqweq" 
+ * ["firstname"]=> string(6) "qweqwe" 
+ * ["lastname"]=> string(6) "qweqwe" 
+ * ["email"]=> string(11) "qweqwe@e.co" } 
+ * ["Address"]=> array(2) { 
+ * [1]=> array(6) 
+ * { 
+ * ["phone"]=> string(6) "qweqwe" 
+ * ["address1"]=> string(3) "asd" 
+ * ["address2"]=> string(6) "qweqwe" 
+ * ["address3"]=> string(6) "qweqwe" 
+ * ["zip"]=> string(4) "1234" 
+ * ["city"]=> string(4) "qweq" 
+ * } 
+ * [2]=> array(5) 
+ * { 
+ * ["address1"]=> string(5) "qweqw" 
+ * ["address2"]=> string(5) "qweqe" 
+ * ["address3"]=> string(5) "qweqw" 
+ * ["zip"]=> string(5) "12313" 
+ * ["city"]=> string(4) "qweq" } 
+ * } 
+ * ["Partners"]=> array(2) 
+ * { 
+ * [1]=> array(2) { 
+ * ["validcvr"]=> string(5) "qweqe" 
+ * ["name"]=> string(4) "qweq" 
+ * } 
+ * [2]=> array(3) { 
+ * ["name"]=> string(6) "qweqwe" 
+ * ["email"]=> string(10) "qweqe@f.cm" 
+ * ["validcvr"]=> string(5) "qwqwe" 
+ * } 
+ * } 
+ * ["Ourinvoicelines"]=> array(2) { 
+ * [1]=> array(4) { 
+ * ["description"]=> string(4) "qweq" 
+ * ["quantity"]=> string(10) "1.00000000" 
+ * ["price"]=> string(10) "1.00000000" 
+ * ["vatyn"]=> string(3) "yes" 
+ * } 
+ * [2]=> array(2) { 
+ * ["description"]=> string(6) "qweqwe" 
+ * ["quantity"]=> string(10) "1.00000000" } } [
+ * ["yt2"]=> string(6) "Submit" }
+ * 
+ * 
+ */
+
+
 ?>

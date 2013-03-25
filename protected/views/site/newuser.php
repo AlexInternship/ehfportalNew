@@ -131,13 +131,38 @@
     </div>  
     <div class="invoicelines">
         <div class="row" >
+            
             <?php echo $form->labelEx($ourinvoicelines, 'Beskrivelse') ?>
             <?php echo $form->textField($ourinvoicelines, '[1]description') ?>
             <?php echo $form->error($ourinvoicelines, '[1]description') ?>
+        
+           
+            <?php echo $form->labelEx($ourinvoicelines, 'Antal') ?>
+            <?php echo $form->textField($ourinvoicelines, '[1]quantity') ?>
+            <?php echo $form->error($ourinvoicelines, '[1]quantity') ?>
+        
+                
+            <?php echo $form->labelEx($ourinvoicelines, 'Pris') ?>
+            <?php echo $form->textField($ourinvoicelines, '[1]price') ?>
+            <?php echo $form->error($ourinvoicelines, '[1]price') ?>
+            
+            
+            <?php echo $form->labelEx($ourinvoicelines, 'Moms') ?>
+            <?php echo $form->textField($ourinvoicelines, '[1]vatyn') ?>
+            <?php echo $form->error($ourinvoicelines, '[1]vatyn') ?>
+            
             <?php echo CHtml::Button('-', array('onClick'=>'deleterow()' ,'class' => 'fancybutton','id' =>'additem', 'style' => 'background: #CC0008; padding:2px 4px; width:20px; display:inline-block;')); ?>
             <?php echo CHtml::Button('+', array('onClick'=>'newrow(1)' , 'class' => 'fancybutton', 'style' => 'background: #23B110; padding:2px 4px; width:20px; display:inline-block;')); ?>
         </div>          
     </div>
+     <div class="horisontalsplitter"></div>          
+    <div class="row">
+        <h3>Betaling</h3>              
+    </div>  
+     <div class="row">
+        
+    </div>
+    
     <div class="row buttons" style="width:800px; float:left; margin-bottom: 10px;">
     <?php echo CHtml::submitButton('Submit', array('class' => 'fancybutton')); ?>
     </div>
