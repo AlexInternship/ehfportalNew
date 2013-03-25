@@ -231,9 +231,12 @@ class SiteController extends Controller {
        $partner2 = new Partners(); 
        $address1 = new Address(); 
        $address2 = new Address(); 
+       $ourinvoicelines = new Ourinvoicelines();
 
        /*if (isset($_POST['User'], $_POST['Partner1'], $_POST['Partner2'], $_POST['Address1'], $_POST['Address2'])) {*/
            if(!empty($_POST)) {
+               var_dump($_POST);
+               die;
             $model->attributes = $_POST['User'];
             $partner1->attributes = $_POST['Partner1'];
             $partner2->attributes = $_POST['Partner2'];
@@ -265,7 +268,7 @@ class SiteController extends Controller {
                 return;
             }
         }
-        $this->render('newuser', array('model' => $model, 'partner1' => $partner1, 'partner2' => $partner2, 'address1' => $address1, 'address2' => $address2));
+        $this->render('newuser', array('model' => $model, 'partner1' => $partner1, 'partner2' => $partner2, 'address1' => $address1, 'address2' => $address2, 'ourinvoicelines' => $ourinvoicelines));
     }
 
     public function actionContact() {

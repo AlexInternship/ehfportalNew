@@ -103,3 +103,10 @@ div.form div.error input {
     margin:20px;
     border-left: 1px solid #888;    
 }
+.horisontalsplitter{
+    border-top:1px solid #888;
+    margin: 20px;
+    width: 500px;
+    clear:left;
+    
+}
