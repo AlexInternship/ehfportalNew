@@ -65,7 +65,7 @@ $("<div></div>",{
 $("<input></input>",{
     "onClick" : "deleterow()",
     "class" : "fancybutton",
-    "style" : "background: #CC0008; padding; 2px 4px; width:20px; display:inline-block;",
+    "style" : "background: #CC0008; width:20px; padding: 2px 4px; display:inline-block;",
     "name" : "yt0",
     "type" : "button",
     "value" : "-"

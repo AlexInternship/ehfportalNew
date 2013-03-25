@@ -155,5 +155,221 @@ array(4) {
  * 
  */
 
+/*   SENDT FRA MORTEN BOAS
+$q = "
+INSERT INTO partners (type, name, contact, email, errormail, partnerno, validcvr, username, password, fsc, cvr_sent, cvr_ok, createddate, retailer_id, mailcomment,identificationtype,cpr,danfoss_ext,danfoss_deb,site)
+VALUES ('vendor', '". $company ."', '". $contact ."', '". $email ."',
+'". $errormail ."', '". $lever_id ."', '". $validcvr ."',
+'". $username ."', '". md5($password) ."', '". $fsc ."',
+'".$cvr_sent."', '".$cvr_ok."', NOW(), '".$retailer_id."', '". $mailcomment ."', '".$identificationtype."', '".$cprident."', '".$danfoss_ext."', '".$danfoss_deb."', 'aksesspunkt.no')
+";
+mysql_query($q);
+$pID = mysql_insert_id();
+$q = "
+INSERT INTO address (partner_id, type, address1, address2, address3, cvr, zip, city, phone) VALUES
+('". $pID ."', 'order', '". $address1 ."',  '". $address2 ."',
+'". $address3 ."', '". $cvr ."', '". $zip ."',
+'". $city ."','".$phoneident."')
+";
+mysql_query($q);
 
+$user_type = $fsc != '' ? 'integration' : 'admin';
+
+//Create user
+//      if ($user_username != '' and $user_password != '') {
+$q = "
+INSERT INTO users (partner_id, username, password, firstname, lastname, phone, email, type, deleteddate, language) VALUES
+('". $pID ."', '". $user_username ."', '". md5($user_password) ."',
+'". $user_firstname ."', '". $user_lastname ."', '". $user_phone ."',
+'". $user_email ."', '$user_type', NULL, 'DA')
+";
+mysql_query($q);
+$uID = mysql_insert_id();
+
+
+$q = "
+INSERT INTO invoices (order_id, invoiceno, customer_id, invoicedate, vendor_id, partner, type, invoicetype, pdfoption_id)
+VALUES ('".$_SESSION['doc'][$dType]['order_id']."',
+'',
+'". $_SESSION['doc'][$dType]['partner_id'] ."',
+NOW(),
+'". $_SESSION['partner_id'] ."',
+'". $_SESSION['doc'][$dType]['partner'] ."',
+'". $_SESSION['doc'][$dType]['type'] ."',
+'". $_SESSION['newtype']."',
+".$pdfOptID.")
+";
+$qLines = "INSERT INTO invoicelines (invoiceline_id, invoice_id, invoiced, itemnumber)
+SELECT '' AS invoiceline_id, '".$newID."', invoiced, itemnumber
+FROM invoicelines
+WHERE invoice_id='".$_GET['edit']."'";
+
+$q = "
+INSERT INTO serializedocuments (type, document, id, outbox)
+VALUES ('".$_SESSION['tab']."', '". addslashes(serialize($d)) ."', '". mysql_real_escape_string($_GET['edit']) ."', '$outbox')
+";
+
+
+document i serializeddocuments
+
+Array
+(
+    [Fakturadata] => Array
+        (
+            [0] => Array
+                (
+                    [Momsfri] => Ja
+                    [Antal] => 1
+                    [Pris] => 87410
+                    [Kontering] => 
+                    [dimaccount] => 
+                    [Varebeloeb] => 87410
+                    [Betegnelse_for_nettoindhold] => EA
+                    [ehf_vat] => 25
+                    [Skaffevare] => Ja
+                    [Ordrefradrag] => Nej
+                    [linetotal] => 87410
+                    [Varenavn] => Nysgjerrigper-blad nr. 1 - 2013
+                    [Varenummer] => 1
+                )
+
+        )
+
+    [FakturaDato] => 20/12/2012
+    [partner] => 
+    [partner_id] => 534
+    [Info_til_indkoeber] => 
+    [order_id] => 
+    [type] => ehf
+    [Momssats] => 0
+    [kortart] => 
+    [giro] => 
+    [girocreditor] => 
+    [paymenttype] => 
+    [invoice_id] => 1227
+    [bank] => 
+    [bankbranch] => 
+    [regno] => 
+    [account] => 15030157580
+    [bic] => 
+    [iban] => 
+    [comment] => 
+    [status] => 
+    [behandler] => 
+    [Leveringsadresse] => Array
+        (
+            [Adresse1] => Stensberggata 26-28
+            [Adresse2] => 
+            [Adresse3] => 
+            [Postnummer] => 0170
+            [Bynavn] => Oslo
+            [cvr] => 970141669
+            [eanno] => 
+        )
+
+    [Faktureringsadresse] => Array
+        (
+            [Adresse1] => Postboks 2700 St. Hanshaugen
+            [Adresse2] => 
+            [Adresse3] => 
+            [Postnummer] => 0131
+            [Bynavn] => Oslo
+            [cvr] => 970141669
+            [eanno] => 
+        )
+
+    [Juridiskadresse] => Array
+        (
+            [Adresse1] => 
+            [Adresse2] => 
+            [Adresse3] => 
+            [Postnummer] => 
+            [Bynavn] => 
+            [cvr] => 970141669
+            [eanno] => 
+        )
+
+    [Kundenavn] => Norges Forskningsråd
+    [EANlokationsnr] => 970141669
+    [kontraktReference] => 
+    [Seneste_rettidige_betalingsdato] => 19/01/2013
+    [Leveringsdato] => 20/12/2012
+    [Ordrenummer] => 
+    [Fakturanummer] => 155690
+    [Kreditnotanummer] => 
+    [refno] => 
+    [buyercontact] => Trude Hauge
+    [sellercontact] => Terje Sivertsen
+    [orderContactName] => 
+    [sellersOrderID] => 
+    [Ordredato] => 
+    [dimaccount] => 
+    [KontantRabatSats] => 
+    [KontantRabatDato] => 
+    [StrafRenteSats] => 
+    [StrafRenteDato] => 
+    [shipping] => 0
+    [vatyn] => Array
+        (
+            [shipping] => 
+            [tax] => 
+            [duty] => 
+            [importchg] => 
+            [Tillaeg] => 
+            [Fradrag] => 
+        )
+
+    [tax] => 0
+    [duty] => 0
+    [importchg] => 0
+    [Tillaeg] => 0
+    [Fradrag] => 0
+    [Varetotal] => 109262.5
+    [Varebeloeb] => 87410
+    [momsgrundlag] => 0.00
+    [linjetotal_eks_moms] => 87410
+    [ehf_momsgrundlag] => Array
+        (
+            [25] => 87410
+        )
+
+    [ehf_moms] => Array
+        (
+            [25] => 21852.5
+        )
+
+    [ehf_moms_total] => 21852.5
+    [Moms] => 0
+    [Attachment] => Array
+        (
+            [0] => Array
+                (
+                    [Embedded] => JVBERi0xLjQKJeLjz9MNCjEgMCBvYmoKPDwgCi9DcmVhdG9yIChDYW5vbiBpUi1BRFYgQzUwNDUg
+IFBERikKL0NyZWF0aW9uRGF0ZSAoRDoyMDEyMTIyMDA5MDY1NyswMScwMCcpCi9Qcm9kdWNlciAo
+XDM3NlwzNzdcMDAwQVwwMDBkXDAwMG9cMDAwYlwwMDBlXDAwMCBcMDAwUFwwMDBTXDAwMExcMDAw
+IFwwMDAxXDAwMC5cMDAwXAoxXDAwMGVcMDAwIFwwMDBmXDAwMG9cMDAwclwwMDAgXDAwMENcMDAw
+YVwwMDBuXDAwMG9cMDAwblwwMDBcMDAwKQo+PiAKZW5kb2JqCjIgMCBvYmoKPDwgCi9QYWdlcyAz
+.
+.
+.
+MDAwMDQyODgxIDAwMDAwIG4gCjAwMDAwNDMwNDIgMDAwMDAgbiAKdHJhaWxlcgo8PAovU2l6ZSAy
+MQovSW5mbyAxIDAgUgovUm9vdCAyIDAgUgovSURbPDkxZTdjMWNhZjJkZjU1NDkxNWQzY2JlYTRj
+MzhkMjEyPjw5MWU3YzFjYWYyZGY1NTQ5MTVkM2NiZWE0YzM4ZDIxMj5dCj4+CnN0YXJ0eHJlZgo0
+MzMyNwolJUVPRgo=
+
+                    [Filnavn] => 0802_001.pdf
+                    [Mime] => application/pdf
+                    [id] => Fakturagrunnlag
+                )
+
+        )
+
+)
+ * 
+ * 
+ * 
+ * 
+ * 
+ * 
+ */
 ?>
