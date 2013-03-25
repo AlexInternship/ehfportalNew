@@ -151,8 +151,8 @@
             <?php echo $form->textField($ourinvoicelines, '[1]vatyn') ?>
             <?php echo $form->error($ourinvoicelines, '[1]vatyn') ?>
             
-            <?php echo CHtml::Button('-', array('onClick'=>'deleterow()' ,'class' => 'fancybutton','id' =>'additem', 'style' => 'background: #CC0008; padding:2px 4px; width:20px; display:inline-block;')); ?>
-            <?php echo CHtml::Button('+', array('onClick'=>'newrow(1)' , 'class' => 'fancybutton', 'style' => 'background: #23B110; padding:2px 4px; width:20px; display:inline-block;')); ?>
+            <?php echo CHtml::Button('-', array('onClick'=>'deleterow()' ,'class' => 'fancybutton remove')); ?>
+            <?php echo CHtml::Button('+', array('onClick'=>'newrow(1)' , 'class' => 'fancybutton add')); ?>
         </div>          
     </div>
      <div class="horisontalsplitter"></div>          

@@ -110,3 +110,20 @@ div.form div.error input {
     clear:left;
     
 }
+.add:hover{
+    background:#339900;}
+.add{
+    background: #23B110; 
+    padding:2px 4px; 
+    width:20px; 
+    display:inline-block;
+}
+.remove:hover{
+    background: #8d0303;
+}
+.remove{
+    background: #CC0008; 
+    padding:2px 4px; 
+    width:20px; 
+    display:inline-block;
+}

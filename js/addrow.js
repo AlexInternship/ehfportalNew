@@ -64,16 +64,14 @@ $("<div></div>",{
 }).appendTo(".invoicelines");
 $("<input></input>",{
     "onClick" : "deleterow()",
-    "class" : "fancybutton",
-    "style" : "background: #CC0008; width:20px; padding: 2px 4px; display:inline-block;",
+    "class" : "fancybutton remove",
     "name" : "yt0",
     "type" : "button",
     "value" : "-"
 }).appendTo(".invoicelines");
 $("<input></input>",{
     "onClick" : "newrow("+count+")",
-    "class" : "fancybutton",
-    "style" : "background: #23B110; width:20px; padding: 2px 4px; display:inline-block;",
+    "class" : "fancybutton add",
     "name" : "yt0",
     "type" : "button",
     "value" : "+"
