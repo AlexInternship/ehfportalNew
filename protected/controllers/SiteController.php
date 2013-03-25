@@ -226,9 +226,9 @@ class SiteController extends Controller {
     {
          
         //
-       $model = new User(); 
-       $partner1 = new Partner();
-       $partner2 = new Partner(); 
+       $model = new Users(); 
+       $partner1 = new Partners();
+       $partner2 = new Partners(); 
        $address1 = new Address(); 
        $address2 = new Address(); 
 

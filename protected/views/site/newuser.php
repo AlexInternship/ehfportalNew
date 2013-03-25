@@ -122,6 +122,12 @@
             <?php echo $form->error($address2, '[2]city')?>   
          </div>
      </div> 
+               <div class="row"></div>
+               
+     <div class="row">
+         <h3>Invoices</h3>              
+     </div>          
+               
    
        	<div class="row buttons" style="width:800px; float:left; margin-bottom: 10px;">
 		<?php echo CHtml::submitButton('Submit', array('class'=>'fancybutton')); ?>
