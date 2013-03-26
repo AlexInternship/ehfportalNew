@@ -204,11 +204,55 @@ class SiteController extends Controller {
     }
 
     public function actionViewSerializedDocument(){
-        $serialized = serialize(array('hamster', 'burger','kanin'));
+        
+        $array = array('0' => Array
+                            (
+                                'Momsfri' => 'Ja',
+                                'Antal' => '1',
+                                'Pris' => '87410',
+                                'Kontering' =>  '',
+                                'dimaccount' => '',
+                                'Varebeloeb' => '87410',
+                                'Betegnelse_for_nettoindhold' => 'EA',
+                                'ehf_vat' => '25',
+                                'Skaffevare' => 'Ja',
+                                'Ordrefradrag' => 'Nej',
+                                'linetotal' => '87410',
+                                'Varenavn' => 'Nysgjerrigper-blad nr. 1 - 2013',
+                                'Varenummer' => '1',
+                            ),
+            
+                        '1' => Array
+                            (
+                                'Momsfri' => 'Ja',
+                                'Antal' => '1',
+                                'Pris' => '87410',
+                                'Kontering' =>  '',
+                                'dimaccount' => '',
+                                'Varebeloeb' => '87410',
+                                'Betegnelse_for_nettoindhold' => 'EA',
+                                'ehf_vat' => '25',
+                                'Skaffevare' => 'Ja',
+                                'Ordrefradrag' => 'Nej',
+                                'linetotal' => '87410',
+                                'Varenavn' => 'Nysgjerrigper-blad nr. 1 - 2013',
+                                'Varenummer' => '1',
+                            )    
+
+                    
+            
+            );
+        
+        $ser = Serializer::Instance();
+        $ser->serializeDocument($array);
+        
+        /*$serialized = serialize(array('hamster', 'burger','kanin'));
         $db = CallDB::Instance();
         //$db->addInvoice($serialized);
-        $result = $db->deserialize('1140');
+        $result = $db->deserialize('1');
         var_dump(($result));
+         * 
+         */
     }
     
     public function actionAxForm()
