@@ -21,11 +21,11 @@
           
           $item = Yii::app()->db->createCommand()
             ->select('document')
-            ->from(' serializedocuments')
+            ->from('serializedocuments')
             ->where('serializedocument_id=:id', array(':id'=>$id))
             ->queryRow();
           
-          return $item;
+          return unserialize($item['document']);
          /* 
           $criteria=new CDbCriteria;
           $criteria->select='document';  // only select the 'title' column
