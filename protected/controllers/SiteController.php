@@ -270,7 +270,7 @@ class SiteController extends Controller {
                 return;
             }
         }
-        $this->render('newuser', array('model' => $model, 'partner1' => $partner1, 'partner2' => $partner2, 'address1' => $address1, 'address2' => $address2, 'ourinvoicelines' => $ourinvoicelines));
+        $this->render('newuser', array('model' => $model, 'partner1' => $partner1, 'partner2' => $partner2, 'address1' => $address1, 'address2' => $address2, 'invoicelines' => $invoicelines));
     }
 
     public function actionContact() {
