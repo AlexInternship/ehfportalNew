@@ -1,7 +1,16 @@
 <?php
 
 class SendMail {
-        public static function sendNewUserMail($email, $username, $password){
+    
+        public static function Instance() {
+        static $inst = null;
+        if ($inst === null) {
+            $inst = new SendMail();
+        }
+        return $inst;
+    }
+    
+        public function sendNewUserMail($email, $username, $password){
             Yii::import('application.extensions.phpmailer.JPhpMailer');
             $mail = new JPhpMailer;
 
@@ -26,7 +35,7 @@ class SendMail {
             return $password;
     }
     
-    public static function sendInviteMail($array, $link){
+    public function sendInviteMail($array, $link){
             Yii::import('application.extensions.phpmailer.JPhpMailer');
             $mail = new JPhpMailer;
             $password = RandomPassword::randomPassword();

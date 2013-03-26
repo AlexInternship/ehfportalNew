@@ -2,7 +2,15 @@
 
 class Stub {
     
-    public static function getXML() {
+    public static function Instance() {
+        static $inst = null;
+        if ($inst === null) {
+            $inst = new Stub();
+        }
+        return $inst;
+    }
+    
+    public function getXML() {
        /*
         $dir = dirname(__FILE__).'/testXml.xml';    
         $loadedXML = simplexml_load_file($dir);

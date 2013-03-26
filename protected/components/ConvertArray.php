@@ -2,6 +2,14 @@
 
 class ConvertArray {
     
+    public static function Instance() {
+        static $inst = null;
+        if ($inst === null) {
+            $inst = new ConvertArray();
+        }
+        return $inst;
+    }
+    
     public function validateArray($array){
             $error = null;
 

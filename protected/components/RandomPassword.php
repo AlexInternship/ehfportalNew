@@ -1,7 +1,16 @@
     <?php
 
 class RandomPassword {
-    public static function generatePassword() {
+    
+    public static function Instance() {
+        static $inst = null;
+        if ($inst === null) {
+            $inst = new RandomPassword();
+        }
+        return $inst;
+    }
+    
+    public function generatePassword() {
         $size = 8;
         $string = '';
         $characters = '0123456789abcdefghijklmnopqrstuvwxyz';

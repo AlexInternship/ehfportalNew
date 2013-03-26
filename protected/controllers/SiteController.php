@@ -215,7 +215,7 @@ class SiteController extends Controller {
                 
                 // form inputs are valid, do something here
                 $safe_string_to_store = serialize($_POST['Axform']);
-                CallDB::addInvoice($safe_string_to_store);
+                $db->addInvoice($safe_string_to_store);
                 return;
             }
         }
@@ -231,17 +231,18 @@ class SiteController extends Controller {
        $partner2 = new Partner(); 
        $address1 = new Address(); 
        $address2 = new Address(); 
+       $db = CallDB::Instance();
+       $mailService = SendMail::Instance();
 
        /*if (isset($_POST['User'], $_POST['Partner1'], $_POST['Partner2'], $_POST['Address1'], $_POST['Address2'])) {*/
            if(!empty($_POST)) {
 
-               var_dump($_POST);die;
 
             $model->attributes = $_POST['User'];
-            $partner1->attributes = $_POST['Partner1'];
-            $partner2->attributes = $_POST['Partner2'];
-            $address1->attributes = $_POST['Address1'];
-            $address2->attributes = $_POST['Address2'];
+            $partner1->attributes = $_POST['Partner'][1];
+            $partner2->attributes = $_POST['Partner'][2];
+            $address1->attributes = $_POST['Address'][1];
+            $address2->attributes = $_POST['Address'][2];
 
             $valid=$address1->validate();
             $valid=$address2->validate() && $valid;
@@ -251,20 +252,22 @@ class SiteController extends Controller {
             
             if ($valid) {
                 $userArray = $_POST['User'];
-                $partner1Array = $_POST['Partner1'];
-                $partner2Array = $_POST['Partner2'];
-                $address1Array = $_POST['Address1'];
-                $address2Array = $_POST['Address2'];
+                $partner1Array = $_POST['Partner'][1];
+                $partner2Array = $_POST['Partner'][2];
+                $address1Array = $_POST['Address'][1];
+                $address2Array = $_POST['Address'][2];
+                
                 $password = RandomPassword::generatePassword();
-                CallDB::newPartner($partner1Array, 'vendor', $password);
-                CallDB::newPartner($partner2Array, 'private', '');
-                $partnerId1 = CallDB::getPartnerId($partner1Array['name']);
-                $partnerId2 = CallDB::getPartnerId($partner2Array['name']);
-                CallDb::newAdress($address1Array, $partnerId1);
-                CallDb::newAdress($address2Array, $partnerId2);
-                CallDB::newUser($userArray, $password, $partnerId1);
-                CallDB::addInvoice($serialized);
-                SendMail::sendNewUserMail($userArray['email'] ,$userArray['username'], $password);
+                
+                $db->newPartner($userArray, $partner1Array, $password);
+                $db->newPartner(null ,$partner2Array, '');
+                $partnerId1 = $db->getPartnerId($partner1Array['name']);
+                $partnerId2 = $db->getPartnerId($partner2Array['name']);
+                $db->newAdress($address1Array, $partnerId1);
+                $db->newAdress($address2Array, $partnerId2);
+                $db->newUser($userArray, $password, $partnerId1);
+                //$db->addInvoice($serialized);
+                $mailService->sendInviteMail($userArray['email'] ,$userArray['username'], $password);
                 return;
             }
         }

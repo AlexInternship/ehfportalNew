@@ -2,6 +2,14 @@
 
 class ValidateArray {
     
+    public static function Instance() {
+        static $inst = null;
+        if ($inst === null) {
+            $inst = new ValidateArray();
+        }
+        return $inst;
+    }
+    
     public function validateArray($array){
             $validated = true;
 
