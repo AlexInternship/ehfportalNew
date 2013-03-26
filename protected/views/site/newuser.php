@@ -133,23 +133,14 @@
         <div class="row" >
             
             <?php echo $form->labelEx($invoicelines, 'Beskrivelse') ?>
-            <?php echo $form->textField($invoicelines, '[1]description') ?>
-            <?php echo $form->error($invoicelines, '[1]description') ?>
+            <?php echo $form->textField($invoicelines, '[1]itemnumber') ?>
+            <?php echo $form->error($invoicelines, '[1]itemnumber') ?>
         
            
             <?php echo $form->labelEx($invoicelines, 'Antal') ?>
-            <?php echo $form->textField($invoicelines, '[1]quantity') ?>
-            <?php echo $form->error($invoicelines, '[1]quantity') ?>
-        
-                
-            <?php echo $form->labelEx($invoicelines, 'Pris') ?>
-            <?php echo $form->textField($invoicelines, '[1]price') ?>
-            <?php echo $form->error($ourinvoicelines, '[1]price') ?>
-            
-            
-            <?php echo $form->labelEx($invoicelines, 'Moms') ?>
-            <?php echo $form->textField($invoicelines, '[1]vatyn') ?>
-            <?php echo $form->error($invoicelines, '[1]vatyn') ?>
+            <?php echo $form->textField($invoicelines, '[1]invoiced') ?>
+            <?php echo $form->error($invoicelines, '[1]invoiced') ?>
+  
             
             <?php echo CHtml::Button('-', array('onClick'=>'deleterow()' ,'class' => 'fancybutton remove')); ?>
             <?php echo CHtml::Button('+', array('onClick'=>'newrow(1)' , 'class' => 'fancybutton add')); ?>

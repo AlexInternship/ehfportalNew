@@ -234,7 +234,7 @@ class SiteController extends Controller {
        $db = CallDB::Instance();
        $mailService = SendMail::Instance();
        $generator = RandomPassword::Instance();
-       $ourinvoicelines = new Ourinvoicelines;
+       $invoicelines = new Invoicelines();
 
        /*if (isset($_POST['User'], $_POST['Partner1'], $_POST['Partner2'], $_POST['Address1'], $_POST['Address2'])) {*/
            if(!empty($_POST)) {
