@@ -233,13 +233,17 @@ class SiteController extends Controller {
        $address2 = new Address(); 
        $db = CallDB::Instance();
        $mailService = SendMail::Instance();
+       $generator = RandomPassword::Instance();
+       $ourinvoicelines = new Ourinvoicelines;
 
        /*if (isset($_POST['User'], $_POST['Partner1'], $_POST['Partner2'], $_POST['Address1'], $_POST['Address2'])) {*/
            if(!empty($_POST)) {
+            
+            // echo print_R($_POST); die;
 
-            $model->attributes = $_POST['User'];
-            $partner1->attributes = $_POST['Partner'][1];
-            $partner2->attributes = $_POST['Partner'][2];
+            $model->attributes = $_POST['Users'];
+            $partner1->attributes = $_POST['Partners'][1];
+            $partner2->attributes = $_POST['Partners'][2];
             $address1->attributes = $_POST['Address'][1];
             $address2->attributes = $_POST['Address'][2];
 
@@ -250,23 +254,23 @@ class SiteController extends Controller {
             $valid=$model->validate() && $valid;
             
             if ($valid) {
-                $userArray = $_POST['User'];
-                $partner1Array = $_POST['Partner'][1];
-                $partner2Array = $_POST['Partner'][2];
+                $userArray = $_POST['Users'];
+                $partner1Array = $_POST['Partners'][1];
+                $partner2Array = $_POST['Partners'][2];
                 $address1Array = $_POST['Address'][1];
                 $address2Array = $_POST['Address'][2];
                 
-                $password = RandomPassword::generatePassword();
+                $password = $generator->generatePassword();
                 
                 $db->newPartner($userArray, $partner1Array, $password);
                 $db->newPartner(null ,$partner2Array, '');
                 $partnerId1 = $db->getPartnerId($partner1Array['name']);
                 $partnerId2 = $db->getPartnerId($partner2Array['name']);
-                $db->newAdress($address1Array, $partnerId1);
-                $db->newAdress($address2Array, $partnerId2);
-                $db->newUser($userArray, $password, $partnerId1);
+                $db->newAdress($address1Array, $partnerId1, $partner1Array['validcvr']);
+                $db->newAdress($address2Array, $partnerId2, $partner2Array['validcvr']);
+                $db->newUser($userArray, $password, $partnerId1, $address1Array['phone']);
                 //$db->addInvoice($serialized);
-                $mailService->sendInviteMail($userArray['email'] ,$userArray['username'], $password);
+                $mailService->sendNewUserMail($userArray['email'] ,$userArray['username'], $password);
                 return;
             }
         }

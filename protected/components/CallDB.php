@@ -51,15 +51,16 @@
 
           }
           
-          public function newUser($array, $password, $partnerId) {
-           $newUser = new User();
-           $newUser->partnerID = $partnerId; 
+          public function newUser($array, $password, $partnerId, $phone) {
+              
+           $newUser = new Users();
+           $newUser->partner_id = $partnerId; 
            $newUser->username = $array['username'];
            $newUser->password = md5($password);
            $newUser->email = $array['email'];
            $newUser->firstname = $array['firstname'];
            $newUser->lastname = $array['lastname'];
-           $newUser->phone = $array['phone'];
+           $newUser->phone = $phone;
            $newUser->language = 'NO';
            $newUser->type = 'user';
          //  $newUser->partner_id = '9999'; //needs to be generated 
@@ -68,37 +69,46 @@
          }
          
          
-         public function newAdress($array, $partnerID) {
+         public function newAdress($array, $partnerID, $cvr) {
              $newAdress = new Address();
-             $newAdress->address1 = $array['adress'];
+             $newAdress->address1 = $array['address1'];
              // ekstra adresser hvor?
              // id?
              $newAdress->zip = $array['zip'];
              $newAdress->city = $array['city'];
              $newAdress->partner_id = $partnerID;
+             $newAdress->cvr = $cvr;
              $newAdress->save();
          }
          
          public function newPartner($userArray,$partnerArray, $password) {
              
-             $newPartner = new Partner();
+             $newPartner = new Partners();
              
              if($userArray != null) {
                  
                 $newPartner->email=$userArray['email'];
                 $newPartner->name=$partnerArray['name'];
                 $newPartner->type = 'vendor';
-                $newPartner->contact = $userArray['firstname'].' '.$userArray['lastname'];
+                $newPartner->contact = $userArray['firstname'].null.$userArray['lastname'];
                 $newPartner->errormail = $userArray['email'];
                 $newPartner->password = md5($password);
                 $newPartner->validcvr = $partnerArray['validcvr'];
+                $newPartner->partnerno = null;
+                $newPartner->scanmail = null;
+                $newPartner->info_to_purchaser = null;
+                $newPartner->mailcomment = null;
                 $newPartner->save();
                 } else {
                  
                     $newPartner->name=$partnerArray['name'];
-                    $newPartner->name=$partnerArray['email'];
+                    $newPartner->email=$partnerArray['email'];
                     $newPartner->validcvr=$partnerArray['validcvr'];
                     $newPartner->type = 'private';
+                    $newPartner->partnerno = null;
+                    $newPartner->scanmail = null;
+                    $newPartner->info_to_purchaser = null;
+                    $newPartner->mailcomment = null;
                     $newPartner->save();
                     }            
          }

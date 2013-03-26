@@ -38,7 +38,8 @@ class SendMail {
     public function sendInviteMail($array, $link){
             Yii::import('application.extensions.phpmailer.JPhpMailer');
             $mail = new JPhpMailer;
-            $password = RandomPassword::randomPassword();
+            $generator = RandomPassword::Instance();
+            $password = $generator->generatePassword();
 
             foreach($array as $value){
 
