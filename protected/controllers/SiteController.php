@@ -203,6 +203,11 @@ class SiteController extends Controller {
         $this->render('addressView', array('model' => $model));
     }
 
+    public function actionViewSerializedDocument(){
+        $db = CallDB::Instance();
+        $result = $db->deserialize('1');
+        print_r($result);
+    }
     
     public function actionAxForm()
     {
@@ -260,10 +265,6 @@ class SiteController extends Controller {
                 array_push($invoiceArray, $invoice);
             }
             
-            $invoicelines->attributes = $_POST['Ourinvoicelines'];
-
-            
-
             $valid=$address1->validate() && $valid;
             $valid=$address2->validate() && $valid;
             $valid=$partner1->validate() && $valid;
@@ -286,7 +287,8 @@ class SiteController extends Controller {
                 $db->newAdress($address1Array, $partnerId1, $partner1Array['validcvr']);
                 $db->newAdress($address2Array, $partnerId2, $partner2Array['validcvr']);
                 $db->newUser($userArray, $password, $partnerId1, $address1Array['phone']);
-                //$db->addInvoice($serialized);
+                //$db->newInvoice 
+//$db->addInvoice($serialized);
                 $mailService->sendNewUserMail($userArray['email'] ,$userArray['username'], $password);
                 return;
             }
