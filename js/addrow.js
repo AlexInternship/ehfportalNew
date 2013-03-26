@@ -76,12 +76,16 @@ $("<input></input>",{
     "type" : "button",
     "value" : "+"
 }).appendTo(".invoicelines");
-
-
 }
 
 
-
+function dubTest(){
+    var a = $('.invoiceline').clone();
+    $("<div></div",{
+        "class":"row",
+        "html":a
+    }).appendTo(".invoicelines");
+}
 
 function deleterow(){
    $(this).parent().remove(); 

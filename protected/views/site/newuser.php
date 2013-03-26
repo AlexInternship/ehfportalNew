@@ -130,7 +130,7 @@
         <h3>Invoices</h3>              
     </div>  
     <div class="invoicelines">
-        <div class="row" >
+        <div class="invoiceline row" >
             
             <?php echo $form->labelEx($invoicelines, 'Beskrivelse') ?>
             <?php echo $form->textField($invoicelines, '[1]itemnumber') ?>
@@ -143,11 +143,11 @@
   
             
             <?php echo CHtml::Button('-', array('onClick'=>'deleterow()' ,'class' => 'fancybutton remove')); ?>
-            <?php echo CHtml::Button('+', array('onClick'=>'newrow(1)' , 'class' => 'fancybutton add')); ?>
+            <?php echo CHtml::Button('+', array('onClick'=>'dubTest()' , 'class' => 'fancybutton add')); ?>
         </div>          
     </div>
      <div class="horisontalsplitter"></div>          
-    <div class="row">
+    <div class="row1">
         <h3>Betaling</h3>              
     </div>  
      <div class="row">
