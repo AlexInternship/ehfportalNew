@@ -11,12 +11,8 @@
     }
      
      public function addInvoice($serialized) {
-           $invoice = new SerializeDocument();
+           $invoice = new serializedocuments();
            $invoice->document=$serialized;
-           $invoice->type='invoice';
-           $invoice->id = 55;
-           $invoice->version = 3.0;
-           $invoice->outbox = 'no';
            $invoice->save();
 
          }

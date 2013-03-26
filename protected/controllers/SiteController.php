@@ -204,9 +204,11 @@ class SiteController extends Controller {
     }
 
     public function actionViewSerializedDocument(){
+        $serialized = serialize(array('hamster', 'burger','kanin'));
         $db = CallDB::Instance();
-        $result = $db->deserialize('1');
-        print_r($result);
+        //$db->addInvoice($serialized);
+        $result = $db->deserialize('1140');
+        var_dump(($result));
     }
     
     public function actionAxForm()
