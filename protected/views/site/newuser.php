@@ -17,12 +17,7 @@
         <div class="row">
             <h3>User / Partner 1</h3>
         </div>
-        <div class="row">
-             <?php echo CHtml::label('Nameamajig','',
-        array('id'=>'idTextFields', 'width'=>100,'maxlength'=>100)); ?>
-           <?php echo CHtml::textField('Nameamajig','',
-        array('id'=>'idTextField', 'width'=>100,'maxlength'=>100)); ?>
-            
+        <div class="row">   
             <?php echo $form->labelEx($model, 'username') ?>
             <?php echo $form->textField($model, 'username') ?>
             <?php echo $form->error($model, 'username') ?> 
@@ -172,8 +167,48 @@
         <h3>Betaling</h3>              
     </div>  
      <div class="row">
-        
+     <?php echo CHtml::label('Konto','',array('id'=>'KontoLabel', 'width'=>100)); ?>
+     <?php echo CHtml::textField('Konto_name','',array('id'=>'Konto', 'width'=>100,'maxlength'=>100)); ?>
     </div>
+     <div class="row">
+     <?php echo CHtml::label('Konto','',array('id'=>'KontoLabel', 'width'=>100)); ?>
+     <?php echo CHtml::textField('Konto_name','',array('id'=>'Konto', 'width'=>100,'maxlength'=>100)); ?>
+    </div>
+     <div class="row">
+     <?php echo CHtml::label('Konto','',array('id'=>'KontoLabel', 'width'=>100)); ?>
+     <?php echo CHtml::textField('Konto_name','',array('id'=>'Konto', 'width'=>100,'maxlength'=>100)); ?>
+    </div>
+     <div class="row">
+     <?php echo CHtml::label('Konto','',array('id'=>'KontoLabel', 'width'=>100)); ?>
+     <?php echo CHtml::textField('Konto_name','',array('id'=>'Konto', 'width'=>100,'maxlength'=>100)); ?>
+    </div>
+      <div class="row">
+     <?php echo CHtml::label('Betalings dato',''); ?>
+     <?php
+        $this->widget('zii.widgets.jui.CJuiDatePicker', array(
+                    'name' => 'paiddate',
+                    'attribute' => 'date_from',
+                    'htmlOptions' => array(
+                    'size' => '10',         // textField size
+                    'maxlength' => '10',    // textField maxlength
+    ),
+));
+?>
+          <?php echo CHtml::label('Levereings dato',''); ?>
+     <?php
+        $this->widget('zii.widgets.jui.CJuiDatePicker', array(
+                    'name' => 'deliverydate',
+                    'attribute' => 'date_from',
+                    'htmlOptions' => array(
+                    'size' => '10',         // textField size
+                    'maxlength' => '10',    // textField maxlength
+    ),
+));
+?>
+<?php echo $form->error($model,'date_from'); ?>
+</div>
+     
+     
     
     <div class="row buttons" style="width:800px; float:left; margin-bottom: 10px;">
     <?php echo CHtml::submitButton('Submit', array('class' => 'fancybutton')); ?>
