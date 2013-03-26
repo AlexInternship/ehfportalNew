@@ -50,7 +50,7 @@ class Serializer {
             $serializeArray['Juridiskadresse'][$key] =$value;
         }
 
-        
+       
                 
         
     }

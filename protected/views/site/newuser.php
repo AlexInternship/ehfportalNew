@@ -18,6 +18,11 @@
             <h3>User / Partner 1</h3>
         </div>
         <div class="row">
+             <?php echo CHtml::label('Nameamajig','',
+        array('id'=>'idTextFields', 'width'=>100,'maxlength'=>100)); ?>
+           <?php echo CHtml::textField('Nameamajig','',
+        array('id'=>'idTextField', 'width'=>100,'maxlength'=>100)); ?>
+            
             <?php echo $form->labelEx($model, 'username') ?>
             <?php echo $form->textField($model, 'username') ?>
             <?php echo $form->error($model, 'username') ?> 
@@ -131,19 +136,35 @@
     </div>  
     <div class="invoicelines">
         <div class="invoiceline row" >
-            
+            <div style="width: 160px; height: 45px; margin:3px;float:left;clear:left;">
             <?php echo $form->labelEx($invoicelines, 'Beskrivelse') ?>
             <?php echo $form->textField($invoicelines, '[1]itemnumber') ?>
             <?php echo $form->error($invoicelines, '[1]itemnumber') ?>
-        
-           
-            <?php echo $form->labelEx($invoicelines, 'Antal') ?>
+            </div>    
+            <div style="width: 160px; height: 45px; margin:3px; float:left;">
+            <?php echo $form->labelEx($invoicelines, 'Pris') ?>
             <?php echo $form->textField($invoicelines, '[1]invoiced') ?>
             <?php echo $form->error($invoicelines, '[1]invoiced') ?>
-  
-            
+            </div>
+            <div style="width: 60px; height: 45px; margin:3px; float:left;">
+            <?php echo $form->labelEx($invoicelines, 'Antal') ?>
+            <?php echo $form->textField($invoicelines, '[1]invoiced',array('style'=>'width:50px;')) ?>
+            <?php echo $form->error($invoicelines, '[1]invoiced') ?>
+            </div>
+            <div style="width: 60px; height: 45px; margin:3px; float:left;">
+            <?php echo $form->labelEx($invoicelines, 'Moms') ?>
+            <?php echo $form->textField($invoicelines, '[1]invoiced',array('style'=>'width:50px;')) ?>
+            <?php echo $form->error($invoicelines, '[1]invoiced') ?>
+            </div>
+            <div style="width: 100px; height: 45px; margin:3px; float:left;">
+            <?php echo $form->labelEx($invoicelines, 'Noget mere') ?>
+            <?php echo $form->textField($invoicelines, '[1]invoiced',array('style'=>'width:50px;')) ?>
+            <?php echo $form->error($invoicelines, '[1]invoiced') ?>
+            </div>
+            <div style="width: 200px;  height: 45px; margin:3px; float:left;">
             <?php echo CHtml::Button('-', array('onClick'=>'deleterow()' ,'class' => 'fancybutton remove')); ?>
             <?php echo CHtml::Button('+', array('onClick'=>'dubTest()' , 'class' => 'fancybutton add')); ?>
+            </div>
         </div>          
     </div>
      <div class="horisontalsplitter"></div>          
