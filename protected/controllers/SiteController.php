@@ -234,20 +234,34 @@ class SiteController extends Controller {
        $db = CallDB::Instance();
        $mailService = SendMail::Instance();
        $generator = RandomPassword::Instance();
-       $ourinvoicelines = new Ourinvoicelines;
+       $invoiceArray = array();
+       $valid = true;
+       $invoicelines = new Invoicelines();
+
 
        /*if (isset($_POST['User'], $_POST['Partner1'], $_POST['Partner2'], $_POST['Address1'], $_POST['Address2'])) {*/
            if(!empty($_POST)) {
             
-            // echo print_R($_POST); die;
+            echo print_R($_POST); die;
 
             $model->attributes = $_POST['Users'];
             $partner1->attributes = $_POST['Partners'][1];
             $partner2->attributes = $_POST['Partners'][2];
             $address1->attributes = $_POST['Address'][1];
             $address2->attributes = $_POST['Address'][2];
+            
+            foreach ($array as $key => $value) {
+                $invoice = new Invoicelines();
+                $invoice->attributes = $_POST['Ourinvoicelines'][$value];
+                $valid=$invoice->validate() && $valid;                
+                array_push($invoiceArray, $invoice);
+            }
+            
+            $invoicelines->attributes = $_POST['Ourinvoicelines'];
 
-            $valid=$address1->validate();
+            
+
+            $valid=$address1->validate() && $valid;
             $valid=$address2->validate() && $valid;
             $valid=$partner1->validate() && $valid;
             $valid=$partner2->validate() && $valid;
