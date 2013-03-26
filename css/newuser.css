@@ -103,3 +103,27 @@ div.form div.error input {
     margin:20px;
     border-left: 1px solid #888;    
 }
+.horisontalsplitter{
+    border-top:1px solid #888;
+    margin: 20px;
+    width: 500px;
+    clear:left;
+    
+}
+.add:hover{
+    background:#339900;}
+.add{
+    background: #23B110; 
+    padding:2px 4px; 
+    width:20px; 
+    display:inline-block;
+}
+.remove:hover{
+    background: #8d0303;
+}
+.remove{
+    background: #CC0008; 
+    padding:2px 4px; 
+    width:20px; 
+    display:inline-block;
+}
