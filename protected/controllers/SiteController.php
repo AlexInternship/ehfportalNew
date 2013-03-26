@@ -285,6 +285,7 @@ class SiteController extends Controller {
        $db = CallDB::Instance();
        $mailService = SendMail::Instance();
        $generator = RandomPassword::Instance();
+       $serializer = Serializer::Instance();
 
        $invoicelines = new Invoicelines();
 
@@ -333,6 +334,9 @@ class SiteController extends Controller {
                 $db->newAdress($address1Array, $partnerId1, $partner1Array['validcvr']);
                 $db->newAdress($address2Array, $partnerId2, $partner2Array['validcvr']);
                 $db->newUser($userArray, $password, $partnerId1, $address1Array['phone']);
+                $serialized = $serializer->serializeDocument($invoiceArray);
+                $db->addInvoice($serialized);
+                
                 //$db->newInvoice 
 //$db->addInvoice($serialized);
                 $mailService->sendNewUserMail($userArray['email'] ,$userArray['username'], $password);

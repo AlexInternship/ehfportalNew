@@ -14,7 +14,7 @@ class Serializer {
         $serializeArray = array('Fakturadata'=> '');
         foreach ($invoiceArray as $key =>  $value) {            
             $serializeArray['Fakturadata'][$key] =$value;
-        }
+        };
         
         array_push($serializeArray, $invoiceArray['FakturaDato']);
         array_push($serializeArray, $invoiceArray['partner']);
@@ -40,93 +40,67 @@ class Serializer {
         
         foreach ($addresseArray1 as $key =>  $value) {            
             $serializeArray['Leveringsadresse'][$key] =$value;
-        }
+        };
         
         foreach ($addresseArray2 as $key =>  $value) {            
             $serializeArray['Faktureringsadresse'][$key] =$value;
-        }
+        };
         
         foreach ($addresseArray3 as $key =>  $value) {            
             $serializeArray['Juridiskadresse'][$key] =$value;
         }
-
-       
-                
         
+        array_push($serializeArray, $invoiceArray['Kundenavn']);
+        array_push($serializeArray, $invoiceArray['EANlokationsnr']);
+        array_push($serializeArray, $invoiceArray['kontraktReference']);
+        array_push($serializeArray, $invoiceArray['Seneste_rettidige_betalingsdato']);
+        array_push($serializeArray, $invoiceArray['Leveringsdato']);
+        array_push($serializeArray, $invoiceArray['Ordrenummer']);
+        array_push($serializeArray, $invoiceArray['Fakturanummer']);
+        array_push($serializeArray, $invoiceArray['Kreditnotanummer']);
+        array_push($serializeArray, $invoiceArray['refno']);
+        array_push($serializeArray, $invoiceArray['buyercontact']);
+        array_push($serializeArray, $invoiceArray['sellercontact']);
+        array_push($serializeArray, $invoiceArray['orderContactName']);
+        array_push($serializeArray, $invoiceArray['sellersOrderID']);
+        array_push($serializeArray, $invoiceArray['Ordredato']);
+        array_push($serializeArray, $invoiceArray['dimaccount']);
+        array_push($serializeArray, $invoiceArray['KontantRabatSats']);
+        array_push($serializeArray, $invoiceArray['KontantRabatDato']);
+        array_push($serializeArray, $invoiceArray['StrafRenteSats']);
+        array_push($serializeArray, $invoiceArray['StrafRenteDato']);
+        array_push($serializeArray, $invoiceArray['shipping']);
+
+         foreach ($invoiceArray as $key =>  $value) {            
+            $serializeArray['vatyn'][$key] =$value;
+        };
+
+        array_push($serializeArray, $invoiceArray['tax']);
+        array_push($serializeArray, $invoiceArray['duty']);
+        array_push($serializeArray, $invoiceArray['importchg']);
+        array_push($serializeArray, $invoiceArray['Tillaeg']);
+        array_push($serializeArray, $invoiceArray['Fradrag']);
+        array_push($serializeArray, $invoiceArray['Varetotal']);
+        array_push($serializeArray, $invoiceArray['Varebeloeb']);
+        array_push($serializeArray, $invoiceArray['momsgrundlag']);
+        array_push($serializeArray, $invoiceArray['linjetotal_eks_moms']);
+
+        foreach ($invoiceArray as $key =>  $value) {            
+            $serializeArray['ehf_momsgrundlag'][$key] =$value;
+        };
+        
+        foreach ($invoiceArray as $key =>  $value) {            
+            $serializeArray['ehf_moms'][$key] =$value;
+        };
+        
+        array_push($serializeArray, $invoiceArray['ehf_moms_total']);
+        array_push($serializeArray, $invoiceArray['Moms']);
+
+        foreach ($invoiceArray as $key =>  $value) {            
+            $serializeArray['Attachment'][$key] =$value;
+        };
+        
+        return serialize($serializeArray);
     }
 }
-
-
-     /*   
-               
-                'Kundenavn' => 'Norges Forskningsråd',
-                'EANlokationsnr' => '970141669',
-                'kontraktReference' => '',
-                'Seneste_rettidige_betalingsdato' => '19/01/2013',
-                'Leveringsdato' => '20/12/2012',
-                'Ordrenummer' => '',
-                'Fakturanummer' => '155690',
-                'Kreditnotanummer' => '',
-                'refno' => '',
-                'buyercontact' => 'Trude Hauge',
-                'sellercontact' => 'Terje Sivertsen',
-                'orderContactName' => '',
-                'sellersOrderID' => '',
-                'Ordredato' => '',
-                'dimaccount' => '',
-                'KontantRabatSats' => '', 
-                'KontantRabatDato' => '',
-                'StrafRenteSats' => '',
-                'StrafRenteDato' => '',
-                'shipping' => '0',
-                'vatyn' => Array
-                    (
-                        'shipping' => '', 
-                        'tax' => '',
-                        'duty' => '',
-                        'importchg' => '', 
-                        'Tillaeg' => '',
-                        'Fradrag' => '',
-                    ),
-
-                'tax' => '0',
-                'duty' => '0',
-                'importchg' => '0',
-                'Tillaeg' => '0',
-                'Fradrag' => '0',
-                'Varetotal' => '109262.5',
-                'Varebeloeb' => '87410',
-                'momsgrundlag' => '0.00',
-                'linjetotal_eks_moms' => '87410',
-                'ehf_momsgrundlag' => Array
-                    (
-                        '25' => '87410'
-                    ),
-
-                'ehf_moms' => Array
-                    (
-                        '25' => '21852.5'
-                    ),
-
-                'ehf_moms_total' => '21852.5',
-                'Moms' => '0',
-                'Attachment' => Array
-                    (
-                        '0' => Array
-                            (
-                                'Embedded' => Array
-                            (
-                                'Filnavn' => '0802_001.pdf',
-                                'Mime' => 'application/pdf',
-                                'id' => 'Fakturagrunnlag',
-                            )
-                         )
-
-                    )
-
-            );
-             return $array;
-      * 
-      */
-
 ?>
