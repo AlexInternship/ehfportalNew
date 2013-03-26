@@ -80,11 +80,20 @@ $("<input></input>",{
 
 
 function dubTest(){
-    var a = $('.invoiceline').clone();
-    $("<div></div",{
-        "class":"row",
-        "html":a
-    }).appendTo(".invoicelines");
+   
+      var count = $('.invoiceline').length;
+      var name = 'Invoicelines['+(1+count)+'][itemnumber]'; 
+      var id = 'Invoicelines_[' + (1+count) + ']_itembumber';    
+      var item = $('.invoiceline:first').clone();
+      
+      
+      item.find('input:first').attr('id', id);
+      item.find('input:first').attr('name', name);
+      item.find('label:first').attr('for', 'Invoicelines_Beskrivelse')
+          .html('Beskrivelse');
+      item.appendTo('.invoicelines');
+ 
+    
 }
 
 function deleterow(){
