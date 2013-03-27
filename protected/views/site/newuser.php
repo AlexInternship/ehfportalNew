@@ -190,19 +190,19 @@
 </div>
      <div class="row">
      <?php echo CHtml::label('Info til køber','',array('id'=>'info_til_indkoeber_Label', 'width'=>100)); ?>
-     <?php echo CHtml::textField('Fakturadata[Info_til_indkoeber]','',array('id'=>'Info_til_indkoeber', 'width'=>100,'maxlength'=>100)); ?>
+     <?php echo CHtml::textField('Fakturadata[0][Info_til_indkoeber]','',array('id'=>'Info_til_indkoeber', 'width'=>100,'maxlength'=>100)); ?>
     </div>
      <div class="row">
      <?php echo CHtml::label('Fakturadata[Order id]','',array('id'=>'order_id_label', 'width'=>100)); ?>
-     <?php echo CHtml::textField('fakturadata[order_id]','',array('id'=>'order_id', 'width'=>100,'maxlength'=>100)); ?>
+     <?php echo CHtml::textField('Fakturadata[0][order_id]','',array('id'=>'order_id', 'width'=>100,'maxlength'=>100)); ?>
     </div>
     <div class="row">
      <?php echo CHtml::label('Type','',array('id'=>'type_label', 'width'=>100)); ?>
-     <?php echo CHtml::textField('fakturadata[type]','',array('id'=>'type', 'width'=>100,'maxlength'=>100)); ?>
+     <?php echo CHtml::textField('Fakturadata[0][type]','',array('id'=>'type', 'width'=>100,'maxlength'=>100)); ?>
     </div>
     <div class="row">
      <?php echo CHtml::label('Momssats','',array('id'=>'Momssats_label', 'width'=>100)); ?>
-     <?php echo CHtml::textField('Fakturadata[momssats]','',array('id'=>'Momssats', 'width'=>100,'maxlength'=>100)); ?>
+     <?php echo CHtml::textField('Fakturadata[0][momssats]','',array('id'=>'Momssats', 'width'=>100,'maxlength'=>100)); ?>
     </div>
      <div class="row">
      <?php echo CHtml::label('Kortart','',array('id'=>'kortart_label', 'width'=>100)); ?>

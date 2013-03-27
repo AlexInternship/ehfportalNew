@@ -423,3 +423,129 @@ Array ( [Users] => Array ( [username] => [firstname] => [lastname] => [email] =>
 [momsgrundlag] => 
 [linjetotal_eks_moms] =>
 [yt2] => Submit ) 1*/
+
+/*
+ array(52) { 
+["Fakturadata"]=> 
+		array(2) { 
+			[0]=> array(11) 
+			{ 
+				["Momsfri"]=> string(2) "Ja" 
+				["Antal"]=> float(10) 
+				["Pris"]=> float(100) 
+				["dimaccount"]=> NULL
+				["Varebeloeb"]=> float(1000) 
+				["Betegnelse_for_nettoindhold"]=> string(2) "EA" 
+				["ehf_vat"]=> string(2) "15" 
+				["Skaffevare"]=> string(2) "Ja" 
+				["Ordrefradrag"]=> string(3) "Nej" 
+				["Varenavn"]=> string(7) "Linie 1" 
+				["Varenummer"]=> string(1) "1" 
+
+			} 
+
+			[1]=> array(11) 
+			{ 
+				["Momsfri"]=> string(2) "Ja" 
+				["Antal"]=> float(200) 
+				["Pris"]=> float(200) 
+				["dimaccount"]=> NULL 
+				["Varebeloeb"]=> float(40000) 
+				["Betegnelse_for_nettoindhold"]=> string(2) "EA" 
+				["Skaffevare"]=> string(2) "Ja" 
+				["Ordrefradrag"]=> string(3) "Nej" 
+				["Varenavn"]=> string(7) "Linie 2" 
+				["Varenummer"]=> string(1) "2" 
+				["ehf_vat"]=> string(1) "5" 
+			} 
+
+		} 
+["Fakturadato"]=> string(10) "18/05/2012" 
+["partner"]=> NULL 
+["partner_id"]=> string(1) "3" 
+["Info_til_indkoeber"]=> string(16) "Her er fakturaen" 
+["order_id"]=> NULL ["type"]=> string(3) "ehf" 
+["Momssats"]=> float(0) 
+["kortart"]=> NULL 
+["giro"]=> string(7) "1234561" 
+["girocreditor"]=> NULL 
+["paymenttype"]=> NULL 
+["invoice_id"]=> int(35) 
+["bank"]=> string(0) "" 
+["bankbranch"]=> string(0) "" 
+["regno"]=> string(0) "" 
+["account"]=> string(2) "23" 
+["bic"]=> string(0) "" 
+["iban"]=> string(0) "" 
+["comment"]=> string(25) "Intern kommentar was here" 
+["status"]=> string(4) "open" 
+["behandler"]=> string(11) "Morten Boas" 
+	["Leveringsadresse"]=> array(7) 
+	{ 
+		["Adresse1"]=> string(14) "Sønderengen 94" 
+		["Adresse2"]=> string(0) "" 
+		["Adresse3"]=> NULL 
+		["Postnummer"]=> string(4) "2870" 
+		["Bynavn"]=> string(9) "Dyssegård" 
+		["cvr"]=> string(9) "998082471" 
+		["eanno"]=> string(0) "" 
+	} 
+	["Faktureringsadresse"]=> array(7) 
+	{ 
+		["Adresse1"]=> string(14) "Sønderengen 94" 
+		["Adresse2"]=> string(0) "" 
+		["Adresse3"]=> NULL 
+		["Postnummer"]=> string(4) "2870" 
+		["Bynavn"]=> string(9) "Dyssegård" 
+		["cvr"]=> string(9) "998082471" 
+		["eanno"]=> string(0) "" 
+	} 
+	["Juridiskadresse"]=> array(7) 
+	{ 
+		["Adresse1"]=> string(0) "" 
+		["Adresse2"]=> string(0) "" 
+		["Adresse3"]=> NULL 
+		["Postnummer"]=> string(0) "" 
+		["Bynavn"]=> string(0) "" 
+		["cvr"]=> string(9) "998082471" 
+		["eanno"]=> string(0) "" 
+	} 
+["Kundenavn"]=> string(9) "EHF kunde" 
+["EANlokationsnr"]=> string(9) "998082471" 
+["Seneste_rettidige_betalingsdato"]=> string(10) "24/05/2012" 
+["Ordrenummer"]=> NULL 
+["Fakturanummer"]=> string(1) "1"
+["Kreditnotanummer"]=> NULL 
+["buyercontact"]=> string(15) "Kirsten Poulsen" 
+["sellersOrderID"]=> string(2) "12" 
+["Ordredato"]=> bool(false) 
+["dimaccount"]=> NULL 
+["KontantRabatSats"]=> NULL 
+["KontantRabatDato"]=> bool(false) 
+["StrafRenteSats"]=> NULL 
+["StrafRenteDato"]=> bool(false) 
+["shipping"]=> float(0)
+ 
+	["vatyn"]=> array(6) 
+	{ 
+		["shipping"]=> NULL 
+		["tax"]=> NULL 
+		["duty"]=> NULL 
+		["importchg"]=> NULL 
+		["Tillaeg"]=> NULL 
+		["Fradrag"]=> NULL 
+	} 
+["tax"]=> float(0) 
+["duty"]=> float(0) 
+["importchg"]=> float(0) 
+["Tillaeg"]=> float(0) 
+["Fradrag"]=> float(0) 
+["Varebeloeb"]=> float(41000) 
+["Varetotal"]=> float(41000) 
+["Moms"]=> float(0) 
+["Leveringsdato"]=> string(10) "19/05/2012" 
+["ordreReference"]=> string(8) "MB ordre" 
+["kontraktReference"]=> string(11) "MB kontrakt" 
+
+}
+ */
