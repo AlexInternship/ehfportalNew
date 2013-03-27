@@ -372,4 +372,54 @@ MzMyNwolJUVPRgo=
  * 
  * 
  */
-?>
+/*
+Array ( [Users] => Array ( [username] => [firstname] => [lastname] => [email] => ) [Address] => Array ( [1] => Array ( [phone] => [address1] => [address2] => [address3] => [zip] => [city] => ) [2] => Array ( [address1] => [address2] => [address3] => [zip] => [city] => ) ) [Partners] => Array ( [1] => Array ( [validcvr] => [name] => ) [2] => Array ( [name] => [email] => [validcvr] => ) ) [Invoicelines] => Array ( [1] => Array ( [itemnumber] => [invoiced] => 0.00000000 ) ) [Moms] => 
+[Fakturadata] => Array ( 
+[FakturaDato] => 
+[Info_til_indkoeber] => 
+[momssats] => 
+[kortart] => 
+[giro] => 
+[girocreditor] => 
+[paymenttype] => 
+[bank] => 
+[bankbranch] => 
+[regno] => 
+[account] => 
+[bic] => 
+[iban] => 
+[comment] => 
+[status] => 
+[behandler] => ) 
+
+[fakturadata] => Array ( 
+[order_id] => 
+[type] => ) 
+[EANlokationsnr] => 
+[kontraktReference] => 
+[Seneste_rettidige_betalingsdato] => 
+[Leveringsdato] => 
+[Ordrenummer] => 
+[Fakturanummer] => 
+[Kreditnotanummer] => 
+[refno] => 
+[buyercontact] => 
+[sellercontact] => 
+[orderContactName] => 
+[sellersOrderID] => 
+[Ordredato] => 
+[dimaccount] => 
+[KontantRabatSats] => 
+[KontantRabatDato] => 
+[StrafRenteDato] => 
+[shipping] => 
+[tax] => 
+[duty] => 
+[importchg] => 
+[Tillaeg] => 
+[Fradrag] => 
+[Varetotal] => 
+[Varebeloeb] => 
+[momsgrundlag] => 
+[linjetotal_eks_moms] =>
+[yt2] => Submit ) 1*/
