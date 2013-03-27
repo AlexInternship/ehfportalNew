@@ -127,3 +127,7 @@ div.form div.error input {
     width:20px; 
     display:inline-block;
 }
+#ui-datepicker-div
+{
+    z-index: 1102 !important;
+}
