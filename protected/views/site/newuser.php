@@ -167,7 +167,7 @@
         <h3>Betaling</h3>              
     </div>  
      <div class="row">
-     <?php echo CHtml::dropDownList('Moms', $select, 
+     <?php echo CHtml::dropDownList('Moms', '', 
               array('yes' => '25%', 'no' => '0%'),
               array('empty' => '(Vælg moms)'));?>
      </div>
