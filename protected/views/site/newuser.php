@@ -132,33 +132,57 @@
     <div class="invoicelines">
         <div class="invoiceline row" >
             <div style="width: 160px; height: 45px; margin:3px;float:left;clear:left;">
-            <?php echo $form->labelEx($invoicelines, 'Beskrivelse') ?>
-            <?php echo $form->textField($invoicelines, '[1]itemnumber') ?>
-            <?php echo $form->error($invoicelines, '[1]itemnumber') ?>
-            </div>    
-            <div style="width: 160px; height: 45px; margin:3px; float:left;">
-            <?php echo $form->labelEx($invoicelines, 'Pris') ?>
-            <?php echo $form->textField($invoicelines, '[1]invoiced') ?>
-            <?php echo $form->error($invoicelines, '[1]invoiced') ?>
+             <?php echo CHtml::label('Momsfri','',array('id'=>'Momsfri_label', 'width'=>100)); ?>
+             <?php echo CHtml::textField('Fakturadata[0][Momsfri]','',array('id'=>'Momsfri', 'width'=>100,'maxlength'=>100)); ?>
+            </div>  
+            <div style="width: 160px; height: 45px; margin:3px;float:left;">
+             <?php echo CHtml::label('Antal','',array('id'=>'antal_label', 'width'=>100)); ?>
+             <?php echo CHtml::textField('Fakturadata[0][antal]','',array('id'=>'antal', 'width'=>100,'maxlength'=>100)); ?>
+            </div> 
+            <div style="width: 160px; height: 45px; margin:3px;float:left;">
+             <?php echo CHtml::label('Pris','',array('id'=>'antal_label', 'width'=>100)); ?>
+             <?php echo CHtml::textField('Fakturadata[0][Pris]','',array('id'=>'antal', 'width'=>100,'maxlength'=>100)); ?>
             </div>
-            <div style="width: 60px; height: 45px; margin:3px; float:left;">
-            <?php echo $form->labelEx($invoicelines, 'Antal') ?>
-            <?php echo $form->textField($invoicelines, '[1]invoiced',array('style'=>'width:50px;')) ?>
-            <?php echo $form->error($invoicelines, '[1]invoiced') ?>
+            <div style="width: 160px; height: 45px; margin:3px;float:left;">
+             <?php echo CHtml::label('Dimaccont','',array('id'=>'dimaccont_label', 'width'=>100)); ?>
+             <?php echo CHtml::textField('Fakturadata[0][dimaccont]','',array('id'=>'dimaccont', 'width'=>100,'maxlength'=>100)); ?>
             </div>
-            <div style="width: 60px; height: 45px; margin:3px; float:left;">
-            <?php echo $form->labelEx($invoicelines, 'Moms') ?>
-            <?php echo $form->textField($invoicelines, '[1]invoiced',array('style'=>'width:50px;')) ?>
-            <?php echo $form->error($invoicelines, '[1]invoiced') ?>
+            <div style="width: 160px; height: 45px; margin:3px;float:left;">
+             <?php echo CHtml::label('Varebeloeb','',array('id'=>'Varebeloeb_label', 'width'=>100)); ?>
+             <?php echo CHtml::textField('Fakturadata[0][Varebeloeb]','',array('id'=>'Varebeloeb', 'width'=>100,'maxlength'=>100)); ?>
             </div>
-            <div style="width: 100px; height: 45px; margin:3px; float:left;">
-            <?php echo $form->labelEx($invoicelines, 'Noget mere') ?>
-            <?php echo $form->textField($invoicelines, '[1]invoiced',array('style'=>'width:50px;')) ?>
-            <?php echo $form->error($invoicelines, '[1]invoiced') ?>
+            <div style="width: 160px; height: 45px; margin:3px;float:left;">
+             <?php echo CHtml::label('Betegnelse_for_nettoindhold','',array('id'=>'Betegnelse_for_nettoindhold_label', 'width'=>100)); ?>
+             <?php echo CHtml::textField('Fakturadata[0][Betegnelse_for_nettoindhold]','',array('id'=>'Betegnelse_for_nettoindhold', 'width'=>100,'maxlength'=>100)); ?>
+            </div>
+            <div style="width: 160px; height: 45px; margin:3px;float:left;">
+             <?php echo CHtml::label('ehf_vat','',array('id'=>'ehf_vat_label', 'width'=>100)); ?>
+             <?php echo CHtml::textField('Fakturadata[0][ehf_vat]','',array('id'=>'ehf_vat', 'width'=>100,'maxlength'=>100)); ?>
+            </div>
+            <div style="width: 160px; height: 45px; margin:3px;float:left;">
+             <?php echo CHtml::label('Skaffevare','',array('id'=>'Skaffevare', 'width'=>100)); ?>
+             <?php echo CHtml::textField('Fakturadata[0][Skaffevare]','',array('id'=>'Skaffevare', 'width'=>100,'maxlength'=>100)); ?>
+            </div>
+            <div style="width: 160px; height: 45px; margin:3px;float:left;">
+             <?php echo CHtml::label('Ordrefradrag','',array('id'=>'Ordrefradrag_label', 'width'=>100)); ?>
+             <?php echo CHtml::textField('Fakturadata[0][Ordrefradrag]','',array('id'=>'Ordrefradrag', 'width'=>100,'maxlength'=>100)); ?>
+            </div>
+            <div style="width: 160px; height: 45px; margin:3px;float:left;">
+             <?php echo CHtml::label('Varenavn','',array('id'=>'Varenavn_label', 'width'=>100)); ?>
+             <?php echo CHtml::textField('Fakturadata[0][Varenavn]','',array('id'=>'Varenavn', 'width'=>100,'maxlength'=>100)); ?>
+            </div>
+            <div style="width: 160px; height: 45px; margin:3px;float:left;">
+             <?php echo CHtml::label('Varenummer','',array('id'=>'Varenummer_label', 'width'=>100)); ?>
+             <?php echo CHtml::textField('Fakturadata[0][Varenummer]','',array('id'=>'Varenummer', 'width'=>100,'maxlength'=>100)); ?>
             </div>
             <div style="width: 200px;  height: 45px; margin:3px; float:left;">
             <?php echo CHtml::Button('-', array('onClick'=>'deleterow()' ,'class' => 'fancybutton remove')); ?>
             <?php echo CHtml::Button('+', array('onClick'=>'dubTest()' , 'class' => 'fancybutton add')); ?>
+            </div>
+            <div class="row">
+            <?php echo CHtml::dropDownList('Moms', '', 
+              array('yes' => '25%', 'no' => '0%'),
+              array('empty' => '(Vælg moms)'));?>
             </div>
         </div>          
     </div>
@@ -166,18 +190,38 @@
     <div class="row1">
         <h3>Betaling</h3>              
     </div>  
-     <div class="row">
-     <?php echo CHtml::dropDownList('Moms', '', 
-              array('yes' => '25%', 'no' => '0%'),
-              array('empty' => '(Vælg moms)'));?>
-     </div>
+       <!-- Start på ehfportal.no form -->
      
       <div class="row">
   
      <?php echo CHtml::label('Faktura dato',''); ?>
      <?php
         $this->widget('zii.widgets.jui.CJuiDatePicker', array(
-                    'name' => 'Fakturadata[FakturaDato]',
+                    'name' => 'invoicedate',
+                    'attribute' => 'date_from',
+                    'htmlOptions' => array(
+                    'size' => '10',    
+                    'maxlength' => '10',
+                    'background' => 'lightgrey'
+    ),
+));
+?>
+          <?php echo CHtml::label('Forfalls dato',''); ?>
+     <?php
+        $this->widget('zii.widgets.jui.CJuiDatePicker', array(
+                    'name' => 'duedate',
+                    'attribute' => 'date_from',
+                    'htmlOptions' => array(
+                    'size' => '10',    
+                    'maxlength' => '10',
+                    'background' => 'lightgrey'
+    ),
+));
+?>
+          <?php echo CHtml::label('Leverings dato',''); ?>
+     <?php
+        $this->widget('zii.widgets.jui.CJuiDatePicker', array(
+                    'name' => 'deleverydate',
                     'attribute' => 'date_from',
                     'htmlOptions' => array(
                     'size' => '10',    
@@ -188,192 +232,95 @@
 ?>
 <?php echo $form->error($model,'date_from'); ?>
 </div>
+   
      <div class="row">
-     <?php echo CHtml::label('Info til køber','',array('id'=>'info_til_indkoeber_Label', 'width'=>100)); ?>
-     <?php echo CHtml::textField('Fakturadata[0][Info_til_indkoeber]','',array('id'=>'Info_til_indkoeber', 'width'=>100,'maxlength'=>100)); ?>
+     <?php echo CHtml::label('Kjøpsordrenr','',array('id'=>'info_til_indkoeber_Label', 'width'=>100)); ?>
+     <?php echo CHtml::textField('Fakturadata[Info_til_indkoeber]','',array('id'=>'Info_til_indkoeber', 'width'=>100,'maxlength'=>100)); ?>
     </div>
      <div class="row">
-     <?php echo CHtml::label('Fakturadata[Order id]','',array('id'=>'order_id_label', 'width'=>100)); ?>
-     <?php echo CHtml::textField('Fakturadata[0][order_id]','',array('id'=>'order_id', 'width'=>100,'maxlength'=>100)); ?>
+     <?php echo CHtml::label('Beskjed til kunde','',array('id'=>'order_id_label', 'width'=>100)); ?>
+     <?php echo CHtml::textField('Fakturadata[order_id]','',array('id'=>'order_id', 'width'=>100,'maxlength'=>100)); ?>
     </div>
     <div class="row">
-     <?php echo CHtml::label('Type','',array('id'=>'type_label', 'width'=>100)); ?>
-     <?php echo CHtml::textField('Fakturadata[0][type]','',array('id'=>'type', 'width'=>100,'maxlength'=>100)); ?>
+     <?php echo CHtml::label('Bank kontonr.','',array('id'=>'type_label', 'width'=>100)); ?>
+     <?php echo CHtml::textField('Fakturadata[type]','',array('id'=>'type', 'width'=>100,'maxlength'=>100)); ?>
     </div>
     <div class="row">
-     <?php echo CHtml::label('Momssats','',array('id'=>'Momssats_label', 'width'=>100)); ?>
-     <?php echo CHtml::textField('Fakturadata[0][momssats]','',array('id'=>'Momssats', 'width'=>100,'maxlength'=>100)); ?>
+     <?php echo CHtml::label('MVA grunnlag','',array('id'=>'Momssats_label', 'width'=>100)); ?>
+     <?php echo CHtml::textField('Fakturadata[momssats]','',array('id'=>'Momssats', 'width'=>100,'maxlength'=>100)); ?>
     </div>
      <div class="row">
-     <?php echo CHtml::label('Kortart','',array('id'=>'kortart_label', 'width'=>100)); ?>
+     <?php echo CHtml::label('Fakturanummer','',array('id'=>'kortart_label', 'width'=>100)); ?>
      <?php echo CHtml::textField('Fakturadata[kortart]','',array('id'=>'kortart', 'width'=>100,'maxlength'=>100)); ?>
     </div>
       <div class="row">
-     <?php echo CHtml::label('Giro','',array('id'=>'giro_label', 'width'=>100)); ?>
+     <?php echo CHtml::label('KID','',array('id'=>'giro_label', 'width'=>100)); ?>
      <?php echo CHtml::textField('Fakturadata[giro]','',array('id'=>'giro', 'width'=>100,'maxlength'=>100)); ?>
     </div>
     <div class="row">
-     <?php echo CHtml::label('Giro creditor','',array('id'=>'girocreditor_label', 'width'=>100)); ?>
+     <?php echo CHtml::label('MVA','',array('id'=>'girocreditor_label', 'width'=>100)); ?>
      <?php echo CHtml::textField('Fakturadata[girocreditor]','',array('id'=>'girocreditor', 'width'=>100,'maxlength'=>100)); ?>
     </div>
      <div class="row">
-     <?php echo CHtml::label('Betalings type','',array('id'=>'paymenttype_label', 'width'=>100)); ?>
+     <?php echo CHtml::label('Fakturatotal eks. MVA','',array('id'=>'paymenttype_label', 'width'=>100)); ?>
      <?php echo CHtml::textField('Fakturadata[paymenttype]','',array('id'=>'paymenttype', 'width'=>100,'maxlength'=>100)); ?>
     </div>
     <div class="row">
-     <?php echo CHtml::label('Bank','',array('id'=>'bank_label', 'width'=>100)); ?>
+     <?php echo CHtml::label('Fakturatotal inkl. MVA','',array('id'=>'bank_label', 'width'=>100)); ?>
      <?php echo CHtml::textField('Fakturadata[bank]','',array('id'=>'bank', 'width'=>100,'maxlength'=>100)); ?>
     </div>
      <div class="row">
-     <?php echo CHtml::label('bankbranch','',array('id'=>'bankbranch_label', 'width'=>100)); ?>
+     <?php echo CHtml::label('Deres ref.','',array('id'=>'bankbranch_label', 'width'=>100)); ?>
      <?php echo CHtml::textField('Fakturadata[bankbranch]','',array('id'=>'bankbranch', 'width'=>100,'maxlength'=>100)); ?>
     </div>
      <div class="row">
-     <?php echo CHtml::label('regno','',array('id'=>'regno_label', 'width'=>100)); ?>
+     <?php echo CHtml::label('Vår ref.','',array('id'=>'regno_label', 'width'=>100)); ?>
      <?php echo CHtml::textField('Fakturadata[regno]','',array('id'=>'regno', 'width'=>100,'maxlength'=>100)); ?>
     </div>
      <div class="row">
-     <?php echo CHtml::label('account','',array('id'=>'account_label', 'width'=>100)); ?>
+     <?php echo CHtml::label('Intern kommentar','',array('id'=>'account_label', 'width'=>100)); ?>
      <?php echo CHtml::textField('Fakturadata[account]','',array('id'=>'account', 'width'=>100,'maxlength'=>100)); ?>
     </div>
      <div class="row">
-     <?php echo CHtml::label('bic','',array('id'=>'bic_label', 'width'=>100)); ?>
+     <?php echo CHtml::label('Kontrakt nr.','',array('id'=>'bic_label', 'width'=>100)); ?>
      <?php echo CHtml::textField('Fakturadata[bic]','',array('id'=>'bic', 'width'=>100,'maxlength'=>100)); ?>
     </div>
-     <div class="row">
-     <?php echo CHtml::label('iban','',array('id'=>'iban_label', 'width'=>100)); ?>
-     <?php echo CHtml::textField('Fakturadata[iban]','',array('id'=>'iban', 'width'=>100,'maxlength'=>100)); ?>
-    </div>
-    <div class="row">
-     <?php echo CHtml::label('comment','',array('id'=>'comment_label', 'width'=>100)); ?>
-     <?php echo CHtml::textField('Fakturadata[comment]','',array('id'=>'comment', 'width'=>100,'maxlength'=>100)); ?>
-    </div>
-     <div class="row">
-     <?php echo CHtml::label('Status','',array('id'=>'status_label', 'width'=>100)); ?>
-     <?php echo CHtml::textField('Fakturadata[status]','',array('id'=>'status', 'width'=>100,'maxlength'=>100)); ?>
-    </div>
-     <div class="row">
-     <?php echo CHtml::label('behandler','',array('id'=>'behandler_label', 'width'=>100)); ?>
-     <?php echo CHtml::textField('Fakturadata[behandler]','',array('id'=>'behandler', 'width'=>100,'maxlength'=>100)); ?>
-    </div>
-     <div class="row">
-     <?php echo CHtml::label('EANlokationsnr','',array('id'=>'EANlokationsnr_label', 'width'=>100)); ?>
-     <?php echo CHtml::textField('EANlokationsnr','',array('id'=>'EANlokationsnr', 'width'=>100,'maxlength'=>100)); ?>
-    </div>
-     <div class="row">
-     <?php echo CHtml::label('kontraktReference','',array('id'=>'kontraktReference_label', 'width'=>100)); ?>
-     <?php echo CHtml::textField('kontraktReference','',array('id'=>'kontraktReference', 'width'=>100,'maxlength'=>100)); ?>
-    </div>
-     <div class="row">
-     <?php echo CHtml::label('Seneste_rettidige_betalingsdato','',array('id'=>'Seneste_rettidige_betalingsdato_label', 'width'=>100)); ?>
-     <?php echo CHtml::textField('Seneste_rettidige_betalingsdato','',array('id'=>'kontraktReference', 'width'=>100,'maxlength'=>100)); ?>
-    </div>
-      <div class="row">
-     <?php echo CHtml::label('Leveringsdato','',array('id'=>'Leveringsdato_label', 'width'=>100)); ?>
-     <?php echo CHtml::textField('Leveringsdato','',array('id'=>'Leveringsdato', 'width'=>100,'maxlength'=>100)); ?>
-    </div>
-     <div class="row">
-     <?php echo CHtml::label('Ordrenummer','',array('id'=>'Ordrenummer_label', 'width'=>100)); ?>
-     <?php echo CHtml::textField('Ordrenummer','',array('id'=>'Ordrenummer', 'width'=>100,'maxlength'=>100)); ?>
-    </div>
-     <div class="row">
-     <?php echo CHtml::label('Fakturanummer','',array('id'=>'Fakturanummer_label', 'width'=>100)); ?>
-     <?php echo CHtml::textField('Fakturanummer','',array('id'=>'Fakturanummer', 'width'=>100,'maxlength'=>100)); ?>
-    </div>
-      <div class="row">
-     <?php echo CHtml::label('Kreditnotanummer','',array('id'=>'Kreditnotanummer_label', 'width'=>100)); ?>
-     <?php echo CHtml::textField('Kreditnotanummer','',array('id'=>'Kreditnotanummer', 'width'=>100,'maxlength'=>100)); ?>
-    </div>
-    <div class="row">
-     <?php echo CHtml::label('refno','',array('id'=>'refno_label', 'width'=>100)); ?>
-     <?php echo CHtml::textField('refno','',array('id'=>'refno', 'width'=>100,'maxlength'=>100)); ?>
-    </div> 
-     <div class="row">
-     <?php echo CHtml::label('buyercontact','',array('id'=>'buyercontact_label', 'width'=>100)); ?>
-     <?php echo CHtml::textField('buyercontact','',array('id'=>'buyercontact', 'width'=>100,'maxlength'=>100)); ?>
-    </div> 
-     <div class="row">
-     <?php echo CHtml::label('sellercontact','',array('id'=>'sellercontact_label', 'width'=>100)); ?>
-     <?php echo CHtml::textField('sellercontact','',array('id'=>'sellercontact', 'width'=>100,'maxlength'=>100)); ?>
-    </div> 
-     <div class="row">
-     <?php echo CHtml::label('orderContactName','',array('id'=>'orderContactName_label', 'width'=>100)); ?>
-     <?php echo CHtml::textField('orderContactName','',array('id'=>'orderContactName', 'width'=>100,'maxlength'=>100)); ?>
-    </div> 
-      <div class="row">
-     <?php echo CHtml::label('sellersOrderID','',array('id'=>'sellersOrderID_label', 'width'=>100)); ?>
-     <?php echo CHtml::textField('sellersOrderID','',array('id'=>'sellersOrderID', 'width'=>100,'maxlength'=>100)); ?>
-    </div>
-      <div class="row">
-     <?php echo CHtml::label('Ordredato','',array('id'=>'Ordredato_label', 'width'=>100)); ?>
-     <?php echo CHtml::textField('Ordredato','',array('id'=>'Ordredato', 'width'=>100,'maxlength'=>100)); ?>
-    </div> 
-    <div class="row">
-     <?php echo CHtml::label('dimaccount','',array('id'=>'dimaccount_label', 'width'=>100)); ?>
-     <?php echo CHtml::textField('dimaccount','',array('id'=>'dimaccount', 'width'=>100,'maxlength'=>100)); ?>
-    </div> 
-    <div class="row">
-     <?php echo CHtml::label('KontantRabatSats','',array('id'=>'KontantRabatSats_label', 'width'=>100)); ?>
-     <?php echo CHtml::textField('KontantRabatSats','',array('id'=>'KontantRabatSats', 'width'=>100,'maxlength'=>100)); ?>
-    </div> 
-    <div class="row">
-     <?php echo CHtml::label('KontantRabatDato','',array('id'=>'KontantRabatDato_label', 'width'=>100)); ?>
-     <?php echo CHtml::textField('KontantRabatDato','',array('id'=>'KontantRabatDato', 'width'=>100,'maxlength'=>100)); ?>
-    </div> 
-    <div class="row">
-     <?php echo CHtml::label('StrafRenteSats','',array('id'=>'StrafRenteSats_label', 'width'=>100)); ?>
-     <?php echo CHtml::textField('sellersOrderID','',array('id'=>'sellersOrderID', 'width'=>100,'maxlength'=>100)); ?>
-    </div> 
-    <div class="row">
-     <?php echo CHtml::label('StrafRenteDato','',array('id'=>'StrafRenteDato_label', 'width'=>100)); ?>
-     <?php echo CHtml::textField('StrafRenteDato','',array('id'=>'StrafRenteDato', 'width'=>100,'maxlength'=>100)); ?>
-    </div> 
-     <div class="row">
-     <?php echo CHtml::label('shipping','',array('id'=>'shipping_label', 'width'=>100)); ?>
-     <?php echo CHtml::textField('shipping','',array('id'=>'shipping', 'width'=>100,'maxlength'=>100)); ?>
-    </div> 
-     
-     
-     <div class="row">
-     <?php echo CHtml::label('tax','',array('id'=>'tax_label', 'width'=>100)); ?>
-     <?php echo CHtml::textField('tax','',array('id'=>'tax', 'width'=>100,'maxlength'=>100)); ?>
-    </div> 
-     <div class="row">
-     <?php echo CHtml::label('duty','',array('id'=>'duty_label', 'width'=>100)); ?>
-     <?php echo CHtml::textField('duty','',array('id'=>'duty', 'width'=>100,'maxlength'=>100)); ?>
-    </div> 
-     <div class="row">
-     <?php echo CHtml::label('importchg','',array('id'=>'importchg_label', 'width'=>100)); ?>
-     <?php echo CHtml::textField('importchg','',array('id'=>'importchg', 'width'=>100,'maxlength'=>100)); ?>
-    </div> 
-     <div class="row">
-     <?php echo CHtml::label('Tillaeg','',array('id'=>'Tillaeg_label', 'width'=>100)); ?>
-     <?php echo CHtml::textField('Tillaeg','',array('id'=>'Tillaeg', 'width'=>100,'maxlength'=>100)); ?>
-    </div> 
-     <div class="row">
-     <?php echo CHtml::label('Fradrag','',array('id'=>'Fradrag_label', 'width'=>100)); ?>
-     <?php echo CHtml::textField('Fradrag','',array('id'=>'Fradrag', 'width'=>100,'maxlength'=>100)); ?>
-    </div> 
-     <div class="row">
-     <?php echo CHtml::label('Varetotal','',array('id'=>'Varetotal_label', 'width'=>100)); ?>
-     <?php echo CHtml::textField('Varetotal','',array('id'=>'Varetotal', 'width'=>100,'maxlength'=>100)); ?>
-    </div> 
-     <div class="row">
-     <?php echo CHtml::label('Varebeloeb','',array('id'=>'Varebeloeb_label', 'width'=>100)); ?>
-     <?php echo CHtml::textField('Varebeloeb','',array('id'=>'Varebeloeb', 'width'=>100,'maxlength'=>100)); ?>
-    </div> 
-     <div class="row">
-     <?php echo CHtml::label('momsgrundlag','',array('id'=>'momsgrundlag_label', 'width'=>100)); ?>
-     <?php echo CHtml::textField('momsgrundlag','',array('id'=>'momsgrundlag', 'width'=>100,'maxlength'=>100)); ?>
-    </div> 
-     <div class="row">
-     <?php echo CHtml::label('tax','',array('id'=>'tax_label', 'width'=>100)); ?>
-     <?php echo CHtml::textField('tax','',array('id'=>'tax', 'width'=>100,'maxlength'=>100)); ?>
-    </div> 
-     <div class="row">
-     <?php echo CHtml::label('linjetotal_eks_moms','',array('id'=>'linjetotal_eks_moms_label', 'width'=>100)); ?>
-     <?php echo CHtml::textField('linjetotal_eks_moms','',array('id'=>'linjetotal_eks_moms', 'width'=>100,'maxlength'=>100)); ?>
-    </div> 
+    
+    <!-- Start på hiddenField s  -->   
+     <?php echo CHtml::hiddenField('Fakturadata[iban]',''); ?>  
+     <?php echo CHtml::hiddenField('Fakturadata[comment]',''); ?> 
+     <?php echo CHtml::hiddenField('Fakturadata[status]',''); ?>
+     <?php echo CHtml::hiddenField('Fakturadata[behandler]','')?>
+     <?php echo CHtml::hiddenField('EANlokationsnr',''); ?>
+     <?php echo CHtml::hiddenField('kontraktReference','');?>
+     <?php echo CHtml::hiddenField('Seneste_rettidige_betalingsdato',''); ?>
+     <?php echo CHtml::hiddenField('Leveringsdato',''); ?>
+     <?php echo CHtml::hiddenField('Ordrenummer',''); ?>    
+     <?php echo CHtml::hiddenField('Fakturanummer',''); ?>  
+     <?php echo CHtml::hiddenField('Kreditnotanummer',''); ?>    
+     <?php echo CHtml::hiddenField('refno',''); ?>  
+     <?php echo CHtml::hiddenField('buyercontact',''); ?>  
+     <?php echo CHtml::hiddenField('sellercontact',''); ?>  
+     <?php echo CHtml::hiddenField('orderContactName',''); ?>
+     <?php echo CHtml::hiddenField('sellersOrderID',''); ?> 
+     <?php echo CHtml::hiddenField('Ordredato',''); ?>
+     <?php echo CHtml::hiddenField('dimaccount',''); ?>
+     <?php echo CHtml::hiddenField('KontantRabatSats',''); ?>
+     <?php echo CHtml::hiddenField('KontantRabatDato',''); ?>
+     <?php echo CHtml::hiddenField('sellersOrderID',''); ?> 
+     <?php echo CHtml::hiddenField('StrafRenteDato',''); ?>    
+     <?php echo CHtml::hiddenField('shipping',''); ?>    
+     <?php echo CHtml::hiddenField('tax',''); ?>   
+     <?php echo CHtml::hiddenField('duty',''); ?>    
+     <?php echo CHtml::hiddenField('importchg',''); ?>    
+     <?php echo CHtml::hiddenField('Tillaeg',''); ?> 
+     <?php echo CHtml::hiddenField('Fradrag',''); ?>   
+     <?php echo CHtml::hiddenField('Varetotal',''); ?> 
+     <?php echo CHtml::hiddenField('Varebeloeb',''); ?>   
+     <?php echo CHtml::hiddenField('momsgrundlag',''); ?>   
+     <?php echo CHtml::hiddenField('tax',''); ?>   
+     <?php echo CHtml::hiddenField('linjetotal_eks_moms',''); ?>
+    
      
      
      

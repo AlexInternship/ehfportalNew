@@ -5,14 +5,13 @@ function dubTest(){
       var item = $('.invoiceline:first').clone();
   
       // element 1
-      item.find('input').eq(0).attr('id', 'Invoicelines_[' + (actuallCount) + ']_itembumber');
-      item.find('input').eq(0).attr('name', 'Invoicelines['+(actuallCount)+'][itemnumber]');
-      item.find('div').eq(0).attr('id','Invoicelines_'+(actuallCount)+'_itemnumber_em_');
-      // element 2
-      item.find('input').eq(1).attr('id', 'Invoicelines_'+(actuallCount)+'_invoiced');
-      item.find('input').eq(1).attr('name', 'Invoicelines['+(actuallCount)+'][invoiced]');
-      item.find('div').eq(1).attr('id','Invoicelines_'+(actuallCount)+'_invoiced_em_');
+      item.find('input').eq(0).attr('id', 'Fakturadata[' + (actuallCount) + '][momsfri]');
+      item.find('input').eq(0).attr('name', 'Fakturadata['+(actuallCount)+'][momsfri]');
       
+      // element 2
+      item.find('input').eq(1).attr('id', 'Fakturadata['+(actuallCount)+'][antal]');
+      item.find('input').eq(1).attr('name', 'Fakturadata['+(actuallCount)+'][antal]');
+
       item.appendTo('.invoicelines');
 }
 
