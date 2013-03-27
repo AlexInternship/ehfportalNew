@@ -159,11 +159,11 @@
             </div> 
              <div style="width: 160px; height: 45px; margin:3px;float:left;">
              <?php echo CHtml::label('Varebeloeb','',array('id'=>'Varebeloeb_label', 'width'=>100)); ?>
-             <?php echo CHtml::textField('Fakturadata[0][Varebeloeb]','',array('id'=>'Varebeloeb', 'width'=>100,'maxlength'=>100)); ?>
+             <?php echo CHtml::textField('Fakturadata[0][Varebeloeb]',''); ?>
             </div>
-             <?php echo CHtml::hiddenField('Fakturadata[0][Skaffevare]','ja',array('id'=>'Skaffevare', 'width'=>100,'maxlength'=>100)); ?>           
+             <?php echo CHtml::hiddenField('Fakturadata[0][Skaffevare]','ja'); ?>           
              <?php echo CHtml::hiddenField('Fakturadata[0][Ordrefradrag]',''); ?>
-             <?php echo CHtml::hiddenField('Fakturadata[0][Momsfri]',''); ?>    
+             <?php echo CHtml::hiddenField('Fakturadata[0][Momsfri]',''); ?>   
             <div style="width: 50px;  height: 45px; margin:3px; float:left; padding:15px 0 0 0;">
             <?php echo CHtml::Button('-', array('onClick'=>'deleterow()' ,'class' => 'fancybutton remove')); ?>
             <?php echo CHtml::Button('+', array('onClick'=>'dubTest()' , 'class' => 'fancybutton add')); ?>
@@ -307,7 +307,24 @@
      <?php echo CHtml::hiddenField('momsgrundlag',''); ?>   
      <?php echo CHtml::hiddenField('tax',''); ?>   
      <?php echo CHtml::hiddenField('linjetotal_eks_moms',''); ?>
-    
+     <?php echo CHtml::hiddenField('vat[shipping]',''); ?>  
+             <?php echo CHtml::hiddenField('vat[tax]',''); ?> 
+             <?php echo CHtml::hiddenField('vat[duty]',''); ?>  
+             <?php echo CHtml::hiddenField('vat[importchg]',''); ?>  
+             <?php echo CHtml::hiddenField('vat[Tillaeg]',''); ?> 
+             <?php echo CHtml::hiddenField('vat[Fradrag]',''); ?>
+             <?php echo CHtml::hiddenField('duty','0'); ?>
+             <?php echo CHtml::hiddenField('importchg','0'); ?>
+             <?php echo CHtml::hiddenField('Tillaeg','0'); ?>
+             <?php echo CHtml::hiddenField('Fradrag','0'); ?>
+             <?php echo CHtml::hiddenField('Varetotal','0'); ?>
+             <?php echo CHtml::hiddenField('Varebeloeb','0'); ?>
+             <?php echo CHtml::hiddenField('momsgrundlag','0.00'); ?>
+             <?php echo CHtml::hiddenField('linjetotal_eks_moms','200.00'); ?>
+             <?php echo CHtml::hiddenField('ehf_momsgrundlag[25]','200'); ?>
+             <?php echo CHtml::hiddenField('ehf_moms[25]','50'); ?>
+             <?php echo CHtml::hiddenField('ehf_momsgrundlag_total','50');?>
+             <?php echo CHtml::hiddenField('Moms','0'); ?>
      
      
      
