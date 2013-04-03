@@ -13,17 +13,16 @@ class Serializer {
     public function serializeDocument($invoiceArray, $senderId, $receiverId, $orderId) {
         $serializeArray = array();
 
-        print_r($invoiceArray);
-        die;
-        
         if ($invoiceArray['Fakturadata'] != null) {
             foreach ($invoiceArray['Fakturadata'] as $key => $value) {
                 $serializeArray['Fakturadata'][$key] = $value;
             };
+            
+            print_r($serializeArray); die;    
         } else
             $serializeArray['Fakturadata'] = '';
-        if ($invoiceArray['invoicedate'] != null) {
-            $serializeArray['FakturaDato'] = $invoiceArray['invoicedate'];
+        if ($invoiceArray['FakturaDato'] != null) {
+            $serializeArray['FakturaDato'] = $invoiceArray['FakturaDato'];
         } else
             $serializeArray['FakturaDato'] = '';
         if ($invoiceArray['Patners'] != null) {
