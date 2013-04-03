@@ -10,97 +10,153 @@ class Serializer {
         return $inst;
     }
     
-    public function serializeDocument($invoiceArray){
-        $serializeArray = array('Fakturadata'=> '');
-        foreach ($invoiceArray as $key =>  $value) {            
+    public function serializeDocument($invoiceArray, $senderId, $receiverId, $orderId){
+        $serializeArray = array();
+        
+        print_r($invoiceArray); die;
+        
+        if ($invoiceArray['Fakturadata'] != null) {
+        foreach ($invoiceArray['Fakturadata'] as $key =>  $value) {
             $serializeArray['Fakturadata'][$key] =$value;
-        };
-        
-        array_push($serializeArray, $invoiceArray['FakturaDato']);
-        array_push($serializeArray, $invoiceArray['partner']);
-        array_push($serializeArray, $invoiceArray['partner_id']);
-        array_push($serializeArray, $invoiceArray['Info_til_indkoeber']);
-        array_push($serializeArray, $invoiceArray['order_id']);
-        array_push($serializeArray, $invoiceArray['type']);
-        array_push($serializeArray, $invoiceArray['Momssats']);
-        array_push($serializeArray, $invoiceArray['kortart']);
-        array_push($serializeArray, $invoiceArray['giro']);
-        array_push($serializeArray, $invoiceArray['girocreditor']);
-        array_push($serializeArray, $invoiceArray['paymenttype']);
-        array_push($serializeArray, $invoiceArray['invoice_id']);
-        array_push($serializeArray, $invoiceArray['bank']);
-        array_push($serializeArray, $invoiceArray['bankbranch']);
-        array_push($serializeArray, $invoiceArray['regno']);
-        array_push($serializeArray, $invoiceArray['account']);
-        array_push($serializeArray, $invoiceArray['bic']);
-        array_push($serializeArray, $invoiceArray['iban']);
-        array_push($serializeArray, $invoiceArray['comment']);
-        array_push($serializeArray, $invoiceArray['status']);
-        array_push($serializeArray, $invoiceArray['behandler']);
-        
-        foreach ($addresseArray1 as $key =>  $value) {            
-            $serializeArray['Leveringsadresse'][$key] =$value;
-        };
-        
-        foreach ($addresseArray2 as $key =>  $value) {            
+        };         
+        } else if ($invoiceArray['invoicedate'] != null) {    
+        $serializeArray['FakturaDato'] = $invoiceArray['invoicedate'];
+        } else if ($invoiceArray['Patners'] != null) {
+        $serializeArray['partner'] =$invoiceArray['Patners']['1']['name'];
+        } else if ($senderId != null) {
+        $serializeArray['partner_id'] =$senderId;
+        } else if ($invoiceArray['Info_til_indkoeber'] != null) {
+        $serializeArray['Info_til_indkoeber'] =$invoiceArray['Info_til_indkoeber'];
+        } else if ($invoiceArray['order_id'] != null) {
+        $serializeArray['order_id'] =$invoiceArray['order_id'];
+        } else if ($invoiceArray['type'] != null) {
+        $serializeArray['type'] =$invoiceArray['type'];
+        } else if ($invoiceArray['Momssats'] != null) {
+        $serializeArray['Momssats'] =$invoiceArray['Momssats'];
+        } else if ($invoiceArray['kortart'] != null) {
+        $serializeArray['kortart'] =$invoiceArray['kortart'];
+        } else if ($invoiceArray['giro'] != null) {
+        $serializeArray['giro'] =$invoiceArray['giro'];
+        } else if ($invoiceArray['girocreditor'] != null) {
+        $serializeArray['girocreditor'] =$invoiceArray['girocreditor'];
+        } else if ($invoiceArray['paymenttype'] != null) {
+        $serializeArray['paymenttype'] =$invoiceArray['paymenttype'];
+        } else if ($invoiceArray['invoice_id'] != null) {
+        $serializeArray['invoice_id'] =$invoiceArray['invoice_id'];
+        } else if ($invoiceArray['bank'] != null) {
+        $serializeArray['bank'] =$invoiceArray['bank'];
+        } else if ($invoiceArray['bankbranch'] != null) {
+        $serializeArray['bankbranch'] =$invoiceArray['bankbranch'];
+        } else if ($invoiceArray['regno'] != null) {
+        $serializeArray['regno'] =$invoiceArray['regno'];
+        } else if ($invoiceArray['account'] != null) {
+        $serializeArray['account'] =$invoiceArray['account'];
+        } else if ($invoiceArray['bic'] != null) {
+        $serializeArray['bic'] =$invoiceArray['bic'];
+        } else if ($invoiceArray['iban'] != null) {
+        $serializeArray['iban'] =$invoiceArray['iban'];
+        } else if ($invoiceArray['comment'] != null) {
+        $serializeArray['comment'] =$invoiceArray['comment'];
+        } else if ($invoiceArray['status'] != null) {
+        $serializeArray['status'] =$invoiceArray['status'];
+        } else if ($invoiceArray['behandler'] != null) {
+        $serializeArray['behandler'] =$invoiceArray['behandler'];
+        }
+        else if ($invoiceArray['Address'] != null) {
+            foreach ($invoiceArray as $key =>  $value) {            
+                $serializeArray['Leveringsadresse'][$key] =$value;
+            };
+        } else if ($invoiceArray['Address'] != null) {
+        foreach ($invoiceArray as $key =>  $value) {            
             $serializeArray['Faktureringsadresse'][$key] =$value;
         };
-        
-        foreach ($addresseArray3 as $key =>  $value) {            
-            $serializeArray['Juridiskadresse'][$key] =$value;
-        }
-        
-        array_push($serializeArray, $invoiceArray['Kundenavn']);
-        array_push($serializeArray, $invoiceArray['EANlokationsnr']);
-        array_push($serializeArray, $invoiceArray['kontraktReference']);
-        array_push($serializeArray, $invoiceArray['Seneste_rettidige_betalingsdato']);
-        array_push($serializeArray, $invoiceArray['Leveringsdato']);
-        array_push($serializeArray, $invoiceArray['Ordrenummer']);
-        array_push($serializeArray, $invoiceArray['Fakturanummer']);
-        array_push($serializeArray, $invoiceArray['Kreditnotanummer']);
-        array_push($serializeArray, $invoiceArray['refno']);
-        array_push($serializeArray, $invoiceArray['buyercontact']);
-        array_push($serializeArray, $invoiceArray['sellercontact']);
-        array_push($serializeArray, $invoiceArray['orderContactName']);
-        array_push($serializeArray, $invoiceArray['sellersOrderID']);
-        array_push($serializeArray, $invoiceArray['Ordredato']);
-        array_push($serializeArray, $invoiceArray['dimaccount']);
-        array_push($serializeArray, $invoiceArray['KontantRabatSats']);
-        array_push($serializeArray, $invoiceArray['KontantRabatDato']);
-        array_push($serializeArray, $invoiceArray['StrafRenteSats']);
-        array_push($serializeArray, $invoiceArray['StrafRenteDato']);
-        array_push($serializeArray, $invoiceArray['shipping']);
-
+        } else if ($invoiceArray['Address'] != null) {
+        foreach ($invoiceArray as $key =>  $value) {            
+            $serializeArray['Juridiskeadresse'][$key] =$value;
+        };
+        } else if ($invoiceArray['Kundenavn'] != null) {
+        $serializeArray['Kundenavn'] =$invoiceArray['Kundenavn'];
+        } else if ($invoiceArray['EANlokationsnr'] != null) {
+        $serializeArray['EANlokationsnr'] =$invoiceArray['EANlokationsnr'];
+        } else if ($invoiceArray['kontraktReference'] != null) {
+        $serializeArray['kontraktReference'] =$invoiceArray['kontraktReference'];
+        } else if ($invoiceArray['Seneste_rettidige_betalingsdato'] != null) {
+        $serializeArray['Seneste_rettidige_betalingsdato'] =$invoiceArray['Seneste_rettidige_betalingsdato'];
+        } else if ($invoiceArray['Leveringsdato'] != null) {
+        $serializeArray['Leveringsdato'] =$invoiceArray['Leveringsdato'];
+        } else if ($invoiceArray['Ordrenummer'] != null) {
+        $serializeArray['Ordrenummer'] =$invoiceArray['Ordrenummer'];
+        } else if ($invoiceArray['Fakturanummer'] != null) {
+        $serializeArray['Fakturanummer'] =$invoiceArray['Fakturanummer'];
+        } else if ($invoiceArray['Kreditnotanummer'] != null) {
+        $serializeArray['Kreditnotanummer'] =$invoiceArray['Kreditnotanummer'];
+        } else if ($invoiceArray['refno'] != null) {
+        $serializeArray['refno'] =$invoiceArray['refno'];
+        } else if ($invoiceArray['buyercontact'] != null) {
+        $serializeArray['buyercontact'] =$invoiceArray['buyercontact'];
+        } else if ($invoiceArray['sellercontact'] != null) {
+        $serializeArray['sellercontact'] =$invoiceArray['sellercontact'];
+        } else if ($invoiceArray['orderContactName'] != null) {
+        $serializeArray['orderContactName'] =$invoiceArray['orderContactName'];
+        } else if ($invoiceArray['sellersOrderID'] != null) {
+        $serializeArray['sellersOrderID'] =$invoiceArray['sellersOrderID'];
+        } else if ($invoiceArray['Ordredato'] != null) {
+        $serializeArray['Ordredato'] =$invoiceArray['Ordredato'];
+        } else if ($invoiceArray['dimaccount'] != null) {
+        $serializeArray['dimaccount'] =$invoiceArray['dimaccount'];
+        } else if ($invoiceArray['KontantRabatSats'] != null) {
+        $serializeArray['KontantRabatSats'] =$invoiceArray['KontantRabatSats'];
+        } else if ($invoiceArray['KontantRabatDato'] != null) {
+        $serializeArray['KontantRabatDato'] =$invoiceArray['KontantRabatDato'];
+        } else if ($invoiceArray['StrafRenteSats'] != null) {
+        $serializeArray['StrafRenteSats'] =$invoiceArray['StrafRenteSats'];
+        } else if ($invoiceArray['StrafRenteDato'] != null) {
+        $serializeArray['StrafRenteDato'] =$invoiceArray['StrafRenteDato'];
+        } else if ($invoiceArray['shipping'] != null) {
+        $serializeArray['shipping'] =$invoiceArray['shipping'];
+        } else if ($invoiceArray['vatyn'] != null) {
          foreach ($invoiceArray as $key =>  $value) {            
             $serializeArray['vatyn'][$key] =$value;
         };
-
-        array_push($serializeArray, $invoiceArray['tax']);
-        array_push($serializeArray, $invoiceArray['duty']);
-        array_push($serializeArray, $invoiceArray['importchg']);
-        array_push($serializeArray, $invoiceArray['Tillaeg']);
-        array_push($serializeArray, $invoiceArray['Fradrag']);
-        array_push($serializeArray, $invoiceArray['Varetotal']);
-        array_push($serializeArray, $invoiceArray['Varebeloeb']);
-        array_push($serializeArray, $invoiceArray['momsgrundlag']);
-        array_push($serializeArray, $invoiceArray['linjetotal_eks_moms']);
-
+        } else if ($invoiceArray['tax'] != null) {
+        $serializeArray['tax'] =$invoiceArray['tax'];
+        } else if ($invoiceArray['duty'] != null) {
+        $serializeArray['duty'] =$invoiceArray['duty'];
+        } else if ($invoiceArray['importchg'] != null) {
+        $serializeArray['importchg'] =$invoiceArray['importchg'];
+        } else if ($invoiceArray['Tillaeg'] != null) {
+        $serializeArray['Tillaeg'] =$invoiceArray['Tillaeg'];
+        } else if ($invoiceArray['Fradrag'] != null) {
+        $serializeArray['Fradrag'] =$invoiceArray['Fradrag'];
+        } else if ($invoiceArray['Varetotal'] != null) {
+        $serializeArray['Varetotal'] =$invoiceArray['Varetotal'];
+        } else if ($invoiceArray['Varebeloeb'] != null) {
+        $serializeArray['Varebeloeb'] =$invoiceArray['Varebeloeb'];
+        } else if ($invoiceArray['momsgrundlag'] != null) {
+        $serializeArray['momsgrundlag'] =$invoiceArray['momsgrundlag'];
+        } else if ($invoiceArray['linjetotal_eks_moms'] != null) {
+        $serializeArray['linjetotal_eks_moms'] =$invoiceArray['linjetotal_eks_moms'];
+        } else if ($invoiceArray['ehf_momsgrundlag'] != null) {
         foreach ($invoiceArray as $key =>  $value) {            
             $serializeArray['ehf_momsgrundlag'][$key] =$value;
-        };
-        
+        }; 
+        } else if ($invoiceArray['ehf_moms'] != null) {
         foreach ($invoiceArray as $key =>  $value) {            
             $serializeArray['ehf_moms'][$key] =$value;
         };
-        
-        array_push($serializeArray, $invoiceArray['ehf_moms_total']);
-        array_push($serializeArray, $invoiceArray['Moms']);
-
+        } else if ($invoiceArray['ehf_moms_total'] != null) {
+        $serializeArray['ehf_moms_total'] =$invoiceArray['ehf_moms_total'];
+        } else if ($invoiceArray['Moms'] != null) {
+        $serializeArray['Moms'] =$invoiceArray['Moms'];
+        } else if ($invoiceArray['Attachment'] != null) {
         foreach ($invoiceArray as $key =>  $value) {            
             $serializeArray['Attachment'][$key] =$value;
         };
-        
         return serialize($serializeArray);
+        }
+        
+        return false;
+        
     }
 }
 ?>

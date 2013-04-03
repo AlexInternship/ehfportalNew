@@ -282,7 +282,8 @@ class SiteController extends Controller {
        $partner1 = new Partners();
        $partner2 = new Partners(); 
        $address1 = new Address(); 
-       $address2 = new Address(); 
+       $address2 = new Address();
+       //$document = new Document();
        $db = CallDB::Instance();
        $mailService = SendMail::Instance();
        $generator = RandomPassword::Instance();
@@ -298,13 +299,15 @@ class SiteController extends Controller {
        /*if (isset($_POST['User'], $_POST['Partner1'], $_POST['Partner2'], $_POST['Address1'], $_POST['Address2'])) {*/
            if(!empty($_POST)) {
             
-            echo print_R($_POST); die;
-
+           //   var_dump($_POST); die;    
+               
             $model->attributes = $_POST['Users'];
             $partner1->attributes = $_POST['Partners'][1];
             $partner2->attributes = $_POST['Partners'][2];
             $address1->attributes = $_POST['Address'][1];
             $address2->attributes = $_POST['Address'][2];
+            $serializedArray = $serializer->serializeDocument($_POST, 12, 12);
+            $document->attributes = $serializedArray;
             
             foreach ($array as $key => $value) {
                 $invoice = new Invoicelines();
