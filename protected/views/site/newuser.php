@@ -12,7 +12,7 @@
     <?php Yii::app()->clientScript->registerScriptFile('js/addrow.js', CClientScript::POS_HEAD); ?>
     <p class="note">Fields with <span class="required">*</span> are required.</p>
     <div class="formbox">
-<?php echo $form->errorSummary(array($model, $address1, $address2, $partner1, $partner2, $invoicelines)); ?>
+<?php echo $form->errorSummary(array($model, $address1, $address2, $partner1, $partner2)); ?>
 
         <div class="row">
             <h3>User / Partner 1</h3>
@@ -277,7 +277,7 @@
     </div>
     
     <!-- Start på hiddenField s  -->   
-     <?php echo CHtml::hiddenField('Fakturadata[iban]',''); ?>  
+     <?php echo CHtml::hiddenField('Fakturadata[iban]','iban'); ?>  
      <?php echo CHtml::hiddenField('Fakturadata[comment]',''); ?> 
      <?php echo CHtml::hiddenField('Fakturadata[status]',''); ?>
      <?php echo CHtml::hiddenField('Fakturadata[behandler]','')?>
@@ -293,7 +293,7 @@
      <?php echo CHtml::hiddenField('sellercontact',''); ?>  
      <?php echo CHtml::hiddenField('orderContactName',''); ?>
      <?php echo CHtml::hiddenField('sellersOrderID',''); ?> 
-     <?php echo CHtml::hiddenField('Ordredato',''); ?>
+     <?php echo CHtml::hiddenField('Ordredato','od 5'); ?>
      <?php echo CHtml::hiddenField('dimaccount',''); ?>
      <?php echo CHtml::hiddenField('KontantRabatSats',''); ?>
      <?php echo CHtml::hiddenField('KontantRabatDato',''); ?>

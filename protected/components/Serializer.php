@@ -15,7 +15,7 @@ class Serializer {
 
         print_r($invoiceArray);
         die;
-
+        
         if ($invoiceArray['Fakturadata'] != null) {
             foreach ($invoiceArray['Fakturadata'] as $key => $value) {
                 $serializeArray['Fakturadata'][$key] = $value;

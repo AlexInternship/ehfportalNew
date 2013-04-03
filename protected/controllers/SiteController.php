@@ -1,7 +1,4 @@
 <?php
-
-
-
 class SiteController extends Controller {
 
     /**
@@ -67,30 +64,6 @@ class SiteController extends Controller {
         $this->render('login', array('model' => $model));
     }
 
-    /** Original Contact action
-     * Displays the contact page
-
-      public function actionContact() {
-      $model = new ContactForm;
-      if (isset($_POST['ContactForm'])) {
-      $model->attributes = $_POST['ContactForm'];
-      if ($model->validate()) {
-      $name = '=?UTF-8?B?' . base64_encode($model->name) . '?=';
-      $subject = '=?UTF-8?B?' . base64_encode($model->subject) . '?=';
-      $headers = "From: $name <{$model->email}>\r\n" .
-      "Reply-To: {$model->email}\r\n" .
-      "MIME-Version: 1.0\r\n" .
-      "Content-type: text/plain; charset=UTF-8";
-
-      mail(Yii::app()->params['adminEmail'], $subject, $model->body, $headers);
-      Yii::app()->user->setFlash('contact', 'Thank you for contacting us. We will respond to you as soon as possible.');
-      $this->refresh();
-      }
-      }
-      $this->render('contact', array('model' => $model));
-      }
-     */
-
     /**
      * Logs out the current user and redirect to homepage.
      */
@@ -98,186 +71,9 @@ class SiteController extends Controller {
         Yii::app()->user->logout();
         $this->redirect(Yii::app()->homeUrl);
     }
-
-    public function actionInvoiceView() {
-        $ourInvoices = new Ourinvoices;
-        $ourInvoicelines = new Ourinvoicelines;
-
-
-        // uncomment the following code to enable ajax-based validation
-        /*
-          if(isset($_POST['ajax']) && $_POST['ajax']==='ourinvoices-invoiceView-form')
-          {
-          echo CActiveForm::validate($model);
-          Yii::app()->end();
-          }
-         */
-
-        if (isset($_POST['ourInvoices'], $_POST['ourInvoicelines'])) {
-            $ourInvoices->attributes = $_POST['ourinvoices'];
-            $ourInvoicelines->attributes = $_POST['ourInvoicelines'];
-
-            $valid = $ourInvoices->validate();
-            $valid = $ourInvoicelines->validate() && $valid;
-
-
-            if ($valid) {
-                // use false parameter to disable validation
-                $ourInvoices->save(false);
-                $ourInvoicelines->save(false);
-                // ...redirect to another page
-            }
-        }
-        $this->render('invoiceView', array('ourinvoices' => $ourInvoices, 'ourinvoicelines' => $ourInvoicelines));
-    }
-
-    public function actionOurinvoicesView() {
-        $ourInvoices = new Ourinvoices;
-        $ourInvoicelines = new Ourinvoicelines;
-        $partners = new Partners;
-        $adress = new Address;
-
-        if (isset($_POST['ourInvoices'], $_POST['ourInvoicelines'], $_POST['partners'], $_POST['address'])) {
-            $ourInvoices->attributes = $_POST['ourinvoices'];
-            $ourInvoicelines->attributes = $_POST['ourInvoicelines'];
-            $partners->attributes = $_POST['partners'];
-            $address->attributes = $_POST['address'];
-
-            $valid = $ourInvoices->validate();
-            $valid = $ourInvoicelines->validate() && $valid;
-            $valid = $partners->validate() && $valid;
-            $valid = $address->validate() && $valid;
-
-            if ($valid) {
-                return;
-                // use false parameter to disable validation
-                //$ourInvoices->save(false);
-                //$ourInvoicelines->save(false);
-                // ...redirect to another page
-            }
-        }
-        $this->render('ourinvoicesView', array('ourinvoices' => $ourInvoices, 'ourInvoicelines' => $ourInvoicelines, 'partners' => $partners, 'address' => $address));
-    }
-
-    public function actionPartnersView() {
-        $model = new Partners;
-
-        // uncomment the following code to enable ajax-based validation
-        /*
-          if(isset($_POST['ajax']) && $_POST['ajax']==='partners-partnersView-form')
-          {
-          echo CActiveForm::validate($model);
-          Yii::app()->end();
-          }
-         */
-
-        if (isset($_POST['partners'])) {
-            $model->attributes = $_POST['partners'];
-            if ($model->validate()) {
-                // form inputs are valid, do something here
-                return;
-            }
-        }
-        $this->render('partnersView', array('model' => $model));
-    }
-    
-    public function actionAddressView() {
-        $model = new Address;
-
-        // uncomment the following code to enable ajax-based validation
-        /*
-          if(isset($_POST['ajax']) && $_POST['ajax']==='address-addressView-form')
-          {
-          echo CActiveForm::validate($model);
-          Yii::app()->end();
-          }
-         */
-
-        if (isset($_POST['address'])) {
-            $model->attributes = $_POST['address'];
-            if ($model->validate()) {
-                // form inputs are valid, do something here
-                return;
-            }
-        }
-        $this->render('addressView', array('model' => $model));
-    }
-
-    public function actionViewSerializedDocument(){
-        /*
-        $array = array('0' => Array
-                            (
-                                'Momsfri' => 'Ja',
-                                'Antal' => '1',
-                                'Pris' => '87410',
-                                'Kontering' =>  '',
-                                'dimaccount' => '',
-                                'Varebeloeb' => '87410',
-                                'Betegnelse_for_nettoindhold' => 'EA',
-                                'ehf_vat' => '25',
-                                'Skaffevare' => 'Ja',
-                                'Ordrefradrag' => 'Nej',
-                                'linetotal' => '87410',
-                                'Varenavn' => 'Nysgjerrigper-blad nr. 1 - 2013',
-                                'Varenummer' => '1',
-                            ),
-            
-                        '1' => Array
-                            (
-                                'Momsfri' => 'Ja',
-                                'Antal' => '1',
-                                'Pris' => '87410',
-                                'Kontering' =>  '',
-                                'dimaccount' => '',
-                                'Varebeloeb' => '87410',
-                                'Betegnelse_for_nettoindhold' => 'EA',
-                                'ehf_vat' => '25',
-                                'Skaffevare' => 'Ja',
-                                'Ordrefradrag' => 'Nej',
-                                'linetotal' => '87410',
-                                'Varenavn' => 'Nysgjerrigper-blad nr. 1 - 2013',
-                                'Varenummer' => '1',
-                            )    
-
-                    
-            
-            );
-        
-        $ser = Serializer::Instance();
-        $ser->serializeDocument($array);
-         * 
-         */
-        
-        $db = CallDB::Instance();
-        //$db->addInvoice($serialized);
-        $result = $db->deserialize('1');
-        var_dump(($result));
-          
-         
-    }
-    
-    public function actionAxForm()
-    {
-        //
-       $model = new Axform(); 
-        
-       if (isset($_POST['Axform'])) {
-            $model->attributes = $_POST['Axform'];
-            if ($model->validate()) {
-                
-                // form inputs are valid, do something here
-                $safe_string_to_store = serialize($_POST['Axform']);
-                $db->addInvoice($safe_string_to_store);
-                return;
-            }
-        }
-        $this->render('axForm', array('model' => $model));
-    }
     
      public function actionNewUser()
     {
-         
-        //
        $model = new Users(); 
        $partner1 = new Partners();
        $partner2 = new Partners(); 
@@ -288,18 +84,12 @@ class SiteController extends Controller {
        $mailService = SendMail::Instance();
        $generator = RandomPassword::Instance();
        $serializer = Serializer::Instance();
-
-       $invoicelines = new Invoicelines();
-
        $invoiceArray = array();
        $valid = true;
-       $invoicelines = new Invoicelines();
-
-
        /*if (isset($_POST['User'], $_POST['Partner1'], $_POST['Partner2'], $_POST['Address1'], $_POST['Address2'])) {*/
            if(!empty($_POST)) {
             
-            echo "<pre>".  var_dump($_POST). "</pre>"; die;
+            echo "<pre>".  var_dump($_POST['Fakturadata'][0]["Varenummer"]). "</pre>"; die;
 
             $model->attributes = $_POST['Users'];
             $partner1->attributes = $_POST['Partners'][1];
@@ -307,22 +97,13 @@ class SiteController extends Controller {
             $address1->attributes = $_POST['Address'][1];
             $address2->attributes = $_POST['Address'][2];
             $document->attributes = $_POST;
-            
-            foreach ($array as $key => $value) {
-                $invoice = new Invoicelines();
-                $invoice->attributes = $_POST['Ourinvoicelines'][$value];
-                $valid=$invoice->validate() && $valid;                
-                array_push($invoiceArray, $invoice);
-            }
-            
+                        
             $valid=$address1->validate() && $valid;
             $valid=$address2->validate() && $valid;
             $valid=$partner1->validate() && $valid;
             $valid=$partner2->validate() && $valid;
             $valid=$model->validate() && $valid;
-            $valid=$document->validate() && $valid;
-
-            
+           /*$valid=$document->validate() && $valid; */          
             if ($valid) {
                 $userArray = $_POST['Users'];
                 $partner1Array = $_POST['Partners'][1];
@@ -343,14 +124,12 @@ class SiteController extends Controller {
                 $serializer->serializeDocument($invoiceArray, $partnerId1, $partnerId2, $orderId);
                 $serialized = $serializer->serializeDocument($invoiceArray);
                 $db->addInvoice($serialized);
-                
-                //$db->newInvoice 
-//$db->addInvoice($serialized);
+     
                 $mailService->sendNewUserMail($userArray['email'] ,$userArray['username'], $password);
                 return;
             }
         }
-        $this->render('newuser', array('model' => $model, 'partner1' => $partner1, 'partner2' => $partner2, 'address1' => $address1, 'address2' => $address2, 'invoicelines' => $invoicelines));
+        $this->render('newuser', array('model' => $model, 'partner1' => $partner1, 'partner2' => $partner2, 'address1' => $address1, 'address2' => $address2));
     }
 
     public function actionContact() {
@@ -380,9 +159,4 @@ class SiteController extends Controller {
         }
         $this->render('contact', array('model' => $model));
     }
- 
-
-    /**
-     *  returns a random string to be used for passwords and usernames
-     */
     }
