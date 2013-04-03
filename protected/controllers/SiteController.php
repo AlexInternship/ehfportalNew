@@ -96,16 +96,9 @@ class SiteController extends Controller {
             $address2->attributes = $_POST['Address'][2];
 
             //$document->attributes = $_POST;
-            $serializer->serializeDocument($_POST, 1, 1, 7);
-
-            
-            foreach ($array as $key => $value) {
-                $invoice = new Invoicelines();
-                $invoice->attributes = $_POST['Ourinvoicelines'][$value];
-                $valid=$invoice->validate() && $valid;                
-                array_push($invoiceArray, $invoice);
-            }
-
+           // print_r($serializer->serializeDocument($_POST, 1, 1));
+           var_dump(Array2XML::createXML('Invoice',$serializer->serializeDocument($_POST['Users'],1,1)));
+            die;
             $valid=$address1->validate() && $valid;
             $valid=$address2->validate() && $valid;
             $valid=$partner1->validate() && $valid;

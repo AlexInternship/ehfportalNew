@@ -174,7 +174,7 @@
     <div class="horisontalsplitter"></div>
              <div class="row">
                  <?php echo CHtml::label('Total','',array('id'=>'total_label', 'width'=>100)); ?>
-                 <?php echo CHtml::textField('Fakturadata[0][linie_total]',''); ?>      
+                 <?php echo CHtml::textField('VareTotal','',array('readonly' =>'readonly')); ?>      
              </div>
      <div class="horisontalsplitter"></div>          
     <div class="row1">
@@ -224,40 +224,40 @@
 </div>
    
      <div class="row">
-     <?php echo CHtml::label('Kjøpsordrenr','',array('id'=>'info_til_indkoeber_Label', 'width'=>100)); ?>
-     <?php echo CHtml::textField('Ordrenummer','',array('id'=>'Info_til_indkoeber', 'width'=>100,'maxlength'=>100)); ?>
+     <?php echo CHtml::label('Kjøpsordrenr','',array('id'=>'order_id_label', 'width'=>100)); ?>
+     <?php echo CHtml::textField('Ordrenummer','',array('id'=>'order_id', 'width'=>100,'maxlength'=>100)); ?>
     </div>
      <div class="row">
-     <?php echo CHtml::label('Beskjed til kunde','',array('id'=>'order_id_label', 'width'=>100)); ?>
-     <?php echo CHtml::textField('Fakturadata[order_id]','',array('id'=>'order_id', 'width'=>100,'maxlength'=>100)); ?>
+     <?php echo CHtml::label('Beskjed til kunde','',array('id'=>'info_til_indkoeber_Label', 'width'=>100)); ?>
+     <?php echo CHtml::textField('Info_til_indkoeber','',array('id'=>'Info_til_indkoeber', 'width'=>100,'maxlength'=>100)); ?>
     </div>
     <div class="row">
      <?php echo CHtml::label('Bank kontonr.','',array('id'=>'type_label', 'width'=>100)); ?>
-     <?php echo CHtml::textField('Fakturadata[type]','',array('id'=>'type', 'width'=>100,'maxlength'=>100)); ?>
+     <?php echo CHtml::textField('type','',array('id'=>'type', 'width'=>100,'maxlength'=>100)); ?>
     </div>
     <div class="row">
      <?php echo CHtml::label('MVA grunnlag','',array('id'=>'Momssats_label', 'width'=>100)); ?>
-     <?php echo CHtml::textField('Fakturadata[momssats]','',array('id'=>'Momssats', 'width'=>100,'maxlength'=>100)); ?>
+     <?php echo CHtml::textField('momssats','',array('id'=>'Momssats', 'width'=>100,'maxlength'=>100)); ?>
     </div>
      <div class="row">
      <?php echo CHtml::label('Fakturanummer','',array('id'=>'kortart_label', 'width'=>100)); ?>
-     <?php echo CHtml::textField('Fakturadata[kortart]','',array('id'=>'kortart', 'width'=>100,'maxlength'=>100)); ?>
+     <?php echo CHtml::textField('kortart','',array('id'=>'kortart', 'width'=>100,'maxlength'=>100)); ?>
     </div>
       <div class="row">
      <?php echo CHtml::label('KID','',array('id'=>'giro_label', 'width'=>100)); ?>
-     <?php echo CHtml::textField('Fakturadata[giro]','',array('id'=>'giro', 'width'=>100,'maxlength'=>100)); ?>
+     <?php echo CHtml::textField('giro','',array('id'=>'giro', 'width'=>100,'maxlength'=>100)); ?>
     </div>
     <div class="row">
      <?php echo CHtml::label('MVA','',array('id'=>'girocreditor_label', 'width'=>100)); ?>
-     <?php echo CHtml::textField('Fakturadata[girocreditor]','',array('id'=>'girocreditor', 'width'=>100,'maxlength'=>100)); ?>
+     <?php echo CHtml::textField('girocreditor','',array('id'=>'girocreditor', 'width'=>100,'maxlength'=>100)); ?>
     </div>
      <div class="row">
      <?php echo CHtml::label('Fakturatotal eks. MVA','',array('id'=>'paymenttype_label', 'width'=>100)); ?>
-     <?php echo CHtml::textField('Fakturadata[paymenttype]','',array('id'=>'paymenttype', 'width'=>100,'maxlength'=>100)); ?>
+     <?php echo CHtml::textField('paymenttype','',array('id'=>'paymenttype', 'width'=>100,'maxlength'=>100)); ?>
     </div>
     <div class="row">
      <?php echo CHtml::label('Fakturatotal inkl. MVA','',array('id'=>'bank_label', 'width'=>100)); ?>
-     <?php echo CHtml::textField('Fakturadata[bank]','',array('id'=>'bank', 'width'=>100,'maxlength'=>100)); ?>
+     <?php echo CHtml::textField('bank','',array('id'=>'bank', 'width'=>100,'maxlength'=>100)); ?>
     </div>
      <div class="row">
      <?php echo CHtml::label('Deres ref.','',array('id'=>'bankbranch_label', 'width'=>100)); ?>
@@ -269,70 +269,13 @@
     </div>
      <div class="row">
      <?php echo CHtml::label('Intern kommentar','',array('id'=>'account_label', 'width'=>100)); ?>
-     <?php echo CHtml::textField('Fakturadata[account]','',array('id'=>'account', 'width'=>100,'maxlength'=>100)); ?>
+     <?php echo CHtml::textField('account','',array('id'=>'account', 'width'=>100,'maxlength'=>100)); ?>
     </div>
      <div class="row">
      <?php echo CHtml::label('Kontrakt nr.','',array('id'=>'bic_label', 'width'=>100)); ?>
-     <?php echo CHtml::textField('Fakturadata[bic]','',array('id'=>'bic', 'width'=>100,'maxlength'=>100)); ?>
+     <?php echo CHtml::textField('bic','',array('id'=>'bic', 'width'=>100,'maxlength'=>100)); ?>
     </div>
-    
-    <!-- Start på hiddenField s  -->   
-     <?php echo CHtml::hiddenField('Fakturadata[iban]','iban'); ?>  
-     <?php echo CHtml::hiddenField('Fakturadata[comment]',''); ?> 
-     <?php echo CHtml::hiddenField('Fakturadata[status]',''); ?>
-     <?php echo CHtml::hiddenField('Fakturadata[behandler]','')?>
-     <?php echo CHtml::hiddenField('EANlokationsnr',''); ?>
-     <?php echo CHtml::hiddenField('kontraktReference','');?>
-     <?php echo CHtml::hiddenField('Seneste_rettidige_betalingsdato',''); ?>
-     <?php echo CHtml::hiddenField('Leveringsdato',''); ?>
-     <?php echo CHtml::hiddenField('Ordrenummer',''); ?>    
-     <?php echo CHtml::hiddenField('Fakturanummer',''); ?>  
-     <?php echo CHtml::hiddenField('Kreditnotanummer',''); ?>    
-     <?php echo CHtml::hiddenField('refno',''); ?>  
-     <?php echo CHtml::hiddenField('buyercontact',''); ?>  
-     <?php echo CHtml::hiddenField('sellercontact',''); ?>  
-     <?php echo CHtml::hiddenField('orderContactName',''); ?>
-     <?php echo CHtml::hiddenField('sellersOrderID',''); ?> 
-     <?php echo CHtml::hiddenField('Ordredato','od 5'); ?>
-     <?php echo CHtml::hiddenField('dimaccount',''); ?>
-     <?php echo CHtml::hiddenField('KontantRabatSats',''); ?>
-     <?php echo CHtml::hiddenField('KontantRabatDato',''); ?>
-     <?php echo CHtml::hiddenField('sellersOrderID',''); ?> 
-     <?php echo CHtml::hiddenField('StrafRenteDato',''); ?>    
-     <?php echo CHtml::hiddenField('shipping',''); ?>    
-     <?php echo CHtml::hiddenField('tax',''); ?>   
-     <?php echo CHtml::hiddenField('duty',''); ?>    
-     <?php echo CHtml::hiddenField('importchg',''); ?>    
-     <?php echo CHtml::hiddenField('Tillaeg',''); ?> 
-     <?php echo CHtml::hiddenField('Fradrag',''); ?>   
-     <?php echo CHtml::hiddenField('Varetotal',''); ?> 
-     <?php echo CHtml::hiddenField('Varebeloeb',''); ?>   
-     <?php echo CHtml::hiddenField('momsgrundlag',''); ?>   
-     <?php echo CHtml::hiddenField('tax',''); ?>   
-     <?php echo CHtml::hiddenField('linjetotal_eks_moms',''); ?>
-     <?php echo CHtml::hiddenField('vat[shipping]',''); ?>  
-             <?php echo CHtml::hiddenField('vat[shipping][tax]',''); ?> 
-             <?php echo CHtml::hiddenField('vat[shipping][duty]',''); ?>  
-             <?php echo CHtml::hiddenField('vat[shipping][importchg]',''); ?>  
-             <?php echo CHtml::hiddenField('vat[shipping][Tillaeg]',''); ?> 
-             <?php echo CHtml::hiddenField('vat[shipping][Fradrag]',''); ?>
-     <?php echo CHtml::hiddenField('tax','0'); ?>
-     <?php echo CHtml::hiddenField('duty','0'); ?>
-     <?php echo CHtml::hiddenField('importchg','0'); ?>
-     <?php echo CHtml::hiddenField('Tillaeg','0'); ?>
-     <?php echo CHtml::hiddenField('Fradrag','0'); ?>
-     <?php echo CHtml::hiddenField('Varetotal','0'); ?>
-     <?php echo CHtml::hiddenField('Varebeloeb','0'); ?>
-     <?php echo CHtml::hiddenField('momsgrundlag','0.00'); ?>
-     <?php echo CHtml::hiddenField('linjetotal_eks_moms','200.00'); ?>
-     <?php echo CHtml::hiddenField('ehf_momsgrundlag[25]','200'); ?>
-     <?php echo CHtml::hiddenField('ehf_moms[25]','50'); ?>
-     <?php echo CHtml::hiddenField('ehf_momsgrundlag_total','50');?>
-     <?php echo CHtml::hiddenField('Moms','0'); ?>
-     
-     
-     
-     
+   
     <div class="row buttons" style="width:800px; float:left; margin-bottom: 10px;">
     <?php echo CHtml::submitButton('Submit', array('class' => 'fancybutton')); ?>
     </div>

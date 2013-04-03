@@ -10,15 +10,14 @@ class Serializer {
         return $inst;
     }
 
-    public function serializeDocument($invoiceArray, $senderId, $receiverId, $orderId) {
+    public function serializeDocument($invoiceArray, $senderId, $receiverId) {
         $serializeArray = array();
 
         if ($invoiceArray['Fakturadata'] != null) {
             foreach ($invoiceArray['Fakturadata'] as $key => $value) {
                 $serializeArray['Fakturadata'][$key] = $value;
             };
-            
-            print_r($serializeArray); die;    
+                
         } else
             $serializeArray['Fakturadata'] = '';
         if ($invoiceArray['FakturaDato'] != null) {
@@ -105,30 +104,25 @@ class Serializer {
             $serializeArray['behandler'] = $invoiceArray['behandler'];
         } else
             $serializeArray['behandler'] = '';
-        if ($invoiceArray['Address'] != null) {
-            foreach ($invoiceArray as $key => $value) {
-                $serializeArray['Leveringsadresse'][$key] = $value;
-            };
+        if ($invoiceArray['Address'][1] != null) {
+            
+                $serializeArray['Leveringsadresse']['0'] = $invoiceArray['Address'][1];
+         
         } else
             $serializeArray['Address'] = '';
 
-        if ($invoiceArray['Address'] != null) {
-            foreach ($invoiceArray as $key => $value) {
-                $serializeArray['Faktureringsadresse'][$key] = $value;
-            };
+        if ($invoiceArray['Address'][2] != null) {
+                $serializeArray['Faktureringsadresse']['0'] = $invoiceArray['Address'][2];       
         } else
             $serializeArray['Address'] = '';
-        if ($invoiceArray['Address'] != null) {
-            foreach ($invoiceArray as $key => $value) {
-                $serializeArray['Juridiskeadresse'][$key] = $value;
-            };
+        if ($invoiceArray['Address'][3] != null) {
+                $serializeArray['Faktureringsadresse']['0'] = $invoiceArray['Address'][3]; 
         } else
-            $serializeArray['Address'] = '';
-
+            $serializeArray['Juridiskeadresse']['0'] = array('adresse1'=>'','adresse2'=>'', 'adresse3'=>'','zip'=>'', 'city'=>'');
         if ($invoiceArray['Kundenavn'] != null) {
             $serializeArray['Kundenavn'] = $invoiceArray['Kundenavn'];
         } else
-            $serializeArray['Kundenavn'] = '';
+        {$serializeArray['Kundenavn'] = '';}
 
         if ($invoiceArray['EANlokationsnr'] != null) {
             $serializeArray['EANlokationsnr'] = $invoiceArray['EANlokationsnr'];
@@ -209,12 +203,10 @@ class Serializer {
         } else
             $serializeArray['shipping'] = '';
         if ($invoiceArray['vatyn'] != null) {
-            foreach ($invoiceArray as $key => $value) {
-                $serializeArray['vatyn'][$key] = $value;
-            };
+                $serializeArray['vatyn'][0]=$invoiceArray['vatyn'][0];
         } else
-            $serializeArray['vatyn'] = '';
-        if ($invoiceArray['tax'] != null) {
+             $serializeArray['vatyn'][0] =array('shipping' => '','tax'=>'', 'duty'=> '', 'importchg'=>'', 'Tillaeg' => '', 'Fradrag'=> '' );
+        /*if ($invoiceArray['tax'] != null) {
             $serializeArray['tax'] = $invoiceArray['tax'];
         } else
             $serializeArray['tax'] = '';
@@ -233,7 +225,7 @@ class Serializer {
         if ($invoiceArray['Fradrag'] != null) {
             $serializeArray['Fradrag'] = $invoiceArray['Fradrag'];
         } else
-            $serializeArray['Fradrag'] = '';
+            $serializeArray['Fradrag'] = '';*/
         if ($invoiceArray['Varetotal'] != null) {
             $serializeArray['Varetotal'] = $invoiceArray['Varetotal'];
         } else
@@ -277,7 +269,7 @@ class Serializer {
         } else
             $serializeArray['Attachment'] = '';
 
-        return serialize($serializeArray);
+      return $serializeArray;
     }
 
 }
