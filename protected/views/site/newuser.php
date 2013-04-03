@@ -130,62 +130,52 @@
         <h3>Invoices</h3>              
     </div>  
     <div class="invoicelines">
-        <div class="invoiceline row" >
+        <div class="invoiceline row" id="row0">
              <!-- start invoiceline -->
              <div style="width: 120px; height: 45px; margin:3px;float:left;clear:left;">
-             <?php echo CHtml::label('Beskrivelse','',array('id'=>'antal_label', 'width'=>100)); ?>
-             <?php echo CHtml::textArea('Fakturadata[0][varenavn]','',array('id'=>'antal', 'width'=>100,'maxlength'=>100, 'style' =>'height:1.5em; width:100px;')); ?>
+             <?php echo CHtml::label('Beskrivelse','',array('id'=>'Beskrivelse_label', 'width'=>100)); ?>
+             <?php echo CHtml::textArea('Fakturadata[0][varenavn]','',array('id'=>'Beskrivelse', 'width'=>100,'maxlength'=>100, 'style' =>'height:1.5em; width:100px;')); ?>
             </div>
              <div style="width: 90px; height: 45px; margin:3px;float:left;">
              <?php echo CHtml::label('Varenummer','',array('id'=>'Varenummer_label', 'style'=> 'width:80px;')); ?>
-             <?php echo CHtml::textField('Fakturadata[0][Varenummer]','',array('id'=>'Varenummer', 'style'=>'width:80px;','maxlength'=>16)); ?>
+             <?php echo CHtml::textField('Fakturadata[0][Varenummer]','0',array('id'=>'Varenummer',  'style'=>'width:80px;','maxlength'=>16)); ?>
             </div>
              <div style="width: 90px; height: 45px; margin:3px;float:left;">
              <?php echo CHtml::label('Antal','',array('id'=>'antal_label', 'style'=> 'width:80px;')); ?>
-             <?php echo CHtml::textField('Fakturadata[0][antal]','',array('id'=>'antal', 'style'=> 'width:80px;','maxlength'=>16)); ?>
-            </div> 
-            <div style="width: 55px; height: 45px; margin:3px;float:left;">
-             <?php echo CHtml::label('Pris','',array('id'=>'antal_label', 'style'=> 'width:45px;')); ?>
-             <?php echo CHtml::textField('Fakturadata[0][Pris]','',array('id'=>'antal', 'style'=> 'width:45px;','maxlength'=>16)); ?>
+             <?php echo CHtml::textField('Fakturadata[0][antal]','0',array('id'=>'antal_0', 'style'=> 'width:80px;','maxlength'=>16, 'onBlur'=>'calc(0)')); ?>
             </div>
-            <div style="width: 160px; height: 45px; margin:3px;float:left;">
-             <?php echo CHtml::label('Kontering','',array('id'=>'antal_label', 'width'=>100)); ?>
-             <?php echo CHtml::textField('Fakturadata[0][Kontering]','',array('id'=>'antal', 'width'=>100,'maxlength'=>100)); ?>
+            <div style="width: 80px; height: 45px; margin:3px;float:left;">
+             <?php echo CHtml::label('Kontering','',array('id'=>'kontering', 'style'=> 'width:70px;')); ?>
+             <?php echo CHtml::textField('Fakturadata[0][Kontering]','',array('id'=>'Kontering', 'style'=> 'width:45px;','maxlength'=>100)); ?>
             </div>
              <?php echo CHtml::hiddenField('Fakturadata[0][dimaccont]',''); ?>
              <div style="width: 60px; height: 45px; margin:3px;float:left;">
              <?php echo CHtml::label('MVA','',array('id'=>'ehf_vat_label')); ?>
-             <?php echo CHtml::dropDownList('Fakturadata[0][ehf_vat]', '',array('25' => '25%', '0' => '0%', '8' => '8%', '10' => '10%'));?>
+             <?php echo CHtml::dropDownList('Fakturadata[0][ehf_vat]', '',array('25' => '25%', '0' => '0%', '8' => '8%', '10' => '10%'),array('id'=>'vat_0'));?>
             </div> 
-             <div style="width: 160px; height: 45px; margin:3px;float:left;">
-             <?php echo CHtml::label('Varebeloeb','',array('id'=>'Varebeloeb_label', 'width'=>100)); ?>
-             <?php echo CHtml::textField('Fakturadata[0][Varebeloeb]',''); ?>
+             <div style="width: 90px; height: 45px; margin:3px;float:left;">
+             <?php echo CHtml::label('Varebeloeb','',array('id'=>'Varebeloeb_label', 'style'=> 'width:75px;')); ?>
+             <?php echo CHtml::textField('Fakturadata[0][Varebeloeb]','0',array('id'=>'varebeloeb_0', 'style'=> 'width:75px;', 'onBlur'=>'calc(0)')); ?>
+            </div>
+             <div style="width:55px; height: 45px; margin:3px;float:left;">
+             <?php echo CHtml::label('I alt','',array('id'=>'total_label', 'style'=> 'width:45px;')); ?>
+             <?php echo CHtml::textField('Fakturadata[0][linie_total]','',array('style'=> 'width:45px;','id'=> 'linie_total_0','readonly' =>'readonly')); ?>
             </div>
              <?php echo CHtml::hiddenField('Fakturadata[0][Skaffevare]','ja'); ?>           
              <?php echo CHtml::hiddenField('Fakturadata[0][Ordrefradrag]',''); ?>
              <?php echo CHtml::hiddenField('Fakturadata[0][Momsfri]',''); ?>   
             <div style="width: 50px;  height: 45px; margin:3px; float:left; padding:15px 0 0 0;">
-            <?php echo CHtml::Button('-', array('class'=>'deleterow_button' ,'class' => 'fancybutton remove')); ?>
+            <?php echo CHtml::Button('-', array('onClick'=>'deleterow(0)' ,  'id'=>'0' ,'class' => 'fancybutton remove')); ?>
             <?php echo CHtml::Button('+', array('onClick'=>'dubTest()' , 'class' => 'fancybutton add')); ?>
             </div>
-            
-            <!-- End invoiceline --> 
-          <!--      [Momsfri] => Ja
-                    [Antal] => 20
-                    [Pris] => 10
-                    [Kontering] => Konteringsstreng
-                    [dimaccount] => 
-                    [Varebeloeb] => 200
-                    [Betegnelse_for_nettoindhold] => EA
-                    [ehf_vat] => 25
-                    [Skaffevare] => Ja
-                    [Ordrefradrag] => Nej
-                    [linetotal] => 200
-                    [Varenavn] => Beskrivelse
-                    [Varenummer] => Varenr 
-          -->
-        </div>          
+ 
+        </div>
     </div>
+    <div class="horisontalsplitter"></div>
+             <div class="row">
+                 <?php echo CHtml::label('Total','',array('id'=>'total_label', 'width'=>100)); ?>
+                 <?php echo CHtml::textField('Fakturadata[0][linie_total]',''); ?>      
+             </div>
      <div class="horisontalsplitter"></div>          
     <div class="row1">
         <h3>Betaling</h3>              
