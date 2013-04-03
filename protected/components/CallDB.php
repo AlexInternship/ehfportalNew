@@ -119,6 +119,18 @@
 
             return $partnerId['partner_id']; 
        }
+       
+        public function getNextOrderId() {
+
+            $orderId = Yii::app()->db->createCommand()
+              ->select('max(serializedocument_id)')
+              ->from('serializedocuments')
+                ->queryRow();
+
+            echo $orderId;
+            
+            return $orderID['partner_id']+1; 
+       }
              
  }
 ?>

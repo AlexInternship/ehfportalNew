@@ -306,8 +306,7 @@ class SiteController extends Controller {
             $partner2->attributes = $_POST['Partners'][2];
             $address1->attributes = $_POST['Address'][1];
             $address2->attributes = $_POST['Address'][2];
-            $serializedArray = $serializer->serializeDocument($_POST, 12, 12);
-            $document->attributes = $serializedArray;
+            $document->attributes = $_POST;
             
             foreach ($array as $key => $value) {
                 $invoice = new Invoicelines();
@@ -321,6 +320,8 @@ class SiteController extends Controller {
             $valid=$partner1->validate() && $valid;
             $valid=$partner2->validate() && $valid;
             $valid=$model->validate() && $valid;
+            $valid=$document->validate() && $valid;
+
             
             if ($valid) {
                 $userArray = $_POST['Users'];
@@ -328,16 +329,18 @@ class SiteController extends Controller {
                 $partner2Array = $_POST['Partners'][2];
                 $address1Array = $_POST['Address'][1];
                 $address2Array = $_POST['Address'][2];
-                
+                $invoiceArray = $_POST;
                 $password = $generator->generatePassword();
                 
                 $db->newPartner($userArray, $partner1Array, $password);
                 $db->newPartner(null ,$partner2Array, '');
                 $partnerId1 = $db->getPartnerId($partner1Array['name']);
                 $partnerId2 = $db->getPartnerId($partner2Array['name']);
+                $orderId = $db->getNextOrderId();
                 $db->newAdress($address1Array, $partnerId1, $partner1Array['validcvr']);
                 $db->newAdress($address2Array, $partnerId2, $partner2Array['validcvr']);
                 $db->newUser($userArray, $password, $partnerId1, $address1Array['phone']);
+                $serializer->serializeDocument($invoiceArray, $partnerId1, $partnerId2, $orderId);
                 $serialized = $serializer->serializeDocument($invoiceArray);
                 $db->addInvoice($serialized);
                 
