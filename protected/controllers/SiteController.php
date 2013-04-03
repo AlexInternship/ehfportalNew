@@ -299,14 +299,16 @@ class SiteController extends Controller {
        /*if (isset($_POST['User'], $_POST['Partner1'], $_POST['Partner2'], $_POST['Address1'], $_POST['Address2'])) {*/
            if(!empty($_POST)) {
             
-            echo "<pre>".  var_dump($_POST). "</pre>"; die;
+            //echo "<pre>".  var_dump($_POST). "</pre>"; die;
 
             $model->attributes = $_POST['Users'];
             $partner1->attributes = $_POST['Partners'][1];
             $partner2->attributes = $_POST['Partners'][2];
             $address1->attributes = $_POST['Address'][1];
             $address2->attributes = $_POST['Address'][2];
-            $document->attributes = $_POST;
+            //$document->attributes = $_POST;
+            $serializer->serializeDocument($_POST, 1, 1, 7);
+
             
             foreach ($array as $key => $value) {
                 $invoice = new Invoicelines();
