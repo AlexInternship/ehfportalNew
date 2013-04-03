@@ -165,12 +165,25 @@
              <?php echo CHtml::hiddenField('Fakturadata[0][Ordrefradrag]',''); ?>
              <?php echo CHtml::hiddenField('Fakturadata[0][Momsfri]',''); ?>   
             <div style="width: 50px;  height: 45px; margin:3px; float:left; padding:15px 0 0 0;">
-            <?php echo CHtml::Button('-', array('onClick'=>'deleterow()' ,'class' => 'fancybutton remove')); ?>
+            <?php echo CHtml::Button('-', array('class'=>'deleterow_button' ,'class' => 'fancybutton remove')); ?>
             <?php echo CHtml::Button('+', array('onClick'=>'dubTest()' , 'class' => 'fancybutton add')); ?>
             </div>
             
             <!-- End invoiceline --> 
-          
+          <!--      [Momsfri] => Ja
+                    [Antal] => 20
+                    [Pris] => 10
+                    [Kontering] => Konteringsstreng
+                    [dimaccount] => 
+                    [Varebeloeb] => 200
+                    [Betegnelse_for_nettoindhold] => EA
+                    [ehf_vat] => 25
+                    [Skaffevare] => Ja
+                    [Ordrefradrag] => Nej
+                    [linetotal] => 200
+                    [Varenavn] => Beskrivelse
+                    [Varenummer] => Varenr 
+          -->
         </div>          
     </div>
      <div class="horisontalsplitter"></div>          
@@ -184,7 +197,7 @@
      <?php echo CHtml::label('Faktura dato',''); ?>
      <?php
         $this->widget('zii.widgets.jui.CJuiDatePicker', array(
-                    'name' => 'invoicedate',
+                    'name' => 'Seneste_rettidige_betalingsdato',
                     'attribute' => 'date_from',
                     'htmlOptions' => array(
                     'size' => '10',    
@@ -193,10 +206,10 @@
     ),
 ));
 ?>
-          <?php echo CHtml::label('Forfalls dato',''); ?>
+          <?php echo CHtml::label('Faktura dato',''); ?>
      <?php
         $this->widget('zii.widgets.jui.CJuiDatePicker', array(
-                    'name' => 'duedate',
+                    'name' => 'FakturaDato',
                     'attribute' => 'date_from',
                     'htmlOptions' => array(
                     'size' => '10',    
@@ -208,7 +221,7 @@
           <?php echo CHtml::label('Leverings dato',''); ?>
      <?php
         $this->widget('zii.widgets.jui.CJuiDatePicker', array(
-                    'name' => 'deleverydate',
+                    'name' => 'Leveringsdato',
                     'attribute' => 'date_from',
                     'htmlOptions' => array(
                     'size' => '10',    
@@ -308,23 +321,24 @@
      <?php echo CHtml::hiddenField('tax',''); ?>   
      <?php echo CHtml::hiddenField('linjetotal_eks_moms',''); ?>
      <?php echo CHtml::hiddenField('vat[shipping]',''); ?>  
-             <?php echo CHtml::hiddenField('vat[tax]',''); ?> 
-             <?php echo CHtml::hiddenField('vat[duty]',''); ?>  
-             <?php echo CHtml::hiddenField('vat[importchg]',''); ?>  
-             <?php echo CHtml::hiddenField('vat[Tillaeg]',''); ?> 
-             <?php echo CHtml::hiddenField('vat[Fradrag]',''); ?>
-             <?php echo CHtml::hiddenField('duty','0'); ?>
-             <?php echo CHtml::hiddenField('importchg','0'); ?>
-             <?php echo CHtml::hiddenField('Tillaeg','0'); ?>
-             <?php echo CHtml::hiddenField('Fradrag','0'); ?>
-             <?php echo CHtml::hiddenField('Varetotal','0'); ?>
-             <?php echo CHtml::hiddenField('Varebeloeb','0'); ?>
-             <?php echo CHtml::hiddenField('momsgrundlag','0.00'); ?>
-             <?php echo CHtml::hiddenField('linjetotal_eks_moms','200.00'); ?>
-             <?php echo CHtml::hiddenField('ehf_momsgrundlag[25]','200'); ?>
-             <?php echo CHtml::hiddenField('ehf_moms[25]','50'); ?>
-             <?php echo CHtml::hiddenField('ehf_momsgrundlag_total','50');?>
-             <?php echo CHtml::hiddenField('Moms','0'); ?>
+             <?php echo CHtml::hiddenField('vat[shipping][tax]',''); ?> 
+             <?php echo CHtml::hiddenField('vat[shipping][duty]',''); ?>  
+             <?php echo CHtml::hiddenField('vat[shipping][importchg]',''); ?>  
+             <?php echo CHtml::hiddenField('vat[shipping][Tillaeg]',''); ?> 
+             <?php echo CHtml::hiddenField('vat[shipping][Fradrag]',''); ?>
+     <?php echo CHtml::hiddenField('tax','0'); ?>
+     <?php echo CHtml::hiddenField('duty','0'); ?>
+     <?php echo CHtml::hiddenField('importchg','0'); ?>
+     <?php echo CHtml::hiddenField('Tillaeg','0'); ?>
+     <?php echo CHtml::hiddenField('Fradrag','0'); ?>
+     <?php echo CHtml::hiddenField('Varetotal','0'); ?>
+     <?php echo CHtml::hiddenField('Varebeloeb','0'); ?>
+     <?php echo CHtml::hiddenField('momsgrundlag','0.00'); ?>
+     <?php echo CHtml::hiddenField('linjetotal_eks_moms','200.00'); ?>
+     <?php echo CHtml::hiddenField('ehf_momsgrundlag[25]','200'); ?>
+     <?php echo CHtml::hiddenField('ehf_moms[25]','50'); ?>
+     <?php echo CHtml::hiddenField('ehf_momsgrundlag_total','50');?>
+     <?php echo CHtml::hiddenField('Moms','0'); ?>
      
      
      

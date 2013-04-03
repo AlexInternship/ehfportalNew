@@ -19,7 +19,9 @@ function dubTest(){
 }
 
 function deleterow(){
-   $(this).parent().remove(); 
+   $('.deleterow_button').on('click', function (e) {
+   $(this).parent.remove();
+
 }
     
         //    
