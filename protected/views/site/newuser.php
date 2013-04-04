@@ -13,7 +13,7 @@
     <p class="note">Fields with <span class="required">*</span> are required.</p>
     <div class="formbox">
 <?php echo $form->errorSummary(array($model, $address1, $address2, $partner1, $partner2)); ?>
-
+            
         <div class="row">
             <h3>User / Partner 1</h3>
         </div>
@@ -130,7 +130,8 @@
         <h3>Invoices</h3>              
     </div>  
     <div class="invoicelines">
-        <div class="invoiceline row" id="row0">
+        <div class="a"></div>
+        <div class="invoiceline row" id="row_0">
              <!-- start invoiceline -->
              <div style="width: 120px; height: 45px; margin:3px;float:left;clear:left;">
              <?php echo CHtml::label('Beskrivelse','',array('id'=>'Beskrivelse_label', 'width'=>100)); ?>
@@ -166,7 +167,7 @@
              <?php echo CHtml::hiddenField('Fakturadata[0][Momsfri]',''); ?>   
             <div style="width: 50px;  height: 45px; margin:3px; float:left; padding:15px 0 0 0;">
             <?php echo CHtml::Button('-', array('onClick'=>'deleterow(0)' ,  'id'=>'0' ,'class' => 'fancybutton remove')); ?>
-            <?php echo CHtml::Button('+', array('onClick'=>'dubTest()' , 'class' => 'fancybutton add')); ?>
+            <?php echo CHtml::Button('+', array('onClick'=>'newdiv()' , 'class' => 'fancybutton add')); ?>
             </div>
  
         </div>

@@ -76,6 +76,7 @@ class SiteController extends Controller {
     
      public function actionNewUser()
     {
+       
        $model = new Users(); 
        $partner1 = new Partners();
        $partner2 = new Partners(); 
@@ -93,7 +94,7 @@ class SiteController extends Controller {
        $valid = true;
        /*if (isset($_POST['User'], $_POST['Partner1'], $_POST['Partner2'], $_POST['Address1'], $_POST['Address2'])) {*/
            if(!empty($_POST)) {
-
+  var_dump($_POST);die;
             $model->attributes = $_POST['Users'];
             $partner1->attributes = $_POST['Partners'][1];
             $partner2->attributes = $_POST['Partners'][2];
