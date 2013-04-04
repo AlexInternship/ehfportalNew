@@ -107,20 +107,20 @@ class Serializer {
             $serializeArray['behandler'] = '';
         if ($invoiceArray['Address'] != null) {
             foreach ($invoiceArray as $key => $value) {
-                $serializeArray['Leveringsadresse'][$key] = $value;
+                $serializeArray['Address'][1] = $value;
             };
         } else
             $serializeArray['Address'] = '';
 
         if ($invoiceArray['Address'] != null) {
             foreach ($invoiceArray as $key => $value) {
-                $serializeArray['Faktureringsadresse'][$key] = $value;
+                $serializeArray['Address'][2] = $value;
             };
         } else
             $serializeArray['Address'] = '';
         if ($invoiceArray['Address'] != null) {
             foreach ($invoiceArray as $key => $value) {
-                $serializeArray['Juridiskeadresse'][$key] = $value;
+                $serializeArray['Address'][3] = $value;
             };
         } else
             $serializeArray['Address'] = '';
