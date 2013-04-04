@@ -11,12 +11,12 @@
  * @property string $version
  * @property string $outbox
  */
-class SerializedDocuments extends CActiveRecord
+class SerializeDocuments extends CActiveRecord
 {
 	/**
 	 * Returns the static model of the specified AR class.
 	 * @param string $className active record class name.
-	 * @return SerializedDocuments the static model class
+	 * @return SerializeDocuments the static model class
 	 */
 	public static function model($className=__CLASS__)
 	{
@@ -39,7 +39,7 @@ class SerializedDocuments extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('document', 'required'),
+			/*array('document', 'required'),*/
 			array('id', 'numerical', 'integerOnly'=>true),
 			array('type', 'length', 'max'=>7),
 			array('version', 'length', 'max'=>10),
