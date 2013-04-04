@@ -102,7 +102,7 @@ class SiteController extends Controller {
             $login->attributes = array('username'=>$_POST['Users']['username'],'password'=>$password, 'rememberMe'=>'1',);
             //$document->attributes = $_POST;
            // print_r($serializer->serializeDocument($_POST, 1, 1));
-            echo 'hejsa: ';
+            print_r($url); die;
             $db->createInvoice();
             
             $valid=$address1->validate() && $valid;
@@ -135,7 +135,8 @@ class SiteController extends Controller {
                 $db->addSerializedDocument();
                 $mailService->sendNewUserMail($userArray['email'] ,$userArray['username'], $password);
                 $login->login();     
-                $this->redirect(Yii::app()->user->returnUrl);
+                $url=$this->createUrl('biztalksend.php',array('type'=>'','id'=>$orderId, 'channel'=>'ehfout', 'organisation'=>'0', 'run'=>'1', 'dump'=>'web')); 
+                $this->redirect(Yii::app()->$url);
                 return;
             }
         }
