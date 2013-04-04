@@ -138,7 +138,7 @@
             </div>
              <div style="width: 90px; height: 45px; margin:3px;float:left;">
              <?php echo CHtml::label('Varenummer','',array('id'=>'Varenummer_label', 'style'=> 'width:80px;')); ?>
-             <?php echo CHtml::textField('Fakturadata[0][Varenummer]','0',array('id'=>'Varenummer',  'style'=>'width:80px;','maxlength'=>16)); ?>
+             <?php echo CHtml::textField('Fakturadata[0][Varenummer]','',array('id'=>'Varenummer',  'style'=>'width:80px;','maxlength'=>16)); ?>
             </div>
              <div style="width: 90px; height: 45px; margin:3px;float:left;">
              <?php echo CHtml::label('Antal','',array('id'=>'antal_label', 'style'=> 'width:80px;')); ?>

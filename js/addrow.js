@@ -1,26 +1,27 @@
 function dubTest(){
    
       var count = $('.invoiceline').length;
-      var item = $('.invoiceline:first').clone();
+      var item = $('.invoiceline:first').clone();s
       // Beskrivelse kan ikke vælges med 'input' så 'textarea' bliver brugt her. -->
       item.find('textarea').eq(0).attr('name', 'Fakturadata[' + count +  '][Varenavn]');
       item.find('textarea').eq(0).attr('value','');
       item.find('input').eq(0).attr('name', 'Fakturadata[' + count +  '][Varenummer]');
-      item.find('input').eq(0).attr('value','0');
       item.find('input').eq(1).attr('name', 'Fakturadata[' + count +  '][antal]');
       item.find('input').eq(1).attr('value','0');
+      item.find('input').eq(1).attr('id','antal_'+count);
       item.find('input').eq(1).attr('Onblur','calc('+count+')');
       item.find('input').eq(2).attr('name', 'Fakturadata[' + count +  '][Pris]');
       item.find('input').eq(2).attr('value','');
-      item.find('input').eq(2).attr('Onblur','calc('+count+')');
       item.find('input').eq(3).attr('name', 'Fakturadata[' + count +  '][Kontering]');
       item.find('input').eq(3).attr('value','');
       item.find('input').eq(4).attr('name', 'Fakturadata[' + count +  '][dimaccont]');
       item.find('input').eq(4).attr('value','0');
       item.find('select').eq(0).attr('name', 'Fakturadata[' + count +  '][ehf_vat]');
       item.find('select').eq(0).attr('value','');
+      item.find('select').eq(0).attr('id','vat_'+count);
       item.find('input').eq(5).attr('name', 'Fakturadata[' + count +  '][Varebeloeb]');
       item.find('input').eq(5).attr('value','');
+      item.find('input').eq(5).attr('id','varebeloeb_'+count);
       item.find('input').eq(5).attr('Onblur','calc('+count+')');
       item.find('input').eq(6).attr('name', 'Fakturadata[' + count + '][Skaffevare]');
       item.find('input').eq(7).attr('value','');
@@ -28,11 +29,10 @@ function dubTest(){
       item.find('input').eq(7).attr('value','');
       item.find('input').eq(8).attr('name', 'Fakturadata[' + count + '][Momsfri]');
       item.find('input').eq(8).attr('value','');
-      item.find('input').eq(8).attr('id','linie_total_'+count);
+      item.find('input').eq(5).attr('id','linie_total_'+count);
       item.find('.remove').attr('id',count);
       item.find('.remove').attr('onClick','deleterow('+count+')');
       
-      linie_total_0
       item.appendTo('.invoicelines');
       $('.invoiceline:last').attr('id','row'+count);
 }

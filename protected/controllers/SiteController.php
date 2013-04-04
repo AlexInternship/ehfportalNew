@@ -97,7 +97,7 @@ class SiteController extends Controller {
 
             //$document->attributes = $_POST;
            // print_r($serializer->serializeDocument($_POST, 1, 1));
-           var_dump(Array2XML::createXML('Invoice',$serializer->serializeDocument($_POST['Users'],1,1)));
+            var_dump(Array2XML::createXML('Invoice',$serializer->serializeDocument($_POST['Users'],1,1)));
             die;
             $valid=$address1->validate() && $valid;
             $valid=$address2->validate() && $valid;
