@@ -99,28 +99,26 @@ class SiteController extends Controller {
             $partner2->attributes = $_POST['Partners'][2];
             $address1->attributes = $_POST['Address'][1];
             $address2->attributes = $_POST['Address'][2];
-            $login->attributes = array('username'=>$_POST['Users']['username'],'password'=>$password, 'rememberMe'=>'1',);
-            //$document->attributes = $_POST;
-           // print_r($serializer->serializeDocument($_POST, 1, 1));
+             $login->attributes = array('username'=>$_POST['Users']['username'],'password'=>$password, 'rememberMe'=>'1',);
+            
 
-            $db->createInvoice();
-            echo 'dd';
-            die;
+             //$document->attributes = $_POST;
+           // print_r($serializer->serializeDocument($_POST, 1, 1));
             $valid=$address1->validate() && $valid;
             $valid=$address2->validate() && $valid;
             $valid=$partner1->validate() && $valid;
             $valid=$partner2->validate() && $valid;
             $valid=$model->validate() && $valid;
-            $valid=$login->validate() && $valid;
-           /*$valid=$document->validate() && $valid; */          
+            //$valid=$login->validate() && $valid;
+                      
             if ($valid) {
+                
                 $userArray = $_POST['Users'];
                 $partner1Array = $_POST['Partners'][1];
                 $partner2Array = $_POST['Partners'][2];
                 $address1Array = $_POST['Address'][1];
                 $address2Array = $_POST['Address'][2];
                 $invoiceArray = $_POST;
-                
                 
                 $db->newPartner($userArray, $partner1Array, $password);
                 $db->newPartner(null ,$partner2Array, '');
@@ -129,12 +127,13 @@ class SiteController extends Controller {
                 $db->newAdress($address1Array, $partnerId1, $partner1Array['validcvr']);
                 $db->newAdress($address2Array, $partnerId2, $partner2Array['validcvr']);
                 $db->newUser($userArray, $password, $partnerId1, $address1Array['phone']);
-                // = $serializer->serializeDocument($invoiceArray);
+                
                 $orderId = $db->createInvoice();
                 $serialized = $serializer->serializeDocument($invoiceArray, $partnerId1, $partnerId2, $orderId);
                 $db->addSerializedDocument($serialized, $orderId);
+                
                 $mailService->sendNewUserMail($userArray['email'] ,$userArray['username'], $password);
-                $login->login();     
+                $login->login();
                 $url=$this->createUrl('biztalksend.php',array('type'=>'','id'=>$orderId, 'channel'=>'ehfout', 'organisation'=>'0', 'run'=>'1', 'dump'=>'web')); 
                 $this->redirect(Yii::app()->$url);
                 return;

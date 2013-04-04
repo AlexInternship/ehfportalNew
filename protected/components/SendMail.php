@@ -13,6 +13,11 @@ class SendMail {
         public function sendNewUserMail($email, $username, $password){
             Yii::import('application.extensions.phpmailer.JPhpMailer');
             $mail = new JPhpMailer;
+            
+            $template = file_get_contents(dirname(__FILE__).'/template.html');
+            $template = str_replace('%username%', $username, $template);
+            $template = str_replace('%password%', $password, $template);
+        
 
             $mail->SMTPSecure = "ssl";  
             $mail->Host='smtp.gmail.com';  
@@ -27,8 +32,8 @@ class SendMail {
             $mail->SMTPDebug  = 0;   
             $mail->SetFrom('testingphpmails@gmail.com', 'EHFPortal');
             $mail->Subject = 'New account created';
-            $mail->AltBody = 'To view the message, please use an HTML compatible email viewer!';
-            $mail->MsgHTML('<h3>We have created a new user for you</h3><br /><h3>your username is <h3>'.$username.'<br /><h3>your password is<h3>'.$password);     
+            $mail->AltBody = strip_tags($template);
+            $mail->MsgHTML($template);     
             $mail->AddAddress($email, 'user');
             $mail->Send();
             
