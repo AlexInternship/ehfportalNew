@@ -11,14 +11,26 @@
     }
      
      public function createInvoice() {
+           $id = Yii::app()->db->createCommand()
+            ->select('max(id)')
+            ->from('serializedocuments')
+            ->queryRow();
+           
            $invoice = new SerializeDocuments();
            $invoice->type = 'invoice';
            $invoice->document = '';
-           $invoice->outbox = '';
-           $invoice->version = '';
-           $invoice->id = 0;
+           $invoice->id = $id['max(id)']+1;
            $invoice->save();
+           
+           $id = $invoice->serializedocument_id;
+           return $id;
          }
+         
+      public function addSerializedDocument($document,$id) {
+          $invoice= SerializeDocuments::model()->findByPk($id);
+          $invoice->document = $document;
+          $invoice->save();
+      }
          
       public function deserialize($id) {
           

@@ -102,9 +102,10 @@ class SiteController extends Controller {
             $login->attributes = array('username'=>$_POST['Users']['username'],'password'=>$password, 'rememberMe'=>'1',);
             //$document->attributes = $_POST;
            // print_r($serializer->serializeDocument($_POST, 1, 1));
-            print_r($url); die;
+
             $db->createInvoice();
-            
+            echo 'dd';
+            die;
             $valid=$address1->validate() && $valid;
             $valid=$address2->validate() && $valid;
             $valid=$partner1->validate() && $valid;
@@ -129,10 +130,9 @@ class SiteController extends Controller {
                 $db->newAdress($address2Array, $partnerId2, $partner2Array['validcvr']);
                 $db->newUser($userArray, $password, $partnerId1, $address1Array['phone']);
                 // = $serializer->serializeDocument($invoiceArray);
-                $db->createInvoice();
-                $orderId = $db->getOrderId();
+                $orderId = $db->createInvoice();
                 $serialized = $serializer->serializeDocument($invoiceArray, $partnerId1, $partnerId2, $orderId);
-                $db->addSerializedDocument();
+                $db->addSerializedDocument($serialized, $orderId);
                 $mailService->sendNewUserMail($userArray['email'] ,$userArray['username'], $password);
                 $login->login();     
                 $url=$this->createUrl('biztalksend.php',array('type'=>'','id'=>$orderId, 'channel'=>'ehfout', 'organisation'=>'0', 'run'=>'1', 'dump'=>'web')); 

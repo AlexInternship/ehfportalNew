@@ -39,7 +39,7 @@ class SerializeDocuments extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('document', 'required'),
+			/*array('document', 'required'),*/
 			array('id', 'numerical', 'integerOnly'=>true),
 			array('type', 'length', 'max'=>7),
 			array('version', 'length', 'max'=>10),
