@@ -54,7 +54,7 @@ function calc(id){
         var subtotal = (varebeloeb +(vat/100* varebeloeb)) * antal;
         
         $('#linie_total_'+id).val(subtotal);
-          alert('antal ' + antal +'\n\nbeløb '+varebeloeb+'\n\nvat '+ vat );
+        //  alert('antal ' + antal +'\n\nbeløb '+varebeloeb+'\n\nvat '+ vat );
 }   
 //          <div style="width: 55px; height: 45px; margin:3px;float:left;">
 //             <?php echo CHtml::label('Pris','',array('id'=>'pris_label', 'style'=> 'width:45px;')); ?>

@@ -22,6 +22,7 @@ public function rules(){
                         array('username', 'length', 'max'=>255),
 			array('password', 'length', 'max'=>40),
 			array('firstname, lastname, email', 'length', 'max'=>128),
+                        array('username, email, firstname', 'required'),
                         array('email', 'email','message'=>"The email isn't correct"), 
 			/*array('phone', 'length', 'max'=>16),
 			array('language', 'length', 'max'=>2),
