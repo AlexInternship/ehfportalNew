@@ -11,12 +11,12 @@
  * @property string $version
  * @property string $outbox
  */
-class serializedocuments extends CActiveRecord
+class SerializeDocuments extends CActiveRecord
 {
 	/**
 	 * Returns the static model of the specified AR class.
 	 * @param string $className active record class name.
-	 * @return serializedocuments the static model class
+	 * @return SerializeDocuments the static model class
 	 */
 	public static function model($className=__CLASS__)
 	{

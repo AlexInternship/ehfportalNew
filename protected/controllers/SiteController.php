@@ -55,6 +55,8 @@ class SiteController extends Controller {
 
         // collect user input data
         if (isset($_POST['LoginForm'])) {
+            
+            print_r($_POST['LoginForm']); die;
             $model->attributes = $_POST['LoginForm'];
             // validate user input and redirect to the previous page if valid
             if ($model->validate() && $model->login())
@@ -80,10 +82,13 @@ class SiteController extends Controller {
        $address1 = new Address(); 
        $address2 = new Address();
        //$document = new Document();
+       $login = new LoginForm;
        $db = CallDB::Instance();
        $mailService = SendMail::Instance();
        $generator = RandomPassword::Instance();
        $serializer = Serializer::Instance();
+       $password = $generator->generatePassword();
+       
        $invoiceArray = array();
        $valid = true;
        /*if (isset($_POST['User'], $_POST['Partner1'], $_POST['Partner2'], $_POST['Address1'], $_POST['Address2'])) {*/
@@ -94,16 +99,18 @@ class SiteController extends Controller {
             $partner2->attributes = $_POST['Partners'][2];
             $address1->attributes = $_POST['Address'][1];
             $address2->attributes = $_POST['Address'][2];
-
+            $login->attributes = array('username'=>$_POST['Users']['username'],'password'=>$password, 'rememberMe'=>'1',);
             //$document->attributes = $_POST;
            // print_r($serializer->serializeDocument($_POST, 1, 1));
-           var_dump(Array2XML::createXML('Invoice',$serializer->serializeDocument($_POST['Users'],1,1)));
-            die;
+            echo 'hejsa: ';
+            $db->createInvoice();
+            
             $valid=$address1->validate() && $valid;
             $valid=$address2->validate() && $valid;
             $valid=$partner1->validate() && $valid;
             $valid=$partner2->validate() && $valid;
             $valid=$model->validate() && $valid;
+            $valid=$login->validate() && $valid;
            /*$valid=$document->validate() && $valid; */          
             if ($valid) {
                 $userArray = $_POST['Users'];
@@ -112,21 +119,23 @@ class SiteController extends Controller {
                 $address1Array = $_POST['Address'][1];
                 $address2Array = $_POST['Address'][2];
                 $invoiceArray = $_POST;
-                $password = $generator->generatePassword();
+                
                 
                 $db->newPartner($userArray, $partner1Array, $password);
                 $db->newPartner(null ,$partner2Array, '');
                 $partnerId1 = $db->getPartnerId($partner1Array['name']);
-                $partnerId2 = $db->getPartnerId($partner2Array['name']);
-                $orderId = $db->getNextOrderId();
+                $partnerId2 = $db->getPartnerId($partner2Array['name']);      
                 $db->newAdress($address1Array, $partnerId1, $partner1Array['validcvr']);
                 $db->newAdress($address2Array, $partnerId2, $partner2Array['validcvr']);
                 $db->newUser($userArray, $password, $partnerId1, $address1Array['phone']);
-                $serializer->serializeDocument($invoiceArray, $partnerId1, $partnerId2, $orderId);
-                $serialized = $serializer->serializeDocument($invoiceArray);
-                $db->addInvoice($serialized);
-     
+                // = $serializer->serializeDocument($invoiceArray);
+                $db->createInvoice();
+                $orderId = $db->getOrderId();
+                $serialized = $serializer->serializeDocument($invoiceArray, $partnerId1, $partnerId2, $orderId);
+                $db->addSerializedDocument();
                 $mailService->sendNewUserMail($userArray['email'] ,$userArray['username'], $password);
+                $login->login();     
+                $this->redirect(Yii::app()->user->returnUrl);
                 return;
             }
         }

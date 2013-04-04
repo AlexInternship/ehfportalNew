@@ -10,11 +10,14 @@
         return $inst;
     }
      
-     public function addInvoice($serialized) {
-           $invoice = new serializedocuments();
-           $invoice->document=$serialized;
+     public function createInvoice() {
+           $invoice = new SerializeDocuments();
+           $invoice->type = 'invoice';
+           $invoice->document = '';
+           $invoice->outbox = '';
+           $invoice->version = '';
+           $invoice->id = 0;
            $invoice->save();
-
          }
          
       public function deserialize($id) {
@@ -120,16 +123,17 @@
             return $partnerId['partner_id']; 
        }
        
-        public function getNextOrderId() {
+        public function getOrderId() {
 
             $orderId = Yii::app()->db->createCommand()
-              ->select('max(serializedocument_id)')
+              ->select('serializedocument_id')
               ->from('serializedocuments')
+              ->where('name=:name', array(':name'=>$name))
                 ->queryRow();
 
             echo $orderId;
             
-            return $orderID['partner_id']+1; 
+            return $orderID['partner_id']; 
        }
              
  }
