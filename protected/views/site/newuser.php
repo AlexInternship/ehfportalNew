@@ -141,11 +141,11 @@
              <!-- start invoiceline -->
              <div style="width: 120px; height: 45px; margin:3px;float:left;clear:left;">
              <?php echo CHtml::label('Beskrivelse','',array('id'=>'Beskrivelse_label', 'width'=>100)); ?>
-             <?php echo CHtml::textArea('Fakturadata[0][varenavn]','',array('class='=> 'beskrivelse', 'id'=>'beskrivelse', 'width'=>100,'maxlength'=>100, 'style' =>'height:1.5em; width:100px;')); ?>
+             <?php echo CHtml::textArea('Fakturadata[0][varenavn]','',array('class'=> 'beskrivelse', 'id'=>'beskrivelse', 'width'=>100,'maxlength'=>100, 'style' =>'height:1.5em; width:100px;')); ?>
             </div>
              <div style="width: 90px; height: 45px; margin:3px;float:left;">
              <?php echo CHtml::label('Varenummer','',array('id'=>'Varenummer_label', 'style'=> 'width:80px;')); ?>
-             <?php echo CHtml::textField('Fakturadata[0][Varenummer]','',array('id'=>'Varenummer',  'style'=>'width:80px;','maxlength'=>16)); ?>
+             <?php echo CHtml::textField('Fakturadata[0][Varenummer]','',array('class'=>'varenummer', 'id'=>'Varenummer',  'style'=>'width:80px;','maxlength'=>16)); ?>
             </div>
              <div style="width: 90px; height: 45px; margin:3px;float:left;">
              <?php echo CHtml::label('Antal','',array('class' => 'test' ,'id'=>'antal_label', 'style'=> 'width:80px;')); ?>
@@ -153,20 +153,20 @@
             </div>
             <div style="width: 80px; height: 45px; margin:3px;float:left;">
              <?php echo CHtml::label('Kontering','',array('id'=>'kontering', 'style'=> 'width:70px;')); ?>
-             <?php echo CHtml::textField('Fakturadata[0][Kontering]','',array('id'=>'Kontering', 'style'=> 'width:45px;','maxlength'=>100)); ?>
+             <?php echo CHtml::textField('Fakturadata[0][Kontering]','',array('class'=>'kontering',   'id'=>'Kontering', 'style'=> 'width:45px;','maxlength'=>100)); ?>
             </div>
              <?php echo CHtml::hiddenField('Fakturadata[0][dimaccont]',''); ?>
              <div style="width: 60px; height: 45px; margin:3px;float:left;">
              <?php echo CHtml::label('MVA','',array('id'=>'ehf_vat_label')); ?>
-             <?php echo CHtml::dropDownList('Fakturadata[0][ehf_vat]', '',array('25' => '25%', '0' => '0%', '8' => '8%', '10' => '10%'),array('id'=>'vat_0'));?>
+             <?php echo CHtml::dropDownList('Fakturadata[0][ehf_vat]', '',array('25' => '25%', '0' => '0%', '8' => '8%', '10' => '10%'),array('class'=>'vat' , 'id'=>'vat_0'));?>
             </div> 
              <div style="width: 90px; height: 45px; margin:3px;float:left;">
              <?php echo CHtml::label('Varebeloeb','',array('id'=>'Varebeloeb_label', 'style'=> 'width:75px;')); ?>
-             <?php echo CHtml::textField('Fakturadata[0][Varebeloeb]','0',array('id'=>'varebeloeb_0', 'style'=> 'width:75px;', 'onBlur'=>'calc(0)')); ?>
+             <?php echo CHtml::textField('Fakturadata[0][Varebeloeb]','0',array('class'=>'varebeloeb',  'id'=>'varebeloeb_0', 'style'=> 'width:75px;', 'onBlur'=>'calc(0)')); ?>
             </div>
              <div style="width:55px; height: 45px; margin:3px;float:left;">
              <?php echo CHtml::label('I alt','',array('id'=>'total_label', 'style'=> 'width:45px;')); ?>
-             <?php echo CHtml::textField('Fakturadata[0][linie_total]','',array('style'=> 'width:45px;','class' => 'testadd','id'=> 'linie_total_0','readonly' =>'readonly')); ?>
+             <?php echo CHtml::textField('Fakturadata[0][linie_total]','',array('style'=> 'width:45px;','class' => 'subtotal','id'=> 'linie_total_0','readonly' =>'readonly')); ?>
             </div>
              <?php echo CHtml::hiddenField('Fakturadata[0][Skaffevare]','ja'); ?>           
              <?php echo CHtml::hiddenField('Fakturadata[0][Ordrefradrag]',''); ?>

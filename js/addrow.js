@@ -57,13 +57,10 @@ function calc(id){
         
         $('#linie_total_'+id).val(subtotal);
         var total = 0;
-        $('.testadd').each(function() { 
+        $('.subtotal').each(function() { 
          total += parseFloat($(this).val()); 
 });
         $('#VareTotal').val(total);
-        
-        
-        //  alert('antal ' + antal +'\n\nbeløb '+varebeloeb+'\n\nvat '+ vat );
 }   
 
 function newdiv(){
@@ -116,7 +113,7 @@ function newdiv(){
     //ialt subtotal
     var subt_div = $('<div style="width:55px; height: 45px; margin:3px;float:left;"></div>');
     var subt_label = $('<label id="total_label" style="width:45px;" for="">I alt</label>');
-    var subt_field = $('<input class="total" style="width:45px;" class="testadd" id="linie_total_' +count+ '" readonly="readonly" type="text" value="" name="Fakturadata[' +count+ '][linie_total]">');
+    var subt_field = $('<input class="subtotal" style="width:45px;" class="testadd" id="linie_total_' +count+ '" readonly="readonly" type="text" value="" name="Fakturadata[' +count+ '][linie_total]">');
     subt_div.appendTo(row);
     subt_label.appendTo(subt_div);
     subt_field.appendTo(subt_div);
@@ -131,7 +128,6 @@ function newdiv(){
 }
 function resequence(){
    var i = 0;
-   var text = '';
    $('.invoiceline').each(function(){
        $(this).attr('id', 'row_'+i);
        i++;
@@ -141,20 +137,18 @@ function resequence(){
        $(this).attr('name', 'Fakturadata['+i+'][varenavn]');
        i++;
    });
-   text = text + 'beskrivelse ' +i +'\n';
    i = 0;
    $('input[class="varenummer"]').each(function(){
               $(this).attr('name','Fakturadata['+i+'][Varenummer]');
               i++;
    });
-   text = text + 'varenummer ' +i +'\n';
    i = 0;
    $('input[class="antal"]').each(function() {
        $(this).attr('name', 'Fakturadata['+i+'][antal]');
+       $(this).attr('id', 'antal_'+i);
        $(this).attr('onBlur','calc('+i+')');
        i++;
    });
-   text = text + 'antal' +i ;
    i = 0;
    $('input[class="kontering"]').each(function(){
        $(this).attr('name','Fakturadata[' +i+ '][Kontering]');
@@ -166,7 +160,6 @@ function resequence(){
        $(this).attr('id','vat_'+i);
        i++;
    });
-   text = text + 'varenummer ' +i +'\n';
    i = 0;
    $('input[class="varebeloeb"]').each(function(){
        $(this).attr('name','Fakturadata[' +i+ '][varebeloeb]');
@@ -174,20 +167,17 @@ function resequence(){
        $(this).attr('onBlur','calc('+i+')');
        i++;
    });
-   text = text + 'varebeloeb ' +i +'\n';
    i = 0; 
    $('input[class="total"]').each(function(){
        $(this).attr('name','Fakturadata[' +i+ '][linie_total]');
        $(this).attr('id','linie_total_'+i);
        i++;
    });
-   text = text + 'total ' +i +'\n';
    i = 0; 
    $('input[class$="remove"]').each(function(){
        $(this).attr('onclick',  'deleterow(' +i+ ')');
        i++
    });
-   text = text + 'remove'  +i +'\n';
 }
 
 //          <div style="width: 55px; height: 45px; margin:3px;float:left;">
