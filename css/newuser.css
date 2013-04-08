@@ -2,7 +2,6 @@ root {
     display: block;  
     
 }
-
 div.form input,
 div.form textarea,
 div.form select
@@ -96,12 +95,15 @@ div.form div.error input {
 }
 .formbox{
     float:left;
+    margin: 3px;
+    padding: 2px;
 }
 .formsplitter{
     float: left;
     height: 190px;
     margin:20px;
-    border-left: 1px solid #888;    
+    border-left: 1px solid #888; 
+    clear:left;
 }
 .horisontalsplitter{
     border-top:1px solid #888;
@@ -130,4 +132,11 @@ div.form div.error input {
 #ui-datepicker-div
 {
     z-index: 1102 !important;
+}
+.usercontainer{
+    width: 350px;
+    display:inline;
+    height: 500px;
+    background: whitesmoke;
+    
 }

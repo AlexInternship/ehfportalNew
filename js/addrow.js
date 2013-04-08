@@ -1,3 +1,5 @@
+
+
 function dubTest(){
    
       var count = $('.invoiceline').length;
@@ -41,18 +43,26 @@ function deleterow(id){
         if(count > 1 ){
          var t = '#row_'+id
          $(t).remove(); 
+         resequence();
         }
         else{alert("Der skal mindst være en vare linie.");}
 }
 
 function calc(id){
     
-        var vat = Number($('#vat_'+id).val());
-        var antal = Number($('#antal_'+id).val());
-        var varebeloeb = Number($('#varebeloeb_'+id).val());
+        var vat = parseFloat($('#vat_'+id).val());
+        var antal = parseFloat($('#antal_'+id).val());
+        var varebeloeb = parseFloat($('#varebeloeb_'+id).val());
         var subtotal = (varebeloeb +(vat/100* varebeloeb)) * antal;
         
         $('#linie_total_'+id).val(subtotal);
+        var total = 0;
+        $('.testadd').each(function() { 
+         total += parseFloat($(this).val()); 
+});
+        $('#VareTotal').val(total);
+        
+        
         //  alert('antal ' + antal +'\n\nbeløb '+varebeloeb+'\n\nvat '+ vat );
 }   
 
@@ -63,7 +73,7 @@ function newdiv(){
     //Beskrivelse 
     var beskrivelse = $('<div style="width: 120px; height: 45px; margin:3px;float:left;clear:left;"></div>'); 
     var beskrivelse_lable = $('<label id="Beskrivelse_label'+count+'" style="width:100px;">Beskrivelse</label>');
-    var beskrivelse_text = $('<textarea id="Beskrivelse" width="100" maxlength="100" style="height:1.5em; width:100px;" name="Fakturadata['+count+'][varenavn]"></textarea>');
+    var beskrivelse_text = $('<textarea class="beskrivelse" width="100" maxlength="100" style="height:1.5em; width:100px;" name="Fakturadata['+count+'][varenavn]"></textarea>');
     row.appendTo(".invoicelines");
     beskrivelse.appendTo(row);
     beskrivelse_lable.appendTo(beskrivelse);
@@ -71,55 +81,114 @@ function newdiv(){
     //Varenummer
     var vn = $('<div style="width: 90px; height: 45px; margin:3px;float:left;"></div>');
     var vn_label = $('<label style="width:80px;">Varenummer</label>');
-    var vn_text = $('<input name="Fakturadata['+ count  +'][Varenummer]" id="varenummer" style="width:80px;" maxlenght="16"></input>')    
+    var vn_text = $('<input name="Fakturadata['+ count  +'][Varenummer]" class="varenummer" style="width:80px;" maxlenght="16"></input>')    
     vn.appendTo(row);
     vn_label.appendTo(vn);
     vn_text.appendTo(vn);
     //Antal 
     var antal_div = $('<div style="width: 90px; height: 45px; margin:3px;float:left;"></div>'); 
     var antal_label = $('<label style="width:80px;">Antal</label>');
-    var antal_field = $('<input value="0" name="Fakturadata['+ count +'][antal]" id="antal_"'+count+' style="width:80px; maxlength="16" onblur="calc('+count+')"></input>');
+    var antal_field = $('<input class="antal" value="0" name="Fakturadata['+ count +'][antal]" id="antal_'+count+'" style="width:80px; maxlength="16" onblur="calc('+count+')"></input>');
     antal_div.appendTo(row);
     antal_label.appendTo(antal_div);
     antal_field.appendTo(antal_div);
     //Kontering
     var kont_div = $('<div style="width: 80px; height: 45px; margin:3px;float:left;"></div>');
     var kont_label = $('<label style="width:70px;">Kontering</label>');
-    var kont_field = $('<input id="Kontering" style="width:45px;" maxlength="100" type="text" value="" name="Fakturadata['+count+'][Kontering]"></input>');
+    var kont_field = $('<input class="kontering" id="Kontering" style="width:45px;" maxlength="100" type="text" value="" name="Fakturadata['+count+'][Kontering]"></input>');
     kont_div.appendTo(row);
     kont_label.appendTo(kont_div);
     kont_field.appendTo(kont_div);
     //MVA
     var mva_div = $('<div style="width: 60px; height: 45px; margin:3px;float:left;"></div>'); 
     var mva_label = $('<label id="ehf_vat_label" for="">MVA</label>');
-    var mva_select = $('<select name="Fakturadata[' + count + '][ehf_vat]"><option value="25">25%</option><option value="0">0%</option><option value="8">8%</option><option value="10">10%</option></select>');
+    var mva_select = $('<select class="vat" id="vat_'+count+'" name="Fakturadata[' + count + '][ehf_vat]"><option value="25">25%</option><option value="0">0%</option><option value="8">8%</option><option value="10">10%</option></select>');
     mva_div.appendTo(row);
     mva_label.appendTo(mva_div);
     mva_select.appendTo(mva_div);
     // varebeloeb
     var vbl_div = $('<div style="width: 90px; height: 45px; margin:3px;float:left;"></div>');
     var vbl_label = $('<label id="Varebeloeb_label" style="width:75px;" for="">Varebeloeb</label>');
-    var vbl_field = $('<input id="varebeloeb_' +count+ ' " style="width:75px;" onblur="calc(' +count+ ')" type="text" value="0" name="Fakturadata[' +count+ '][Varebeloeb]">');    
+    var vbl_field = $('<input class="varebeloeb" id="varebeloeb_' +count+'" style="width:75px;" onblur="calc(' +count+ ')" type="text" value="0" name="Fakturadata[' +count+ '][Varebeloeb]">');    
     vbl_div.appendTo(row);
     vbl_label.appendTo(vbl_div);
     vbl_field.appendTo(vbl_div);
     //ialt subtotal
     var subt_div = $('<div style="width:55px; height: 45px; margin:3px;float:left;"></div>');
     var subt_label = $('<label id="total_label" style="width:45px;" for="">I alt</label>');
-    var subt_field = $('<input style="width:45px;" id="linie_total_' +count+ '" readonly="readonly" type="text" value="" name="Fakturadata[' +count+ ' ][linie_total]">');
+    var subt_field = $('<input class="total" style="width:45px;" class="testadd" id="linie_total_' +count+ '" readonly="readonly" type="text" value="" name="Fakturadata[' +count+ '][linie_total]">');
     subt_div.appendTo(row);
     subt_label.appendTo(subt_div);
     subt_field.appendTo(subt_div);
     //buttons
     var but_div = $('<div style="width: 50px;  height: 45px; margin:3px; float:left; padding:15px 0 0 0;"></div>');
-    var but_del = $('<input onclick="deleterow(' +count+ ')" id="0" class="fancybutton remove" type="button" value="-"> ');
+    var but_del = $('<input onclick="deleterow(' +count+ ')" class="fancybutton remove" type="button" value="-"> ');
     var but_add = $('<input onclick="newdiv()" class="fancybutton add" type="button" value="+">');
     but_div.appendTo(row);
     but_del.appendTo(but_div);
     but_add.appendTo(but_div);
+    resequence();
 }
-
-
+function resequence(){
+   var i = 0;
+   var text = '';
+   $('.invoiceline').each(function(){
+       $(this).attr('id', 'row_'+i);
+       i++;
+   });
+   i=0;
+   $('textarea[class="beskrivelse"]').each(function() {
+       $(this).attr('name', 'Fakturadata['+i+'][varenavn]');
+       i++;
+   });
+   text = text + 'beskrivelse ' +i +'\n';
+   i = 0;
+   $('input[class="varenummer"]').each(function(){
+              $(this).attr('name','Fakturadata['+i+'][Varenummer]');
+              i++;
+   });
+   text = text + 'varenummer ' +i +'\n';
+   i = 0;
+   $('input[class="antal"]').each(function() {
+       $(this).attr('name', 'Fakturadata['+i+'][antal]');
+       $(this).attr('onBlur','calc('+i+')');
+       i++;
+   });
+   text = text + 'antal' +i ;
+   i = 0;
+   $('input[class="kontering"]').each(function(){
+       $(this).attr('name','Fakturadata[' +i+ '][Kontering]');
+       i++;
+   });
+   i = 0;
+   $('select[class="vat"]').each(function(){
+       $(this).attr('name','Fakturadata[' +i+ '][ehf_vat]');
+       $(this).attr('id','vat_'+i);
+       i++;
+   });
+   text = text + 'varenummer ' +i +'\n';
+   i = 0;
+   $('input[class="varebeloeb"]').each(function(){
+       $(this).attr('name','Fakturadata[' +i+ '][varebeloeb]');
+       $(this).attr('id','varebeloeb_'+i);
+       $(this).attr('onBlur','calc('+i+')');
+       i++;
+   });
+   text = text + 'varebeloeb ' +i +'\n';
+   i = 0; 
+   $('input[class="total"]').each(function(){
+       $(this).attr('name','Fakturadata[' +i+ '][linie_total]');
+       $(this).attr('id','linie_total_'+i);
+       i++;
+   });
+   text = text + 'total ' +i +'\n';
+   i = 0; 
+   $('input[class$="remove"]').each(function(){
+       $(this).attr('onclick',  'deleterow(' +i+ ')');
+       i++
+   });
+   text = text + 'remove'  +i +'\n';
+}
 
 //          <div style="width: 55px; height: 45px; margin:3px;float:left;">
 //             <?php echo CHtml::label('Pris','',array('id'=>'pris_label', 'style'=> 'width:45px;')); ?>

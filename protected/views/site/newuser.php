@@ -11,16 +11,22 @@
     ?>
     <?php Yii::app()->clientScript->registerScriptFile('js/addrow.js', CClientScript::POS_HEAD); ?>
     <p class="note">Fields with <span class="required">*</span> are required.</p>
-    <div class="formbox">
+    
 <?php echo $form->errorSummary(array($model, $address1, $address2, $partner1, $partner2)); ?>
-            
-        <div class="row">
-            <h3>User / Partner 1</h3>
-        </div>
+
+   
+ <div class="usercontainer"> 
+     
+      <div class="formbox"> 
         <div class="row">   
             <?php echo $form->labelEx($model, 'username') ?>
             <?php echo $form->textField($model, 'username') ?>
             <?php echo $form->error($model, 'username') ?> 
+        </div>
+        <div class="row">
+            <?php echo $form->labelEx($partner1, 'Firma navn') ?>
+            <?php echo $form->textField($partner1, '[1]name') ?>
+            <?php echo $form->error($partner1, '[1]name') ?> 
         </div>
         <div class="row">
             <?php echo $form->labelEx($model, 'firstname') ?>
@@ -42,6 +48,8 @@
             <?php echo $form->textField($model, 'email') ?>
             <?php echo $form->error($model, 'email') ?> 
         </div>  
+    </div>
+    <div class="formbox">
         <div class="row">
             <?php echo $form->labelEx($address1, 'Adresse') ?>
             <?php echo $form->textField($address1, '[1]address1') ?>
@@ -72,18 +80,12 @@
             <?php echo $form->textField($partner1, '[1]validcvr') ?>
             <?php echo $form->error($partner1, '[1]validcvr') ?> 
         </div>
-        <div class="row">
-            <?php echo $form->labelEx($partner1, 'Firma navn') ?>
-            <?php echo $form->textField($partner1, '[1]name') ?>
-            <?php echo $form->error($partner1, '[1]name') ?> 
+       
         </div>
     </div>
-    <div class="formsplitter"></div>
+    <div class="usercontainer">
+  
     <div class="formbox">
-        <div class="row">
-            <h3>Partner 2</h3>
-        </div>
-
         <div class="row">
             <?php echo $form->labelEx($partner2, 'Firma navn') ?>
             <?php echo $form->textField($partner2, '[2]name') ?>
@@ -104,6 +106,8 @@
             <?php echo $form->textField($address2, '[2]address1') ?>
             <?php echo $form->error($address2, '[2]address1') ?> 
         </div>
+    </div>
+    <div class="formbox">
         <div class="row">
             <?php echo $form->labelEx($address2, 'Adresse') ?>
             <?php echo $form->textField($address2, '[2]address2') ?>
@@ -125,6 +129,8 @@
             <?php echo $form->error($address2, '[2]city') ?>   
         </div>
     </div> 
+    
+    <!-- Faktura / Invoice -->
     <div class="horisontalsplitter"></div>          
     <div class="row">
         <h3>Invoices</h3>              
@@ -135,15 +141,15 @@
              <!-- start invoiceline -->
              <div style="width: 120px; height: 45px; margin:3px;float:left;clear:left;">
              <?php echo CHtml::label('Beskrivelse','',array('id'=>'Beskrivelse_label', 'width'=>100)); ?>
-             <?php echo CHtml::textArea('Fakturadata[0][varenavn]','',array('id'=>'Beskrivelse', 'width'=>100,'maxlength'=>100, 'style' =>'height:1.5em; width:100px;')); ?>
+             <?php echo CHtml::textArea('Fakturadata[0][varenavn]','',array('class='=> 'beskrivelse', 'id'=>'beskrivelse', 'width'=>100,'maxlength'=>100, 'style' =>'height:1.5em; width:100px;')); ?>
             </div>
              <div style="width: 90px; height: 45px; margin:3px;float:left;">
              <?php echo CHtml::label('Varenummer','',array('id'=>'Varenummer_label', 'style'=> 'width:80px;')); ?>
              <?php echo CHtml::textField('Fakturadata[0][Varenummer]','',array('id'=>'Varenummer',  'style'=>'width:80px;','maxlength'=>16)); ?>
             </div>
              <div style="width: 90px; height: 45px; margin:3px;float:left;">
-             <?php echo CHtml::label('Antal','',array('id'=>'antal_label', 'style'=> 'width:80px;')); ?>
-             <?php echo CHtml::textField('Fakturadata[0][antal]','0',array('id'=>'antal_0', 'style'=> 'width:80px;','maxlength'=>16, 'onBlur'=>'calc(0)')); ?>
+             <?php echo CHtml::label('Antal','',array('class' => 'test' ,'id'=>'antal_label', 'style'=> 'width:80px;')); ?>
+             <?php echo CHtml::textField('Fakturadata[0][antal]','0',array('class' => 'antal', 'id'=>'antal_0', 'style'=> 'width:80px;','maxlength'=>16, 'onBlur'=>'calc(0)')); ?>
             </div>
             <div style="width: 80px; height: 45px; margin:3px;float:left;">
              <?php echo CHtml::label('Kontering','',array('id'=>'kontering', 'style'=> 'width:70px;')); ?>
@@ -160,7 +166,7 @@
             </div>
              <div style="width:55px; height: 45px; margin:3px;float:left;">
              <?php echo CHtml::label('I alt','',array('id'=>'total_label', 'style'=> 'width:45px;')); ?>
-             <?php echo CHtml::textField('Fakturadata[0][linie_total]','',array('style'=> 'width:45px;','id'=> 'linie_total_0','readonly' =>'readonly')); ?>
+             <?php echo CHtml::textField('Fakturadata[0][linie_total]','',array('style'=> 'width:45px;','class' => 'testadd','id'=> 'linie_total_0','readonly' =>'readonly')); ?>
             </div>
              <?php echo CHtml::hiddenField('Fakturadata[0][Skaffevare]','ja'); ?>           
              <?php echo CHtml::hiddenField('Fakturadata[0][Ordrefradrag]',''); ?>
@@ -169,7 +175,6 @@
             <?php echo CHtml::Button('-', array('onClick'=>'deleterow(0)' ,  'id'=>'0' ,'class' => 'fancybutton remove')); ?>
             <?php echo CHtml::Button('+', array('onClick'=>'newdiv()' , 'class' => 'fancybutton add')); ?>
             </div>
- 
         </div>
     </div>
     <div class="horisontalsplitter"></div>
