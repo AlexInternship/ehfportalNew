@@ -14,7 +14,7 @@ class SendMail {
             Yii::import('application.extensions.phpmailer.JPhpMailer');
             $mail = new JPhpMailer;
             
-            $template = file_get_contents(dirname(__FILE__).'/template.html');
+            $template = file_get_contents(dirname(__FILE__).'/newAccountTemplate.html');
             $template = str_replace('%username%', $username, $template);
             $template = str_replace('%password%', $password, $template);
         
@@ -40,12 +40,11 @@ class SendMail {
             return $password;
     }
     
-    public function sendInviteMail($array, $link){
+    public function sendInviteMail($array){
             Yii::import('application.extensions.phpmailer.JPhpMailer');
-            $mail = new JPhpMailer;
-            $generator = RandomPassword::Instance();
-            $password = $generator->generatePassword();
-
+            $mail = new JPhpMailer;       
+            $template = file_get_contents(dirname(__FILE__).'/newAccountTemplate.html');
+   
             foreach($array as $value){
 
             $mail->SMTPSecure = "ssl";  
@@ -61,9 +60,9 @@ class SendMail {
             $mail->SMTPDebug  = 0;   
             $mail->SetFrom('testingphpmails@gmail.com', 'EHFPortal');
             $mail->Subject = 'Join me on EHFportal';
-            $mail->AltBody = 'To view the message, please use an HTML compatible email viewer!';
-            $mail->MsgHTML('<h3>hello i have just send my first invoice using EHFportal, follow the link to try it yourself</h3><br />'.$link);     
-            $mail->AddAddress($value, 'John Doe');
+            $mail->AltBody = strip_tags($template);
+            $mail->MsgHTML($template);     
+            $mail->AddAddress($value, 'invited');
             $mail->Send();
             }
     }
