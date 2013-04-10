@@ -140,7 +140,7 @@ class SiteController extends Controller {
                //  $this->redirect(Yii::app()->$url);
                //  $url = $this->createUrl('sdfsdfsdfsdfsd');
                //admin/index.php?pID=14&pnavn=Johan+Test&action=list
-                  $this->redirect('http://localhost/ehfportal2/ehfportal/biztalksend.php?type=inv&id='.$orderId.'&channel=ehfout&organisation=0&run=1');
+      //            $this->redirect('http://localhost/ehfportal2/ehfportal/biztalksend.php?type=inv&id='.$orderId.'&channel=ehfout&organisation=0&run=1');
                 return;
             }   //
         }
@@ -175,10 +175,9 @@ class SiteController extends Controller {
         $this->render('contact', array('model' => $model));
     }
 
-    function actionTestView() {
-        $model = new Users();
-        
-        $this->render('testview', array('model' => $model));
+    function actionTestView() {      
+        $dataprovider = new CActiveDataProvider('Users');
+        $this->render('testView', array('dataprovider' => $dataprovider));
     }
 
     function actionAC() {
