@@ -286,8 +286,13 @@
     <?php echo CHtml::submitButton('Submit', array('class' => 'fancybutton')); ?>
     </div>
      
-<?php $this->endWidget(); ?>
+<?php $this->endWidget(); 
 
+  $this->widget('fancybox.EFancyBox', array(
+        'target'=>'a#fancy-link',
+        'config'=>array(),));  ?>
+       
+       
 </div>
 
 
