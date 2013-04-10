@@ -148,6 +148,7 @@ function actionviewinvoice(){
         $db = CallDB::Instance();
         $s = $db->deserialize(1);
         $newdata = new CArrayDataProvider($s);
-        $this->render('viewinvoice',array('data' => $newdata));
+        var_dump($newdata); die;
+        $this->render('viewinvoice',array('dataProvider' => $newdata));
     }
 }
