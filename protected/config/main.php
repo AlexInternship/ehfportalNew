@@ -127,6 +127,12 @@ return array(
 	// using Yii::app()->params['paramName']
 	'params'=>array(
 		// this is used in contact page
-		'adminEmail'=>'webmaster@example.com',
+		'mail_Test'=>'testingphpmails@gmail.com',
+                'domArray[]'=>'www.ehfportal.no',
+                'mail_hotline' => "jb@officient.dk,mb@officient.dk",
+                'mail_systemtest' => 'mb@officient.dk',
+                '$mail_from' => 'EHFportal.no <info@ehfportal.no>',
+                'mail_scanning' => 'support@digiacc.no',
+                'mail_scanning' => 'support@digiacc.no',
 	),
 );

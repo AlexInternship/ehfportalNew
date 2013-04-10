@@ -41,16 +41,6 @@
             ->queryRow();
           
           return unserialize($item['document']);
-         /* 
-          $criteria=new CDbCriteria;
-          $criteria->select='document';  // only select the 'title' column
-          $criteria->condition='serializedocument_id=:serializedocument_id';
-          $criteria->params=array(':serializedocument_id'=>$id);
-          $item = SerializeDocument::find($criteria); 
-          $deitem =deserialize($item);
-          return $deitem;
-          * 
-          */
       }   
          
       public function returnInvoice($id) {
@@ -145,7 +135,7 @@
 
             echo $orderId;
             
-            return $orderID['partner_id']; 
+            return $orderId['serializedocument_id']; 
        }
              
  }

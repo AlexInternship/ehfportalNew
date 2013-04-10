@@ -66,5 +66,60 @@ class SendMail {
             $mail->Send();
             }
     }
+    
+    function mailwrap($mailto, $subject, $body) {
+        
+        Yii::import('application.extensions.phpmailer.JPhpMailer');
+            $mail = new JPhpMailer;       
+            $names = new domainNames();
+            $realname = explode(':',$_SERVER["HTTP_HOST"]);
+            $db = CallDB::Instance();
+            
+            if(in_array($realname[0], $names)) {
+                $mail->SMTPSecure = "ssl";  
+                $mail->Host='smtp.gmail.com';  
+                $mail->Port='465';  
+                $mail->Username = 'testingphpmails@gmail.com';
+                $mail->Password = 'ehfportal';
+                $mail->SMTPKeepAlive = true;  
+                $mail->Mailer = "smtp"; 
+                $mail->IsSMTP(); // telling the class to use SMTP  
+                $mail->SMTPAuth   = true;                  // enable SMTP authentication  
+                $mail->CharSet = 'utf-8';  
+                $mail->SMTPDebug  = 0;   
+                $mail->SetFrom('testingphpmails@gmail.com', 'EHFPortal');
+                $mail->Subject = $subject;
+                $mail->AltBody = strip_tags($body);
+                $mail->MsgHTML($body);     
+                $mail->AddAddress($mailto, '');
+                $mail->Send(); 
+            } else {
+                
+                
+                $subjectAlt = $subject." ($mailto - mailwrapper - udvikling - ".$_SERVER['DOCUMENT_ROOT'].")";
+                $bodyAlt = "Location:".$_SERVER['PHP_SELF']."\nhost: ".$_SERVER["HTTP_HOST"]."\noriginal mail: $mailto\n\n".$subject;   
+                $mail->SMTPSecure = "ssl";  
+                $mail->Host='smtp.gmail.com';  
+                $mail->Port='465';  
+                $mail->Username = 'testingphpmails@gmail.com';
+                $mail->Password = 'ehfportal';
+                $mail->SMTPKeepAlive = true;  
+                $mail->Mailer = "smtp"; 
+                $mail->IsSMTP(); // telling the class to use SMTP  
+                $mail->SMTPAuth   = true;                  // enable SMTP authentication  
+                $mail->CharSet = 'utf-8';  
+                $mail->SMTPDebug  = 0;   
+                $mail->SetFrom('testingphpmails@gmail.com', 'EHFPortal');
+                $mail->Subject = $subjectAlt;
+                $mail->AltBody = strip_tags($bodyAlt);
+                $mail->MsgHTML($bodyAlt);     
+                $mail->AddAddress('testingphpmails@gmail.com', '');
+                $mail->Send();
+                
+                $db->insertMailWrap($mailto, $subjectAlt, $bodyAlt);                
+            }
+        
+    }
+
 }
 ?>
