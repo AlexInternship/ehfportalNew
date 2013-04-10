@@ -140,9 +140,10 @@ class SiteController extends Controller {
                //  $this->redirect(Yii::app()->$url);
                //  $url = $this->createUrl('sdfsdfsdfsdfsd');
                //admin/index.php?pID=14&pnavn=Johan+Test&action=list
-      //            $this->redirect('http://localhost/ehfportal2/ehfportal/biztalksend.php?type=inv&id='.$orderId.'&channel=ehfout&organisation=0&run=1');
+               $s = $this->createUrl('testview');
+               $this->redirect($s);
                 return;
-            }   //
+            }   
         }
         $this->render('newuser', array('model' => $model, 'partner1' => $partner1, 'partner2' => $partner2, 'address1' => $address1, 'address2' => $address2));
     }
@@ -176,10 +177,15 @@ class SiteController extends Controller {
     }
 
     function actionTestView() {      
-        $dataprovider = new CActiveDataProvider('Users');
-        $this->render('testView', array('dataprovider' => $dataprovider));
+        $dataprovider = new CActiveDataProvider('SerializeDocuments');
+        $this->render('viewinvoice', array('dataprovider' => $dataprovider));
     }
-
+    function actionviewinvoice(){
+        $db = CallDB::Instance();
+        $s = $db->deserialize(1);
+        $newdata = new CArrayDataProvider($s);
+        $this->render('viewinvoice',array('data' => $newdata));
+    }
     function actionAC() {
 
 
