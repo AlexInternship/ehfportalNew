@@ -141,11 +141,9 @@ class NewInvoiceController extends Controller
 	}
 	*/
     
-    function actionviewinvoice(){
+    function actionViewinvoice(){
         $db = CallDB::Instance();
-        $s = $db->deserialize(1164);
-        $newdata = new CArrayDataProvider($s);
-     //   var_dump($newdata); die;
-        $this->render('viewinvoice',array('dataProvider' => $newdata));
+        $s = $db->deserialize(4);
+        $this->render('viewinvoice',array('dataProvider' => $s),'');
     }
 }
