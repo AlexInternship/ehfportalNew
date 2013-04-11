@@ -1,9 +1,8 @@
 <?php
 
  class CallDB {
-     
-     public static function Instance() {
         static $inst = null;
+     public static function Instance() {
         if ($inst === null) {
             $inst = new CallDB();
         }
