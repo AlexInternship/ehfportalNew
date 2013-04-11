@@ -12,7 +12,7 @@ class Serializer {
 
     public function serializeDocument($invoiceArray, $senderId, $receiverId, $orderId) {
         $serializeArray = array();
-
+        
         if (array_key_exists('Fakturadata', $invoiceArray)) {
             foreach ($invoiceArray['Fakturadata'] as $key => $value) {
                 $serializeArray['Fakturadata'][$key] = $value;
@@ -270,7 +270,7 @@ class Serializer {
             };
         } else
             $serializeArray['Attachment'] = '';
-
+        var_dump($serializeArray);
         return serialize($serializeArray);
     }
 
