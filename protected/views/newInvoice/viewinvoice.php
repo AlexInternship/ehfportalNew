@@ -8,6 +8,27 @@
 <?php echo CHtml::label($dataProvider["Fakturadata"][0]["Varebeloeb"],'');?>
     </div>
 
+<?php 
+    $i=0;
+    foreach($dataProvider["Fakturadata"] as $s){
+     
+        echo CHtml::label('Varenummer','');
+        echo CHtml::label($s["Varenummer"],'');
+        echo CHtml::label('navn','');
+        echo CHtml::label($s["varenavn"],'');
+
+       echo  $i.$s["Varenummer"].'<br/>';
+       echo  $i.$s["varenavn"].'<br/>';
+       echo  $i.$s["Kontering"].'<br/>';
+       echo  $i.$s["Varebeloeb"].'<br/>';
+       echo  $i.$s["ehf_vat"].'<br/>';
+       echo  $i.$s["linie_total"].'<br/>';
+       $i++;
+       
+    }
+
+?> 
+
 
 <div class="row">  
 <?php echo CHtml::label('Varenummer',''); ?>
@@ -34,11 +55,11 @@
 </div>
 <div class="row">
 <?php echo CHtml::label('Faktura dato',''); ?>
-<?php echo CHtml::label(' '.$$dataProvider["FakturaDato"],''); ?>
+<?php echo CHtml::label($$dataProvider["FakturaDato"],''); ?>
 </div>
 <div class="row">
 <?php echo CHtml::label('Afsender',''); ?>
-<?php echo CHtml::label(' '.$dataProvider["partner"],''); ?>
+<?php echo CHtml::label($dataProvider["partner"],''); ?>
 </div>
 <div class="row">
 <?php echo CHtml::label('Besked til kunden',''); ?>
@@ -64,22 +85,22 @@
 <?php echo CHtml::label('Leverings addresse','',array('style'=>' ;font-size:1.5em;font-wieght:bolder;')); ?>
 </div>
 <div class="row">
-<?php echo CHtml::label(' '.$dataProvider["Leveringsadresse"]["Adresse1"],''); ?>
+<?php echo CHtml::label($dataProvider["Leveringsadresse"]["Adresse1"],''); ?>
 </div>
 <div class="row">
 
-<?php echo CHtml::label(' '.$dataProvider["Leveringsadresse"]["Adresse2"],''); ?>
+<?php echo CHtml::label($dataProvider["Leveringsadresse"]["Adresse2"],''); ?>
 </div>
 <div class="row">
 
-<?php echo CHtml::label(' '.$dataProvider["Leveringsadresse"]["Adresse3"],''); ?>
+<?php echo CHtml::label($dataProvider["Leveringsadresse"]["Adresse3"],''); ?>
 </div>
 <div class="row">
 <?php echo CHtml::label('Postnummer: '.$dataProvider["Leveringsadresse"]["Postnummer"],''); ?>
 </div>
 
 <div class="row">
-<?php echo CHtml::label('cvr: '.$a["Leveringsadresse"]["cvr"],''); ?>
+<?php echo CHtml::label('cvr: '.$dataProvider["Leveringsadresse"]["cvr"],''); ?>
 </div>
 
 <div class="row" style="margin-top:7px;">
@@ -87,15 +108,15 @@
 </div>
 <div class="row">
 
-<?php echo CHtml::label(' '.$a["Faktureringsadresse"]["Adresse1"],''); ?>
+<?php echo CHtml::label($dataProvider["Faktureringsadresse"]["Adresse1"],''); ?>
 </div>
 <div class="row">
 
-<?php echo CHtml::label(' '.$a["Faktureringsadresse"]["Adresse2"],''); ?>
+<?php echo CHtml::label($dataProvider["Faktureringsadresse"]["Adresse2"],''); ?>
 </div>
 <div class="row">
 
-<?php echo CHtml::label(' '.$a["Faktureringsadresse"]["Adresse3"],''); ?>
+<?php echo CHtml::label($dataProvider["Faktureringsadresse"]["Adresse3"],''); ?>
 </div>
 <div class="row">
 <?php echo CHtml::label('Postnummer: '.$dataProvider["Faktureringsadresse"]["Postnummer"],''); ?>

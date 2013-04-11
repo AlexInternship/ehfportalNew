@@ -309,14 +309,14 @@
 </div>
    
     <div class="row buttons" style="width:800px; float:left; margin-bottom: 10px;">
-    <?php echo CHtml::submitButton('Submit', array('class' => 'fancybutton')); ?>
+    <?php echo CHtml::submitButton('Submit', array('class' => 'fancybutton', 'id' => 'fancySubmit')); ?>
     </div>
-     
 <?php $this->endWidget(); 
 
   $this->widget('fancybox.EFancyBox', array(
-        'target'=>'a#fancy-link',
-        'config'=>array(),));  ?>
-       
-       
+        'target'=>'input#fancySubmit', 
+        'config'=>array(
+            'title' => 'Faktura sent',
+        ),));  ?>
+
 </div>
