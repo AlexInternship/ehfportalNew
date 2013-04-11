@@ -156,11 +156,5 @@ class SiteController extends Controller {
         }
         $this->render('newuser', array('model' => $model, 'partner1' => $partner1, 'partner2' => $partner2, 'address1' => $address1, 'address2' => $address2));
     }
-function actionviewinvoice(){
-        $db = CallDB::Instance();
-        $s = $db->deserialize(1164);
-        $newdata = new CArrayDataProvider($s);
-     //   var_dump($newdata); die;
-        $this->render('viewinvoice',array('dataProvider' => $newdata));
-    }
+
 }

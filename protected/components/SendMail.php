@@ -2,12 +2,12 @@
 
 class SendMail {
     
-        public static function Instance() {
         static $inst = null;
-        if ($inst === null) {
-            $inst = new SendMail();
+     public static function Instance() {
+        if ($this->inst === null) {
+            $this->inst = new CallDB();
         }
-        return $inst;
+        return $this->inst;
     }
     
         public function sendNewUserMail($email, $username, $password){

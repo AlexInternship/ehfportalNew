@@ -2,12 +2,12 @@
 
 class ValidateArray {
     
-    public static function Instance() {
         static $inst = null;
-        if ($inst === null) {
-            $inst = new ValidateArray();
+     public static function Instance() {
+        if ($this->inst === null) {
+            $this->inst = new CallDB();
         }
-        return $inst;
+        return $this->inst;
     }
     
     public function validateArray($array){
