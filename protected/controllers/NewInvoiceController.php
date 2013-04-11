@@ -31,6 +31,7 @@ class NewInvoiceController extends Controller
             $address2->attributes = $_POST['Address'][2];
             $login->attributes = array('username' => $_POST['Users']['username'], 'password' => $password, 'rememberMe' => '1',);
 
+            echo var_dump($db->deserialize(1)); die;
 
             //$document->attributes = $_POST;
             // print_r($serializer->serializeDocument($_POST, 1, 1));
@@ -59,7 +60,6 @@ class NewInvoiceController extends Controller
                 $db->newUser($userArray, $password, $partnerId1, $address1Array['phone']);
                
                 $login->attributes = array('username'=>$userArray['username'],'password'=>$password, 'rememberMe'=>'1');
-                var_dump($login->login());
              
                 if ($login->validate() && $login->login()){
                     $this->redirect(Yii::app()->user->returnUrl);
@@ -69,7 +69,6 @@ class NewInvoiceController extends Controller
                 $orderId = $db->createInvoice();
                 $serialized = $serializer->serializeDocument($invoiceArray, $partnerId1, $partnerId2, $orderId);
                 $db->addSerializedDocument($serialized, $orderId);
-
                 $mailService->sendNewUserMail($userArray['email'], $userArray['username'], $password);
                 $login->login();
                //$url=$this->createUrl('http://wwww.ehfportal.no/biztalksend.php',array('type'=>'','id'=>$orderId, 'channel'=>'ehfout', 'organisation'=>'0', 'run'=>'1', 'dump'=>'web')); 
