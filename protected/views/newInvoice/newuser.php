@@ -188,6 +188,10 @@
     </div>  
        <!-- Start på ehfportal.no form -->
      
+<div class="usercontainer"> 
+     
+     <div class="formbox">   
+       
       <div class="row">
   
      <?php echo CHtml::label('Faktura dato',''); ?>
@@ -228,11 +232,18 @@
 ?>
 <?php echo $form->error($model,'date_from'); ?>
 </div>
-   
+
      <div class="row">
      <?php echo CHtml::label('Kjøpsordrenr','',array('id'=>'order_id_label', 'width'=>100)); ?>
      <?php echo CHtml::textField('Ordrenummer','',array('id'=>'order_id', 'width'=>100,'maxlength'=>100)); ?>
     </div>
+     </div>
+</div>
+         
+ <div class="usercontainer">
+  
+    <div class="formbox">
+         
      <div class="row">
      <?php echo CHtml::label('Beskjed til kunde','',array('id'=>'info_til_indkoeber_Label', 'width'=>100)); ?>
      <?php echo CHtml::textField('Info_til_indkoeber','',array('id'=>'Info_til_indkoeber', 'width'=>100,'maxlength'=>100)); ?>
@@ -249,6 +260,12 @@
      <?php echo CHtml::label('Fakturanummer','',array('id'=>'kortart_label', 'width'=>100)); ?>
      <?php echo CHtml::textField('kortart','',array('id'=>'kortart', 'width'=>100,'maxlength'=>100)); ?>
     </div>
+     </div>
+</div>
+<div class="usercontainer">
+  
+    <div class="formbox">         
+         
       <div class="row">
      <?php echo CHtml::label('KID','',array('id'=>'giro_label', 'width'=>100)); ?>
      <?php echo CHtml::textField('giro','',array('id'=>'giro', 'width'=>100,'maxlength'=>100)); ?>
@@ -265,6 +282,13 @@
      <?php echo CHtml::label('Fakturatotal inkl. MVA','',array('id'=>'bank_label', 'width'=>100)); ?>
      <?php echo CHtml::textField('bank','',array('id'=>'bank', 'width'=>100,'maxlength'=>100)); ?>
     </div>
+      </div>      
+</div>
+              
+<div class="usercontainer">
+  
+    <div class="formbox">
+     
      <div class="row">
      <?php echo CHtml::label('Deres ref.','',array('id'=>'bankbranch_label', 'width'=>100)); ?>
      <?php echo CHtml::textField('buyercontact','',array('id'=>'bankbranch', 'width'=>100,'maxlength'=>100)); ?>
@@ -281,6 +305,8 @@
      <?php echo CHtml::label('Kontrakt nr.','',array('id'=>'bic_label', 'width'=>100)); ?>
      <?php echo CHtml::textField('bic','',array('id'=>'bic', 'width'=>100,'maxlength'=>100)); ?>
     </div>
+    </div>
+</div>
    
     <div class="row buttons" style="width:800px; float:left; margin-bottom: 10px;">
     <?php echo CHtml::submitButton('Submit', array('class' => 'fancybutton')); ?>

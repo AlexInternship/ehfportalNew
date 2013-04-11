@@ -3,10 +3,10 @@
 ?>
 <div class="view">
     
-<h1>View Invoices #<?php echo $newdata->SerializeDocuments; ?></h1>
+<h1>View Invoices #<?php echo '$dataProvider'; ?></h1>
 
-<?php $this->widget('zii.widgets.grid.CGridView', array(
-	'dataProvider'=> $newdata
+<?php/* $this->widget('zii.widgets.grid.CGridView', array(
+	'dataProvider'=> $dataProvider
 , 
         'columns'=>array(
             array(
@@ -18,13 +18,30 @@
            ),
             array(
                 'header'=>'Content',
-                'value' => '$data'),    
+                'value' => 'dataProvider'),    
             )
         )  
    );
+ * 
+ */
+?>
+<?php
 
 
+$this->widget('zii.widgets.grid.CGridView', array(
+    'dataProvider'=>$dataProvider,
+    'columns'=>array(array(
+            'name'  => 'fakturaData',
+            'value' => 'CHtml::link(CHtml::encode($data->id),"index.php?r=documentsOutbound/view&id=".$data->id, array("id"=>"fancy-link"))',
+            'type'  => 'raw'),
+            'Varebeloeb', 'Seneste_rettidige_betalingsdato'
+))); 
 
+//put fancybox on page
+$this->widget('fancybox.EFancyBox', array(
+        'target'=>'a#fancy-link',
+        'config'=>array(),));  
+?>
 
 
 
