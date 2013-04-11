@@ -159,9 +159,9 @@ class SiteController extends Controller {
     }
 function actionviewinvoice(){
         $db = CallDB::Instance();
-        $s = $db->deserialize(1);
+        $s = $db->deserialize(1143);
         $newdata = new CArrayDataProvider($s);
-        
+     //   var_dump($newdata); die;
         $this->render('viewinvoice',array('dataProvider' => $newdata));
     }
 }
