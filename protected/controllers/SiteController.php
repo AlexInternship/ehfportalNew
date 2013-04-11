@@ -128,7 +128,6 @@ class SiteController extends Controller {
                 $address1Array = $_POST['Address'][1];
                 $address2Array = $_POST['Address'][2];
                 $invoiceArray = $_POST;
-
                 $db->newPartner($userArray, $partner1Array, $password);
                 $db->newPartner(null, $partner2Array, '');
                 $partnerId1 = $db->getPartnerId($partner1Array['name']);
@@ -159,7 +158,7 @@ class SiteController extends Controller {
     }
 function actionviewinvoice(){
         $db = CallDB::Instance();
-        $s = $db->deserialize(1143);
+        $s = $db->deserialize(1164);
         $newdata = new CArrayDataProvider($s);
      //   var_dump($newdata); die;
         $this->render('viewinvoice',array('dataProvider' => $newdata));

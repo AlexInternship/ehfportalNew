@@ -1,37 +1,9 @@
-<?php
 
-?>
 <div class="view">
-    
-<<<<<<< HEAD
-<h1>View Invoices #<?php echo '$dataProvider'; ?></h1>
-
-<?php/* $this->widget('zii.widgets.grid.CGridView', array(
-	'dataProvider'=> $dataProvider
-, 
-        'columns'=>array(
-            array(
-                'header' => 'Index',
-                'value'=>  '$row',
-                'htmlOptions' => array(
-                    'style' => 'width:65px;'
-                ) 
-           ),
-            array(
-                'header'=>'Content',
-                'value' => 'dataProvider'),    
-            )
-        )  
-   );
- * 
- */
-?>
-<?php
-=======
-<h1>View Invoices #</h1>
+ 
+<h1>View Invoice</h1>
 
 <?php $a = $dataProvider->getData(); ?>
->>>>>>> 8a99c51c1f350fe749b42516b51e3d0e1d812043
 
 <div class="formbox">
     <div class="row">    
@@ -39,22 +11,6 @@
     </div>
 </div>
 
-$this->widget('zii.widgets.grid.CGridView', array(
-    'dataProvider'=>$dataProvider,
-    'columns'=>array(array(
-            'name'  => 'fakturaData',
-            'value' => 'CHtml::link(CHtml::encode($data->id),"index.php?r=documentsOutbound/view&id=".$data->id, array("id"=>"fancy-link"))',
-            'type'  => 'raw'),
-            'Varebeloeb', 'Seneste_rettidige_betalingsdato'
-))); 
-
-<<<<<<< HEAD
-//put fancybox on page
-$this->widget('fancybox.EFancyBox', array(
-        'target'=>'a#fancy-link',
-        'config'=>array(),));  
-?>
-=======
 <div class="row">  
 <?php echo CHtml::label('Varenummer',''); ?>
 <?php echo CHtml::label($a["Fakturadata"][0]["Varenummer"],''); ?>
@@ -73,7 +29,6 @@ $this->widget('fancybox.EFancyBox', array(
 <?php echo CHtml::label('Faktura dato',''); ?>
 <?php echo CHtml::label(' '.$a["FakturaDato"],''); ?>
 </div>
->>>>>>> 8a99c51c1f350fe749b42516b51e3d0e1d812043
 
 <div class="row">
 <?php echo CHtml::label('Faktura dato',''); ?>
@@ -103,9 +58,53 @@ $this->widget('fancybox.EFancyBox', array(
 <?php echo CHtml::label('giro',''); ?>
 <?php echo CHtml::label(' '.$a["giro"],''); ?>
 </div>
+<div class="row" style="margin-top:7px;">
+<?php echo CHtml::label('Leverings addresse','',array('style'=>' ;font-size:1.5em;font-wieght:bolder;')); ?>
+</div>
+<div class="row">
 
+<?php echo CHtml::label(' '.$a["Leveringsaddresse"]["Address1"],''); ?>
+</div>
+<div class="row">
 
+<?php echo CHtml::label(' '.$a["Leveringsaddresse"]["Address2"],''); ?>
+</div>
+<div class="row">
 
+<?php echo CHtml::label(' '.$a["Leveringsaddresse"]["Address3"],''); ?>
+</div>
+<div class="row">
+<?php echo CHtml::label('Postnummer: '.$a["Leveringsaddresse"]["Postnummer"],''); ?>
+</div>
+
+<div class="row">
+<?php echo CHtml::label('cvr: '.$a["Leveringsaddresse"]["cvr"],''); ?>
+</div>
+
+<div class="row" style="margin-top:7px;">
+<?php echo CHtml::label('Fakturerings addresse','',array('style'=>' ;font-size:1.5em;font-wieght:bolder;')); ?>
+</div>
+<div class="row">
+
+<?php echo CHtml::label(' '.$a["Faktureringsadresse"]["Address1"],''); ?>
+</div>
+<div class="row">
+
+<?php echo CHtml::label(' '.$a["Faktureringsadresse"]["Address2"],''); ?>
+</div>
+<div class="row">
+
+<?php echo CHtml::label(' '.$a["Faktureringsadresse"]["Address3"],''); ?>
+</div>
+<div class="row">
+<?php echo CHtml::label('Postnummer: '.$a["Faktureringsadresse"]["Postnummer"],''); ?>
+</div>
+
+<div class="row">
+<?php echo CHtml::label('cvr: '.$a["Faktureringsadresse"]["cvr"],''); ?>
+</div>
+
+<?php var_dump($a) ?> 
 <?php
 function e($value){
     if(!empty($value))
