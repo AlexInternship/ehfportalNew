@@ -3,6 +3,10 @@
 ?>
 
 <?php 
+
+
+$a = $dataProvider->getData();
+echo $a["Fakturadata"][0];die;
 $this->widget('zii.widgets.grid.CGridView',
         array('dataProvider'=>$dataprovider, 
         'columns' => array(array(
