@@ -5,7 +5,7 @@ class Serializer {
      public static function Instance() {
         static $inst = null;
         if ($inst === null) {
-            $inst = new CallDB();
+            $inst = new Serializer();
         }
         return $inst;
     }

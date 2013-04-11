@@ -5,7 +5,7 @@ class SendMail {
      public static function Instance() {
         static $inst = null;
         if ($inst === null) {
-            $inst = new CallDB();
+            $inst = new SendMail();
         }
         return $inst;
     }

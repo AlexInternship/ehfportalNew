@@ -5,7 +5,7 @@ class Stub {
      public static function Instance() {
         static $inst = null;
         if ($inst === null) {
-            $inst = new CallDB();
+            $inst = new Stub();
         }
         return $inst;
     }
