@@ -22,8 +22,16 @@ class NewInvoiceController extends Controller
         $valid = true;
         /* if (isset($_POST['User'], $_POST['Partner1'], $_POST['Partner2'], $_POST['Address1'], $_POST['Address2'])) { */
         if (!empty($_POST)) {
+            
 
-            //var_dump($_POST);die;
+            $login->attributes = array('username'=>'jessiejes', 'password'=>'jes', 'rememberMe'=>'0'); 
+             // validate user input and redirect to the previous page if valid
+
+            if ($login->validate() && $login->login()) {
+                echo 'ja';
+                $this->redirect(Yii::app()->user->returnUrl);
+            }echo 'nej';
+            
             $model->attributes = $_POST['Users'];
             $partner1->attributes = $_POST['Partners'][1];
             $partner2->attributes = $_POST['Partners'][2];
@@ -40,7 +48,7 @@ class NewInvoiceController extends Controller
             //$valid=$login->validate() && $valid;
 
             if ($valid) {
-
+                    
                 $userArray = $_POST['Users'];
                 $partner1Array = $_POST['Partners'][1];
                 $partner2Array = $_POST['Partners'][2];

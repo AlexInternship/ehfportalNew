@@ -82,7 +82,7 @@ class Partners extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			/*array('partnerno, validcvr, scanmail, info_to_purchaser, mailcomment', 'required'),*/
+			array('partnerno, validcvr, scanmail, info_to_purchaser, mailcomment', 'required'),
 		 	array('partnerno,retailer_id', 'numerical', 'integerOnly'=>true),
                         array('partnerno', 'length',  'min' => 4, 'max'=>4, 
                         'tooShort'=>Yii::t("translation", "{attribute} is too short."),

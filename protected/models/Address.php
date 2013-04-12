@@ -48,7 +48,8 @@ class Address extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('partner_id', 'numerical', 'integerOnly'=>true),
+			array('address1, zip, cvr','required'),
+                        array('partner_id', 'numerical', 'integerOnly'=>true),
 			array('type', 'length', 'max'=>8),
 			array('address1, address2, address3, city, partnerno', 'length', 'max'=>255),
 			array('zip', 'length', 'max'=>16),
