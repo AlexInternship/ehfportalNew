@@ -318,7 +318,7 @@
         'target'=>'input#fancySubmit', 
         'config'=>array(
             'title' => 'Faktura sent',
-            'content' => '<h1>Fakturaen til er nu sendt</h1>',
+            'content' => '<h1 style="margin:20px;">Fakturaen til er nu sendt</h1>',
             'onClosed'=>'js:function(){
                  document.getElementById("axForm-form").submit();
                 }' 
