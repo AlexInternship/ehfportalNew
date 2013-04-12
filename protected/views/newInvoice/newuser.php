@@ -309,7 +309,8 @@
 </div>
    
     <div class="row buttons" style="width:800px; float:left; margin-bottom: 10px;">
-    <?php echo CHtml::submitButton('Submit', array('class' => 'fancybutton', 'id' => 'fancySubmit')); ?>
+    <?php/* echo CHtml::submitButton('Submit', array('class' => 'fancybutton', 'id' => 'fancySubmit')); */?>
+        <?php echo CHtml::Button('Submit', array('class' => 'fancybutton', 'id' => 'fancySubmit')); ?>
     </div>
 <?php $this->endWidget(); 
 
@@ -317,6 +318,10 @@
         'target'=>'input#fancySubmit', 
         'config'=>array(
             'title' => 'Faktura sent',
+            'content' => '<h1>Fakturaen til er nu sendt</h1>',
+            'onClosed'=>'js:function(){
+                 document.getElementById("axForm-form").submit();
+                }' 
         ),));  ?>
 
 </div>

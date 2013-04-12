@@ -11,7 +11,7 @@ class NewInvoiceController extends Controller
         $address1 = new Address();
         $address2 = new Address();
         //$document = new Document();
-        $login = new LoginForm;
+        $login = new LoginForm();
         $db = CallDB::Instance();
         $mailService = SendMail::Instance();
         $generator = RandomPassword::Instance();
@@ -60,24 +60,28 @@ class NewInvoiceController extends Controller
                 $db->newUser($userArray, $password, $partnerId1, $address1Array['phone']);
                
                 $login->attributes = array('username'=>$userArray['username'],'password'=>$password, 'rememberMe'=>'1');
-             
-                if ($login->validate() && $login->login()){
+                
+               /* if ($login->validate()){
                     $this->redirect(Yii::app()->user->returnUrl);
                     echo 'login'; die;
                 } 
                 else { echo 'ikke logget'; die;}
-                
+                */
                 $orderId = $db->createInvoice();
                 $serialized = $serializer->serializeDocument($invoiceArray, $partnerId1, $partnerId2, $orderId);
                 $db->addSerializedDocument($serialized, $orderId);
                 $mailService->sendNewUserMail($userArray['email'], $userArray['username'], $password);
+                $login->validate();
                 $login->login();
+                
                //$url=$this->createUrl('http://wwww.ehfportal.no/biztalksend.php',array('type'=>'','id'=>$orderId, 'channel'=>'ehfout', 'organisation'=>'0', 'run'=>'1', 'dump'=>'web')); 
                //$this->redirect(Yii::app()->$url);
                //$url = $this->createUrl('sdfsdfsdfsdfsd');
                //admin/index.php?pID=14&pnavn=Johan+Test&action=list
                //$this->redirect('http://localhost/ehfportal2/ehfportal/biztalksend.php?type=inv&id='.$orderId.'&channel=ehfout&organisation=0&run=1');
-                
+                  Yii::app()->request->cookies['newestinvoice'] = new CHttpCookie('newestinvoice', $orderId);
+                  $url = Yii::app()->createUrl('newinvoice/createdinvoice');
+                 $this->redirect($url);
             }   //
         }
         $this->render('newuser', array('model' => $model, 'partner1' => $partner1, 'partner2' => $partner2, 'address1' => $address1, 'address2' => $address2));
@@ -147,4 +151,11 @@ class NewInvoiceController extends Controller
         $s = $db->deserialize(4);
         $this->render('viewinvoice',array('dataProvider' => $s),'');
     }
+    function actioncreatedinvoice(){
+        $serialized_id = Yii::app()->request->cookies['newestinvoice']->value;
+        $serialized_documents = new SerializeDocuments();
+        $serialized_documents->findByPK($serialized_id);
+        echo var_dump($serialized_id);die;
+        $this->render('createdinvoice',array());
+    }  
 }

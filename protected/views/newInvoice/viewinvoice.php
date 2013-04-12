@@ -1,61 +1,20 @@
 
 <div class="view">
- 
-<h1>View Invoice</h1>
-
-
- <div class="row">    
-<?php echo CHtml::label($dataProvider["Fakturadata"][0]["Varebeloeb"],'');?>
-    </div>
-
-<?php 
-    $i=0;
-    foreach($dataProvider["Fakturadata"] as $s){
-     
-        echo CHtml::label('Varenummer','');
-        echo CHtml::label($s["Varenummer"],'');
-        echo CHtml::label('navn','');
-        echo CHtml::label($s["varenavn"],'');
-
-       echo  $i.$s["Varenummer"].'<br/>';
-       echo  $i.$s["varenavn"].'<br/>';
-       echo  $i.$s["Kontering"].'<br/>';
-       echo  $i.$s["Varebeloeb"].'<br/>';
-       echo  $i.$s["ehf_vat"].'<br/>';
-       echo  $i.$s["linie_total"].'<br/>';
-       $i++;
-       
-    }
-
-?> 
-
-
-<div class="row">  
-<?php echo CHtml::label('Varenummer',''); ?>
-<?php echo CHtml::label($dataProvider["Fakturadata"][0]["Varenummer"],''); ?>
-</div>
-<div class="row">  
-<?php echo CHtml::label('Varenavn',''); ?>
-<?php echo CHtml::label($dataProvider["Fakturadata"][0]["varenavn"],''); ?>
-</div>
-<div class="row">  
-<?php echo CHtml::label('Kontering',''); ?>
-<?php echo CHtml::label($dataProvider["Fakturadata"][0]["Kontering"],''); ?>   
-</div>
-<div class="row">  
-<?php echo CHtml::label('Pris',''); ?>
-<?php echo CHtml::label($dataProvider["Fakturadata"][0]["Varebeloeb"],''); ?>
-</div>
-<div class="row">  
-<?php echo CHtml::label('moms - ehf_Vat',''); ?>
-<?php echo CHtml::label($dataProvider["Fakturadata"][0]["ehf_vat"],''); ?>
-<div class="row"> 
-<?php echo CHtml::label('Subtotal',''); ?>
-<?php echo CHtml::label($dataProvider["Fakturadata"][0]["linie_total"],''); ?>
+<div class="row">
+<?php echo CHtml::label('Betales senest: ',''); ?>
+<?php echo CHtml::label($dataProvider["Seneste_rettidige_betalingsdato"],''); ?>
 </div>
 <div class="row">
-<?php echo CHtml::label('Faktura dato',''); ?>
-<?php echo CHtml::label($$dataProvider["FakturaDato"],''); ?>
+<?php echo CHtml::label('Ordre dato: ',''); ?>
+<?php echo CHtml::label($dataProvider["Orderdato"],''); ?>
+</div>               
+<div class="row">
+<?php echo CHtml::label('Leverings dato: ',''); ?>
+<?php echo CHtml::label($dataProvider["Leveringsdato"],''); ?>
+</div> 
+<div class="row">
+<?php echo CHtml::label('Faktura dato: ',''); ?>
+<?php echo CHtml::label($dataProvider["Fakturadato"],''); ?>
 </div>
 <div class="row">
 <?php echo CHtml::label('Afsender',''); ?>
@@ -81,6 +40,7 @@
 <?php echo CHtml::label('giro',''); ?>
 <?php echo CHtml::label($dataProvider["giro"],''); ?>
 </div>
+    <div class="addressHolder">
 <div class="row" style="margin-top:7px;">
 <?php echo CHtml::label('Leverings addresse','',array('style'=>' ;font-size:1.5em;font-wieght:bolder;')); ?>
 </div>
@@ -102,7 +62,8 @@
 <div class="row">
 <?php echo CHtml::label('cvr: '.$dataProvider["Leveringsadresse"]["cvr"],''); ?>
 </div>
-
+    </div>
+    <div class="addressHolder">
 <div class="row" style="margin-top:7px;">
 <?php echo CHtml::label('Fakturerings addresse','',array('style'=>' ;font-size:1.5em;font-wieght:bolder;')); ?>
 </div>
@@ -125,8 +86,35 @@
 <div class="row">
 <?php echo CHtml::label('cvr: '.$dataProvider["Faktureringsadresse"]["cvr"],''); ?>
 </div>
+    </div> 
+<?php 
+    echo "<table><thead><tr>
+        <th>Varenummer</th>
+        <th>antal</th>        
+        <th>Navn</th>
+        <th>Kontering</th>
+        <th>beløb</th>
+        <th>Vat</th>
+        <th>subtotal</th>
+        </tr></thead>   ";
+    foreach($dataProvider["Fakturadata"] as $s){
+        echo "<tr>";
+        echo  "<th>".CHtml::label($s["Varenummer"],'')."</th>";
+        echo "<th>".CHtml::label($s["Antal"],'')."</th>";
+        echo "<th>".CHtml::label($s["Varenavn"],'')."</th>";
+        echo "<th>".CHtml::label($s["kontering"],'')."</th>";
+        echo "<th>".CHtml::label($s["Varebeloeb"],'')."</th>";
+        echo "<th>".CHtml::label($s["ehf_vat"],'')."</th>";
+        echo "<th>".Chtml::label($s["linie_total"],'')."</th>";        
+        echo '</tr>';
+    }
+    echo "</table>";
+?> 
+    
+    
+    
 <div class="row">
-<?php echo CHtml::label('comment: '.$dataProvider["comment"],''); ?>
+<?php echo CHtml::label('Intern Kommentar: '.$dataProvider["comment"],''); ?>
 </div>
 
 <div class="row">
@@ -152,10 +140,7 @@
 <?php echo CHtml::label($dataProvider["EANlokationsnr"],''); ?>
 </div>
         
-<div class="row">
-<?php echo CHtml::label('Betales senest: ',''); ?>
-<?php echo CHtml::label($dataProvider["Seneste_rettidige_betalingsdato"],''); ?>
-</div>
+
         
 <div class="row">
 <?php echo CHtml::label('Faktura nummer: ',''); ?>
@@ -176,16 +161,12 @@
 <?php echo CHtml::label($dataProvider["sellersOrderID"],''); ?>
 </div>
 
-<div class="row">
-<?php echo CHtml::label('Ordre dato: ',''); ?>
-<?php echo CHtml::label($dataProvider["Ordredato"],''); ?>
-</div>
         
 <div class="row">
 <?php echo CHtml::label('KontantRabatSats: ',''); ?>
 <?php echo CHtml::label($dataProvider["KontantRabatSats"],''); ?>
 </div>
-        
+ 
 <div class="row">
 <?php echo CHtml::label('KontantRabatDato: ',''); ?>
 <?php echo CHtml::label($dataProvider["KontantRabatDato"],''); ?>
@@ -229,11 +210,7 @@
 <?php echo CHtml::label('skat: ',''); ?>
 <?php echo CHtml::label($dataProvider["tax"],''); ?>
 </div>
-        
-<div class="row">
-<?php echo CHtml::label('Leveringsdata: ',''); ?>
-<?php echo CHtml::label($dataProvider["Leveringsdato"],''); ?>
-</div>        
+       
                 
 <div class="row">
 <?php echo CHtml::label('Order ref.: ',''); ?>
