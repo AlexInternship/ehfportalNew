@@ -24,14 +24,12 @@ class NewInvoiceController extends Controller
         if (!empty($_POST)) {
             
 
-            $login->attributes = array('username'=>'jessiejes', 'password'=>'jes', 'rememberMe'=>'0'); 
+            $login->attributes = array('username'=>'12346578', 'password'=>'77', 'rememberMe'=>'0'); 
              // validate user input and redirect to the previous page if valid
 
-            if ($login->validate() && $login->login()) {
-                echo 'ja';
-                $this->redirect(Yii::app()->user->returnUrl);
-            }echo 'nej';
-            
+           $login->validate();
+           $login->login(); 
+           
             $model->attributes = $_POST['Users'];
             $partner1->attributes = $_POST['Partners'][1];
             $partner2->attributes = $_POST['Partners'][2];
@@ -149,7 +147,7 @@ class NewInvoiceController extends Controller
     function actionViewinvoice(){
         $db = CallDB::Instance();
         $serialized_id = Yii::app()->request->cookies['newestinvoice']->value;
-        $s = $db->deserialize($serialized_id);
+        $s = $db->deserialize(7);
         $this->renderPartial('viewinvoice',array('dataProvider' => $s),'');
     }
     function actionviewcreatedinvoice(){

@@ -1,5 +1,5 @@
 <?php $this->breadcrumbs=array(
-	'Opret ny faktura'=> Yii::app()->baseUrl.'newinvoice/newuser','Din nye faktura'
+	'Opret ny faktura'=> 'index.php?r=newinvoice/newuser','Din nye faktura'
 );?> 
 
 <?php
@@ -10,5 +10,8 @@
 ?>
 <?php $this->widget('fancybox.EFancyBox', array(
         'target'=>'a#fancy-link',
-        'config'=>array(),));    
+        'config'=>array(
+            'autoDimension' =>  'true'
+            
+        ),));    
 ?>

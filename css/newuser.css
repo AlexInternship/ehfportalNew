@@ -139,8 +139,13 @@ div.form div.error input {
     height: 500px;
 }
 .addressHolder{
-    width: 400px;
+    width: 200px;
     padding: 10px;
     float: left;
     
 }    
+.total th{
+ border-collapse: collapse;
+ border-top: thin solid #888;
+}
+#fancybox-overlay { position: fixed !important; }
