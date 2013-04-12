@@ -73,14 +73,14 @@ class NewInvoiceController extends Controller
                 $db->newUser($userArray, $password, $partnerId1, $address1Array['phone']);
                
                 $login->attributes = array('username'=>$userArray['username'],'password'=>$password, 'rememberMe'=>'1');
+                $login->validate();
+                $login->login();
                 
-
                 $orderId = $db->createInvoice();
                 $serialized = $serializer->serializeDocument($invoiceArray, $partnerId1, $partnerId2, $orderId);
                 $db->addSerializedDocument($serialized, $orderId);
                 $mailService->sendNewUserMail($userArray['email'], $userArray['username'], $password);
-                $login->validate();
-                $login->login();
+
                 
                //$url=$this->createUrl('http://wwww.ehfportal.no/biztalksend.php',array('type'=>'','id'=>$orderId, 'channel'=>'ehfout', 'organisation'=>'0', 'run'=>'1', 'dump'=>'web')); 
                //$this->redirect(Yii::app()->$url);

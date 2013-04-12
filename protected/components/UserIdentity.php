@@ -19,25 +19,18 @@ class UserIdentity extends CUserIdentity
 	public function authenticate()
 	{
             
-        $dataProvider = new CActiveDataProvider('Users', array(
-            'pagination'=>array(
-            'pageSize'=>1000000, // or another reasonable high value...
-        ),
-        ));
-        
-       $names = array();
-       foreach($dataProvider->getData() as $record) {
-            $names[$record->username] =$record->password;
-
-        } 
-           
-        if (!array_key_exists($this->username, $names)){
+        $user = Yii::app()->db->createCommand()
+              ->select('username, password')
+              ->from('users')
+              ->where('username=:username', array(':username'=>$this->username))
+                ->queryRow();
+        var_dump(($user['password']=== md5($this->password)));
+               
+       if($user === FALSE)
             $this->errorCode=self::ERROR_USERNAME_INVALID;
-        }
        
-        elseif(array_key_exists($this->username, $names)&&                        
-                        ($names[$this->username] == md5($this->password)) 
-                        ){
+        elseif($user['password']=== md5($this->password)) 
+                        {
                             $this->errorCode = self::ERROR_NONE;
                         }  
 	else

@@ -58,9 +58,6 @@ class SiteController extends Controller {
         if (isset($_POST['LoginForm'])) {
 
             $model->attributes = $_POST['LoginForm'];
-            var_dump($model->password);
-            var_dump($model->username);
-            var_dump($model->rememberMe);
             //var_dump($model->validate()); die;
              // validate user input and redirect to the previous page if valid
             if ($model->validate() && $model->login())
@@ -98,15 +95,6 @@ class SiteController extends Controller {
         /* if (isset($_POST['User'], $_POST['Partner1'], $_POST['Partner2'], $_POST['Address1'], $_POST['Address2'])) { */
         if (!empty($_POST)) {
             
-             $login->attributes = array('username'=>'hamtaro','password'=>md5('password'), 'rememberMe'=>'1');
-             var_dump($login->login());
-             
-             if ($login->validate() && $login->login()){
-                $this->redirect(Yii::app()->user->returnUrl);
-                echo 'login'; die;
-                } echo 'ikke login'; die;
-            
-            //var_dump($_POST);die;
             $model->attributes = $_POST['Users'];
             $partner1->attributes = $_POST['Partners'][1];
             $partner2->attributes = $_POST['Partners'][2];
