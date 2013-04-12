@@ -31,7 +31,7 @@ class NewInvoiceController extends Controller
             die;
              * 
              */
-            $login->attributes = array('username'=>'newuser', 'password'=>'password', 'rememberMe'=>'0'); 
+            $login->attributes = array('username'=>'1234578', 'password'=>'77', 'rememberMe'=>'0'); 
              // validate user input and redirect to the previous page if valid
 
             if ($login->validate() && $login->login()) {
@@ -157,7 +157,7 @@ class NewInvoiceController extends Controller
     function actionViewinvoice(){
         $db = CallDB::Instance();
         $serialized_id = Yii::app()->request->cookies['newestinvoice']->value;
-        $s = $db->deserialize($serialized_id);
+        $s = $db->deserialize(3);
         $this->renderPartial('viewinvoice',array('dataProvider' => $s),'');
     }
     function actionviewcreatedinvoice(){

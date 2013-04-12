@@ -146,6 +146,7 @@ div.form div.error input {
 }    
 .total th{
  border-collapse: collapse;
- border-top: thin solid #888;
+ border-top: thin solid #88c;
 }
+
 #fancybox-overlay { position: fixed !important; }
