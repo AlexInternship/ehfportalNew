@@ -270,7 +270,7 @@ class Serializer {
             };
         } else
             $serializeArray['Attachment'] = '';
-        var_dump($serializeArray);
+     
         return serialize($serializeArray);
     }
 

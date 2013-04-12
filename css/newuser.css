@@ -137,6 +137,10 @@ div.form div.error input {
     width: 350px;
     display:inline;
     height: 500px;
-    background: whitesmoke;
-    
 }
+.addressHolder{
+    width: 400px;
+    padding: 10px;
+    float: left;
+    
+}    
