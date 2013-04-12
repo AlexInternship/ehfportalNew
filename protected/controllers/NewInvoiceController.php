@@ -23,13 +23,22 @@ class NewInvoiceController extends Controller
         /* if (isset($_POST['User'], $_POST['Partner1'], $_POST['Partner2'], $_POST['Address1'], $_POST['Address2'])) { */
         if (!empty($_POST)) {
             
-
-            $login->attributes = array('username'=>'12346578', 'password'=>'77', 'rememberMe'=>'0'); 
+            /*
+            $user = $db->getUser('jb');
+            var_dump($user);
+            $user = $db->getUser('test');
+            var_dump($user);
+            die;
+             * 
+             */
+            $login->attributes = array('username'=>'newuser', 'password'=>'password', 'rememberMe'=>'0'); 
              // validate user input and redirect to the previous page if valid
 
-           $login->validate();
-           $login->login(); 
-           
+            if ($login->validate() && $login->login()) {
+                echo 'ja';
+                $this->redirect(Yii::app()->user->returnUrl);
+            }echo 'nej';
+            
             $model->attributes = $_POST['Users'];
             $partner1->attributes = $_POST['Partners'][1];
             $partner2->attributes = $_POST['Partners'][2];
@@ -54,6 +63,7 @@ class NewInvoiceController extends Controller
                 $address2Array = $_POST['Address'][2];
                 $invoiceArray = $_POST;
                 
+                
                 $db->newPartner($userArray, $partner1Array, $password);
                 $db->newPartner(null, $partner2Array, '');
                 $partnerId1 = $db->getPartnerId($partner1Array['name']);
@@ -63,14 +73,14 @@ class NewInvoiceController extends Controller
                 $db->newUser($userArray, $password, $partnerId1, $address1Array['phone']);
                
                 $login->attributes = array('username'=>$userArray['username'],'password'=>$password, 'rememberMe'=>'1');
+                $login->validate();
+                $login->login();
                 
-
                 $orderId = $db->createInvoice();
                 $serialized = $serializer->serializeDocument($invoiceArray, $partnerId1, $partnerId2, $orderId);
                 $db->addSerializedDocument($serialized, $orderId);
                 $mailService->sendNewUserMail($userArray['email'], $userArray['username'], $password);
-                $login->validate();
-                $login->login();
+
                 
                //$url=$this->createUrl('http://wwww.ehfportal.no/biztalksend.php',array('type'=>'','id'=>$orderId, 'channel'=>'ehfout', 'organisation'=>'0', 'run'=>'1', 'dump'=>'web')); 
                //$this->redirect(Yii::app()->$url);
@@ -147,7 +157,7 @@ class NewInvoiceController extends Controller
     function actionViewinvoice(){
         $db = CallDB::Instance();
         $serialized_id = Yii::app()->request->cookies['newestinvoice']->value;
-        $s = $db->deserialize(7);
+        $s = $db->deserialize($serialized_id);
         $this->renderPartial('viewinvoice',array('dataProvider' => $s),'');
     }
     function actionviewcreatedinvoice(){

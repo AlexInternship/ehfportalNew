@@ -18,26 +18,31 @@ class UserIdentity extends CUserIdentity
 	 */
 	public function authenticate()
 	{
-
+            
         $dataProvider = new CActiveDataProvider('Users', array(
-         //   'criteria' => $criteria,
+            'pagination'=>array(
+            'pageSize'=>1000000, // or another reasonable high value...
+        ),
         ));
         
        $names = array();
-       
        foreach($dataProvider->getData() as $record) {
-            $names[$record->username] =$record->password ;
-        }
+            $names[$record->username] =$record->password;
+
+        } 
            
-        if (!array_key_exists($this->username, $names))
+        if (!array_key_exists($this->username, $names)){
             $this->errorCode=self::ERROR_USERNAME_INVALID;
+        }
        
         elseif(array_key_exists($this->username, $names)&&                        
                         ($names[$this->username] == md5($this->password)) 
-                        )
+                        ){
                             $this->errorCode = self::ERROR_NONE;
+                        }  
 	else
             $this->errorCode=self::ERROR_PASSWORD_INVALID;
+        
         return !$this->errorCode;
 	}
 }
