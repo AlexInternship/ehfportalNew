@@ -80,8 +80,8 @@ class NewInvoiceController extends Controller
                //admin/index.php?pID=14&pnavn=Johan+Test&action=list
                //$this->redirect('http://localhost/ehfportal2/ehfportal/biztalksend.php?type=inv&id='.$orderId.'&channel=ehfout&organisation=0&run=1');
                   Yii::app()->request->cookies['newestinvoice'] = new CHttpCookie('newestinvoice', $orderId);
-                  $url = Yii::app()->createUrl('newinvoice/createdinvoice');
-                 $this->redirect($url);
+                  $url = Yii::app()->createUrl('newinvoice/viewcreatedinvoice');
+                  $this->redirect($url);
             }   //
         }
         $this->render('newuser', array('model' => $model, 'partner1' => $partner1, 'partner2' => $partner2, 'address1' => $address1, 'address2' => $address2));
@@ -148,14 +148,11 @@ class NewInvoiceController extends Controller
     
     function actionViewinvoice(){
         $db = CallDB::Instance();
-        $s = $db->deserialize(4);
-        $this->render('viewinvoice',array('dataProvider' => $s),'');
-    }
-    function actioncreatedinvoice(){
         $serialized_id = Yii::app()->request->cookies['newestinvoice']->value;
-        $serialized_documents = new SerializeDocuments();
-        $serialized_documents->findByPK($serialized_id);
-        echo var_dump($serialized_id);die;
-        $this->render('createdinvoice',array());
+        $s = $db->deserialize($serialized_id);
+        $this->renderPartial('viewinvoice',array('dataProvider' => $s),'');
+    }
+    function actionviewcreatedinvoice(){
+        $this->render('viewcreatedinvoice','');
     }  
 }
