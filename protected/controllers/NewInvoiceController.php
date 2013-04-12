@@ -31,14 +31,7 @@ class NewInvoiceController extends Controller
             die;
              * 
              */
-            $login->attributes = array('username'=>'newuser', 'password'=>'password', 'rememberMe'=>'0'); 
-             // validate user input and redirect to the previous page if valid
 
-            if ($login->validate() && $login->login()) {
-                echo 'ja';
-                $this->redirect(Yii::app()->user->returnUrl);
-            }echo 'nej';
-            
             $model->attributes = $_POST['Users'];
             $partner1->attributes = $_POST['Partners'][1];
             $partner2->attributes = $_POST['Partners'][2];
