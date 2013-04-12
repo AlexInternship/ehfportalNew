@@ -150,7 +150,7 @@ class NewInvoiceController extends Controller
     function actionViewinvoice(){
         $db = CallDB::Instance();
         $serialized_id = Yii::app()->request->cookies['newestinvoice']->value;
-        $s = $db->deserialize($serialized_id);
+        $s = $db->deserialize(3);
         $this->renderPartial('viewinvoice',array('dataProvider' => $s),'');
     }
     function actionviewcreatedinvoice(){
