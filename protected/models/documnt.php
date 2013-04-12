@@ -1,6 +1,6 @@
 <?php
 
-class SerializeDocument extends CFormModel{
+class document extends CFormModel{
     
    public $serializedocument_id;
    public $type;

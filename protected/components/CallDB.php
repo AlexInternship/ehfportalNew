@@ -137,6 +137,26 @@
             
             return $orderId['serializedocument_id']; 
        }
+       
+       public function getUser($username) {
+           
+            $user = Yii::app()->db->createCommand()
+              ->select('*')
+              ->from('users')
+              ->where('username=:username', array(':username'=>$username))
+                ->queryRow();
+           return $user;
+       }
+       
+       public function getUsers() {
+           
+            $users = Yii::app()->db->createCommand()
+              ->select('*')
+              ->from('users')
+                ->queryRow();
+           return $users;
+       }
+           
 
  }
 ?>

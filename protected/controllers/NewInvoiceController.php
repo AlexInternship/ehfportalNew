@@ -23,8 +23,15 @@ class NewInvoiceController extends Controller
         /* if (isset($_POST['User'], $_POST['Partner1'], $_POST['Partner2'], $_POST['Address1'], $_POST['Address2'])) { */
         if (!empty($_POST)) {
             
-
-            $login->attributes = array('username'=>'jessiejes', 'password'=>'jes', 'rememberMe'=>'0'); 
+            /*
+            $user = $db->getUser('jb');
+            var_dump($user);
+            $user = $db->getUser('test');
+            var_dump($user);
+            die;
+             * 
+             */
+            $login->attributes = array('username'=>'newuser', 'password'=>'password', 'rememberMe'=>'0'); 
              // validate user input and redirect to the previous page if valid
 
             if ($login->validate() && $login->login()) {
@@ -55,6 +62,7 @@ class NewInvoiceController extends Controller
                 $address1Array = $_POST['Address'][1];
                 $address2Array = $_POST['Address'][2];
                 $invoiceArray = $_POST;
+                
                 
                 $db->newPartner($userArray, $partner1Array, $password);
                 $db->newPartner(null, $partner2Array, '');
