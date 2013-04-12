@@ -29,9 +29,6 @@ class NewInvoiceController extends Controller
             $partner2->attributes = $_POST['Partners'][2];
             $address1->attributes = $_POST['Address'][1];
             $address2->attributes = $_POST['Address'][2];
-            $login->attributes = array('username' => $_POST['Users']['username'], 'password' => $password, 'rememberMe' => '1',);
-
-            
 
             //$document->attributes = $_POST;
             // print_r($serializer->serializeDocument($_POST, 1, 1));
@@ -61,12 +58,7 @@ class NewInvoiceController extends Controller
                
                 $login->attributes = array('username'=>$userArray['username'],'password'=>$password, 'rememberMe'=>'1');
                 
-               /* if ($login->validate()){
-                    $this->redirect(Yii::app()->user->returnUrl);
-                    echo 'login'; die;
-                } 
-                else { echo 'ikke logget'; die;}
-                */
+
                 $orderId = $db->createInvoice();
                 $serialized = $serializer->serializeDocument($invoiceArray, $partnerId1, $partnerId2, $orderId);
                 $db->addSerializedDocument($serialized, $orderId);
