@@ -22,23 +22,6 @@ class NewInvoiceController extends Controller
         $valid = true;
         /* if (isset($_POST['User'], $_POST['Partner1'], $_POST['Partner2'], $_POST['Address1'], $_POST['Address2'])) { */
         if (!empty($_POST)) {
-            
-            /*
-            $user = $db->getUser('jb');
-            var_dump($user);
-            $user = $db->getUser('test');
-            var_dump($user);
-            die;
-             * 
-             */
-            $login->attributes = array('username'=>'1234578', 'password'=>'77', 'rememberMe'=>'0'); 
-             // validate user input and redirect to the previous page if valid
-
-            if ($login->validate() && $login->login()) {
-                echo 'ja';
-                $this->redirect(Yii::app()->user->returnUrl);
-            }echo 'nej';
-            
             $model->attributes = $_POST['Users'];
             $partner1->attributes = $_POST['Partners'][1];
             $partner2->attributes = $_POST['Partners'][2];
@@ -87,7 +70,7 @@ class NewInvoiceController extends Controller
                //$url = $this->createUrl('sdfsdfsdfsdfsd');
                //admin/index.php?pID=14&pnavn=Johan+Test&action=list
                //$this->redirect('http://localhost/ehfportal2/ehfportal/biztalksend.php?type=inv&id='.$orderId.'&channel=ehfout&organisation=0&run=1');
-                  Yii::app()->request->cookies['newestinvoice'] = new CHttpCookie('newestinvoice', $orderId);
+                  Yii::app()->request->cookies['newestinvoice'] = new CHttpCookie('newestinvoice', $partnerId1); //før orderID
                   $url = Yii::app()->createUrl('newinvoice/viewcreatedinvoice');
                   $this->redirect($url);
             }   //
@@ -161,6 +144,16 @@ class NewInvoiceController extends Controller
         $this->renderPartial('viewinvoice',array('dataProvider' => $s),'');
     }
     function actionviewcreatedinvoice(){
-        $this->render('viewcreatedinvoice','');
+        
+        $username = Yii::app()->User->id;
+        $user = Yii::app()->db->createCommand()
+        ->select('partner_id')
+        ->from('users')
+        ->where('username=:username', array(':username'=>$username))
+        ->queryRow();
+        $pid = $user['partner_id'];
+        $dataProvider = new CActiveDataProvider('SerializeDocuments', array(
+                    'criteria' => array('condition' => 'id=' . $pid)));
+        $this->render('viewcreatedinvoice',array('dataProvider' => $dataProvider),'');
     }  
 }
