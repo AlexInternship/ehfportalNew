@@ -165,8 +165,10 @@
             <?php echo CHtml::label('ehf momsgrundlag: ', ''); ?>
           <?php 
            echo "<table style='width:250px;display:block;'><thead><th>MVA grunnlag</th><th>MVA</th><th>MVA beløb</th></thead>";
+           if(isset($dataProvider["ehf_momsgrundlag"])){
            foreach($dataProvider["ehf_momsgrundlag"] as $t => $item){
                echo "<tr><th>".$t."</th><th>".$item."</th><th>".$dataProvider['ehf_moms'][$t]."</th></tr>";    
+           }           
            }
            echo "</table>";
            ?>
@@ -280,6 +282,6 @@
     <div class="row">
         <?php echo CHtml::label('Ordre kontakt: ', ''); ?>
         <?php echo CHtml::label($dataProvider["orderContactName"], ''); ?>
-       
+       <?php var_dump($dataProvider)?>
     </div>
 </div>
