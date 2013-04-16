@@ -15,7 +15,8 @@ class Serializer {
         
         if (array_key_exists('Fakturadata', $invoiceArray)) {
             foreach ($invoiceArray['Fakturadata'] as $key => $value) {
-                $serializeArray['Fakturadata'][$key] = $value;
+                $serializeArray['Fakturadata'][$key] = $invoiceArray['Fakturadata']['Momsfri'];
+                $serializeArray['Fakturadata'][$key] = $invoiceArray['Fakturadata']['momsfri'];
             };
         } else
             $serializeArray['Fakturadata'] = '';

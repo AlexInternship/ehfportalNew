@@ -10,6 +10,7 @@ class NewInvoiceController extends Controller
         $partner2 = new Partners();
         $address1 = new Address();
         $address2 = new Address();
+        $invoiceData = new InvoiceData();
         //$document = new Document();
         $login = new LoginForm();
         $db = CallDB::Instance();
@@ -22,6 +23,9 @@ class NewInvoiceController extends Controller
         $valid = true;
         /* if (isset($_POST['User'], $_POST['Partner1'], $_POST['Partner2'], $_POST['Address1'], $_POST['Address2'])) { */
         if (!empty($_POST)) {
+            var_dump($_POST['Fakturadata']); die;
+            
+            $invoiceData->attributes = $_POST;
             $model->attributes = $_POST['Users'];
             $partner1->attributes = $_POST['Partners'][1];
             $partner2->attributes = $_POST['Partners'][2];
@@ -64,7 +68,9 @@ class NewInvoiceController extends Controller
                 $db->addSerializedDocument($serialized, $orderId);
                 $mailService->sendNewUserMail($userArray['email'], $userArray['username'], $password);
 
-                
+                $s = $db->deserialize($orderId);
+                var_dump($s); die;
+
                //$url=$this->createUrl('http://wwww.ehfportal.no/biztalksend.php',array('type'=>'','id'=>$orderId, 'channel'=>'ehfout', 'organisation'=>'0', 'run'=>'1', 'dump'=>'web')); 
                //$this->redirect(Yii::app()->$url);
                //$url = $this->createUrl('sdfsdfsdfsdfsd');
