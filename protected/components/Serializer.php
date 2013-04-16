@@ -10,12 +10,11 @@ class Serializer {
         return $inst;
     }
 
-    public function serializeDocument($invoiceArray, $senderId, $receiverId, $orderId) {
+    public function serializeDocument($invoice, $invoiceArray, $senderId, $receiverId, $orderId) {
         $serializeArray = array();
-        if (array_key_exists('Fakturadata', $invoiceArray)) {
-            foreach ($invoiceArray['Fakturadata'] as $key => $value) {
-                $serializeArray['Fakturadata'][$key] = $invoiceArray['Fakturadata']['Momsfri'];
-                $serializeArray['Fakturadata'][$key] = $invoiceArray['Fakturadata']['momsfri'];
+        if (array_key_exists('Fakturadata', $invoice)) {
+            foreach ($invoice as $key => $value) {
+                $serializeArray['Fakturadata'][$key] = $value;
             };
         } else
             $serializeArray['Fakturadata'] = '';
@@ -246,13 +245,13 @@ class Serializer {
             $serializeArray['linjetotal_eks_moms'] = '';
         if (array_key_exists('ehf_momsgrundlag', $invoiceArray)) {
             foreach ($invoiceArray as $key => $value) {
-                $serializeArray['ehf_momsgrundlag'][$key] = array('ehf_momsgrundlag'=>'');
+                $serializeArray['ehf_momsgrundlag'][$invoiceArray['ehf_momsgrundlag']] = $invoiceArray['Varebeloeb'];
             };
         } else
             $serializeArray['ehf_momsgrundlag']['0'] = array('' => '');;
         if (array_key_exists('ehf_moms', $invoiceArray)) {
             foreach ($invoiceArray as $key => $value) {
-                $serializeArray['ehf_moms'][$key] = $value;
+                $serializeArray['ehf_moms'][$invoiceArray['ehf_moms']] = $invoiceArray['ehf_moms_total'];
             };
         } else
             $serializeArray['ehf_moms'] = '';

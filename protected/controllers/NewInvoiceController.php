@@ -23,7 +23,7 @@ class NewInvoiceController extends Controller
         $valid = true;
         /* if (isset($_POST['User'], $_POST['Partner1'], $_POST['Partner2'], $_POST['Address1'], $_POST['Address2'])) { */
         if (!empty($_POST)) {
-            
+
             $invoiceData->attributes = $_POST['Fakturadata'];
             $model->attributes = $_POST['Users'];
             $partner1->attributes = $_POST['Partners'][1];
@@ -32,12 +32,17 @@ class NewInvoiceController extends Controller
             $address2->attributes = $_POST['Address'][2];
             //$document->attributes = $_POST;
             // print_r($serializer->serializeDocument($_POST, 1, 1));
+            
+            foreach ($_POST['fakturaData'] as $value){
+               $invoiceData->attributes = $value;
+               $valid = $invoiceData->validate() && $valid;
+            }
+            
             $valid = $address1->validate() && $valid;
             $valid = $address2->validate() && $valid;
             $valid = $partner1->validate() && $valid;
             $valid = $partner2->validate() && $valid;
             $valid = $model->validate() && $valid;
-            $valid=$invoiceData->validate() && $valid;
 
             if ($valid) {
                     
@@ -47,8 +52,11 @@ class NewInvoiceController extends Controller
                 $address1Array = $_POST['Address'][1];
                 $address2Array = $_POST['Address'][2];
                 $invoiceArray = $_POST;
-                
-                
+                $invoiceArray();
+                foreach ($_POST['fakturaData'] as $value){
+                    $invoiceData->attributes = $value;
+                        $invoiceArray[$value] = $invoiceData->getData();
+                 };            
                 $db->newPartner($userArray, $partner1Array, $password);
                 $db->newPartner(null, $partner2Array, '');
                 $partnerId1 = $db->getPartnerId($partner1Array['name']);
@@ -62,13 +70,12 @@ class NewInvoiceController extends Controller
                 $login->login();
                 
                 $orderId = $db->createInvoice();
-                $serialized = $serializer->serializeDocument($invoiceArray, $partnerId1, $partnerId2, $orderId);
+                $serialized = $serializer->serializeDocument($invoiceArray,$invoiceArray, $partnerId1, $partnerId2, $orderId);
                 $db->addSerializedDocument($serialized, $orderId);
                 $mailService->sendNewUserMail($userArray['email'], $userArray['username'], $password);
 
                 $s = $db->deserialize($orderId);
-                var_dump($s); die;
-
+              
                //$url=$this->createUrl('http://wwww.ehfportal.no/biztalksend.php',array('type'=>'','id'=>$orderId, 'channel'=>'ehfout', 'organisation'=>'0', 'run'=>'1', 'dump'=>'web')); 
                //$this->redirect(Yii::app()->$url);
                //$url = $this->createUrl('sdfsdfsdfsdfsd');
