@@ -141,6 +141,7 @@ class NewInvoiceController extends Controller
        $sd_id= $_GET["id"];
        $db = CallDB::Instance();
        $result = $db->deserialize($sd_id);
+       //var_dump($result);die;
        $this->renderPartial('viewinvoice',array('dataProvider' => $result),'');
     }
     function actionviewcreatedinvoice(){
