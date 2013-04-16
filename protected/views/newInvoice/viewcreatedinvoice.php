@@ -6,7 +6,12 @@
 $this->widget('zii.widgets.grid.CGridView', array(
     'dataProvider'=>$dataProvider,
     'columns'=>array(
-          'serializedocument_id','type','id', 'version','outbox'
+          array( 
+              'name' =>'serializedocument',
+              'type' => 'raw',
+              'value' => 'CHtml::Link(CHtml::encode($data->serializedocument_id),array("newInvoice/viewinvoice","id" =>$data->serializedocument_id), array("id"=>"fancy-link"))'  
+              )
+        ,'type', 'version','outbox'
 )));
  //echo CHtml::link('Se din faktura her',array('newinvoice/viewinvoice'), array('id' => 'fancy-link', 'style' => 'font-size:1.5em; font-weight:bold;'));
 
