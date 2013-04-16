@@ -10,6 +10,7 @@ class NewInvoiceController extends Controller
         $partner2 = new Partners();
         $address1 = new Address();
         $address2 = new Address();
+        $invoiceData = new InvoiceData();
         //$document = new Document();
         $login = new LoginForm();
         $db = CallDB::Instance();
@@ -22,12 +23,13 @@ class NewInvoiceController extends Controller
         $valid = true;
         /* if (isset($_POST['User'], $_POST['Partner1'], $_POST['Partner2'], $_POST['Address1'], $_POST['Address2'])) { */
         if (!empty($_POST)) {
+            
+            $invoiceData->attributes = $_POST['Fakturadata'];
             $model->attributes = $_POST['Users'];
             $partner1->attributes = $_POST['Partners'][1];
             $partner2->attributes = $_POST['Partners'][2];
             $address1->attributes = $_POST['Address'][1];
             $address2->attributes = $_POST['Address'][2];
-
             //$document->attributes = $_POST;
             // print_r($serializer->serializeDocument($_POST, 1, 1));
             $valid = $address1->validate() && $valid;
@@ -35,7 +37,7 @@ class NewInvoiceController extends Controller
             $valid = $partner1->validate() && $valid;
             $valid = $partner2->validate() && $valid;
             $valid = $model->validate() && $valid;
-            //$valid=$login->validate() && $valid;
+            $valid=$invoiceData->validate() && $valid;
 
             if ($valid) {
                     
@@ -64,7 +66,9 @@ class NewInvoiceController extends Controller
                 $db->addSerializedDocument($serialized, $orderId);
                 $mailService->sendNewUserMail($userArray['email'], $userArray['username'], $password);
 
-                
+                $s = $db->deserialize($orderId);
+                var_dump($s); die;
+
                //$url=$this->createUrl('http://wwww.ehfportal.no/biztalksend.php',array('type'=>'','id'=>$orderId, 'channel'=>'ehfout', 'organisation'=>'0', 'run'=>'1', 'dump'=>'web')); 
                //$this->redirect(Yii::app()->$url);
                //$url = $this->createUrl('sdfsdfsdfsdfsd');
