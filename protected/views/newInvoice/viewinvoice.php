@@ -282,6 +282,5 @@
     <div class="row">
         <?php echo CHtml::label('Ordre kontakt: ', ''); ?>
         <?php echo CHtml::label($dataProvider["orderContactName"], ''); ?>
-       <?php var_dump($dataProvider)?>
     </div>
 </div>

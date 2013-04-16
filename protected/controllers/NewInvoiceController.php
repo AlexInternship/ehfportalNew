@@ -143,11 +143,11 @@ class NewInvoiceController extends Controller
 	}
 	*/
     
-    function actionViewinvoice(){
-        $db = CallDB::Instance();
-        $serialized_id = Yii::app()->request->cookies['newestinvoice']->value;
-        $s = $db->deserialize(3);
-        $this->renderPartial('viewinvoice',array('dataProvider' => $s),'');
+    function actionViewinvoice(){ 
+       $sd_id= $_GET["id"];
+       $db = CallDB::Instance();
+       $result = $db->deserialize($sd_id);
+       $this->renderPartial('viewinvoice',array('dataProvider' => $result),'');
     }
     function actionviewcreatedinvoice(){
         

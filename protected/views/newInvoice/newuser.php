@@ -157,8 +157,8 @@
             </div>
              <?php echo CHtml::hiddenField('Fakturadata[0][dimaccont]',''); ?>
              <div style="width: 60px; height: 45px; margin:3px;float:left;">
-             <?php echo CHtml::label('MVA','',array('id'=>'ehf_vat_label')); ?>
-             <?php echo CHtml::dropDownList('Fakturadata[0][ehf_vat]', '',array('25' => '25%', '0' => '0%', '8' => '8%', '10' => '10%'),array('class'=>'vat' , 'id'=>'vat_0'));?>
+             <?php echo CHtml::label('MVA','',array('id'=>'ehf_momsgrundlag_label')); ?>
+             <?php echo CHtml::dropDownList('Fakturadata[0][ehf_momsgrundlag]', '',array('25' => '25%', '0' => '0%', '8' => '8%', '10' => '10%'),array('class'=>'vat' , 'id'=>'vat_0'));?>
             </div> 
              <div style="width: 90px; height: 45px; margin:3px;float:left;">
              <?php echo CHtml::label('Varebeloeb','',array('id'=>'Varebeloeb_label', 'style'=> 'width:75px;')); ?>
