@@ -10,7 +10,7 @@ class NewInvoiceController extends Controller
         $partner2 = new Partners();
         $address1 = new Address();
         $address2 = new Address();
-        $invoiceData = new InvoiceData();
+        $invoiceData = new InvoiceData();     
         //$document = new Document();
         $login = new LoginForm();
         $db = CallDB::Instance();

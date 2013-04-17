@@ -107,10 +107,9 @@ div.form div.error input {
 }
 .horisontalsplitter{
     border-top:1px solid #888;
-    margin: 20px;
-    width: 500px;
+    margin: 10px auto;
+    width: 95%;
     clear:left;
-    
 }
 .add:hover{
     background:#339900;}
@@ -132,21 +131,59 @@ div.form div.error input {
 #ui-datepicker-div
 {
     z-index: 1102 !important;
+    background: white;
+    border:thin solid black;
+    border-radius: 3px;
 }
-.usercontainer{
+.ui-datepicker-next{
+    color:#039;
+    font-weight: bolder;
+    text-decoration: none;
+    margin-left: 45px;
+}
+.ui-datepicker-prev{
+    color:#039;
+    font-weight: bolder;
+    text-decoration: none;
+}
+
+.usercontainer{ 
     width: 350px;
-    display:inline;
-    height: 500px;
+    height: 320px;
+    float:left;
 }
 .addressHolder{
     width: 200px;
     padding: 10px;
     float: left;
-    
+   
 }    
 .total th{
  border-collapse: collapse;
  border-top: thin solid #88c;
 }
+.mid{
+  width: auto;
+}
+.spacer{
+    height: 280px;
+    margin: 20px 30px;
+    border-left: thin #ccc solid;
+    float:left;
+}
+.topcontianer{
+    height: 322px;
+}
+.formdate{
+    float:left; 
+    margin: 0 0 0 13px;
+}
+.bottomcontainer{}
+
+.datescontainer{
+    margin: 0 10px 5px 0;
+    width: 320px; height: 37px;
+}
+
 
 #fancybox-overlay { position: fixed !important; }

@@ -14,10 +14,11 @@
     
 <?php echo $form->errorSummary(array($model, $address1, $address2, $partner1, $partner2)); ?>
 
-   
- <div class="usercontainer"> 
-     
+    <div class="topcontianer">   
+        <div class="usercontainer"> 
+      <h1> Afsender </h1>
       <div class="formbox"> 
+         
         <div class="row">   
             <?php echo $form->labelEx($model, 'username') ?>
             <?php echo $form->textField($model, 'username') ?>
@@ -83,8 +84,9 @@
        
         </div>
     </div>
+    <div class="spacer"></div>
     <div class="usercontainer">
-  
+  <h1> Modtager </h1>
     <div class="formbox">
         <div class="row">
             <?php echo $form->labelEx($partner2, 'Firma navn') ?>
@@ -129,14 +131,14 @@
             <?php echo $form->error($address2, '[2]city') ?>   
         </div>
     </div> 
-    
+  </div>
+    </div>
     <!-- Faktura / Invoice -->
     <div class="horisontalsplitter"></div>          
-    <div class="row">
-        <h3>Invoices</h3>              
-    </div>  
+    
+    <div class="mid">
+    <div class="row"> <h3>Invoices</h3> </div>  
     <div class="invoicelines">
-        <div class="a"></div>
         <div class="invoiceline row" id="row_0">
              <!-- start invoiceline -->
              <div style="width: 120px; height: 45px; margin:3px;float:left;clear:left;">
@@ -177,9 +179,9 @@
             </div>
         </div>
     </div>
-    <div class="horisontalsplitter"></div>
-             <div class="row">
-                 <?php echo CHtml::label('Total','',array('id'=>'total_label', 'width'=>100)); ?>
+    </div>
+             <div class="row" style="margin-left:3px;">
+                 <?php echo CHtml::label('Total','',array('id'=>'total_label', 'style'=>'clear:left;')); ?>
                  <?php echo CHtml::textField('VareTotal','',array('readonly' =>'readonly')); ?>      
              </div>
      <div class="horisontalsplitter"></div>          
@@ -193,7 +195,8 @@
      <div class="formbox">   
        
       <div class="row">
-  
+          <div class="datescontainer">
+          <div class="formdate" style="margin-left: 0px;">
      <?php echo CHtml::label('Faktura dato',''); ?>
      <?php
         $this->widget('zii.widgets.jui.CJuiDatePicker', array(
@@ -206,6 +209,8 @@
     ),
 ));
 ?>
+          </div>
+            <div class="formdate">
           <?php echo CHtml::label('Faktura dato',''); ?>
      <?php
         $this->widget('zii.widgets.jui.CJuiDatePicker', array(
@@ -218,6 +223,8 @@
     ),
 ));
 ?>
+            </div>
+            <div class="formdate">
           <?php echo CHtml::label('Leverings dato',''); ?>
      <?php
         $this->widget('zii.widgets.jui.CJuiDatePicker', array(
@@ -229,10 +236,10 @@
                     'background' => 'lightgrey'
     ),
 ));
-?>
+?>     
 <?php echo $form->error($model,'date_from'); ?>
 </div>
-
+</div></div>
      <div class="row">
      <?php echo CHtml::label('Kjøpsordrenr','',array('id'=>'order_id_label', 'width'=>100)); ?>
      <?php echo CHtml::textField('Ordrenummer','',array('id'=>'order_id', 'width'=>100,'maxlength'=>100)); ?>
