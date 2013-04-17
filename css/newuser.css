@@ -106,7 +106,7 @@ div.form div.error input {
     clear:left;
 }
 .horisontalsplitter{
-    border-top:1px solid #888;
+    border-top:1px solid #ccc;
     margin: 10px auto;
     width: 95%;
     clear:left;
@@ -184,6 +184,8 @@ div.form div.error input {
     margin: 0 10px 5px 0;
     width: 320px; height: 37px;
 }
-
-
+h1{
+    font-weight: bolder;
+    color: rgb(122, 187, 230); 
+}
 #fancybox-overlay { position: fixed !important; }

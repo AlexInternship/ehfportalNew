@@ -190,7 +190,7 @@
     </div>  
        <!-- Start på ehfportal.no form -->
      
-<div class="usercontainer"> 
+<div class=""> 
      
      <div class="formbox">   
        
@@ -247,7 +247,7 @@
      </div>
 </div>
          
- <div class="usercontainer">
+ <div class="">
   
     <div class="formbox">
          
@@ -269,7 +269,7 @@
     </div>
      </div>
 </div>
-<div class="usercontainer">
+<div class="">
   
     <div class="formbox">         
          
@@ -292,7 +292,7 @@
       </div>      
 </div>
               
-<div class="usercontainer">
+<div class="">
   
     <div class="formbox">
      
@@ -317,7 +317,9 @@
    
     <div class="row buttons" style="width:800px; float:left; margin-bottom: 10px;">
     <?php/* echo CHtml::submitButton('Submit', array('class' => 'fancybutton', 'id' => 'fancySubmit')); */?>
-        <?php echo CHtml::Button('Submit', array('class' => 'fancybutton', 'id' => 'fancySubmit')); ?>
+        <?php echo CHtml::Button('Submit', array('class' => 'fancybutton', 'id' => 'fancySubmit','style'=> 'float: right;
+font-size: 1.9em;
+padding: 5px 13px;')); ?>
     </div>
 <?php $this->endWidget(); 
 
