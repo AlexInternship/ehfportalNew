@@ -54,12 +54,17 @@ function calc(id){
         var varebeloeb = parseFloat($('#varebeloeb_'+id).val());
         var subtotal = (varebeloeb +(vat/100* varebeloeb)) * antal;
         $('#linie_total_'+id).val(subtotal);
-        var total = 0;
-        $('.subtotal').each(function() { 
-         total += parseFloat($(this).val()); 
-});
-        $('#VareTotal').val(total);
+        calcTotal();
 }   
+
+function calcTotal(){
+    var total = 0;
+    $('.subtotal').each(function(){
+        total += parseFloat($(this).val()); 
+    });
+     $('#VareTotal').val(total);
+    return total;
+}
 
 function newdiv(){
     var count = $('.invoiceline').length;
@@ -97,7 +102,7 @@ function newdiv(){
     //MVA
     var mva_div = $('<div style="width: 60px; height: 45px; margin:3px;float:left;"></div>'); 
     var mva_label = $('<label id="ehf_vat_label" for="">MVA</label>');
-    var mva_select = $('<select class="vat" id="vat_'+count+'" name="Fakturadata[' + count + '][ehf_vat]"><option value="25">25%</option><option value="0">0%</option><option value="8">8%</option><option value="10">10%</option></select>');
+    var mva_select = $('<select class="vat" id="vat_'+count+'" name="Fakturadata[' + count + '][ehf_vat]" "onChange"="calc('+count+ ')"><option value="25">25%</option><option value="0">0%</option><option value="8">8%</option><option value="10">10%</option></select>');
     mva_div.appendTo(row);
     mva_label.appendTo(mva_div);
     mva_select.appendTo(mva_div);
@@ -111,7 +116,7 @@ function newdiv(){
     //ialt subtotal
     var subt_div = $('<div style="width:55px; height: 45px; margin:3px;float:left;"></div>');
     var subt_label = $('<label id="total_label" style="width:45px;" for="">I alt</label>');
-    var subt_field = $('<input class="subtotal" style="width:45px;" class="testadd" id="linie_total_' +count+ '" readonly="readonly" type="text" value="" name="Fakturadata[' +count+ '][linie_total]">');
+    var subt_field = $('<input class="subtotal" style="width:45px;" class="testadd" id="linie_total_' +count+ '" readonly="readonly" type="text" value="" name="Fakturadata[' +count+ '][linie_total]" "onChange"="calcTotal()">');
     subt_div.appendTo(row);
     subt_label.appendTo(subt_div);
     subt_field.appendTo(subt_div);
@@ -156,6 +161,7 @@ function resequence(){
    $('select[class="vat"]').each(function(){
        $(this).attr('name','Fakturadata[' +i+ '][ehf_vat]');
        $(this).attr('id','vat_'+i);
+       $(this).attr('onChange','calc('+i+')');
        i++;
    });
    i = 0;
