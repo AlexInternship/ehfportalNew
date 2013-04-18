@@ -49,12 +49,10 @@ function deleterow(id){
 }
 
 function calc(id){
-    
         var vat = parseFloat($('#vat_'+id).val());
         var antal = parseFloat($('#antal_'+id).val());
         var varebeloeb = parseFloat($('#varebeloeb_'+id).val());
         var subtotal = (varebeloeb +(vat/100* varebeloeb)) * antal;
-        
         $('#linie_total_'+id).val(subtotal);
         var total = 0;
         $('.subtotal').each(function() { 
@@ -168,7 +166,7 @@ function resequence(){
        i++;
    });
    i = 0; 
-   $('input[class="total"]').each(function(){
+   $('input[class="subtotal"]').each(function(){
        $(this).attr('name','Fakturadata[' +i+ '][linie_total]');
        $(this).attr('id','linie_total_'+i);
        i++;
