@@ -12,8 +12,8 @@ class Serializer {
 
     public function serializeDocument($invoice, $invoiceArray, $senderId, $receiverId, $orderId) {
         $serializeArray = array();
-        if (array_key_exists('Fakturadata', $invoice)) {
-            foreach ($invoice as $key => $value) {
+        if (array_key_exists('Fakturadata', $invoiceArray)) {
+            foreach ($invoiceArray['Fakturadata'] as $key => $value) {
                 $serializeArray['Fakturadata'][$key] = $value;
             };
         } else
