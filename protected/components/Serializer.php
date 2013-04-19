@@ -210,7 +210,7 @@ class Serializer {
         if (array_key_exists('vatyn', $invoiceArray)) {
             $serializeArray['vatyn'][0] = $invoiceArray['vatyn'][0];
         } else
-            $serializeArray['vatyn'][0] = array('shipping' => '', 'tax' => '', 'duty' => '', 'importchg' => '', 'Tillaeg' => '', 'Fradrag' => '');
+            $serializeArray['vatyn'] = array('shipping' => '', 'tax' => '', 'duty' => '', 'importchg' => '', 'Tillaeg' => '', 'Fradrag' => '');
         if (array_key_exists('tax', $invoiceArray)) {
             $serializeArray['tax'] = $invoiceArray['tax'];
         } else
@@ -252,13 +252,13 @@ class Serializer {
                 $serializeArray['ehf_momsgrundlag'][$invoiceArray['ehf_momsgrundlag']] = $invoiceArray['Varebeloeb'];
             };
         } else
-            $serializeArray['ehf_momsgrundlag']['0'] = array('' => '');
+            $serializeArray['ehf_momsgrundlag'] = array('0' => '');
         if (array_key_exists('ehf_moms', $invoiceArray)) {
             foreach ($invoiceArray as $key => $value) {
                 $serializeArray['ehf_moms'][$invoiceArray['ehf_moms']] = $invoiceArray['ehf_moms_total'];
             };
         } else
-            $serializeArray['ehf_moms']['0'] = array('' => '');
+            $serializeArray['ehf_moms'] = array('0' => '');
         if (array_key_exists('ehf_moms_total', $invoiceArray)) {
             $serializeArray['ehf_moms_total'] = $invoiceArray['ehf_moms_total'];
         } else
@@ -272,7 +272,7 @@ class Serializer {
                 $serializeArray['Attachment'][$key] = $value;
             };
         } else
-            $serializeArray['Attachments']['0'] = array('' => '');;;
+            $serializeArray['Attachments'] = array('0' => '');;;
      
         return serialize($serializeArray);
     }
