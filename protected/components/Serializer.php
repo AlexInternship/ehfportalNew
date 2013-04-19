@@ -105,18 +105,22 @@ class Serializer {
 
         if (array_key_exists('Address', $invoiceArray)) {
             if (array_key_exists('1', $invoiceArray['Address']))
-                $serializeArray['Leveringsadresse']['0'] = $invoiceArray['Address'][1];
+                $serializeArray['Leveringsadresse'] = 
+                    array('Adresse1' => $invoiceArray['Address'][1]['addresse1'], 'adresse2' => $invoiceArray['Address'][1]['addresse2'], 'adresse3' => $invoiceArray['Address'][1]['addresse3'], 
+                                        'Postnummer' => $invoiceArray['Address'][1]['zip'], 'ByNavn' => $invoiceArray['Address'][1]['city'],'cvr' => $invoiceArray['Address'][1]['cvr'], 'eanno' => $invoiceArray['Address'][1]['eanno']);
         } else
             $serializeArray['Address'] = '';
 
         if (array_key_exists('Address', $invoiceArray)) {
             if (array_key_exists('2', $invoiceArray['Address']))
-                $serializeArray['Faktureringsadresse']['0'] = $invoiceArray['Address'][2];
+                array('Adresse1' => $invoiceArray['Address'][2]['addresse1'], 'adresse2' => $invoiceArray['Address'][2]['addresse2'], 'adresse3' => $invoiceArray['Address'][2]['addresse3'], 
+                                        'Postnummer' => $invoiceArray['Address'][2]['zip'], 'ByNavn' => $invoiceArray['Address'][2]['city'],'cvr' => $invoiceArray['Address'][2]['cvr'], 'eanno' => $invoiceArray['Address'][2]['eanno']);
         } else
             $serializeArray['Address'] = '';
         if (array_key_exists('Address', $invoiceArray)) {
             if (array_key_exists('3', $invoiceArray['Address']))
-                $serializeArray['Faktureringsadresse']['0'] = $invoiceArray['Address'][3];
+                array('Adresse1' => $invoiceArray['Address'][3]['addresse1'], 'adresse2' => $invoiceArray['Address'][3]['addresse2'], 'adresse3' => $invoiceArray['Address'][3]['addresse3'], 
+                                        'Postnummer' => $invoiceArray['Address'][3]['zip'], 'ByNavn' => $invoiceArray['Address'][3]['city'],'cvr' => $invoiceArray['Address'][3]['cvr'], 'eanno' => $invoiceArray['Address'][3]['eanno']);
         } else
             $serializeArray['Juridiskeadresse']['0'] = array('adresse1' => '', 'adresse2' => '', 'adresse3' => '', 'zip' => '', 'city' => '');
         if (array_key_exists('Kundenavn', $invoiceArray)) {
@@ -248,13 +252,13 @@ class Serializer {
                 $serializeArray['ehf_momsgrundlag'][$invoiceArray['ehf_momsgrundlag']] = $invoiceArray['Varebeloeb'];
             };
         } else
-            $serializeArray['ehf_momsgrundlag']['0'] = array('' => '');;
+            $serializeArray['ehf_momsgrundlag']['0'] = array('' => '');
         if (array_key_exists('ehf_moms', $invoiceArray)) {
             foreach ($invoiceArray as $key => $value) {
                 $serializeArray['ehf_moms'][$invoiceArray['ehf_moms']] = $invoiceArray['ehf_moms_total'];
             };
         } else
-            $serializeArray['ehf_moms'] = '';
+            $serializeArray['ehf_moms']['0'] = array('' => '');
         if (array_key_exists('ehf_moms_total', $invoiceArray)) {
             $serializeArray['ehf_moms_total'] = $invoiceArray['ehf_moms_total'];
         } else
@@ -268,7 +272,7 @@ class Serializer {
                 $serializeArray['Attachment'][$key] = $value;
             };
         } else
-            $serializeArray['Attachment'] = '';
+            $serializeArray['Attachments']['0'] = array('' => '');;;
      
         return serialize($serializeArray);
     }

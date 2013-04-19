@@ -19,7 +19,7 @@ class NewInvoiceController extends Controller
         $password = $generator->generatePassword();
         $stub = new Stub();
         
-        $this->addManualArray($stub->getStandardArray(),1140);
+        //$this->addManualArray($stub->getStandardArray(),1140);
 
         print("<pre>".print_r($db->deserialize(1140),true)."</pre>");
         print("<pre>".print_r($db->deserialize(1158),true)."</pre>");
