@@ -21,6 +21,7 @@ class NewInvoiceController extends Controller
         $serializer = Serializer::Instance();
         $password = $generator->generatePassword();
 
+        var_dump($db->deserialize(1158)); die;
         
         $invoiceArray = array();
         $valid = true;
@@ -86,7 +87,7 @@ class NewInvoiceController extends Controller
                 $login->attributes = array('username'=>$userArray['username'],'password'=>$password, 'rememberMe'=>'1');
                 $login->validate();
                 $login->login();
-                
+                $db->newInvoice($invoiceArray, $partner1, $partnerId2);
                 $orderId = $db->createInvoice();
                 $serialized = $serializer->serializeDocument($invoiceArray,$invoiceArray, $partnerId1, $partnerId2, $orderId);
                 $db->addSerializedDocument($serialized, $orderId);
