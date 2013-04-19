@@ -17,7 +17,7 @@ class NewInvoiceController extends Controller
         $generator = RandomPassword::Instance();
         $serializer = Serializer::Instance();
         $password = $generator->generatePassword();
-        $stub = new Stub();
+       /* $stub = new Stub();
         
         //$this->addManualArray($stub->getStandardArray(),1140);
 
@@ -28,7 +28,7 @@ class NewInvoiceController extends Controller
         //var_dump(array_intersect_key($db->deserialize(1140), $db->deserialize(1158)));
         //var_dump($db->deserialize(1154));
         
-        die;
+        die;*/
 
         
         $invoiceArray = array();
@@ -36,7 +36,7 @@ class NewInvoiceController extends Controller
         /* if (isset($_POST['User'], $_POST['Partner1'], $_POST['Partner2'], $_POST['Address1'], $_POST['Address2'])) { */
         if (!empty($_POST)) {
 
-            $invoiceData->attributes = $_POST['Fakturadata'];
+          //  $invoiceData->attributes = $_POST['Fakturadata'];
             $model->attributes = $_POST['Users'];
             $partner1->attributes = $_POST['Partners'][1];
             $partner2->attributes = $_POST['Partners'][2];
@@ -66,11 +66,11 @@ class NewInvoiceController extends Controller
                 $address1Array = $_POST['Address'][1];
                 $address2Array = $_POST['Address'][2];
                 $invoiceArray = $_POST;
-                $invoiceArray();
-                foreach ($_POST['fakturaData'] as $value){
+             //   $invoiceArray();
+               /* foreach ($_POST['fakturaData'] as $value){
                     $invoiceData->attributes = $value;
                         $invoiceArray[$value] = $invoiceData->getData();
-                 };            
+                 };    */        
                 $db->newPartner($userArray, $partner1Array, $password);
                 $db->newPartner(null, $partner2Array, '');
                 $partnerId1 = $db->getPartnerId($partner1Array['name']);
