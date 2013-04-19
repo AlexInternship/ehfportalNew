@@ -10,16 +10,12 @@
         return $inst;
     }
      
-     public function createInvoice() {
-           $id = Yii::app()->db->createCommand()
-            ->select('max(id)')
-            ->from('serializedocuments')
-            ->queryRow();
+     public function createInvoice($id) {
            
            $invoice = new SerializeDocuments();
            $invoice->type = 'invoice';
            $invoice->document = '';
-           $invoice->id = $id['max(id)']+1;
+           $invoice->id = $id;
            $invoice->save();
            
            $id = $invoice->serializedocument_id;
@@ -156,6 +152,21 @@
                 ->queryRow();
            return $users;
        }
+       
+       public function newInvoice($invoiceData, $senderId, $receiverId) {
+           $invoice = new Invoices();
+           $invoice->partner=$invoiceData['partner'];
+           $invoice->vendor_id=$senderId;
+           $invoice->customer_id=$receiverId;
+           $invoice->invoicedate=$invoiceData['FakturaDato'];
+           $invoice->invoicetype='invoice';
+           $invoice->refno=$invoiceData['refno'];
+           $invoice->total=$invoiceData['Varetotal'];
+           $invoice->creationtype='manual';
+           $invoice->save();
+           
+           return $invoice->invoice_id;
+           }
            
 
  }
