@@ -26,6 +26,10 @@
             <?php echo CHtml::label($dataProvider["EANlokationsnr"], ''); ?>
         </div>
         <div class="row" style="margin:13px 0 0 0;">
+            <?php echo CHtml::label('Order no.: ', ''); ?>
+            <?php echo CHtml::label($dataProvider["Ordrenummer"], ''); ?>
+        </div>
+        <div class="row" style="margin:13px 0 0 0;">
             <?php echo CHtml::label('Order ref.: ', ''); ?>
             <?php echo CHtml::label($dataProvider["ordreReference"], ''); ?>
         </div>
@@ -39,6 +43,10 @@
             <?php echo CHtml::label('buyercontact: ', ''); ?>
             <?php echo CHtml::label($dataProvider["buyercontact"], ''); ?>
         </div>
+        <div class="row">
+            <?php echo CHtml::label('sellercontant: ', ''); ?>
+            <?php echo CHtml::label($dataProvider["sellercontact"], ''); ?>
+        </div>
     </div>
 
     <div class="topleft" style="margin:20px 0 15px 10px;">        
@@ -48,8 +56,12 @@
             <?php echo CHtml::label($dataProvider["partner"], ''); ?>
         </div>
         <div class="row">
+            <?php echo CHtml::label('Partner id', ''); ?>
+            <?php echo CHtml::label($dataProvider["partner_id"], ''); ?>
+        </div>
+        <div class="row">
             <?php echo CHtml::label('type', ''); ?>
-            <?php echo CHtml::label($dataProvider["Type"], ''); ?>
+            <?php echo CHtml::label($dataProvider["type"], ''); ?>
         </div>
         <div class="row">
             <?php echo CHtml::label('Moms Sats', ''); ?>
@@ -79,6 +91,9 @@
 
         <div class="row">
             <?php echo CHtml::label('cvr: ' . $dataProvider["Leveringsadresse"]["cvr"], ''); ?>
+        </div>
+        <div class="row">
+            <?php echo CHtml::label('eanno: ' . $dataProvider["eanno"]["cvr"], ''); ?>
         </div>
     </div>
     <div class="addressHolder">
@@ -110,12 +125,14 @@
     </div> 
     <?php
     echo "<table style='padding-top: 5em;'><thead class='total'><tr>
-        <th >Varenummer</th>
-        <th>antal</th>        
+        <th>Varenummer</th>
         <th>Navn</th>
+        <th>antal</th>        
         <th>Kontering</th>
         <th>Pris</th>
         <th>beløb</th>
+        <th>Ordrefradrag</th>
+        <th>Betegnelse_for_nettoindhold</th>
         <th>Vat</th>
         <th>subtotal</th>
         </tr></thead>";
@@ -124,11 +141,13 @@
 
         echo "<tr>";
         echo "<th>" . CHtml::label($s["Varenummer"], '') . "</th>";
-        echo "<th>" . CHtml::label($s["Antal"], '') . "</th>";
         echo "<th>" . CHtml::label($s["Varenavn"], '') . "</th>";
-        echo "<th>" . CHtml::label($s["kontering"], '') . "</th>";
+        echo "<th>" . CHtml::label($s["Antal"], '') . "</th>";
+        echo "<th>" . CHtml::label($s["Kontering"], '') . "</th>";
         echo "<th>" . CHtml::label($s["Pris"], '') . "</th>";
         echo "<th>" . CHtml::label($s["Varebeloeb"], '') . "</th>";
+        echo "<th>" . CHtml::label($s["Ordrefradrag"], '') . "</th>";
+        echo "<th>" . CHtml::label($s["Betegnelse_for_nettoindhold"],'')."</th>";
         echo "<th>" . CHtml::label($s["ehf_vat"], '') . "</th>";
         if (!isset($s["linie_total"])) {
             $res = ($s['Pris'] + ($s["ehf_vat"] / 100 * $s["Pris"])) * $s['Antal'];
@@ -142,7 +161,7 @@
         echo '</tr>';
     }
 
-    echo "<tr class='total'><th></th><th></th><th></th><th></th><th></th><th></th><th>Total</th><th>" . $total . "</th></tr>";
+    echo "<tr class='total'><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th>Total</th><th>" . $total . "</th></tr>";
     echo "</table>";
     ?> 
     
@@ -162,10 +181,18 @@
     <div class="row" style="float:right;">
           <?php 
            echo "<table style='width:250px;display:block;'><thead><th>MVA grunnlag</th><th>MVA</th><th>MVA beløb</th></thead>";
+           if(isset($dataProvider["ehf_momsgrundlag"])){
+           foreach($dataProvider["ehf_momsgrundlag"] as $t => $item){
+               echo "<tr><th>".$t."</th><th>".$item."</th><th>".$dataProvider['ehf_moms'][$t]."</th></tr>"; 
+           }           
+           }
+           echo "</table>";
+           ?>
+        <?php 
+           echo "<table style='width:250px;display:block;'><thead><th>MVA grunnlag</th><th>MVA</th><th>MVA beløb</th></thead>";
            if(isset($dataProvider["ehf_moms"])){
            foreach($dataProvider["ehf_moms"] as $t => $item){
                echo "<tr><th>".$t."</th><th>".$item."</th><th>".$dataProvider['ehf_moms'][$t]."</th></tr>"; 
-             
            }           
            }
            echo "</table>";
@@ -184,8 +211,14 @@
             <?php echo CHtml::label($dataProvider["ehf_moms_total"].' nkr.', ''); ?>
     </div>
     <div class="betalingsinfo" style="border-top: 1px solid #bab9b9; border-bottom: 1px solid #bab9b9;padding:5px 0 0 5px;">
-
-        
+        <div class="row">
+            <?php echo CHtml::label('Betalings type: ', ''); ?>
+            <?php echo CHtml::label($dataProvider["paymenttype"], ''); ?>
+        </div>
+        <div class="row">
+            <?php echo CHtml::label('invoice id: ', ''); ?>
+            <?php echo CHtml::label($dataProvider["invoice_id"], ''); ?>
+        </div>
         <div class="row">
             <?php echo CHtml::label('Kortart', ''); ?>
             <?php echo CHtml::label($dataProvider["kortart"], ''); ?>
@@ -201,7 +234,27 @@
         <div class="row">
             <?php echo CHtml::label('Bank: ', ''); ?>
             <?php echo CHtml::label($dataProvider["bank"], ''); ?>
-        </div>    
+        </div> 
+        <div class="row">
+            <?php echo CHtml::label('Bank branch: ', ''); ?>
+            <?php echo CHtml::label($dataProvider["bankbranch"], ''); ?>
+        </div>
+        <div class="row">
+            <?php echo CHtml::label('registrerings nummer: ', ''); ?>
+            <?php echo CHtml::label($dataProvider["regno"], ''); ?>
+        </div>
+        <div class="row">
+            <?php echo CHtml::label('konto nummer: ', ''); ?>
+            <?php echo CHtml::label($dataProvider["account"], ''); ?>
+        </div>
+        <div class="row">
+            <?php echo CHtml::label('bic: ', ''); ?>
+            <?php echo CHtml::label($dataProvider["bic"], ''); ?>
+        </div>
+        <div class="row">
+            <?php echo CHtml::label('iban: ', ''); ?>
+            <?php echo CHtml::label($dataProvider["iban"], ''); ?>
+        </div>
         <div class="row">
             <?php echo CHtml::label('Betales senest: ', ''); ?>
             <?php echo CHtml::label($dataProvider["Seneste_rettidige_betalingsdato"], ''); ?>
@@ -232,14 +285,37 @@
         <?php echo CHtml::label($dataProvider["Moms"], ''); ?>
     </div> 
     <div class="row"> 
+        <?php echo CHtml::label('duty: ', ''); ?>
+        <?php echo CHtml::label($dataProvider["duty"], ''); ?>
+    </div>
+    <div class="row"> 
+        <?php echo CHtml::label('importchg: ', ''); ?>
+        <?php echo CHtml::label($dataProvider["importchg"], ''); ?>
+    </div>
+    <div class="row"> 
+        <?php echo CHtml::label('Tillaeg: ', ''); ?>
+        <?php echo CHtml::label($dataProvider["Tillaeg"], ''); ?>
+    </div>
+    <div class="row"> 
+        <?php echo CHtml::label('Fradrag: ', ''); ?>
+        <?php echo CHtml::label($dataProvider["Fradrag"], ''); ?>
+    </div>
+    <div class="row"> 
         <?php echo CHtml::label('Intern Kommentar: ', ''); ?>
         <?php echo CHtml::label($dataProvider["comment"], ''); ?>
+    </div>
+    <div class="row"> 
+        <?php echo CHtml::label('status: ', ''); ?>
+        <?php echo CHtml::label($dataProvider["status"], ''); ?>
     </div>
     <div class="row">
         <?php echo CHtml::label('Besked til kunden:', '', array("style" => "width: 50px;")); ?>
         <?php echo CHtml::label($dataProvider["Info_til_indkoeber"], ''); ?>
     </div>
-
+    <div class="row">
+        <?php echo CHtml::label('order_id:', '', array("style" => "width: 50px;")); ?>
+        <?php echo CHtml::label($dataProvider["order_id"], ''); ?>
+    </div>
 
     <div class="row">
         <?php echo CHtml::label('Behandler: ', ''); ?>
@@ -285,6 +361,10 @@
     <div class="row">
         <?php echo CHtml::label('Ordre kontakt: ', ''); ?>
         <?php echo CHtml::label($dataProvider["orderContactName"], ''); ?>
+    </div>
+    <div class="row">
+        <?php echo CHtml::label('dimaccout: ', ''); ?>
+        <?php echo CHtml::label($dataProvider["dimaccout"], ''); ?>
     </div>
     <?php echo var_dump($dataProvider);?> 
 </div>
