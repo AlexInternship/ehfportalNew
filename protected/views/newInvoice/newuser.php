@@ -11,7 +11,6 @@
     ?>
     <?php Yii::app()->clientScript->registerScriptFile('js/addrow.js', CClientScript::POS_HEAD); ?>
     <p class="note">Fields with <span class="required">*</span> are required.</p>
-    
 <?php echo $form->errorSummary(array($model, $address1, $address2, $partner1, $partner2)); ?>
 
     <div class="topcontianer">   
@@ -21,7 +20,14 @@
          
         <div class="row">   
             <?php echo $form->labelEx($model, 'username') ?>
-            <?php echo $form->textField($model, 'username') ?>
+            <?php 
+            if(isset(Yii::app()->User->id)){
+                echo $form->textField($model, 'username', array('value'=>Yii::app()->User->id));
+                }
+               else{
+                  echo $form->textField($model, 'username'); 
+               }
+             ?>
             <?php echo $form->error($model, 'username') ?> 
         </div>
         <div class="row">

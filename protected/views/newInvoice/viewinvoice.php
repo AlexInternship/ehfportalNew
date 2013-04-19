@@ -2,6 +2,10 @@
 <div class="view">
     <div class="topright" style="float:right; margin:40px 70px 0 0;">
         <div class="row">
+            <?php echo CHtml::label('Faktura nummer: ', ''); ?>
+            <?php echo CHtml::label($dataProvider["Fakturanummer"], ''); ?>
+        </div>
+        <div class="row">
             <?php echo CHtml::label('Betales senest: ', ''); ?>
             <?php echo CHtml::label($dataProvider["Seneste_rettidige_betalingsdato"], ''); ?>
         </div>
@@ -17,7 +21,11 @@
             <?php echo CHtml::label('Faktura dato: ', ''); ?>
             <?php echo CHtml::label($dataProvider["Fakturadato"], ''); ?>
         </div>
-        <div class="row" style="margin:25px 0 0 0;">
+        <div class="row">
+            <?php echo CHtml::label('EAN: ', ''); ?>
+            <?php echo CHtml::label($dataProvider["EANlokationsnr"], ''); ?>
+        </div>
+        <div class="row" style="margin:13px 0 0 0;">
             <?php echo CHtml::label('Order ref.: ', ''); ?>
             <?php echo CHtml::label($dataProvider["ordreReference"], ''); ?>
         </div>
@@ -34,10 +42,6 @@
     </div>
 
     <div class="topleft" style="margin:20px 0 15px 10px;">        
-        <div class="row">
-            <?php echo CHtml::label('EAN: ', ''); ?>
-            <?php echo CHtml::label($dataProvider["EANlokationsnr"], ''); ?>
-        </div>
 
         <div class="row">
             <?php echo CHtml::label('Afsender', ''); ?>
@@ -141,10 +145,7 @@
     echo "<tr class='total'><th></th><th></th><th></th><th></th><th></th><th></th><th>Total</th><th>" . $total . "</th></tr>";
     echo "</table>";
     ?> 
-    <div class="row">
-            <?php echo CHtml::label('Varetotal: ', ''); ?>
-            <?php echo CHtml::label($dataProvider["Varetotal"], ''); ?>
-    </div>
+    
     <div class="row">
             <?php echo CHtml::label('Vare beløb: ', ''); ?>
             <?php echo CHtml::label($dataProvider["Varebeloeb"], ''); ?>
@@ -153,36 +154,38 @@
             <?php echo CHtml::label('Moms grundlag: ', ''); ?>
             <?php echo CHtml::label($dataProvider["momsgrundlag"], ''); ?>
     </div>
-    <div class="row">
-            <?php echo CHtml::label('Total uden moms: ', ''); ?>
-            <?php echo CHtml::label($dataProvider["linjetotal_eks_moms"], ''); ?>
-    </div>
+    
     <div class="row">
             <?php echo CHtml::label('Moms frit: ', ''); ?>
             <?php echo CHtml::label($dataProvider["momsfrit"], ''); ?>
     </div>
-    <div class="row">
-            <?php echo CHtml::label('ehf momsgrundlag: ', ''); ?>
+    <div class="row" style="float:right;">
           <?php 
            echo "<table style='width:250px;display:block;'><thead><th>MVA grunnlag</th><th>MVA</th><th>MVA beløb</th></thead>";
-           if(isset($dataProvider["ehf_momsgrundlag"])&&isset($dataProvider[0][0])){
-           foreach($dataProvider["ehf_momsgrundlag"] as $t => $item){
-               echo "<tr><th>".$t."</th><th>".$item."</th><th>".$dataProvider['ehf_moms'][$t]."</th></tr>";    
+           if(isset($dataProvider["ehf_moms"])){
+           foreach($dataProvider["ehf_moms"] as $t => $item){
+               echo "<tr><th>".$t."</th><th>".$item."</th><th>".$dataProvider['ehf_moms'][$t]."</th></tr>"; 
+             
            }           
            }
            echo "</table>";
            ?>
+        <div class="row" style="margin: 5px 0 8px 0;">
+            <?php echo CHtml::label('Varetotal: ', ''); ?>
+            <?php echo CHtml::label($dataProvider["Varetotal"], ''); ?>
+    </div>
+        <div class="row">
+            <?php echo CHtml::label('Total uden moms: ', ''); ?>
+            <?php echo CHtml::label($dataProvider["linjetotal_eks_moms"], ''); ?>
+    </div>
     </div>   
-    <div class="row">
+    <div class="row" style="clear:right;">
             <?php echo CHtml::label('Moms i alt: ', ''); ?>
             <?php echo CHtml::label($dataProvider["ehf_moms_total"].' nkr.', ''); ?>
     </div>
     <div class="betalingsinfo" style="border-top: 1px solid #bab9b9; border-bottom: 1px solid #bab9b9;padding:5px 0 0 5px;">
 
-        <div class="row">
-            <?php echo CHtml::label('Faktura nummer: ', ''); ?>
-            <?php echo CHtml::label($dataProvider["Fakturanummer"], ''); ?>
-        </div>
+        
         <div class="row">
             <?php echo CHtml::label('Kortart', ''); ?>
             <?php echo CHtml::label($dataProvider["kortart"], ''); ?>
@@ -283,4 +286,5 @@
         <?php echo CHtml::label('Ordre kontakt: ', ''); ?>
         <?php echo CHtml::label($dataProvider["orderContactName"], ''); ?>
     </div>
+    <?php echo var_dump($dataProvider);?> 
 </div>
