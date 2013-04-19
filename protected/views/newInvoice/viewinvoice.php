@@ -138,17 +138,44 @@
         </tr></thead>";
     $total = 0;
     foreach ($dataProvider["Fakturadata"] as $s) {
-
+            
         echo "<tr>";
-        echo "<th>" . CHtml::label($s["Varenummer"], '') . "</th>";
-        echo "<th>" . CHtml::label($s["Varenavn"], '') . "</th>";
+        if(isset($s["Varenummer"]))
+            {echo "<th>" . CHtml::label($s["Varenummer"],''). "</th>";}
+            else{echo "<th>" . CHtml::label( '', '') . "</th>";}
+       if(isset($s["Varenavn"]))
+            {echo "<th>" . CHtml::label($s["Varenavn"],''). "</th>";}
+            else{echo "<th>" . CHtml::label( '', '') . "</th>";}
+        if(isset($s["Antal"]))
+            {echo "<th>" . CHtml::label($s["Antal"],''). "</th>";}
+            else{echo "<th>" . CHtml::label( '', '') . "</th>";}
+        if(isset($s["Kontering"]))
+            {echo "<th>" . CHtml::label($s["Kontering"],''). "</th>";}
+            else{echo "<th>" . CHtml::label( '', '') . "</th>";}
+        if(isset($s["Pris"]))
+            {echo "<th>" . CHtml::label($s["Pris"],''). "</th>";}
+            else{echo "<th>" . CHtml::label( '', '') . "</th>";}
+        if(isset($s["Varebeloeb"]))
+            {echo "<th>" . CHtml::label($s["Varebeloeb"],''). "</th>";}
+            else{echo "<th>" . CHtml::label( '', '') . "</th>";}
+        if(isset($s["Ordrefradrag"]))
+            {echo "<th>" . CHtml::label($s["Ordrefradrag"],''). "</th>";}
+            else{echo "<th>" . CHtml::label( '', '') . "</th>";}
+        if(isset($s["Betegnelse_for_nettoindhold"]))
+            {echo "<th>" . CHtml::label($s["Betegnelse_for_nettoindhold"],''). "</th>";}
+            else{echo "<th>" . CHtml::label( '', '') . "</th>";}
+     
+        if(isset($s["ehf_vat"]))
+            {echo "<th>" . CHtml::label($s["ehf_vat"],''). "</th>";}
+            else{echo "<th>" . CHtml::label( '', '') . "</th>";}     
+      /*  echo "<th>" . CHtml::label($s["Varenavn"], '') . "</th>";
         echo "<th>" . CHtml::label($s["Antal"], '') . "</th>";
         echo "<th>" . CHtml::label($s["Kontering"], '') . "</th>";
         echo "<th>" . CHtml::label($s["Pris"], '') . "</th>";
         echo "<th>" . CHtml::label($s["Varebeloeb"], '') . "</th>";
         echo "<th>" . CHtml::label($s["Ordrefradrag"], '') . "</th>";
         echo "<th>" . CHtml::label($s["Betegnelse_for_nettoindhold"],'')."</th>";
-        echo "<th>" . CHtml::label($s["ehf_vat"], '') . "</th>";
+        echo "<th>" . CHtml::label($s["ehf_vat"], '') . "</th>";*/
         if (!isset($s["linie_total"])) {
             $res = ($s['Pris'] + ($s["ehf_vat"] / 100 * $s["Pris"])) * $s['Antal'];
             $total = $total + $res;
