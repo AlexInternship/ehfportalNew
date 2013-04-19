@@ -21,20 +21,15 @@ class NewInvoiceController extends Controller
         $generator = RandomPassword::Instance();
         $serializer = Serializer::Instance();
         $password = $generator->generatePassword();
-        $stub = new Stub();
-        
-        //print("<pre>".print_r($db->deserialize(1140),true)."</pre>");
-        //print("<pre>".print_r($db->deserialize(1158),true)."</pre>");
-
-        
-        //var_dump(array_intersect_key($db->deserialize(1140), $db->deserialize(1158)));
-        //var_dump($db->deserialize(1154));
 
         
         $invoiceArray = array();
         $valid = true;
         /* if (isset($_POST['User'], $_POST['Partner1'], $_POST['Partner2'], $_POST['Address1'], $_POST['Address2'])) { */
         if (!empty($_POST)) {
+
+
+          //  $invoiceData->attributes = $_POST['Fakturadata'];
 
              // til validering i blop, virker ikke atm
             //$invoiceData->attributes = $_POST['Fakturadata'];
@@ -66,7 +61,13 @@ class NewInvoiceController extends Controller
                 $partner2Array = $_POST['Partners'][2];
                 $address1Array = $_POST['Address'][1];
                 $address2Array = $_POST['Address'][2];
-                $invoiceArray;
+
+                $invoiceArray = $_POST;
+             //   $invoiceArray();
+               /* foreach ($_POST['fakturaData'] as $value){
+                    $invoiceData->attributes = $value;
+                        $invoiceArray[$value] = $invoiceData->getData();
+                 };    */        
                 /*
                 foreach ($_POST['fakturaData'] as $value){
                     $invoiceData->attributes = $value;
@@ -74,6 +75,7 @@ class NewInvoiceController extends Controller
                  }; 
                  * 
                  */           
+
                 $db->newPartner($userArray, $partner1Array, $password);
                 $db->newPartner(null, $partner2Array, '');
                 $partnerId1 = $db->getPartnerId($partner1Array['name']);
