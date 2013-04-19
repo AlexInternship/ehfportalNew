@@ -11,14 +11,26 @@ class NewInvoiceController extends Controller
         $address1 = new Address();
         $address2 = new Address();
         $invoiceData = new InvoiceData();     
-        //$document = new Document();
         $login = new LoginForm();
         $db = CallDB::Instance();
         $mailService = SendMail::Instance();
         $generator = RandomPassword::Instance();
         $serializer = Serializer::Instance();
         $password = $generator->generatePassword();
+        $stub = new Stub();
+        
+        $this->addManualArray($stub->getStandardArray(),1140);
 
+        print("<pre>".print_r($db->deserialize(1140),true)."</pre>");
+        print("<pre>".print_r($db->deserialize(1158),true)."</pre>");
+
+        
+        //var_dump(array_intersect_key($db->deserialize(1140), $db->deserialize(1158)));
+        //var_dump($db->deserialize(1154));
+        
+        die;
+
+        
         $invoiceArray = array();
         $valid = true;
         /* if (isset($_POST['User'], $_POST['Partner1'], $_POST['Partner2'], $_POST['Address1'], $_POST['Address2'])) { */
@@ -32,11 +44,13 @@ class NewInvoiceController extends Controller
             $address2->attributes = $_POST['Address'][2];
             //$document->attributes = $_POST;
             // print_r($serializer->serializeDocument($_POST, 1, 1));
-            
+           /* 
             foreach ($_POST['fakturaData'] as $value){
                $invoiceData->attributes = $value;
                $valid = $invoiceData->validate() && $valid;
             }
+            * 
+            */
             
             $valid = $address1->validate() && $valid;
             $valid = $address2->validate() && $valid;
@@ -167,5 +181,12 @@ class NewInvoiceController extends Controller
         $dataProvider = new CActiveDataProvider('SerializeDocuments', array(
                     'criteria' => array('condition' => 'id=' . $pid)));
         $this->render('viewcreatedinvoice',array('dataProvider' => $dataProvider),'');
-    }  
+    }
+    
+    function addManualArray($document, $id) {
+        $db = CallDB::Instance();
+        $db->addSerializedDocument(serialize($document), $id);
+        $return = $db->deserialize($id);
+        var_dump($return);        
+    }
 }

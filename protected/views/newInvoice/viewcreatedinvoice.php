@@ -16,7 +16,7 @@ $this->widget('zii.widgets.grid.CGridView', array(
  //echo CHtml::link('Se din faktura her',array('newinvoice/viewinvoice'), array('id' => 'fancy-link', 'style' => 'font-size:1.5em; font-weight:bold;'));
 
 ?>
-<?php// echo Yii::app()->User->user_name; ?> 
+<?php// echo Yii::app()->User->user_name;?> 
 <?php $this->widget('fancybox.EFancyBox', array(
         'target'=>'a#fancy-link',
         'config'=>array(

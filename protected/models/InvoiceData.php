@@ -20,6 +20,12 @@ class InvoiceData extends CFormModel {
         );
     }
     
+    public function getData() {
+        return array('Momsfri'=>$this->Momsfri,'Antal'=>$this->Antal,'pris'=>$this->pris,
+                    'dimaacount'=>$this->dimaacount,'varebeloeb'=>$this->varebeloeb,'betegnelse_for_nettoindhold'=>$this->betegnelse_for_nettoindhold,
+                    'ehf_vat'=>$this->ehf_vat,'skaffevare'=>$this->skaffevare,'ordrefradrag'=>$this->ordrefradrag,'varenavn'=>$this->varenavn,'varenummer'=>$this->varenummer);
+    }
+    
 }
 
 ?>
