@@ -108,7 +108,14 @@
                     $newPartner->mailcomment = null;
                     $newPartner->save();
                     }            
-         }
+        }
+         
+        public function mapPartners($partnerId1, $partnerId2) {
+            Yii::app()->db->createCommand()
+              ->insert('partnermappings', array('partner_id'=>$partnerId1,'foreignpartner_id'=>$partnerId2))
+              ->queryRow();
+
+        } 
          
         public function getPartnerId($name) {
 

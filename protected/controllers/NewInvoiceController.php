@@ -81,6 +81,7 @@ class NewInvoiceController extends Controller
                 $db->newPartner(null, $partner2Array, '');
                 $partnerId1 = $db->getPartnerId($partner1Array['name']);
                 $partnerId2 = $db->getPartnerId($partner2Array['name']);
+                $db->mapPartners($partnerId1, $partnerId2);
                 $db->newAdress($address1Array, $partnerId1, $partner1Array['validcvr']);
                 $db->newAdress($address2Array, $partnerId2, $partner2Array['validcvr']);
                 $db->newUser($userArray, $password, $partnerId1, $address1Array['phone']);
