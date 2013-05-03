@@ -4,7 +4,6 @@ class NewInvoiceController extends Controller
 {
     public function actionNewUser() {
 
-        
         $model = new Users();
         $partner1 = new Partners();
         $partner2 = new Partners();

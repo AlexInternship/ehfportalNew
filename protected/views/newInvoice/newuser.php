@@ -157,7 +157,7 @@
             </div>
              <div style="width: 90px; height: 45px; margin:3px;float:left;">
              <?php echo CHtml::label('Antal','',array('class' => 'test' ,'id'=>'antal_label', 'style'=> 'width:80px;')); ?>
-             <?php echo CHtml::textField('Fakturadata[0][antal]','0',array('class' => 'antal', 'id'=>'antal_0', 'style'=> 'width:80px;','maxlength'=>16, 'onBlur'=>'calc(0)')); ?>
+             <?php echo CHtml::textField('Fakturadata[0][Antal]','0',array('class' => 'antal', 'id'=>'antal_0', 'style'=> 'width:80px;','maxlength'=>16, 'onBlur'=>'calc(0)')); ?>
             </div>
             <div style="width: 80px; height: 45px; margin:3px;float:left;">
              <?php echo CHtml::label('Kontering','',array('id'=>'kontering', 'style'=> 'width:70px;')); ?>
